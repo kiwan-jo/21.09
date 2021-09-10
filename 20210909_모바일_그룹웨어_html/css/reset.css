@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+@font-face{
+    font-family:'NotoSansCJKkrRegular';
+    src:url(../fonts/NotoSansCJKkr-Regular.otf);
+    font-weight:400;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'NotoSansCJKkrMedium';
+    src:url(../fonts/NotoSansCJKkr-Medium.otf);
+    font-weight:500;
+    font-style:normal;
+}
+
+@font-face{
+    font-family:'NotoSansCJKkrBold';
+    src:url(../fonts/NotoSansCJKkr-Bold.otf);
+    font-weight:700;
+    font-style:normal;
+}
+
+html,body{width:100%; height:100%;}
+body{ min-height:568px;}
+
+body,div,p,span,ul,li,img,input,form,label,h3,header,section,dl,dt,dd,table,thead,tbody,tfoot,tr,th,td{margin:0; padding:0;}
+body,input,select,h3,table{font-family:'NotoSansCJKkrRegular'; font-size:14px; color:#444;}
+ul,li{list-style:none;}
+header,section{display:block;}
+img{border:0 none;}
+input{border:none; outline:none;}
+input::placeholder{color:#c9c9c9;}
+table{border-collapse:collapse; border-spacing:0; width:100%;}
+
+.f_medium{font-family:'NotoSansCJKkrMedium'}
+.f_bold{font-family:'NotoSansCJKkrBold'}
+.f_c_gray{color:#888888} /* "/" 회색 */ 
+
+.time, .date{color:#888888; font-size:12px;}
+
+/* header */
+.header{width:100%; height:56px; background-color:#045C7B; display:flex; justify-content:space-between; align-items:center; padding:0 20px; box-sizing:border-box;}
+.header > span{display:inline-block; width:20px; height:20px;}
+.header .header_left{margin-right:auto;}
+.header .header_right{margin-left:auto;}
+.header .header_center{margin:0 auto; width:calc(100%); height:auto; text-align:center; font-weight:bold; color:#fff; font-size:20px;}
+
+/* flex */
+.flex_left{margin-right:auto;}
+.flex_right{margin-left:auto;}
+.flex_center{margin:0 auto;}
+
+/* tag_box */
+.tag_box{display:inline-block; line-height:20px; padding:0 8px; border-radius:3px; font-size:12px; color:#fff;}
+
+/* bg_color */
+.per{background-color:#018BFA !important;}
+.company{background-color:#FF1C71 !important;}
+.team{background-color:#81BC3D !important;}
+.all_day{background-color:#78C4C9 !important;}
+

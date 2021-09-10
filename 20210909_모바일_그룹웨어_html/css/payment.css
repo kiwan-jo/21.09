@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+.header{position:fixed; z-index:1000;}
+.header span.back_btn{background:url(../images/header_back_icon.svg) no-repeat left center / 9px auto;}
+.header span.menu_btn{background:url(../images/header_menu_icon.svg) no-repeat right center / 20px auto;}
+
+.main{width:100%; padding-bottom:50px; position:relative; padding-top:56px;}
+
+.main .payment_title_tab{width:100%; padding:5px 20px; box-sizing:border-box; box-shadow:0 1px 4px -1px rgba(0,0,0,0.16);}
+.main .payment_title_tab .date, .main .payment_title_tab .time{color:#444;}
+.main .payment_title_tab .date{}
+
+
+.main .payment_drafter_tab{display:flex; flex-wrap:wrap; align-items:center; width:100%; padding:0 20px; box-sizing:border-box; height:40px; box-shadow:0 1px 4px -1px rgba(0,0,0,0.16);}
+.main .payment_drafter_tab .drafter{width:70px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.main .payment_drafter_tab .drafter_infor{width:calc(100% - 70px); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+
+.main .payment_list_tab{width:100%; box-shadow:0 1px 4px -1px rgba(0,0,0,0.16); position:relative;}
+.main .payment_list_tab .list_title_tab{padding:0 20px; box-sizing:border-box; height:40px; display:flex; justify-content:space-between; align-items:center;}
+.main .payment_list_tab .list_title_tab .payment_list_title{width:70px;}
+.main .payment_list_tab .list_title_tab .expand_arrow{display:inline-block; width:20px; height:20px; background:url(../images/payment_down_arrow.svg) no-repeat right center / 15px auto;}
+.main .payment_list_tab .list_title_tab .expand_arrow.on{background:url(../images/payment_up_arrow.svg) no-repeat right center / 15px auto;}
+
+.main .payment_list_tab .payment_list_UL{padding:0 20px 10px; box-sizing:border-box; display:none;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI{display:flex; align-items:center;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir{width:46px; height:60px; margin-right:10px;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir.complet_01{background:url(../images/payment_completion_type_01.png) no-repeat center 0;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir.complet_02{background:url(../images/payment_completion_type_02.png) no-repeat center 0;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir.ing{background:url(../images/payment_ing.png) no-repeat center 0;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir.not_01{background:url(../images/payment_not_type1.png) no-repeat center 0;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_cir.not_02{background:url(../images/payment_not_type2.png) no-repeat center 0;}
+
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_DL{width:calc(100% - 56px);}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_DL .payment_DT,
+.main .payment_list_tab .payment_list_UL .payment_list_LI .payment_DL .payment_DD{overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+
+.main .payment_list_tab .payment_list_UL .payment_list_LI .date{margin-right:10px;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .ing_txt{border:1px solid #FEB201; border-radius:5px; display:inline-block; line-height:20px; padding:0 5px; font-size:12px; font-weight:bold;}
+.main .payment_list_tab .payment_list_UL .payment_list_LI .not_yet{display:inline-block; line-height:20px; padding:0 5px; background-color:#D1D1D1; color:#fff; border-radius:5px; font-size:12px;}
+
+
+.main .payment_document{padding:20px 20px 0;}
+
+
+.main .payment_btn_tab{padding:0 20px; position:fixed; bottom:0; width:100%; box-sizing:border-box; background-color:#fff;}
+.main .payment_btn_tab .return_btn, .main .payment_btn_tab .hold_btn{display:inline-block; width:28%; line-height:40px; text-align:center; color:#fff; background-color:#0389B9; border-radius:5px; font-weight:bold; margin-right:10px;}
+.main .payment_btn_tab .payment_btn{display:inline-block; width:calc(44% - 20px); text-align:center; line-height:40px; color:#fff; background-color:#0B5772; border-radius:5px; font-weight:bold;}

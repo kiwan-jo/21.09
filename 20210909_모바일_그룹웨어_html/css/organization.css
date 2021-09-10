@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+body:before{content:''; position:absolute; width:100%; height:calc(100% - 202px); background:url(../images/organization_chart_bg.png) repeat 0 0; z-index:-1; margin-top:202px;}
+
+.header span.back_btn{background:url(../images/header_back_icon.svg) no-repeat left center / 9px auto; width:60px;}
+.header span.search_btn{background:url(../images/header_search_icon.svg) no-repeat right center / 15px auto; margin-right:20px;}
+.header span.menu_btn{background:url(../images/header_menu_icon.svg) no-repeat right center / 20px auto;}
+
+
+.organization_menu{box-shadow:0 3px 6px -1px rgba(0,0,0,0.16); background-color:#fff; position:relative;}
+
+.organization_menu .organization_quick{width:100%; padding:15px 0 10px 0; border-bottom:1px solid #D1D1D1;}
+.organization_menu .organization_quick .org_quick_UL{width:100%; display:flex; flex-wrap:wrap;}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI{width:25%; text-align:center;}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI .org_quick_icon{height:30px; background-size:contain !important; background-position:center center !important; background-repeat:no-repeat !important; margin-bottom:10px;}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI.recent .org_quick_icon{background:url(../images/org_quick_recent_icon.svg);}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI.name .org_quick_icon{background:url(../images/org_quick_name_icon.svg);}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI.department .org_quick_icon{background:url(../images/org_quick_department_icon.svg);}
+.organization_menu .organization_quick .org_quick_UL .org_quick_LI.favorite .org_quick_icon{background:url(../images/org_quick_favorite_icon.svg);}
+
+.organization_menu .organization_subsidiary{width:100%; padding:15px 20px; box-sizing:border-box;}
+.organization_menu .organization_subsidiary .org_subsidiary_UL{display:flex; flex-wrap:wrap;}
+.organization_menu .organization_subsidiary .org_subsidiary_UL .org_sub_LI{border:1px solid #0389B9; border-radius:5px; color:#0389B9; box-sizing:border-box; line-height:28px; padding:0 10px; margin-right:10px;}
+.organization_menu .organization_subsidiary .org_subsidiary_UL .org_sub_LI:last-child{margin-right:0;}
+.organization_menu .organization_subsidiary .org_subsidiary_UL .org_sub_LI.on{color:#fff; background-color:#0389b9;}
+
+
+.main .organization_chart{ padding:0 20px; box-sizing:border-box; background:url(../images/organization_chart_bg.png) repeat 0 0;}
+
+.organization_chart span{display:inline-block; width:30px; height:50px; vertical-align:top;}
+.organization_chart .chart_company, .organization_chart .chart_department, .organization_chart .chart_per{width:auto;}
+.organization_chart .chart_per{padding-left:20px; background:url(../images/org_chart_per.svg) no-repeat left center / 13px auto;}
+.expand{background:url(../images/org_chart_expand_plus_down.png) no-repeat left 15px;}
+.expand.non{background:url(../images/org_chart_expand_minus_down.png) no-repeat left 15px;}
+.line_01{background:url(../images/org_chart_line_01.png) no-repeat right 0;}
+.line_02{background:url(../images/org_chart_line_02.png) no-repeat 9px 0;}
+.line_03{background:url(../images/org_chart_line_03.png) no-repeat 9px 0;}
+.line_04{background:url(../images/org_chart_line_04.png) no-repeat 9px 0;}
+.line_05{background:url(../images/org_chart_line_05.png) no-repeat 9px 0;}
+
+.organization_chart .chart_depth_01{line-height:50px;}
+/* .organization_chart .chart_depth_02{display:none;} */
+.organization_chart .chart_depth_03{display:none;}
+.organization_chart .chart_depth_04{display:none;}

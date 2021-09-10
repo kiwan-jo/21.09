@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=8.0, minimum-scale=1.0, width=device-width">
+        <link rel='stylesheet' href='css/reset.css'>
+        <link rel='stylesheet' href='css/payment.css'>
+        <script src='js/jquery-1.11.2.min.js' type='text/javascript'></script>
+    </head>
+
+    <body>
+        <header class='header'>
+            <span class='back_btn hedaer_left'></span>
+            <span class='header_center'><span>결재</span></span>
+            <span class='menu_btn header_right'></span>
+        </header>
+
+        <div class='main'>
+            <section class='payment_title_tab'>
+                <p class='title f_bold'>외근 경비 신청</p>
+                <span class='date'>2021.08.08</span><span class='time'>13:47</span>
+            </section>
+
+            <section class='payment_drafter_tab'>
+                <p class='drafter'><span class='f_bold'>기안자</span></p>
+                <p class='drafter_infor'><span class='writer_name'>홍길동 사원</span> <span class='f_c_gray'>/</span> <span class='writer_department'>UIUX팀</span></p>
+            </section>
+
+            <section class='payment_list_tab'>
+                <p class='list_title_tab'><span class='payment_list_title f_bold flex_left'>결재선</span><span class='expand_arrow flex_right'></span></p>
+                <div class='payment_list'>
+                    <ul class='payment_list_UL'>
+                        <li class='payment_list_LI'>
+                            <div class='payment_cir complet_01'></div>
+                            <dl class='payment_DL'>
+                                <dt class='payment_DT'>홍길동 사원 <span class='f_c_gray'>/</span> UIUX팀</dt>
+                                <dd class='payment_DD'><span class='date'>2021.08.08</span><span class='time'>13:47</span></dd>
+                            </dl>
+                        </li>
+                        <li class='payment_list_LI'>
+                            <div class='payment_cir complet_02'></div>
+                            <dl class='payment_DL'>
+                                <dt class='payment_DT'>김가온 대리 <span class='f_c_gray'>/</span> UIUX팀</dt>
+                                <dd class='payment_DD'><span class='date'>2021.08.08</span><span class='time'>13:47</span></dd>
+                            </dl>
+                        </li>
+                        <li class='payment_list_LI'>
+                            <div class='payment_cir ing'></div>
+                            <dl class='payment_DL'>
+                                <dt class='payment_DT'>민수현 과장 <span class='f_c_gray'>/</span> UIUX팀</dt>
+                                <dd class='payment_DD'><span class='ing_txt'>진행중</span></dd>
+                            </dl>
+                        </li>
+                        <li class='payment_list_LI'>
+                            <div class='payment_cir not_02'></div>
+                            <dl class='payment_DL'>
+                                <dt class='payment_DT'>이민호 팀장 <span class='f_c_gray'>/</span> UIUX팀</dt>
+                                <dd class='payment_DD'><span class='not_yet'>미결제</span></dd>
+                            </dl>
+                        </li>
+                        <li class='payment_list_LI'>
+                            <div class='payment_cir not_01'></div>
+                            <dl class='payment_DL'>
+                                <dt class='payment_DT'>김누리 사장 <span class='f_c_gray'>/</span> UIUX팀</dt>
+                                <dd class='payment_DD'><span class='not_yet'>미결제</span></d d>
+                            </dl>
+                        </li>
+                    </ul>
+                        
+                </div>
+            </section>
+
+            <section class='payment_document'>
+                <img src='images/payment_document.png' width='100%' height='auto'>
+            </section>
+
+            <section class='payment_btn_tab'>
+                <span class='return_btn'>반송</span><span class='hold_btn'>보류</span><span class='payment_btn'>결재</span>
+            </section>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                $('.list_title_tab').on('click',function(){
+                    $('.expand_arrow').toggleClass('on');
+                    $('.payment_list_UL').toggle();
+                })
+            })
+        </script>
+    </body>
+</html>

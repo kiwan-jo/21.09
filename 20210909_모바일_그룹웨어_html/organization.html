@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=8.0, minimum-scale=1.0, width=device-width">
+        <link rel='stylesheet' href='css/reset.css'>
+        <link rel='stylesheet' href='css/organization.css'>
+        <script src='js/jquery-1.11.2.min.js' type='text/javascript'></script>
+    </head>
+
+    <body>
+        <header class='header'>
+            <span class='back_btn hedaer_left'></span>
+            <span class='header_center'><span>조직도</span></span>
+            <span class='search_btn header_right'></span>
+            <span class='menu_btn header_right'></span>
+        </header>
+
+        <div class='main'>
+            <section class='organization_menu'>
+
+                <div class='organization_quick'>
+                    <ul class='org_quick_UL'>
+                        <li class='org_quick_LI recent'>
+                            <p class='org_quick_icon'></p>
+                            <span class='org_quick_txt'>최근검색</span>
+                        </li>
+                        <li class='org_quick_LI name'>
+                            <p class='org_quick_icon'></p>
+                            <span class='org_quick_txt'>이름</span>
+                        </li>
+                        <li class='org_quick_LI department'>
+                            <p class='org_quick_icon'></p>
+                            <span class='org_quick_txt'>부서</span>
+                        </li>
+                        <li class='org_quick_LI favorite'>
+                            <p class='org_quick_icon'></p>
+                            <span class='org_quick_txt'>즐겨찾기</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class='organization_subsidiary'>
+                    <ul class='org_subsidiary_UL'>
+                        <li class='org_sub_LI on'>가온아이</li>
+                        <li class='org_sub_LI'>가온누리</li>
+                        <li class='org_sub_LI'>가온시아</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class='organization_chart'>
+                <ul class='chart_depth_01'>
+                    <li class='chart_depth_01_LI'>
+                        <span class='expand non'></span><span class='chart_company'>가온아이</span>
+                        <ul class='chart_depth_02'>
+                            <li class='chart_depth_02_LI'>
+                                <span class='line_01'></span><span class='expand'></span><span class='chart_department'>SS개발부</span>
+                                <ul class='chart_depth_03'>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>개발부사원1</span></li>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>개발부사원2</span></li>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_04'></span><span class='chart_per'>개발부사원3</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class='chart_depth_02'>
+                            <li class='chart_depth_02_LI'>
+                                <span class='line_01'></span><span class='expand'></span><span class='chart_department'>지식관리연구소</span>
+                                <ul class='chart_depth_03'>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>연구소사원1</span></li>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>연구소사원2</span></li>
+                                    <li class='chart_depth_03_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_04'></span><span class='chart_per'>연구소사원3</span></li>
+                                </ul>
+
+                                <ul class='chart_depth_03'>
+                                    <li class='chart_depth_03_LI'>
+                                        <span class='line_02'></span><span class='line_01'></span><span class='expand'></span><span class='chart_department'>UIUX팀</span>
+                                        <ul class='chart_depth_04'>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>UIUX팀사원1</span></li>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_03'></span><span class='chart_per'>UIUX팀사원2</span></li>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span class='line_02'></span><span class='line_04 '></span><span class='chart_per'>UIUX팀사원3</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <ul class='chart_depth_03'>
+                                    <li class='chart_depth_03_LI'>
+                                        <span class='line_02'></span><span class='line_05'></span><span class='expand'></span><span class='chart_department'>솔루션1팀</span>
+                                        <ul class='chart_depth_04'>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span></span><span class='line_03'></span><span class='chart_per'>솔루션1팀사원1</span></li>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span></span><span class='line_03'></span><span class='chart_per'>솔루션1팀사원2</span></li>
+                                            <li class='chart_depth_04_LI'><span class='line_02'></span><span></span><span class='line_04'></span><span class='chart_per'>솔루션1팀사원3</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class='chart_depth_02'>
+                            <li class='chart_depth_02_LI'>
+                                <span class='line_05'></span><span class='expand'></span><span class='chart_department'>QC팀</span>
+                                <ul class='chart_depth_03'>
+                                    <li class='chart_depth_03_LI'><span></span><span class='line_03'></span><span class='chart_per'>QC팀사원1</span></li>
+                                    <li class='chart_depth_03_LI'><span></span><span class='line_03'></span><span class='chart_per'>QC팀사원2</span></li>
+                                    <li class='chart_depth_03_LI'><span></span><span class='line_04'></span><span class='chart_per'>QC팀사원3</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                $('.expand').on('click',function(){
+                    $(this).toggleClass('non');
+                    $(this).parent('li').children('ul').toggle();
+                })
+
+                $('.org_subsidiary_UL .org_sub_LI').on('click',function(){
+                    $('.org_subsidiary_UL .org_sub_LI').removeClass('on');
+                    $(this).addClass('on');
+                    var input_text = $(this).text();
+                    $('.chart_company').text(input_text);
+                })
+            })
+        </script>
+    </body>
+</html>

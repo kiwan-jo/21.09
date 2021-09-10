@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/* base */
+
+
+.header{position:fixed; z-index:1000;}
+.header span.back_btn{background:url(../images/header_back_icon.svg) no-repeat left center / 9px auto;}
+.header span.menu_btn{background:url(../images/header_menu_icon.svg) no-repeat right center / 20px auto;}
+
+.main{padding-bottom:20px; padding-top:56px;}
+.main .calendar_tab{width:100%; box-shadow:0 1px 4px -1px rgba(0,0,0,0.16);}
+.calendar_tab .cal_month{display:flex; justify-content:space-between; height:50px; align-items:center; padding:0 20px; box-sizing:border-box;}
+.calendar_tab .cal_month .month_txt{font-size:20px;}
+.calendar_tab .cal_month .prev_btn{display:inline-block; width:20px; height:20px; background:url(../images/prev_icon.svg) no-repeat center center / 9px auto; border:1px solid #D9D9D9; border-radius:3px;}
+.calendar_tab .cal_month .next_btn{display:inline-block; width:20px; height:20px; background:url(../images/next_icon.svg) no-repeat center center / 9px auto; border:1px solid #D9D9D9; border-radius:3px;}
+
+.calendar_tab .cal_tab{background-color:#FAFAFA; padding:10px 20px 10px 20px;}
+.calendar_tab .cal_tab .calendar td{width:calc(100% / 7); height:50px; vertical-align:top; position:relative;}
+.calendar_tab .cal_tab .calendar td.blur{opacity:0.7}
+.calendar_tab .cal_tab .calendar td.sun{color:#FE5858;}
+.calendar_tab .cal_tab .calendar td.sat{color:#437AD9;}
+/* .calendar_tab .cal_tab .calendar td.selected div{border:2px solid #7E0361; border-radius:5px; height:100%; box-sizing:border-box;} */
+.calendar_tab .cal_tab .calendar td.selected div:before{content:''; position:absolute; width:100%; height:100%; border-radius:5px; border:2px solid #7e0361; box-sizing:border-box; z-index:10;}
+.calendar_tab .cal_tab .calendar td.today span{color:#fff; background-color:#0389B9; border-radius:5px; display:inline-block; width:22px; text-align:center; line-height:22px;}
+.calendar_tab .cal_tab .calendar td span{display:inline-block; width:22px; line-height:22px; text-align:center;}
+
+.calendar_tab .cal_tab .calendar td div .schedule_line{position:absolute; width:100%; height:3px; left:0; z-index:0;}
+.end{width:90% !important;}
+.line_01{top:24px;}
+.line_02{top:30px;}
+.line_03{top:36px;}
+.schedule_more{position:absolute; font-size:10px; width:auto !important; height:auto !important; line-height:normal !important; left:5px; top:32px;}
+
+
+
+.main .schedule_list_tab{width:100%; padding:0 20px; box-sizing:border-box; margin-top:10px;}
+.schedule_list_tab .schedule_date{text-align:center; line-height:50px;}
+
+.schedule_list_tab .schedule_list_UL{width:100%;}
+.schedule_list_tab .schedule_list_UL .schedule_list_LI{padding:10px 15px; box-sizing:border-box; border:1px solid #E1E1E1; border-radius:10px; margin-bottom:20px;}
+.schedule_list_tab .schedule_list_UL .schedule_list_LI:last-child{margin-bottom:0;}
+.schedule_list_tab .schedule_list_UL .schedule_list_LI .schedule_infor{display:flex; margin-bottom:5px;}
+.schedule_list_tab .schedule_list_UL .schedule_list_LI .schedule_infor .all_day{margin-left:10px;}
+.schedule_list_tab .schedule_list_UL .schedule_list_LI .schedule_title{overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}

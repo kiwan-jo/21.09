@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=8.0, minimum-scale=1.0, width=device-width">
+        <link rel='stylesheet' href='css/reset.css'>
+        <link rel='stylesheet' href='css/user&menu.css'>
+        <script src='js/jquery-1.11.2.min.js' type='text/javascript'></script>
+    </head>
+
+    <body>
+        <header class='header'>
+            <span class='home_btn hedaer_left'></span>
+            <span class='close_btn header_right'></span>
+        </header>
+
+        <div class='main'>
+            <section class='user_tab'>
+                <div class='user_interface'>
+                    <div class='user_photo'></div>
+                    <div class='user_infor'>
+                        <p class='user_name'>홍길동 사원</p>
+                        <p class='user_department'>UIUX팀</p>
+                        <div class='sub_department_tab'>
+                            <span class='sub_depart_selected'>SS개발부</span>
+                            <ul class='sub_depart_UL'>
+                                <li class='sub_depart_LI on'>SS개발부</li>
+                                <li class='sub_depart_LI'>개발1팀</li>
+                                <li class='sub_depart_LI'>개발2팀</li>
+                                <li class='sub_depart_LI'>솔루션1팀</li>
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class='user_btn_tab'>
+                    <span class='setting_btn flex_left'>환경설정</span>
+                    <span class='logout_btn flex_right'>로그아웃</span>
+                </div>
+            </section>
+
+            <section class='menu_tab'>
+                <ul class='menu_depth_01'>
+                    <li class='depth_01_LI'><span>메일</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>받은 메일함</span></li>
+                            <li class='depth_02_LI'><span>보낸 메일함</span></li>
+                            <li class='depth_02_LI'><span>임시 메일함</span></li>
+                            <li class='depth_02_LI'><span>지운 메일함</span></li>
+                            <li class='depth_02_LI'><span>받은 메일함</span></li>
+                            <li class='depth_02_LI'><span>보낸 메일함</span></li>
+                            <li class='depth_02_LI'><span>임시 메일함</span></li>
+                            <li class='depth_02_LI'><span>지운 메일함</span></li>
+                            <li class='depth_02_LI'><span>받은 메일함</span></li>
+                            <li class='depth_02_LI'><span>보낸 메일함</span></li>
+                            <li class='depth_02_LI'><span>임시 메일함</span></li>
+                            <li class='depth_02_LI'><span>지운 메일함</span></li>
+                        </ul>
+                    </li>
+
+                    <li class='depth_01_LI'><span class='on'>전자결재</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>결재할문서</span></li>
+                            <li class='depth_02_LI'><span>결재진행문서</span></li>
+                            <li class='depth_02_LI'><span>기안한문서</span></li>
+                            <li class='depth_02_LI'><span>임시보관함</span></li>
+                        </ul>
+                    </li>
+
+                    <li class='depth_01_LI'><span class='on'>자원예약</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>회의실</span></li>
+                            <li class='depth_02_LI'><span>공용차랑</span></li>
+                            <li class='depth_02_LI'><span>테블릿PC</span></li>
+                        </ul>
+                    </li>
+
+                    <li class='depth_01_LI'><span class='on'>일정</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>모든일정</span></li>
+                            <li class='depth_02_LI'><span>개인일정</span></li>
+                            <li class='depth_02_LI'><span>부서일정</span></li>
+                            <li class='depth_02_LI'><span>회사일정</span></li>
+                        </ul>
+                    </li>
+
+                    <li class='depth_01_LI'><span class='on'>조직도</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>가온아이</span></li>
+                            <li class='depth_02_LI'><span>계열사1</span></li>
+                            <li class='depth_02_LI'><span>계열사2</span></li>
+                        </ul>
+                    </li>
+
+                    <li class='depth_01_LI'><span class='on'>게시판</span>
+                        <ul class='menu_depth_02'>
+                            <li class='depth_02_LI'><span>공지사항</span></li>
+                            <li class='depth_02_LI'><span>업무생활</span></li>
+                            <li class='depth_02_LI'><span>즐겨찾기</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                // 부서선택
+                $('.sub_depart_selected').on('click',function(){
+                    $('.sub_depart_UL').slideToggle();
+                })
+
+                $('.sub_depart_UL .sub_depart_LI').on('click',function(){
+                    $('.sub_depart_UL').hide();
+                    $('.sub_depart_UL .sub_depart_LI').removeClass('on');
+                    $(this).addClass('on');
+                    var input_text = $(this).text();
+                    $('.sub_department_tab .sub_depart_selected').text(input_text);
+                })
+
+                // 메뉴
+                $('.menu_depth_01 .depth_01_LI:eq(0)').addClass('on');  //보여주기 위해서 설정해 놓음
+                $('.depth_01_LI:eq(0) .menu_depth_02').show();          //보여주기 위해서 설정해 놓음
+                $('.depth_01_LI').on('click',function(){
+                    $('.depth_01_LI').removeClass('on');
+                    $(this).addClass('on');
+                    $('.menu_depth_02').hide();
+                    $(this).children('.menu_depth_02').show();
+                })
+            })
+        </script>
+    </body>
+</html>
