@@ -1,0 +1,297 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel='stylesheet' tyle='text/css' href='css/reset.css'>
+        <link rel='stylesheet' tyle='text/css' href='css/main01.css'>
+        <link href="css/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+        <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class='wrap'>
+            <nav class='lnb'>
+                <p class='top_icon'></p>
+                <ul class='gnb_list_UL'>
+                    <li class='gnb_list_LI scan_result on'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>스캔결과</span>
+                    </li>
+                    <li class='gnb_list_LI file_scan'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>파일스캔</span>
+                    </li>
+                    <li class='gnb_list_LI user_management'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>사용자관리</span>
+                    </li>
+                    <li class='gnb_list_LI system_information'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>시스템정보</span>
+                    </li>
+                </ul>
+                <p class='setting'></p>
+            </nav>
+
+            <main class='main'>
+                <header class='header'>
+                    <h3 class='header_title'>기록물관리백신</h3>
+                    <ul class='header_infor_UL'>
+                        <li class='header_infor_LI'>환경설정</li>
+                        <li class='header_infor_LI'>로그아웃</li>
+                    </ul>
+                </header>
+
+                <div class='content_wrap'>
+                    <div class='content'>
+                        <div class='table_tab'>
+                            <div class='table_head_tab'>
+                                <table>
+                                    <colgroup>
+                                        <col width='80'/>
+                                        <col width='*'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='130'/>
+                                    </colgroup>
+
+                                    <thead>
+                                        <tr>
+                                            <th><input type='checkbox' id='thead_check'><label for='thead_check'></label></th>
+                                            <th><span>파일명(경로)</span></th>
+                                            <th><span>IP주소(로컬)</span></th>
+                                            <th><span>파일크기</span></th>
+                                            <th><span>멀웨어이름</span></th>
+                                            <th><span>멀웨어종류</span></th>
+                                            <th><span>검사날짜</span></th>
+                                            <th><span>검사결과</span></th>
+                                            <th><span>치료결과</span></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                            <div class='table_body_tab Scrollcontent'>
+                                <table>
+                                    <colgroup>
+                                        <col width='80'/>
+                                        <col width='*'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='120'/>
+                                        <col width='130'/>
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_01'><label for='list_01'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='not_cure'>미치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_02'><label for='list_02'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_03'><label for='list_03'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_04'><label for='list_04'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='not_cure'>미치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_05'><label for='list_05'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_06'><label for='list_06'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_07'><label for='list_07'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='not_cure'>미치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_08'><label for='list_08'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='not_cure'>미치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_09'><label for='list_09'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_10'><label for='list_10'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><span><input type='checkbox' id='list_11'><label for='list_11'></label></span></td>
+                                            <td><span>C:\Users\DC408\Downloads</span></td>
+                                            <td><span>110.0.10.168</span></td>
+                                            <td><span>256KB</span></td>
+                                            <td><span>트로이목마</span></td>
+                                            <td><span>바이러스</span></td>
+                                            <td><span>2021.06.08</span></td>
+                                            <td><span>검사결과</span></td>
+                                            <td><span class='cure'>치료</span></td>
+                                            <td><span>다운로드</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class='page_num_tab'>
+                            <p class='front_btn'></p>
+                            <p class='prev_btn'></p>
+                            <ul class='page_num_UL'>
+                                <li class='page_num_LI num_01 current_page'>1</li>
+                                <li class='page_num_LI num_02'>2</li>
+                                <li class='page_num_LI num_03'>3</li>
+                                <li class='page_num_LI num_04'>4</li>
+                                <li class='page_num_LI num_05'>5</li>
+                                <li class='page_num_LI num_06'>6</li>
+                                <li class='page_num_LI num_07'>7</li>
+                                <li class='page_num_LI num_08'>8</li>
+                                <li class='page_num_LI num_09'>9</li>
+                                <li class='page_num_LI num_10'>10</li>
+                            </ul>
+                            <p class='next_btn'></p>
+                            <p class='last_btn'></p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="css/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script>
+            (function ($) {
+                $(window).on("load", function () {
+                    $(".Scrollcontent").mCustomScrollbar({
+                        axis: "yx",
+                        theme: "dark-3"
+                    });
+                });
+            })(jQuery);
+        </script>
+
+        <script>
+            $(document).ready(function(){
+                $('table input[type="checkbox"]').on('click',function(){
+                    if($(this).is(':checked') == true){
+                        $(this).parents('tr').addClass('on');
+                    } else{
+                        $(this).parents('tr').removeClass('on');
+                    }
+                })
+
+                $('table input[type="checkbox"]').on('click',function(){
+                    if($(this).is(':checked') == true){
+                        $(this).parents('tr').addClass('on');
+                    } else{
+                        $(this).parents('tr').removeClass('on');
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

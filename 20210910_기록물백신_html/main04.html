@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel='stylesheet' tyle='text/css' href='css/reset.css'>
+        <link rel='stylesheet' tyle='text/css' href='css/main04.css'>
+        <link href="css/mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+        <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class='wrap'>
+            <nav class='lnb'>
+                <p class='top_icon'></p>
+                <ul class='gnb_list_UL'>
+                    <li class='gnb_list_LI scan_result'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>스캔결과</span>
+                    </li>
+                    <li class='gnb_list_LI file_scan'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>파일스캔</span>
+                    </li>
+                    <li class='gnb_list_LI user_management'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>사용자관리</span>
+                    </li>
+                    <li class='gnb_list_LI system_information on'>
+                        <p class='gnb_list_icon'></p>
+                        <span class='gnb_list_text'>시스템정보</span>
+                    </li>
+                </ul>
+                <p class='setting'></p>
+            </nav>
+
+            <main class='main'>
+                <header class='header'>
+                    <h3 class='header_title'>기록물관리백신</h3>
+                    <ul class='header_infor_UL'>
+                        <li class='header_infor_LI'>환경설정</li>
+                        <li class='header_infor_LI'>로그아웃</li>
+                    </ul>
+                </header>
+
+                <div class='content_wrap'>
+                    <div class='content'>
+                        <div class='table_tab Scrollcontent'>
+                            <div style='width:100%; padding:0 50px; box-sizing:border-box;'>
+                                <table>
+                                    <colgroup>
+                                        <col width='150'>
+                                        <col width='*'>
+                                    </colgroup>
+
+                                    <tbody>
+                                        <tr>
+                                            <th><span>DATA BASE명</span></ths>
+                                            <td><span><input type='text'></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>검역소 PATH</span></th>
+                                            <td><span><input type='text'></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>로그인백업폴더 PATH</span></th>
+                                            <td><span><input type='text'></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>로그백업주기</span></th>
+                                            <td>
+                                                <div>
+                                                    <!-- <label for='log_backup'>매일</label>
+                                                    <select id='log_backup'><option selected='selected'>매일</option><option>주별</option><option>월별</option></select> -->
+                                                    <p class='select'><span class='selected_txt'>매일</span></p>
+                                                    <ul class='select_list_UL'>
+                                                        <li class='select_list_LI selected'>매일</li>
+                                                        <li class='select_list_LI'>주별</li>
+                                                        <li class='select_list_LI'>월별</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>로그백업보관기간</span></th>
+                                            <td>
+                                                <div>
+                                                    <!-- <label for='log_save'>영구</label>
+                                                    <select id='log_save'><option>한달</option><option>분기</option><option>반기</option><option>년간</option><option selected='selected'>영구</option></select> -->
+                                                    <p class='select'><span class='selected_txt'>영구</span></p>
+                                                    <ul class='select_list_UL'>
+                                                        <li class='select_list_LI'>한달</li>
+                                                        <li class='select_list_LI'>분기</li>
+                                                        <li class='select_list_LI'>반기</li>
+                                                        <li class='select_list_LI'>년간</li>
+                                                        <li class='select_list_LI selected'>영구</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>백신엔진</span></th>
+                                            <td>
+                                                <div>
+                                                    <!-- <label for='vaccine'>0</label>
+                                                    <select id='vaccine'><option selected='selected'>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select> -->
+                                                    <p class='select'><span class='selected_txt'>0</span></p>
+                                                    <ul class='select_list_UL'>
+                                                        <li class='select_list_LI selected'>0</li>
+                                                        <li class='select_list_LI'>1</li>
+                                                        <li class='select_list_LI'>2</li>
+                                                        <li class='select_list_LI'>3</li>
+                                                        <li class='select_list_LI'>4</li>
+                                                        <li class='select_list_LI'>5</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th><span>selectbox disabled</span></th>
+                                            <td>
+                                                <div>
+                                                    <!-- <label for='disabled'>0</label>
+                                                    <select id='disabled' disabled='disabled'><option selected='selected'>0</option><option>주별</option><option>월별</option></select> -->
+                                                    <p class='select disabled'><span class='selected_txt'>0</span></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class='btn_tab'>
+                            <ul class='btn_list_UL'>
+                                <li class='btn_list_LI cancel'>취소</li>
+                                <li class='btn_list_LI ok'>확인</li>
+                            </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="css/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script>
+            (function ($) {
+                $(window).on("load", function () {
+                    $(".Scrollcontent").mCustomScrollbar({
+                        axis: "yx",
+                        theme: "dark-3"
+                    });
+                });
+            })(jQuery);
+        </script>
+
+        <script>
+            $(document).ready(function(){
+                $('p.select').on('click',function(){
+                    $('.select_list_UL').hide();
+                    if($(this).next().hasClass('on')){
+                        $(this).next().hide();
+                        $(this).next().removeClass('on');
+                    } else{
+                        $(this).next().show();
+                        $(this).next().addClass('on');
+                    }                    
+                })
+
+                $('.select_list_LI').on('click',function(){
+                    $(this).parent().children('li').removeClass('selected');
+                    $(this).addClass('selected');
+                    $('.select_list_UL').hide();
+                    $('.select_list_UL').removeClass('on');
+                    var inner_txt = $(this).text();
+                    $(this).parent().prev().children('span').text(inner_txt);
+                })
+            })
+        </script>
+    </body>
+</html>
