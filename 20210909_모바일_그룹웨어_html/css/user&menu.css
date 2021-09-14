@@ -22,14 +22,14 @@ body:before{content:''; position:fixed; width:120px; height:100%; background-col
 .user_tab .user_btn_tab span{display:inline-block; color:#fff; font-weight:bold; text-align:center; background-color:#2B8FD6; line-height:36px; border-radius:5px; width:48%;}
 
 
-.main .menu_tab{width:100%; position:relative; padding-top:136px;}
+.main .menu_tab{width:100%; position:fixed; margin-top:136px; height:calc(100% - 136px);}
 .main .menu_tab .menu_depth_01{width:120px;}
 .main .menu_tab .menu_depth_01 .depth_01_LI{padding-left:10px; width:119px; box-sizing:border-box; border-bottom:1px solid #d9d9d9;}
 .main .menu_tab .menu_depth_01 .depth_01_LI > span{display:block; font-size:16px; line-height:50px;}
 .main .menu_tab .menu_depth_01 .depth_01_LI.on{background-color:#fff;}
 .main .menu_tab .menu_depth_01 .depth_01_LI.on > span{font-weight:bold;}
 
-.main .menu_tab .menu_depth_01 .depth_01_LI .menu_depth_02{position:absolute; top:0; left:120px; display:none; width:calc(100% - 120px); margin-top:136px;}
+.main .menu_tab .menu_depth_01 .depth_01_LI .menu_depth_02{position:absolute; top:0; left:120px; display:none; width:calc(100% - 120px); height:calc(100% - 56px); overflow:auto;}
 .main .menu_tab .menu_depth_01 .depth_01_LI .menu_depth_02.on{display:block;}
 .main .menu_tab .menu_depth_01 .depth_01_LI .menu_depth_02 .depth_02_LI{padding-left:20px; box-sizing:border-box;}
 .main .menu_tab .menu_depth_01 .depth_01_LI .menu_depth_02 .depth_02_LI span{line-height:50px;}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang='ko'>
+    <head>
+        <meta charset="utf-8">
+        <link rel='stylesheet' href='css/reset.css'>
+        <link rel='stylesheet' href='css/sms.css'>
+    </head>
+
+    <body>
+        <div class='wrap'>
+            <header class='header'>
+                <h3 class='header_title t_bold'>SMS</h3>
+                <span class='close_btn'></span>
+            </header>
+
+            <main class='content'>
+                <section class='left_tab'>
+                    <div class='left_search_tab'>
+                        <select>
+                            <option selected='selected'>이름</option>
+                            <option>부서</option>
+                            <option>번호</option>
+                        </select>
+    
+                        <div class='search_box'>
+                            <input type='text' placeholder='검색어를 입력하세요.' onfocus='this.placeholder=""' onblur='this.placeholder="검색어를 입력하세요."'>
+                        </div>
+    
+                        <div class='search_btn'>검색</div>
+                    </div>
+
+                    <div class='left_tab_content'>
+                        <section class='left_content'>
+                            <div class='subsidiary_tab'>
+                                <ul class='subsidiary_UL'>
+                                    <li class='subsidiary_LI company'>회사</li>
+                                </ul>
+                            </div>
+
+                            <div class='organization_chart'>
+                                <ul class='chart_depth_01'>
+                                    <li class='depth_01_LI'><span><span class='expand non'></span><span class='chart_icon org_company'></span>(주)가온아이</span>
+                                        <ul class='chart_depth_02'>
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>경영지원실</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원4</li></span>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI left_pad'><span><span class='expand'></span><span class='chart_icon org_department'></span>지식관리연구소</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>클라우드팀</span>
+                                                        <ul class='chart_depth_04'>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원1</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원2</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원3</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원4</li></span>
+                                                        </ul>
+                                                    </li>
+                                                    <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>비즈메카팀</span>
+                                                        <ul class='chart_depth_04'>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원1</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원2</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원3</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원4</li></span>
+                                                        </ul>
+                                                    </li>
+                                                    <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>UI/UX팀</span>
+                                                        <ul class='chart_depth_04'>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원1</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원2</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원3</li></span>
+                                                            <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원4</li></span>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>SS영업1부</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원4</li></span>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>SS영업2부</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원4</li></span>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='blank'></span><span class='chart_icon org_department'></span>SS영업3부</span>
+                                                
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>CS사업부</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원4</li></span>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>고객만족사업부</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원4</li></span>
+                                                </ul>
+                                            </li>
+    
+                                            <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>유통사업부</span>
+                                                <ul class='chart_depth_03'>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원1</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원2</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원3</li></span>
+                                                    <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원4</li></span>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </section>
+
+                        <section class='right_content'>
+                            <div class='receiver_tab'>
+                                <p class='receiver_count'>받는상대&nbsp;<span class='count_num'>1</span></p>
+                                <p class='receiver_add'><input type='text' placeholder='수신번호 입력' onfocus='this.placeholder=""' onblur='this.placeholder="수신번호 입력"'><span class='add_btn'>추가</span></p>
+                            </div>
+
+                            <div class='receiver_list_tab'>
+                                <div class='thead_tab'>
+                                    <table>
+                                        <colgroup>
+                                            <col width='20%'>
+                                            <col width='*'>
+                                            <col width='15%'>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>이름</th>
+                                                <th>수신번호</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                                <div class='tbody_tab'>
+                                    <table>
+                                        <colgroup>
+                                            <col width='20%'>
+                                            <col width='*'>
+                                            <col width='15%'>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>홍길동</span></td>
+                                                <td><span>010-9999-9191</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>배트맨</span></td>
+                                                <td><span>010-8888-8282</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>슈퍼맨</span></td>
+                                                <td><span>010-7777-7979</span></td>
+                                                <td><span class='del_btn'></span></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
+                <section class='right_tab'>
+                    <div class='right_tab_content'>
+                        <div class='sender'>
+                            <h3 class='sms_title'>보내는사람</h3>
+                            <input type='text'>
+                        </div>
+
+                        <div class='emoticon'>
+                            <h3 class='sms_title'>이모티콘</h3>
+                            <p class='emoticon_area'>
+                                ※  ☆  ★  ○  ●  ◎  ◇  ◆  □  ■ △  ▲  ▽  ▼  →  ←  ←  ↑  ↓  ↔  〓  ◁  ◀  ▷  ▶  ♤  ♠  ♡  ♥  ♧ ♣  ⊙  ◈  ▣  ◐  ◑  ▒  ▤  ▥  ▨
+                            </p>
+                        </div>
+
+                        <div class='sms_content'>
+                            <h3 class='sms_title'>내용<span class='txt_amount'>0/2000&nbsp;Bytes</span></h3>
+                            <textarea placeholder='메세지를 입력해 주세요.' onfocus='this.placeholder=""' onblur='this.placeholder="메세지를 입력해 주세요."'></textarea>
+                        </div>
+
+                        <ul class='sms_btn_UL'>
+                            <li class='sms_btn_LI send'>발송</li>
+                            <li class='sms_btn_LI cancel'>취소</li>
+                        </ul>
+                    </div>
+                    </section>
+            </main>
+        </div>
+    </body>
+</html>

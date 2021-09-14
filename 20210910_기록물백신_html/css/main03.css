@@ -24,7 +24,7 @@
 .content .left_tab .left_table_tab .left_table_body_tab table tbody tr td input[type='checkbox'] + label{display:inline-block; width:20px; height:20px; background:url(../images/checkbox_check_icon.png) no-repeat 0 0; background-position:0px 0px; cursor:pointer;}
 .content .left_tab .left_table_tab .left_table_body_tab table tbody tr td input[type='checkbox']:checked + label{background-position:0px -23px;}
 
-.content .right_tab{width:50%;}
+.content .right_tab{width:50%; height:100%; overflow:hidden;}
 .content .right_tab .right_table_tab{width:100%; margin-top:70px;}
 .content .right_tab .right_table_tab .right_table_body_tab{width:510px; margin:0 auto; padding-bottom:40px; border-bottom:1px solid #C0C0C0;}
 .content .right_tab .right_table_tab .right_table_body_tab table tbody tr th{text-align:left;}
@@ -37,7 +37,7 @@
 .content .right_tab .right_table_tab .right_table_body_tab table tbody tr td span.double_check:hover{color:#0089ff; border:1px solid #0089ff;}
 
 
-.content .right_tab .right_btn_tab{width:510px; display:flex; justify-content:center; margin:50px auto 0 auto;}
+.content .right_tab .right_btn_tab{width:510px; display:flex; justify-content:center; margin:50px auto 20px auto;}
 .content .right_tab .right_btn_tab .right_btn{display:inline-block; width:100px; height:40px; line-height:38px; border-radius:3px; box-sizing:border-box; text-align:center; cursor:pointer;}
 .content .right_tab .right_btn_tab .right_btn.reset_btn{border:1px solid #d6d9dc; margin-right:5px;}
 .content .right_tab .right_btn_tab .right_btn.reset_btn:hover{color:#0089ff; border:1px solid #0089ff;}

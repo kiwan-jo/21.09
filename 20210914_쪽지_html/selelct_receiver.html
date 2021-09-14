@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang='ko'>
+    <head>
+        <meta charset="utf-8">
+        <link rel='stylesheet' href='css/reset.css'>
+        <link rel='stylesheet' href='css/select_receiver.css'>
+    </head>
+
+    <body>
+        <div class='wrap'>
+            <header class='header'>
+                <h3 class='header_title t_bold'>받는 상대 선택</h3>
+                <span class='close_btn'></span>
+            </header>
+
+            <main class='content'>
+                <section class='left_tab'>
+                    <section class='left_organization_tab'>
+                        <div class='search_tab'>
+                            <input type='text' placeholder='통합검색 (이름, ID, 부서, 전화, 업무)' onfocus='this.placeholder=""' onblur='this.placeholder="통합검색 (이름, ID, 부서, 전화, 업무)"'><span class='search_icon'></span>
+                        </div>
+
+                        <div class='subsidiary_tab'>
+                            <ul class='subsidiary_UL'>
+                                <li class='subsidiary_LI company'>회사</li>
+                                <li class='subsidiary_LI group'>그룹사</li>
+                            </ul>
+                        </div>
+
+                        <div class='organization_chart'>
+                            <ul class='chart_depth_01'>
+                                <li class='depth_01_LI'><span><span class='expand non'></span><span class='chart_icon org_company'></span>(주)가온아이</span>
+                                    <ul class='chart_depth_02'>
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>경영지원실</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>경영지원실사원4</li></span>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI left_pad'><span><span class='expand'></span><span class='chart_icon org_department'></span>지식관리연구소</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>클라우드팀</span>
+                                                    <ul class='chart_depth_04'>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원1</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원2</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원3</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>클라우드팀사원4</li></span>
+                                                    </ul>
+                                                </li>
+                                                <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>비즈메카팀</span>
+                                                    <ul class='chart_depth_04'>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원1</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원2</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원3</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>비즈메카팀사원4</li></span>
+                                                    </ul>
+                                                </li>
+                                                <li class='depth_03_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>UI/UX팀</span>
+                                                    <ul class='chart_depth_04'>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원1</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원2</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원3</li></span>
+                                                        <li class='depth_04_LI'><span><span class='chart_icon org_per'></span>UI/UX팀사원4</li></span>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>SS영업1부</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업1부사원4</li></span>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>SS영업2부</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>SS영업2부사원4</li></span>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='blank'></span><span class='chart_icon org_department'></span>SS영업3부</span>
+                                            
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>CS사업부</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>CS사업부사원4</li></span>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>고객만족사업부</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>고객만족사업부사원4</li></span>
+                                            </ul>
+                                        </li>
+
+                                        <li class='depth_02_LI'><span><span class='expand'></span><span class='chart_icon org_department'></span>유통사업부</span>
+                                            <ul class='chart_depth_03'>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원1</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원2</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원3</li></span>
+                                                <li class='depth_03_LI'><span><span class='chart_icon org_per'></span>유통사업부사원4</li></span>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </section>
+
+                    <section class='left_user_infor_tab'>
+                        <p class='user_infor_title'>
+                            사용자 상세 정보
+                        </p>
+
+                        <div class='user_infor_tab'>
+                            <div class='user_pic'><span class='check_icon'></span></div>
+                            <div class='user_infor'>
+                                <p class='user_name'>이지은</p>
+                                <p class='user_department'>Team Manager IT Team2</p>
+                            </div>
+                        </div>
+
+                        <ul class='contact_icon_UL'>
+                            <li class='contact_icon_LI talk'></li>
+                            <li class='contact_icon_LI message'></li>
+                            <li class='contact_icon_LI tel'></li>
+                            <li class='contact_icon_LI mail'></li>
+                            <li class='contact_icon_LI sms'></li>
+                            <li class='contact_icon_LI menu'></li>
+                        </ul>
+
+                        <ul class='contact_UL'>
+                            <li class='contact_LI mail_address'>izigm@miraeasset.conm</li>
+                            <li class='contact_LI tel_num'>02-3774-0001</li>
+                            <li class='contact_LI company_name'>miraeasset Global Investments</li>
+                            <li class='contact_LI phone_num'>010-9991-9191</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section class='center_tab'>
+                    <ul class="center_btn_UL">
+                        <li class='center_btn_LI out_btn'></li>
+                        <li class='center_btn_LI in_btn'></li>
+                    </ul>
+                </section>
+
+                <section class='right_tab'>
+                    <div class='right_tab_content'>
+                        <div class='receiver_count'>
+                            <p>받는상대&nbsp;<span class='count_num'>1</span></p>
+                        </div>
+
+                        <div class='receiver_list_tab'>
+                            <ul class='receiver_list_UL'>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                                <li class='receiver_list_LI'>
+                                    <div class='receiver_pic'></div>
+                                    <div class='receiver_infor'>
+                                        <p class='receiver_name'>이지은 (팀장)</p>
+                                        <p class='receiver_department'>UI/UX팀</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class='footer'>
+                <ul class='footer_btn_UL'>
+                    <li class='footer_btn_LI ok'>확인</li>
+                    <li class='footer_btn_LI cancel'>취소</li>
+                </ul>
+            </footer>
+        </div>
+    </body>
+</html>
