@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body{overflow-x:auto;}
-.wrap{width:100%; height:100%; display:flex; flex-direction:column; min-width:1280px; min-height:660px;}
+.wrap{width:100%; height:100%; display:flex; flex-direction:column; min-width:596px; min-height:590px;}
 
 /* header */
 .wrap .header{width:100%; height:37px; background-color:#043B72; display:flex; align-items:center; padding:0 10px; box-sizing:border-box;}

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.wrap{width:100%; height:100%; display:flex; flex-direction:column; min-height:660px;}
+.wrap{width:100%; height:100%; display:flex; flex-direction:column; min-height:590px;}
 
 /* header */
 .wrap .header{width:100%; height:37px; background-color:#043B72; display:flex; align-items:center; padding:0 10px; box-sizing:border-box;}
@@ -87,7 +87,7 @@
 
 /* content right_tab */
 .content .right_tab{width:calc(100% - 377px - 42px); height:100%; border-left:1px solid #dfdfdf; box-sizing:border-box; overflow:auto;}
-.content .right_tab .right_tab_content{width:100%; height:100%; min-width:861px;}
+.content .right_tab .right_tab_content{width:100%; height:100%; min-width:281px;}
 .right_tab .receiver_count{width:100%; height:41px; border-bottom:1px solid #dfdfdf; box-sizing:border-box; line-height:40px; padding:0 10px;}
 .right_tab .receiver_count p{background:url(../images/receiver_icon.png) no-repeat 0 center; padding-left:25px; font-size:13px; font-weight:bold;}
 .right_tab .receiver_count p .count_num{color:#F58220;}
