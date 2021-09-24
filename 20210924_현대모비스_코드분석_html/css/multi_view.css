@@ -1,0 +1,330 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, textarea, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+main {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 99px);
+    min-width: 700px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+main #sub_title {
+    width: 100%;
+    height: 40px;
+    background-color: #4d4d4d;
+}
+
+
+main #sub_title h2 {
+    float: left;
+    height: 40px;
+    padding-left: 20px;
+    line-height: 44px;
+    font-size: 20px;
+    color: #ccc;
+}
+
+#container { width: auto; height: 100%; }
+#sub_content { width: 100%; overflow: hidden;}
+
+main #sub_title .multi_button {
+    /*멀티메뉴 태그 사라진*/
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* ID 변경내역
+#container => #MultiView_Container 
+#sub_content ==> #Content
+.taskbar ==> #Taskbar
+.multi_view_page => #View
+*/
+
+#MultiView_Container {
+    width: auto;
+}
+
+#MultiView_Container #Title span.debug,
+#MultiView_Container #Content span.debug {
+    display: none;
+}
+
+#MultiView_Container #Taskbar {
+    position: relative;
+    /*overflow: auto;*/
+    width: 50px;
+    height: 0;
+    visibility: hidden;
+    background:#505359;
+    float: left;
+}
+
+#MultiView_Container #Taskbar ol,
+#MultiView_Container #Taskbar ul {
+    list-style: none;
+    color: #000;
+    text-decoration: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+#MultiView_Container #Taskbar li {
+	height:150px;
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    list-style: none;
+    cursor: pointer;
+    margin-bottom: 2px;
+    background: url(../images/bg_taskbar.png) no-repeat right top;
+}
+/*#MultiView_Container #Taskbar li*/
+/*border-bottom: solid 2px #D8D8D8;*/
+/*border-bottom-left-radius: 20px; border-left: solid 1px #D8D8D8;*/
+    #MultiView_Container #Taskbar li span {
+        display: block;
+        width: auto;
+        height: 75% !important;
+        line-height: 20px;
+        color: #ffffff;
+        padding: 18px 11px 0px 19px; /*20200819 ahh*/
+        font-size: 14px;
+        overflow: hidden;
+        /*text-overflow:clip;*/
+        text-overflow: ellipsis;
+        padding-top: 12px;
+        word-wrap: break-word;
+        -ms-writing-mode: tb-lr;
+        -webkit-writing-mode: vertical-lr;
+        writing-mode: vertical-lr;
+        white-space: nowrap;
+        vertical-align: top;
+        text-align: left;
+    }
+/*#MultiView_Container #Taskbar li span*/
+/*background: #f5f5f5;*/
+/*border-bottom-left-radius: 20px;*/
+
+#MultiView_Container #Content .Pages
+{
+    /* float: left; */
+}
+
+#MultiView_Container #Content .Page {
+    float: left; /* iPad에서 PC화면으로 접속하는 경우 iframe의 스크롤이 동작하지 않게 되므로 LayoutMain.js 스크립트에서 초기화 처리 */
+}
+
+#MultiView_Container #Content div.task-drag-hovered .multiview {
+    /*background-color: #0071bc;*/
+    border: 3px solid #0071bc;
+}
+
+#MultiView_Container .ui-draggable-dragging {
+    background-color: InfoBackground;
+    border: solid;
+    border-color: yellow;
+    z-index: 99999;
+    width: 50px;
+    height: 140px;
+}
+
+#MultiView_Container #Content #View {
+    float: left;
+}
+
+#MultiView_Container #Content #View.taskbar_hide {
+    width: 100%;
+}
+
+#MultiView_Container #Content #View.taskbar_show {
+    width: calc(100% - 50px);
+}
+
+#MultiView_Container #Content .Pages.left {
+    float: left;
+}
+
+#MultiView_Container #Content .Pages.right {
+    float: right;
+}
+
+#MultiView_Container #Content .Pages.full {
+    width: 100%;
+}
+
+#MultiView_Container #Content .Pages.half {
+    width: 50%;
+}
+
+#MultiView_Container #Content .Page.full {
+    width: 100%;
+}
+
+#MultiView_Container #Content .Page.half {
+    width: 50%;
+}
+
+
+#MultiView_Container #Content .Page.half.main {
+    width: 60%;
+}
+
+#MultiView_Container #Content .Page.half.sub {
+    width: 40%;
+    }
+
+/* 멀티뷰 Split bar가 제대로 동작하도록 공백 지정 */
+#MultiView_Container #Content .Pages.half.left {
+    padding-right: 2px;
+}
+
+#MultiView_Container #Content .Pages.half.right {
+    padding-left: 5px;
+}
+
+
+#MultiView_Container #Content iframe {
+    height: calc(100vh - 99px);
+    width: 100%;
+    padding: 0 !important; /*5px 5px 5px 5px;*/
+}
+
+
+.ui-resizable-e {
+    cursor: e-resize;
+    display: block !important;
+    width: 14px;
+    right: -7px;
+    top: 0;
+    bottom: 0;
+    background-color: #d5d6d7;
+    float: right;
+}
+.breadcrumbContainer { border-bottom: 1px solid #e4e7ea }
+#MultiView_Container .breadcrumb {
+    margin: 0 0px 0 0px;
+    padding: 8px 5px 8px 15px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#MultiView_Container .breadcrumb > .active {
+    color: #222;
+}
+
+#MultiView_Container .breadcrumb > .completed {
+    color: #777;
+}
+
+#MultiView_Container .breadcrumb > li {
+    display: inline-block;
+}
+
+#MultiView_Container .breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+}
+
+#MultiView_Container .breadcrumb > li.right:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "";
+}
+
+#MultiView_Container .breadcrumb > li.right {
+    float: right;
+}
+
+#MultiView_Container #Taskbar input[type=button] {
+    font-size: 10px;
+    /*padding-left: 5px;*/
+    /*padding-right: 5px;*/
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    /*color: gray;*/ 
+    /*margin-top: 3px;*/
+    width:16px;
+    height:16px;
+    background:url(../images/btn_close01.png) no-repeat;
+    outline:none;
+    border:0 none;
+    cursor:pointer;
+    text-indent:-5000px;
+}
+
+#MultiView_Container .breadcrumb > li.right > input[type=button] {
+    font-size: 10px;
+    /*padding-left: 5px;
+    padding-right: 5px;*/
+    float: right;
+    color: gray;
+    width:16px;
+    height:16px;
+    background:url(../images/btn_close02.png) no-repeat;
+    outline:none;
+    border:0 none;
+    cursor:pointer;
+    text-indent:-5000px;
+}
+
+
+
+#MultiView_Container #iframe_left_panel {
+    float: left;
+    background-color: #ffffff;
+    opacity: 0.1;
+    z-index: 9;/*20201218*/
+    position: absolute;
+    display: none;
+}
+
+
+#MultiView_Container #iframe_right_panel {
+    float: left;
+    background-color: #0071bc;
+    opacity: 0.1;
+    z-index: 99;
+    position: absolute;
+    display: none;
+}
+
+#MultiView_Container #Taskbar li span.ui-draggable-dragging {border: none!important;
+ opacity: 0.5;  }
+
+/*20201223 추가 */
+#iframe_left_panel2 {
+    float: left;
+    background-color: #505359;
+    opacity: 0.3;
+    z-index: 9; /*20201218*/
+    position: absolute;
+    display: none;
+}

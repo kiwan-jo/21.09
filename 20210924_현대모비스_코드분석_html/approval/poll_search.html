@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- 검색 설정(설문) -->
+    <div class="lyp_search_wrap" style="display:block;">
+        <dl>
+            <dt>검색어</dt>
+            <dd>
+                <div class="input_wrap">
+                    <span class="listview-check radios">
+                        <input type="radio" id="radio1" name="searchType" checked="checked">
+                        <label for="radio1">제목</label>
+                    </span>
+                    <span class="listview-check radios">
+                        <input type="radio" id="draftsman" name="searchType">
+                        <label for="draftsman">작성자</label>
+                    </span>
+                </div>
+            </dd>
+            <dd>
+                <div class="input_wrap block" style="width:100%;">
+                    <input type="text" value="" />
+                </div>
+            </dd>
+            <dt>설문기간</dt>
+            <dd>
+                <div class="input_wrap">
+                    <span class="listview-check checks">
+                        <input type="checkbox" id="check_title" name="">
+                        <label for="check_title"></label>
+                    </span>
+                </div>
+                <div class="input_wrap block mt5">
+                    <input type="text" id="Sdatepicker" name="DatePicker" value="2021-01-05" class="hasDatepicker" size="10" disabled="" style="float:left; width:107px;">
+                    <span class="bar">-</span>
+                    <input type="text" id="Edatepicker" name="DatePicker" value="2021-01-12" class="hasDatepicker" size="10" disabled="" style="float:left; width:107px;">
+                </div>
+            </dd>
+        </dl>
+        <ul class="btn_newtype">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+        </ul>
+    </div>
+    <!-- //검색 설정(설문) -->
+
+</body>
+</html>

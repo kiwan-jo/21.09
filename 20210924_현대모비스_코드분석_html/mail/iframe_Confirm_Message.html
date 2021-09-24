@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt>편지함관리</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout">
+
+        </div>
+    </div>
+    <!-- 메일 영구 삭제 -->
+    <div class="notification newType">
+        <dl class="notificationDL">
+            <dt class="tit_notification">메일 영구 삭제</dt>
+            <dd class="text_notification t_type"><span id="pMessageContent">이 메일을 영구 삭제하시겠습니까?</span></dd>
+            <dd class="close_notification" style="display:none;"><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">예</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">아니오</li>
+        </ul>
+    </div>
+    <!-- //메일 영구 삭제 -->
+    <br />
+    <!-- 스팸 신고 -->
+    <div class="notification newType">
+        <dl class="notificationDL">
+            <dt class="tit_notification">스팸 신고</dt>
+            <dd class="text_notification t_type t_left">
+                <span id="pMessageContent">
+                    "윤태진 &lt;emailAddress@mobis.com&gt;"에서 보내는 메일을 수신 거부 등록 목록에 등록합니다.<br />
+                    여기서 보내오는 메일은 앞으로 받을 수 없게 됩니다.
+                </span>
+            </dd>
+            <dd class="close_notification" style="display:none;"><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <br />
+        <div class="notificationDL input_wrap">
+            <span class="contentlayout_left listview-check checks">
+                <input type="checkbox" id="listview_chk">
+                <label for="listview_chk">신고 후 메일 삭제</label>
+            </span>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">예</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">아니오</li>
+        </ul>
+    </div>
+    <!-- //스팸 신고 -->
+    <br />
+    <!-- 협업 문서 저장 -->
+    <div class="notification newType">
+        <dl class="notificationDL">
+            <dt class="tit_notification">협업 문서 저장</dt>
+            <dd class="text_notification">
+                <div class="pop_input_box">
+                    <h2>제목</h2>
+                    <div class="input_wrap">
+                        <input type="text" value="FW: 프로젝트 관련 보고.eml" />
+                    </div>
+
+                    <h2>스페이스</h2>
+                    <div class="input_wrap">
+                        <input type="text" value="Me" />
+                    </div>
+
+                    <h2>폴더 위치</h2>
+                    <div class="file_location">
+                        <div class="input_wrap">
+                            <input type="text" value="폴더 위치를 선택하세요." /> <a href="#none" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                        </div>
+                        <a href="#none" class="more"><span class="newSubicon newSubicon012"></span></a>
+                    </div>
+                    <div class="file_info">
+
+                    </div>
+
+                    <h2>설명</h2>
+                    <div class="input_wrap">
+                        <textarea value=""></textarea>
+                    </div>
+                </div>
+            </dd>
+            <dd class="close_notification" onclick="return Window_Close();"><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+        </ul>
+    </div>
+    <!-- //협업 문서 저장 -->
+    <br />
+    <!-- 레이어팝업 편지함관리 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">편지함관리</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout">
+            <div class="mainmenu_btn">
+                <ul class="mainmenu_btnUL">
+                    <li onclick="add_onclick()"><span>추가</span></li>
+                    <li onclick="modify_onclick()"><span>수정</span></li>
+                    <li onclick="delete_onclick()"><span>삭제</span></li>
+                    <li onclick="movecopy_onclick('move')"><span>이동</span></li>
+                    <li onclick="movecopy_onclick('copy')"><span>복사</span></li>
+                    <li onclick="clear_mail_onclick()"><span>편지함 비우기</span></li>
+                </ul>
+            </div>
+            <div class="tree border_box" style="height:380px; overflow:auto;" id="PostTreeView"><span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_minus" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_icon_1" name="PostTreeView_icon_1" width="-1" height="-1" class="icon_tree tree_fldr"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:385px;" title="편지함" depth="0">편지함</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_plus" id="PostTreeView_img_2" name="PostTreeView_img_2" style="cursor: pointer;"></span><span id="PostTreeView_icon_2" name="PostTreeView_icon_2" width="-1" height="-1" class="icon_tree tree_inbox"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:371px;" title="받은 편지함" depth="1">받은 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_icon_3" name="PostTreeView_icon_3" width="-1" height="-1" class="icon_tree tree_outbox"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:371px;" title="보낸 편지함" depth="1">보낸 편지함</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_4" name="PostTreeView_img_4" width="-1" height="-1"></span><span id="PostTreeView_icon_4" name="PostTreeView_icon_4" width="-1" height="-1" class="icon_tree tree_drafts"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:371px;" title="임시 보관함" depth="1">임시 보관함</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_plus" id="PostTreeView_img_5" name="PostTreeView_img_5" style="cursor: pointer;"></span><span id="PostTreeView_icon_5" name="PostTreeView_icon_5" width="-1" height="-1" class="icon_tree tree_deleted"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:371px;" title="지운 편지함" depth="1">지운 편지함</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_6" name="PostTreeView_img_6" width="-1" height="-1"></span><span id="PostTreeView_icon_6" name="PostTreeView_icon_6" width="-1" height="-1" class="icon_tree tree_junkemail"></span><span id="PostTreeView_node_6" name="PostTreeView_node_6" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:371px;" title="정크 메일" depth="1">정크 메일</span></div><span id="PostTreeView_child_6" name="PostTreeView_child_6" style="display: none;"></span></span></span></span></span></span></span></div>
+        </div>
+    </div>
+    <!-- //레이어팝업 편지함관리 -->
+    <br />
+    <!-- 레이어팝업 예약발송관리 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">예약발송관리</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout" style="height: 284px;">
+            <form name="_ctl0" method="post" action="./mail_reservation.aspx?PAGETYPE=LAYER" id="_ctl0">
+                <div class="mb10" id="ReservedMailComment">※ 발송 30분 전까지의 메일은 제목을 클릭 하시면 변경 할 수 있습니다. </div>
+                <div class="border_box" id="maillist" style="overflow: auto; height: 254px;">
+                    <table class="mainlist" style="table-layout: fixed; width: 100%;">
+                        <tbody>
+                            <tr>
+                                <th>제목</th>
+                                <th style="width: 150px; white-space: nowrap; text-align: center;">발송예정일</th>
+                                <th style="width: 100px; white-space: nowrap; text-align: center;">발송취소</th>
+                            </tr>
+                            <tr style="cursor: default;">
+
+                                <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; cursor: pointer;" onclick="View_ReservationMail('57726d25-5739-4eed-99b4-b108463730d6')">예약메일</td>
+                                <td style="width: 150px; white-space: nowrap; text-align: center; cursor: pointer;" onclick="View_ReservationMail('57726d25-5739-4eed-99b4-b108463730d6')">2020-12-02 10:30</td>
+                                <td style="text-align: center; width: 100px; white-space: nowrap;"><a href="#" class="imgbtn imgbtn_h"><span onclick="cancel_mail('57726d25-5739-4eed-99b4-b108463730d6', this)">취소</span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- //레이어팝업 예약발송관리 -->
+    <br />
+    <!-- 레이어팝업 메일가져오기 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">메일 가져오기</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout" style="height: 331px;">
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <th>저장할 편지함 </th>
+                        <td>
+                            <input id="foldername" type="text" name="textfield" class="width100percent" disabled="">
+                        </td>
+                        <td><a class="imgbtn"><span onclick="selectFolder()" id="folderfindbutton">찾기</span></a></td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <th>가져올 메일 </th>
+                        <td>
+                            <div id="filepath" class="width100percent" style="overflow: auto; height: 258px;"><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301339_김창영_11.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301341_김창영_2222.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301344_김창영_333.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301350_김창영_4444.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301352_김창영_55.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301354_김창영_66.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301354_김창영_88.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202011301402_김창영_99.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011000_김창영_[문서보안해제]test.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011724_김창영_2222222222.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011724_김창영_2222222222.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011724_김창영_2222222222.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011724_김창영_2222222222.eml</span><span style="width: 310px; white-space: nowrap; display: inline-block;">202012011724_김창영_2222222222.eml</span></div>
+                        </td>
+                        <td><a class="imgbtn"><span onclick="selectMail()" id="filefindbutton">찾기</span></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">가져오기</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+        </ul>
+    </div>
+    <!-- //레이어팝업 메일가져오기 -->
+    <br />
+    <!-- 레이어팝업 메일빽업 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">메일 백업</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout">
+            <div class="mainmenu_btn">
+                <ul class="mainmenu_btnUL">
+                    <li onclick="add_onclick()"><span>추가</span></li>
+                    <li onclick="delete_onclick()"><span>삭제</span></li>
+                    <li onclick="refresh()"><span>새로고침</span></li>
+                </ul>
+            </div>
+            <div class="mb10">※ 백업된 메일은 14일간 보관됩니다.</div>
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <th>편지함</th>
+                        <td>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_right ml5"><a class="imgbtn"><span onclick="selectFolder()">선택</span></a></li>
+                                <li class="contentlayout_none"><input type="text" id="TextFolderName" class="width100percent" disabled=""></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>기간 설정</th>
+                        <td>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_none">
+                                    <input type="text" id="Sdatepicker" name="DatePicker" style="width: 100px; text-align: center;" readonly="readonly" class="hasDatepicker" size="10"><img class="ui-datepicker-trigger" src="../images/imgicon/calendar-month.gif" alt="" title="">
+                                    ~
+                                    <input type="text" id="Edatepicker" name="DatePicker" style="width: 100px; text-align: center;" readonly="readonly" class="hasDatepicker" size="10"><img class="ui-datepicker-trigger" src="../images/imgicon/calendar-month.gif" alt="" title="">
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="border_box mt15" id="maillist" style="overflow-x:hidden; overflow-y: auto; height: 330px; margin: 0px; padding: 0px;">
+                <table class="mainlist width100percent">
+                    <tbody>
+                        <tr>
+                            <th style="width:40px; text-align: center;">선택</th>
+                            <th style="width:100px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">편지함</th>
+                            <th style="width:150px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">기간</th>
+                            <th style="width:70px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">상태</th>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center;">
+                                <input type="checkbox" id="check" name="check" idx="3" status="2">
+                            </td>
+                            <td onclick="backup_detail(3)" style="font-weight:bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width:50px;">
+                                <span>받은 편지함</span>
+                            </td>
+                            <td onclick="backup_detail(3)" style="font-weight:bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width:50px;">
+                                <span>2020-11-18 ~ 2020-11-23</span>
+                            </td>
+                            <td onclick="backup_detail(3)" style="font-weight:bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width:50px;">
+                                <span>
+                                    완료
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- //레이어팝업 메일빽업 -->
+    <br />
+    <!-- 레이어팝업 편지함선택 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">편지함선택</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout" style="height: 264px;">
+            <div class="mainmenu_btn">
+                <ul class="mainmenu_btnUL">
+                    <li><span onclick="add_onclick()">추가</span></li>
+                </ul>
+            </div>
+            <div class="tree border_box" style="overflow: auto; height: 210px;" id="PostTreeView"><span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_plus" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_icon_1" name="PostTreeView_icon_1" width="-1" height="-1" class="icon_tree tree_inbox"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:285px;" title="받은 편지함" depth="0">받은 편지함</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_2" name="PostTreeView_img_2" width="-1" height="-1"></span><span id="PostTreeView_icon_2" name="PostTreeView_icon_2" width="-1" height="-1" class="icon_tree tree_outbox"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:285px;" title="보낸 편지함" depth="0">보낸 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_icon_3" name="PostTreeView_icon_3" width="-1" height="-1" class="icon_tree tree_drafts"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:285px;" title="임시 보관함" depth="0">임시 보관함</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_plus" id="PostTreeView_img_4" name="PostTreeView_img_4" style="cursor: pointer;"></span><span id="PostTreeView_icon_4" name="PostTreeView_icon_4" width="-1" height="-1" class="icon_tree tree_deleted"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:285px;" title="지운 편지함" depth="0">지운 편지함</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_5" name="PostTreeView_img_5" width="-1" height="-1"></span><span id="PostTreeView_icon_5" name="PostTreeView_icon_5" width="-1" height="-1" class="icon_tree tree_junkemail"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:285px;" title="정크 메일" depth="0">정크 메일</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span></span></span></div>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+        </ul>
+    </div>
+    <!-- //레이어팝업 편지함선택 -->
+    <br />
+    <!-- 레이어팝업 편지함 추가/수정 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">편지함 추가/수정</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout">
+            <div class="mb10">※ 메일함 이름을 입력하세요.(30자이내)</div>
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <th>편지함명 </th>
+                        <td>
+                            <input id="txt_FolderName" type="text" onkeyup="folderName_onkeyup(event)" maxlength="30" size="30" style="width: 100%">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+        </ul>
+    </div>
+    <!-- //레이어팝업 추가/수정 -->
+    <br />
+    <!-- 이동/복사 -->
+    <div class="popup" onload="javascript:window_onload()">
+        <dl class="popupTitle">
+            <dt>이동/복사</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="mainmenu_btn">
+            <ul class="mainmenu_btnUL">
+                <li id="Submit1" onclick="return btn_Move_onclick()">이동</li>
+                <li id="Submit2" onclick="return btn_Copy_onclick()">복사</li>
+            </ul>
+        </div>
+        <div class="layout" id="LayerPopupLayout" style="padding-bottom: 0px; height: 339px;">
+            <div id="selectedBox" class="mb10">※ 선택 : 받은 편지함</div>
+            <ul class="contentlayout border_box">
+                <li class="contentlayout_none">
+                    <div style="height: 215px; overflow: auto;" id="PostTreeView" class="tree"><span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_minus" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_icon_1" name="PostTreeView_icon_1" width="-1" height="-1" class="icon_tree tree_fldr"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:203px;" title="편지함" depth="0">편지함</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_plus" id="PostTreeView_img_2" name="PostTreeView_img_2" style="cursor: pointer;"></span><span id="PostTreeView_icon_2" name="PostTreeView_icon_2" width="-1" height="-1" class="icon_tree tree_inbox"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:189px;" title="받은 편지함" depth="1">받은 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_icon_3" name="PostTreeView_icon_3" width="-1" height="-1" class="icon_tree tree_outbox"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:189px;" title="보낸 편지함" depth="1">보낸 편지함</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_4" name="PostTreeView_img_4" width="-1" height="-1"></span><span id="PostTreeView_icon_4" name="PostTreeView_icon_4" width="-1" height="-1" class="icon_tree tree_drafts"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:189px;" title="임시 보관함" depth="1">임시 보관함</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_plus" id="PostTreeView_img_5" name="PostTreeView_img_5" style="cursor: pointer;"></span><span id="PostTreeView_icon_5" name="PostTreeView_icon_5" width="-1" height="-1" class="icon_tree tree_deleted"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:189px;" title="지운 편지함" depth="1">지운 편지함</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_6" name="PostTreeView_img_6" width="-1" height="-1"></span><span id="PostTreeView_icon_6" name="PostTreeView_icon_6" width="-1" height="-1" class="icon_tree tree_junkemail"></span><span id="PostTreeView_node_6" name="PostTreeView_node_6" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:189px;" title="정크 메일" depth="1">정크 메일</span></div><span id="PostTreeView_child_6" name="PostTreeView_child_6" style="display: none;"></span></span></span></span></span></span></span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- //이동/복사 -->
+    <br />
+    <!-- 옵션 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt>옵션</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout" style="height: 321px;">
+            <h2>기본설정 </h2>
+            <table style="width:100%;" class="content">
+                <tbody>
+                    <tr>
+                        <th>중요도</th>
+                        <td>
+                            <select name="important" style="Width:100px;" id="important">
+                                <option value="0">낮음</option>
+                                <option value="1">보통</option>
+                                <option value="2">높음</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="display:none">
+                        <th>메일종류</th>
+                        <td>
+                            <select name="postType" style="Width:100px;" id="postType">
+                                <option value="0">보통</option>
+                                <option value="1">개인</option>
+                                <option value="2">비공개</option>
+                                <option value="3">기밀</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>본문형태</th>
+                        <td>
+                            <select id="bodyType" style="Width:100px;" name="bodyType">
+                                <option value="0">HTML</option>
+                                <option value="1">Plain Text</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr style="display:none;">
+                        <th>보안편지</th>
+                        <td colspan="3">
+                            <input type="checkbox" name="SecurityMail" value="checkbox" onclick="SecurityMail_onClick()">보안편지(수신자 편지 열람시 암호 인증)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h2>추적 설정</h2>
+            <table style="width:100%;" class="content">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="spanText"><input type="checkbox" name="responseSend" value="checkbox" onclick="" id="responseSendid">&nbsp;이 메시지가 배달되면 알림</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <span class="spanText">
+                                <input type="checkbox" name="responseRead" value="checkbox" id="responseReadid">&nbsp;이 메시지를 읽으면 알림&nbsp;&nbsp;
+                                <select id="responseReadType" style="display:none;">
+                                    <option value="1" selected="">내부용&nbsp;</option>
+                                    <option value="2">외부용&nbsp;</option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h2> 발송설정</h2>
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="spanText">
+                                <input type="checkbox" value="1" id="deliverySend" onclick="optionCtrl('deliverySend', true, this.checked, true);">&nbsp;예약발송 &nbsp;<input type="text" id="Sdatepicker" style="width:100px;text-align:center" readonly="readonly" class="hasDatepicker" size="10" disabled=""><img class="ui-datepicker-trigger" src="/images/imgicon/calendar-month.gif" alt="" title="" style="opacity: 0.5; cursor: default;">
+
+                                <input id="Stimepicker" type="text" style="width:60px;margin-left:10px;text-align:center;" maxlength="5" autocomplete="off" class="ui-timepicker-input" disabled="">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="spanText">
+                                <input type="checkbox" value="1" id="expireSend" onclick="optionCtrl('expireSend', true, this.checked, true);">&nbsp;만료일&nbsp;<input type="text" id="ExpireDatepicker" style="width:100px;text-align:center" readonly="readonly" class="hasDatepicker" size="10" disabled=""><img class="ui-datepicker-trigger" src="/images/imgicon/calendar-month.gif" alt="" title="" style="opacity: 0.5; cursor: default;">
+                                <input id="ExpireTimepicker" type="text" style="width:60px;margin-left:10px;text-align:center;" maxlength="5" autocomplete="off" class="ui-timepicker-input" disabled="">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>
+                            <span class="spanText"><input type="checkbox" id="eachmail" value="checkbox" onclick="optionCtrl('eachmail', true, this.checked, true);">&nbsp;개인별 발송 (최대 0명 제한)</span>
+                        </td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>
+                            <span class="spanText"><input type="checkbox" id="encryptmail" value="checkbox" onclick="optionCtrl('encryptmail', true, this.checked, true);">&nbsp;보안메일</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+        </ul>
+    </div>
+    <!-- //옵션 -->
+</body>
+</html>

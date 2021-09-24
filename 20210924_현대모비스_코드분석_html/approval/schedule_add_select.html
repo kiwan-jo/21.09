@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body>
+    <div class="popup">
+        <xml id="listviewheader" style="display: none">
+            <listviewdata>
+                <headers>
+                    <header>
+                        <name>자원명</name>
+                        <width>200</width>
+                    </header>
+                </headers>
+            </listviewdata>
+        </xml>
+        <dl class="popupTitle">
+            <dt>자원선택</dt>
+
+            <dd onclick="return Layer_Close()">
+
+                <span class="newSubicon newSubicon003"></span>
+            </dd>
+        </dl>
+        <div class="mainmenu_btn">
+            <ul class="mainmenu_btnUL">
+                <li onclick="btn_Info()"><span>예약상황조회</span></li>
+            </ul>
+        </div>
+        <div class="layout">
+            <form name="Form1" method="post" action="./Schedule_Add_Select.aspx?StartTime=2022-01-15&amp;EndTime=2021-01-15&amp;COMPANYID=10110000&amp;ISSCHEDULE=1&amp;PAGETYPE=LAYER" id="Form1">
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="gWH/AgNmczIwGs8cDkm4nFhk7imVVEtBZm1QCAwlo7Ee1fB9i/YJepDzPCA32UI1dBZpZh/a0A+bQQCq7kOHZu75tFqXVCCNnSFK7k/Ayh+m/Ku6lE8kODBgUxKKrSYwexjw9Niek7lHhrYlIzBDwV4+UKoVGSmdvgcly67vV0e6/tubtgIHZWZWBskHief3NvnM4nYwGfqARk+CRpTua2ekwe858TkDyGnZotfXpkCMsC34">
+
+                <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0380EF78">
+                <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="nwQFR23p2/dkf37iR1S+32x3MKbE2eSfeMHmUc6+wj+1kgv68rWKAWcHR22Ik4ZUJoCnbkEih7712qpr5+2PyZmLX7Uyr1NzG9FeqFQcWE4LTuLse3D3dpFHCiwXGC7zEUsGtw==">
+                <ul class="contentlayout">
+                    <li class="contentlayout_left width350px">
+                        <h2 class="subTitle">
+                            <span id="menu01">자원구분</span>
+                            <span style="padding-left:10px">
+                                <select name="ListCompany" id="ListCompany" onchange="changeTree()" style="width:120px;">
+                                    <option selected="selected" value="10110000">현대모비스(주)</option>
+                                    <option value="TOP">현대모비스(공용자원)</option>
+
+                                </select>
+                            </span>
+                        </h2>
+                        <div class="border_box tree" id="TreeView" style="height: 364px; overflow: auto;"><div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_1"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_1" class="node_selected">본사</span></div><div style="display:none" id="TreeView_child_1"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_2"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_2" class="node_normal">해외법인화상회의</span></div><div style="display:none" id="TreeView_child_2"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_3"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_3" class="node_normal">진천공장</span></div><div style="display:none" id="TreeView_child_3"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_4"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_4" class="node_normal">의장연구동</span></div><div style="display:none" id="TreeView_child_4"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_5"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_5" class="node_normal">샤시연구동</span></div><div style="display:none" id="TreeView_child_5"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_6"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_6" class="node_normal">ICT연구동</span></div><div style="display:none" id="TreeView_child_6"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_7"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_7" class="node_normal">ICT시험동(좌측)</span></div><div style="display:none" id="TreeView_child_7"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_8"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_8" class="node_normal">ICT시험동(우측)</span></div><div style="display:none" id="TreeView_child_8"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_9"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_9" class="node_normal">ICT시험동 1층ESD스캐너예약</span></div><div style="display:none" id="TreeView_child_9"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_10"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_10" class="node_normal">ICT시험동 3층</span></div><div style="display:none" id="TreeView_child_10"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_11"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_11" class="node_normal">메카시험동</span></div><div style="display:none" id="TreeView_child_11"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_12"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_12" class="node_normal">제동시험동</span></div><div style="display:none" id="TreeView_child_12"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_13"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_13" class="node_normal">마북연구소 다목적구장</span></div><div style="display:none" id="TreeView_child_13"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_14"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_14" class="node_normal">의왕시작조립동</span></div><div style="display:none" id="TreeView_child_14"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_15"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_15" class="node_normal">의왕연구소12층</span></div><div style="display:none" id="TreeView_child_15"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_16"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_16" class="node_normal">의왕연구소13층</span></div><div style="display:none" id="TreeView_child_16"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_17"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_17" class="node_normal">의왕연구소14층</span></div><div style="display:none" id="TreeView_child_17"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_18"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_18" class="node_normal">의왕연구소15층</span></div><div style="display:none" id="TreeView_child_18"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_19"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_19" class="node_normal">의왕연구소 운동장대여</span></div><div style="display:none" id="TreeView_child_19"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_20"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_20" class="node_normal">경인공장(천안IP)</span></div><div style="display:none" id="TreeView_child_20"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_21"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_21" class="node_normal">김천공장</span></div><div style="display:none" id="TreeView_child_21"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_22"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_22" class="node_normal">서산주행시험장</span></div><div style="display:none" id="TreeView_child_22"></div></div><div><div class="node_div"><span class="icon_tree tree_plus" id="TreeView_img_23"></span><span class="icon_tree tree_fldr"></span><span id="TreeView_node_23" class="node_normal">울산공장</span></div><div style="display:none" id="TreeView_child_23"></div></div></div></div>
+                    </li>
+                    <li class="contentlayout_left pl5 pr5">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="plr20 receivesBtn" style="height:397px;">
+                                        <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon010"></span></a>
+                                        <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon009"></span></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li class="contentlayout_none">
+                        <h2 class="subTitle"><span id="Span1">선택된 자원</span></h2>
+                        <div class="border_box">
+                            <div id="pListView" style="height: 362px; overflow: auto;"><div class="ta" id="listheader"><table id="MakeListHeader" class="mainlist" style="width:100%">	<tbody><tr><th width="199" align="undefined" id="header0">자원명</th>	</tr></tbody></table></div><div class="ta" id="listbody"><table id="MakeListView" class="mainlist" style="width:100%"><tbody><tr><td class="ta" align="center">선택된 자원이 없습니다.</td></tr></tbody></table></div></div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <ul class="btn_newtype" style="display:block;">
+                <li class="ok" onclick="btn_OK()">확인</li>
+                <li class="no" onclick="Layer_Close()">취소</li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="/myoffice/common/XmlHttpRequest.js?ver=20210115120046814"></script>
+    <script type="text/javascript" src="/myoffice/ezResource/lang/ezResource.js?ver=20190726162152000"></script>
+    <script type="text/javascript" src="/myoffice/ezResource/control/ResTreeView.htc.js?ver=20190607181258000"></script>
+    <script type="text/javascript" src="/myoffice/ezResource/control/ListView.htc.js?ver=20180221200954000"></script>
+    <script type="text/javascript">
+        var Brd_Id = '';
+        var Brd_Nm = '';
+        var brdGubun = '';
+        var g_UserID = "DT027844";
+        var g_DeptID = "4KCT27";
+        var g_DeptPath = "DT027844,10110000,VAN,4,4KCT27";
+        var pCompanyID = "10110000";
+        var g_AccessCode = "";
+        var g_ServerName = "ngwui.mobisdev.com";
+        var selectNo = "";
+        var ReturnValue_CN = new Array();
+        var ReturnValue_Name = new Array();
+        var ReturnValue_NameEng = new Array();
+        var ReturnValue_CompanyID = new Array();
+        var boolfirstlist = true;
+        var pUse_Editor = "DEXT";
+        var ReturnFunction;
+        var m_Arguments;
+        var pStartTime = "2022-01-15";
+        var pEndTime = "2021-01-15";
+        var pIsSchedule = "1";
+        var pTaskStartHour = "9";
+        var pPageType = "LAYER" //업무시스템 분기처리(최찬규)
+        window.onload = function () {
+
+            try {
+                m_Arguments = parent.schedule_add_select_dialogArguments[0];
+                ReturnFunction = parent.schedule_add_select_dialogArguments[1];
+            }
+            catch (e) {
+                try {
+                    m_Arguments = opener.schedule_add_select_dialogArguments[0];
+                    ReturnFunction = opener.schedule_add_select_dialogArguments[1];
+                }
+                catch (e) {
+                    try {
+                        m_Arguments = window.dialogArguments;
+                        ReturnFunction = window.schedule_add_select_dialogArguments[1];
+                    } catch (e) { }
+                }
+            }
+
+            var TreeView = new organtreeview('TreeView', 'TreeView');
+            TreeView.attachEvent('requestdata', TreeView_onNodeExpanded);
+            TreeView.attachEvent('nodeselect', TreeView_onNodeClick);
+            TreeView.attachEvent('nodedblclick', InsertReceiver);
+
+            var xmlHTTP = createXMLHttpRequest();
+            xmlHTTP.open("GET", "/myoffice/common/organtree_config2.xml", false);
+            xmlHTTP.send();
+
+            if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
+                TreeView.server('ngwui.mobisdev.com');
+                TreeView.config(loadXMLString(xmlHTTP.responseText));
+                TreeView.update();
+            }
+
+            var pListView = new ListView('pListView', 'pListView');
+            pListView.attachEvent('RowClick', onRowClick);
+            pListView.attachEvent('HeaderClick', onHeaderClick);
+            pListView.attachEvent('RowDblClick', DeleteReceiver);
+            pListView.headerSource(loadXMLString(listviewheader.innerHTML.toUpperCase()));
+
+            var Brd_GB = (typeof (nodeIdx) != "undefined") ? TreeView.getvalue(nodeIdx, "DATA7") : "";
+            var checktreeview = "";
+            if (typeof m_Arguments != "undefined" && m_Arguments.length > 0 && Brd_GB != "1") {
+                boolfirstlist = false;
+                var xmlString = "<LISTVIEWDATA><ROWS>";
+                for (var i = 0; i < m_Arguments[0].length; i++) {
+                    var manCnt = getManCnt(m_Arguments[0][i]);
+                    //var value = MakeHTMLString(m_Arguments[1][i]) + "（정원" + " : " + manCnt + "명）";
+                    var value = MakeHTMLString(m_Arguments[1][i]);
+
+                    xmlString += "<ROW><CELL><VALUE><![CDATA[" + value + "]]></VALUE><CN>" + m_Arguments[0][i] + "</CN><NAME><![CDATA[" + MakeHTMLString(m_Arguments[1][i]) + "]]></NAME></CELL></ROW>";
+                }
+
+                xmlString += "</ROWS></LISTVIEWDATA>";
+                var emptyxml = createXmlDom();
+                emptyxml = loadXMLString(xmlString);
+                pListView.source(emptyxml);
+                pListView.make();
+                checktreeview = "0";
+            }
+            else {
+                var xmlString = "<LISTVIEWDATA><ROWS>";
+                xmlString += "<ROW><CELL><VALUE></VALUE><CN></CN><NAME></NAME></CELL></ROW>";
+                xmlString += "</ROWS></LISTVIEWDATA>";
+                var emptyxml = createXmlDom();
+                emptyxml = loadXMLString(xmlString);
+                pListView.source(emptyxml);
+                pListView.make();
+
+                pListView.DelRow(0);
+                pListView.make();
+                checktreeview = "1";
+            }
+            var TreeFlag = true;
+
+            if ("289" == "1") {
+                TreeFlag = false;
+                pCompanyID = "TOP";
+            }
+            BoardLoad(TreeFlag);
+            LayerPopupLayoutSize();
+
+            document.getElementById("ListCompany").value = pCompanyID;
+        }
+
+        function changeTree() {
+            pCompanyID = document.getElementById("ListCompany").value;
+            var selnode = TreeView.selectedIndex();
+            var BrdNM = TreeView.getvalue(selnode, "VALUE");
+            if (selnode != null && BrdNM != "") {
+                Confirm_Alert_Message("사내 자원과 공용자원은 같이 예약할 수 없습니다. 선택하신 자원이 초기화됩니다.", changeTree_OK, "");
+            }
+        }
+
+        function changeTree_OK(rtnvalue) {
+            if (rtnvalue) {
+                DivPopUpHidden();
+                BoardLoad();
+                var xmlString = "<LISTVIEWDATA><ROWS>";
+                xmlString += "<ROW><CELL><VALUE></VALUE><CN></CN><NAME></NAME></CELL></ROW>";
+                xmlString += "</ROWS></LISTVIEWDATA>";
+                var emptyxml = createXmlDom();
+                emptyxml = loadXMLString(xmlString);
+                pListView.source(emptyxml);
+                pListView.make();
+
+                pListView.DelRow(0);
+                pListView.make();
+            }
+        }
+
+        function MakeHTMLString(str) {
+            return str.replace(/&amp;/gi, '&').replace(/&quot;/gi, '"').replace(/&lt;/gi, '<').replace(/&gt;/gi, '>');
+        }
+
+        function onRowClick() {
+            return;
+        }
+        function onHeaderClick() {
+            return;
+        }
+        function locationInfo(pBrdNm) {
+            var idx = "7";
+            navigation_info = "<a href='/Myoffice/main/index_Resource.aspx' target='main' class='n'>자원예약관리</a>"
+            if (pBrdNm != "")
+                navigation_info += " > " + pBrdNm + "</a>";
+        }
+
+        function BoardLoad(flag) {
+            initTreeInfo(flag, g_UserID, g_DeptID);
+        }
+
+        function initTreeInfo(p_Flag, p_UserID, p_DeptID) {
+            g_DeptBoardYN = false;
+            var treeCheck = "1";
+            var objRoot;
+            var objNode;
+
+            var xmlhttp = createXMLHttpRequest();
+            var xmlpara = createXmlDom()
+            var xmlRtn = createXmlDom()
+
+            var objNode;
+            if (!p_Flag) {
+                treeCheck = "0";
+            } else {
+                treeCheck = "1";
+            }
+            if (pCompanyID == "TOP") {
+                treeCheck = "1";
+            }
+            createNodeInsert(xmlpara, objNode, "BRDLIST");
+            createNodeAndInsertText(xmlpara, objNode, "PARENT_ID", treeCheck);
+            createNodeAndInsertText(xmlpara, objNode, "COMPANY_ID", pCompanyID);
+            createNodeAndInsertText(xmlpara, objNode, "ACCESS_FLAG", g_AccessCode);
+            createNodeAndInsertText(xmlpara, objNode, "FIRST_NODE", "Y");
+            createNodeAndInsertText(xmlpara, objNode, "TREE_TYPE", "0");
+            createNodeAndInsertText(xmlpara, objNode, "USER_ID", p_UserID);
+            createNodeAndInsertText(xmlpara, objNode, "DEPT_PATH", g_DeptPath);
+
+            xmlhttp.open("POST", "/Myoffice/ezResource/Call_NodeTreeManCntData.aspx?flag=" + selectNo, false);
+            xmlhttp.send(xmlpara);
+
+            var xmlRtn = loadXMLString(xmlhttp.responseText);
+            TreeView.source(xmlRtn);
+            TreeView.update();
+
+        }
+
+        function GetTreeBrdsInfo() {
+            var selnode = TreeView.selectedIndex();
+            nodeIdx = selnode;
+
+            var brd_id = TreeView.getvalue(nodeIdx, "DATA1");
+
+            if (brd_id == "1") return;
+
+            var brdGubun = TreeView.getvalue(nodeIdx, "DATA7");
+
+            if (brdGubun == 1) {
+                var brd_url = TreeView.getvalue(nodeIdx, "DATA8");
+
+                if (brd_url != "" && brd_url != document.location.protocol + "//") {
+                    strUrl = brd_url;
+                    if (strUrl.indexOf(document.location.protocol + "//") == -1) {
+                        strUrl = document.location.protocol + "//" + strUrl;
+                    }
+
+                    if (strUrl.indexOf("target=") != -1) {
+                        var strTarget = "";
+                        strTarget = strUrl.substr(strUrl.indexOf("target=") + 7);
+                        window.open(strUrl, strTarget);
+                    } else {
+                        window.open(strUrl);
+                    }
+
+                } else {
+                    var rep = new RegExp("&", "gi");
+                    var brd_nm = TreeView.getvalue(nodeIdx, "DATA2");
+                    var brd_nm = brd_nm.replace(rep, "chr(38)");
+
+                    var strUrl = "/myoffice/ezResource/ViewResList.aspx?brd_id=" + brd_id + "&AccessCode=" + g_AccessCode;
+                    strUrl = strUrl + "&brdnm=" + encodeURI(brd_nm);
+                }
+            } else {
+                strUrl = "/myoffice/ezResource/ResSch/schedule_main.aspx?ResID=" + brd_id + "&AccessCode=" + g_AccessCode;
+            }
+        }
+
+        function Navigate(url) {
+            LoadUrlContent(url, "RightDIV");
+        }
+
+
+        function TreeView_onNodeExpanded(event) {
+            displayBrdTree(g_UserID, g_DeptID, event);
+        }
+
+        function displayBrdTree(p_UserID, p_DeptID, event) {
+            if (!event) event = window.event;
+            var nodeIdx = event.nodeIdx;
+            var p_BrdID = TreeView.getvalue(nodeIdx, "DATA1");
+
+            AddSubBrdTree(p_UserID, p_DeptID, p_BrdID, nodeIdx);
+        }
+
+        function AddSubBrdTree(p_UserID, p_DeptID, p_BrdID, nodeIdx) {
+            try {
+                var xmlhttp = createXMLHttpRequest();
+                var xmlpara = createXmlDom();
+                var xmlRtn = createXmlDom();
+
+                var objNode;
+
+                createNodeInsert(xmlpara, objNode, "BRDLIST");
+                createNodeAndInsertText(xmlpara, objNode, "PARENT_ID", p_BrdID);
+                createNodeAndInsertText(xmlpara, objNode, "COMPANY_ID", pCompanyID);
+                createNodeAndInsertText(xmlpara, objNode, "ACCESS_FLAG", g_AccessCode);
+                createNodeAndInsertText(xmlpara, objNode, "FIRST_NODE", "N");
+                createNodeAndInsertText(xmlpara, objNode, "TREE_TYPE", "0");
+                createNodeAndInsertText(xmlpara, objNode, "USER_ID", p_UserID);
+                createNodeAndInsertText(xmlpara, objNode, "DEPT_PATH", g_DeptPath);
+
+                xmlhttp.open("POST", "/Myoffice/ezResource/Call_NodeTreeManCntData.aspx", false);
+                xmlhttp.send(xmlpara);
+
+                xmlRtn = loadXMLString(xmlhttp.responseText);
+
+                if (getXmlString(xmlRtn) == "") return;
+
+                TreeView.putchildxml(nodeIdx, xmlhttp.responseText);
+
+            } catch (e) { }
+        }
+
+        var nodeIdx;
+        function InsertReceiver() {
+            nodeIdx = TreeView.selectedIndex();
+            var p_BrdID = TreeView.getvalue(nodeIdx, "DATA1");
+            var brdGubun = TreeView.getvalue(nodeIdx, "DATA7");
+
+            var Addflg = true;
+            var getACL = "";
+            if (brdGubun == 2) {
+                if (!boolfirstlist) {
+                    for (var i = 0; i < pListView.listlength(); i++) {
+                        if (pListView.getvalue2(i, "CN") == TreeView.getvalue(nodeIdx, "DATA1")) {
+                            Addflg = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (Addflg == true) {
+                    getACL = fun_GetACL(TreeView.getvalue(nodeIdx, "DATA1"));
+                    if (getACL == "Y" || getACL == "U") {
+                        if (!boolfirstlist) {
+                            var xmlHttp = createXMLHttpRequest();
+                            var xmlDoc = createXmlDom();
+                            var rtn = "";
+                            var conVal = "";
+                            var objNode;
+                            createNodeInsert(xmlDoc, objNode, "PARAMETER");
+                            createNodeAndInsertText(xmlDoc, objNode, "RESID", TreeView.getvalue(nodeIdx, "DATA1"));
+                            createNodeAndInsertText(xmlDoc, objNode, "COMPANYID", pCompanyID);
+
+                            xmlHttp.open("POST", "/myoffice/ezResource/ResSch/Schedule_Get_form.aspx", false);
+                            xmlHttp.send(xmlDoc);
+
+                            rtn = xmlHttp.responseText;
+                        }
+                        if (boolfirstlist) {
+                            var xmlString = "<LISTVIEWDATA><ROWS>";
+                            xmlString += "<ROW><CELL><VALUE><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "VALUE")) + "]]></VALUE><CN>" + TreeView.getvalue(nodeIdx, "DATA1") + "</CN><NAME><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "DATA2")) + "]]></NAME></CELL></ROW>";
+                            xmlString += "</ROWS></LISTVIEWDATA>";
+                            var emptyxml = createXmlDom();
+                            emptyxml = loadXMLString(xmlString);
+                            pListView.source(emptyxml);
+                            pListView.make();
+                            boolfirstlist = false;
+                        } else {
+                            var emptyxml = createXmlDom();
+                            emptyxml = loadXMLString("<ROW><CELL><VALUE><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "VALUE")) + "]]></VALUE><CN>" + TreeView.getvalue(nodeIdx, "DATA1") + "</CN><NAME><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "DATA2")) + "]]></NAME></CELL></ROW>");
+                            pListView.AddRow(emptyxml);
+                            pListView.make();
+                        }
+                    } else {
+                        Alert_Message(strLang249, null, "");
+                    }
+                } else {
+                    Alert_Message(strLang250, null, "");
+                }
+            } else {
+                Alert_Message(strLang251, null, "");
+            }
+        }
+
+        function InsertReceiver_Complete(retVal) {
+            DivPopUpHidden();
+
+            if (!retVal)
+                return;
+
+            if (boolfirstlist) {
+                var xmlString = "<LISTVIEWDATA><ROWS>";
+                xmlString += "<ROW><CELL><VALUE><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "VALUE")) + "]]></VALUE><CN>" + TreeView.getvalue(nodeIdx, "DATA1") + "</CN><NAME><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "DATA2")) + "]]></NAME></CELL></ROW>";
+                xmlString += "</ROWS></LISTVIEWDATA>";
+                var emptyxml = createXmlDom();
+                emptyxml = loadXMLString(xmlString);
+                pListView.source(emptyxml);
+                pListView.make();
+                boolfirstlist = false;
+            } else {
+                var emptyxml = createXmlDom();
+                emptyxml = loadXMLString("<ROW><CELL><VALUE><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "VALUE")) + "]]></VALUE><CN>" + TreeView.getvalue(nodeIdx, "DATA1") + "</CN><NAME><![CDATA[" + ReplaceHTML(TreeView.getvalue(nodeIdx, "DATA2")) + "]]></NAME></CELL></ROW>");
+                pListView.AddRow(emptyxml);
+                pListView.make();
+            }
+        }
+
+        function DeleteReceiver() {
+            var curRowidx = pListView.getMultiRowIndex();
+
+            if (m_Arguments != undefined && m_Arguments.length == 2) {
+                var sellength = curRowidx.length - 1;
+                for (var i = sellength; i > -1; i--) {
+                    if (curRowidx.length == 0) {
+                        Alert_Message(strLang254, null, "");
+                        return;
+                    }
+                    else {
+                        pListView.DelRow(curRowidx[i]);
+                        pListView.make();
+                    }
+                }
+            }
+            else {
+                var sellength = curRowidx.length - 1;
+                for (var i = sellength; i > -1; i--) {
+                    pListView.DelRow(curRowidx[i]);
+
+                    if (pListView.listlength() == 0) {
+                        boolfirstlist = true;
+                    }
+                    pListView.make();
+                }
+            }
+        }
+
+        function TreeViewNodeClick() {
+            var nodeIdx = TreeView.selectedIndex();
+            displayUserList(TreeView.getvalue(nodeIdx, "CN"));
+        }
+
+        function TreeView_onNodeClick() {
+            var i = "";
+            var arrName = "";
+            var RealPath = "";
+            var brdId = "";
+            var chkVal = false;
+
+            g_SelTree = TreeView;
+
+            var selNode = TreeView.selectedIndex();
+
+            if (selNode == null) {
+                var strUrl = "../NonResList.aspx";
+
+                locationInfo(RealPath);
+                Navigate(strUrl);
+            }
+            else {
+                nodeIdx = selNode;
+                var OriginNode = selNode;
+
+                if (g_AccessCode != "0") g_AccessCode = TreeView.getvalue(nodeIdx, "DATA14");
+
+                var number = parseInt(TreeView.getvalue(nodeIdx, "DATA3"))
+
+                for (i = 2; i <= number; i++) {
+                    var brdId = TreeView.getvalue(nodeIdx, "DATA1");
+                    var brdnm = TreeView.getvalue(nodeIdx, "DATA2");
+                    var boardGubun = TreeView.getvalue(nodeIdx, "DATA7");
+
+                    if (boardGubun == "1") {
+                        if ((!chkVal && i == 2) || (chkVal && i == 3)) {
+                            RealPath = "&nbsp;<a href=" + "../listResource.aspx?Brd_Id=" + brdId + "&brdnm=" + escape(brdnm) + "&AccessCode=" + g_AccessCode + " target='right' class='n'>" + brdnm + "</a>" + RealPath;
+                        } else {
+                            RealPath = "&nbsp;<a href=" + "../listResource.aspx?Brd_Id=" + brdId + "&brdnm=" + escape(brdnm) + "&AccessCode=" + g_AccessCode + " target='right' class='n'>" + brdnm + "&nbsp;></a>" + RealPath;
+                        }
+                    } else {
+                        chkVal = true;
+                    }
+                }
+                locationInfo(RealPath);
+                GetTreeBrdsInfo();
+            }
+        }
+
+        var schedule_add_dialogArguments = new Array();
+        function btn_OK() {
+            if ((pIsSchedule == "1" && pListView.listlength() >= 0)
+                || (pIsSchedule != "1" && pListView.listlength() > 0)) {
+                for (var i = 0; i < pListView.listlength(); i++) {
+                    ReturnValue_CN[i] = pListView.getvalue2(i, "CN");
+                    ReturnValue_Name[i] = pListView.getvalue2(i, "NAME");
+                }
+
+                var Para = new Array();
+
+                Para[0] = ReturnValue_CN;
+                Para[1] = ReturnValue_Name;
+                Para[2] = pCompanyID;
+
+                if (ReturnFunction != null) {
+                    ReturnFunction(Para);
+                    //window.close();
+                } else {
+                    if (pPageType == "POPUP") {//업무시스템 분기처리(최찬규)
+                        NewSchedule_Pupup_Write(Para)
+                    } else {
+                        window.returnValue = Para;
+                        window.close();
+                    }
+                }
+            } else {
+                Alert_Message(strLang252, null, "");
+            }
+        }
+
+        //업무시스템 분기처리(최찬규)
+        function NewSchedule_Pupup_Write(retVal) {
+            var selectIDs = "";
+            if (typeof (retVal) != "undefined" && retVal.length > 0) {
+                for (var i = 0; i < retVal[0].length; i++) {
+                    selectIDs += retVal[0][i] + ";";
+                }
+                selectComID = retVal[2];
+            }
+            else {
+                return
+            }
+            DivPopUpHidden();
+            var pUrl = "/Myoffice/ezResource/ResSch/Schedule_Add.aspx?cmd=add&from=schedule&selsd=&seled=&day_view=&ownerID=" + retVal[0][0] + "&selectIDs=" + selectIDs + "&COMPANYID=" + selectComID + "&PAGETYPE=POPUP";
+            GetOpenWindow(pUrl, "Schedule_Add", 850, 900, "YES");
+            window.close();
+        }
+
+        function btn_close() {
+            if (ReturnFunction != null) {
+                ReturnFunction("close");
+                window.close();
+            } else {
+                window.close();
+            }
+        }
+
+        function fun_GetACL(pBordID) {
+            var xmlHttp = createXMLHttpRequest();
+            var Return = "";
+            try {
+                xmlHttp.open("POST", "/myoffice/ezResource/ResSch/Schedule_Add_GetACL.aspx?BrdID=" + pBordID + "&ComID=" + pCompanyID, false);
+                xmlHttp.send();
+
+                if (xmlHttp.status == "200") {
+                    var dataNodes = GetChildNodes(loadXMLString(xmlHttp.responseText));
+                    Return = getNodeText(dataNodes[0]);
+                } else
+                    Return = "ERROR"
+
+            } catch (e) {
+                Alert_Message(e.description, null, "");
+                Return = "ERROR"
+            }
+            xmlHttp = null;
+            return Return;
+        }
+
+        var apropinion_dialogArguments = new Array();
+        function OpenInformationUI(pAlertContent) {
+            apropinion_dialogArguments[0] = pAlertContent;
+            apropinion_dialogArguments[1] = InsertReceiver_Complete;
+
+            DivPopUpShow(330, 205, "/myoffice/ezResource/APROPINION.aspx");
+        }
+
+        function getManCnt(brdID) {
+            var xmlhttp = createXMLHttpRequest();
+            var xmlpara = createXmlDom()
+            var xmlRtn = createXmlDom()
+
+            var objNode;
+
+            createNodeInsert(xmlpara, objNode, "BRDNODE");
+            createNodeAndInsertText(xmlpara, objNode, "BRDID", brdID);
+            createNodeAndInsertText(xmlpara, objNode, "COMPANYID", pCompanyID);
+
+            xmlhttp.open("POST", "/Myoffice/ezResource/Call_NodeManCntData.aspx", false);
+            xmlhttp.send(xmlpara);
+
+            var xmlRtn = loadXMLString(xmlhttp.responseText);
+
+            return getNodeText(GetChildNodes(xmlRtn.documentElement)[0]);
+        }
+
+        var schedule_add_select_info_dialogArguments = new Array;
+        function btn_Info() {
+            if (pListView.listlength() == 0) {
+                Alert_Message("조회할 자원을 선택해주세요.", null, "");
+                return;
+            }
+
+            var rtn = { "id": new Array(), "name": new Array() };
+
+            for (var i = 0; i < pListView.listlength(); i++) {
+                rtn["id"][i] = pListView.getvalue2(i, "CN");
+                rtn["name"][i] = pListView.getvalue2(i, "NAME");
+            }
+
+            var g_param = new Array();
+
+            g_param["startTime"] = pStartTime;
+            g_param["endTime"] = pEndTime;
+            g_param["entryList"] = rtn;
+
+            schedule_add_select_info_dialogArguments[0] = g_param;
+            schedule_add_select_info_dialogArguments[1] = null;
+
+            var width = 805;
+            var height = 450;
+            width = width - (pTaskStartHour * 20);
+
+            DivPopUpShow(width, height, "/myoffice/ezResource/ResSch/Schedule_Add_Select_Info.aspx?COMPANYID=" + pCompanyID);
+        }
+    </script>
+
+
+
+</body>
+</html>

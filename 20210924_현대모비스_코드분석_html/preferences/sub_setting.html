@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>기본 환경설정
+                <span>매일 리스트의 개수와 새로고침 간격, 자동 임시저장 간격을 설정할 수 있습니다. 외부 발송 메일에 대하여 보내는 사람 이름을 설정 및 저정할 수 있습니다.</span>
+           </p>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 97px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <div class="pd30">
+                <!-- 기본 환경설정 -->
+                <div class="personal_info_wrap setting">
+                    <div class="inbox">
+                        <p class="tit">메일 용량</p>
+                        <!-- 바 -->
+                        <div class="bar_all">
+                            <div class="bar" style="width:60%;">
+                                <span class="num">60%</span>
+                            </div>
+                       </div>
+                        <!-- //바 -->
+
+                        <div class="measure_wrap">
+                            <p class="use">사용 용량 <span class="c_blue">1.2GB(60%)</span></p>
+                            <p class="all">총 용량 <span class="c_black">1.2GB</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- //기본 환경설정 -->
+
+                <table class="com_list type2 mt30">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="35%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>리스트 갯수</th>
+                            <td>
+                                <div class="setting_input">
+                                    <div class="select-box type01 new_sel linebox">
+                                        <a href="javascript:void()">1</a>
+                                        <ul>
+                                            <li>2</li>
+                                        </ul>
+                                    </div>
+                                    <span>개</span>
+                                </div>
+                            </td>
+                            <th>새로고침간격</th>
+                            <td>
+                                <div class="setting_input">
+                                    <div class="select-box type01 new_sel linebox">
+                                        <a href="javascript:void()">100</a>
+                                        <ul>
+                                            <li>200</li>
+                                            <li>300</li>
+                                        </ul>
+                                    </div>
+                                    <span>초</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>자동 임시저장</th>
+                            <td>
+                                <div class="setting_input">
+                                    <div class="select-box type01 new_sel linebox">
+                                        <a href="javascript:void()">사용안함</a>
+                                        <ul>
+                                            <li>사용</li>
+                                        </ul>
+                                    </div>
+                                    <span>초</span>
+                                </div>
+                            </td>
+                            <th>발신자명</th>
+                            <td>
+                                <div class="setting_input">
+                                    <div class="input_wrap">
+                                        <input type="text" value="Ha Joon Su">
+                                    </div>
+                                    <div class="icon_box">
+                                        <a href="#none">수정</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>도착 편지함</th>
+                            <td colspan="3">
+                                <div class="input_wrap">
+                                    <span class="listview-check checks">
+                                        <input type="checkbox" id="birthday1">
+                                        <label for="birthday1">사용 <span class="c_gray">(받은 편지함을 도착 편지함/읽은 편지함으로 표시합니다.)</span></label>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <ul class="btn_newtype">
+                    <li class="ok">저장</li>
+                    <li class="no">취소</li>
+                </ul>
+            </div>
+        </div>
+    </span>
+</body>
+</html>

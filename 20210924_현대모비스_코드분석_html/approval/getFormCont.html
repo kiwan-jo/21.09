@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body class="popup">
+    <xml id="FORMLIST" style="display: none">
+        <listviewdata>
+            <headers>
+                <header>
+                    <name>양식리스트</name>
+                    <width>215</width>
+                </header>
+            </headers>
+        </listviewdata>
+    </xml>
+    <xml id="FORMCONTAINER" style="display: none">
+        <treeviewdata>
+            <node>
+                <expanded>TRUE</expanded>
+                <isleaf>FALSE</isleaf>
+                <value>양식함</value>
+            </node>
+        </treeviewdata>
+    </xml>
+    <dl class="popupTitle">
+        <dt>양식선택</dt>
+        <dd onclick="btncancel_onclick()"><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout">
+        <table class="content" id="filter">
+            <tbody>
+                <tr>
+                    <th>양식종류</th>
+                    <td>
+                        <div class="select-box type01 new_sel linebox small" style="width:100px; float:left;">
+                            <a href="javascript:void(0)">전체</a>
+                            <ul>
+                                <li>전체</li>
+                                <li>기안문</li>
+                                <li>수신문</li>
+                            </ul>
+                        </div>
+                        <div class="selectInputBtn" style="float:right;">
+                            <div class="select-box type01 new_sel linebox small" style="width:100px;">
+                                <a href="javascript:void(0)">양식명</a>
+                                <ul>
+                                    <li>양식명</li>
+                                    <li>설명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input id="forminfo" onkeypress="search_press(event)" type="text" />
+                            </div>
+                            <a class="imgbtn" onclick="searchform()"><span>검색</span></a>
+                            <a class="imgbtn" onclick="reset()"><span>초기화</span></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tab_menuBox mt15">
+            <dl id="tab1" class="tab_menu">
+                <dt class="on"><span id="1tab1" divname="favoritelist">즐겨찾기</span></dt>
+                <dt><span id="1tab2" divname="formlist">양식리스트</span></dt>
+                <dt style="display:none"><span id="1tab3" divname="Latelylist">최근 기안한 문서</span></dt>
+
+                <div style="float: right">
+                    <a id="addfav" class="imgbtn" onclick="savefavoriteforminfo()" style="display: none"><span>즐겨찾기 등록</span></a>
+                    <a id="delfav" class="imgbtn" onclick="delfavoriteforminfo()"><span>즐겨찾기 삭제</span></a>
+                </div>
+            </dl>
+        </div>
+        <table id="favoritetable" style="margin-top: 5px;width:100%;">
+            <tbody>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <div class="border_box" style="">
+                            
+                            <div id="divlvtFavForm" style="border: 0; WIDTH: 100%; HEIGHT: 346px; overflow:hidden; padding: 0px">
+                                <div class="scroll_overflow scrollbar-inner">
+                                    <table cellspacing="0" cellpadding="0" multiselectable="false" useocs="false" rowonclick="lvtForm_Row_click" rowondblclick="lvtForm_Row_Dbclick" _lastselectrowflag="FALSE" id="lvtFavForm" width="100%" border="0" class="mainlist"><thead id="lvtFavForm_THEAD"><tr id="lvtFavForm_TH"><th id="lvtFavForm_TH_0" width="250" style="font-weight: bold;">양식리스트</th></tr></thead><tbody style="background-color: rgb(255, 255, 255);"><tr id="lvtFavForm_TR_0" name="lvtFavForm_TR" selected="true" data1="2020000007" data2="수신문" data3="A01003" data4="2020000007.mht" data5="수신문" data6="수신문" data7="N" style="cursor: pointer; background-color: rgb(219, 225, 231);"><td align="left" title="수신문" colname="" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">수신문</td></tr></tbody></table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top; padding-top: 3px;">
+                        <table class="content">
+                            <tbody>
+                                <tr>
+                                    <th>양식설명</th>
+                                    <td id="descrip2" style="width: 100%">수신문</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="formtable" style="margin-top: 5px; display: none;width:100%;">
+            <tbody>
+                <tr>
+                    <td rowspan="2" style="vertical-align: top;">
+                        <div id="divFromTreeView" class="tree" style="height: 365px; width: 260px; overflow-x: auto; overflow-y: auto; BORDER: #b6b6b6 1px solid; BACKGROUND-COLOR: #ffffff;"></div>
+                    </td>
+                    <td style="padding-left: 5px; padding-right: 1px; vertical-align: top;">
+                        <div class="border_gray">
+                            <div id="divlvtForm" style="border: 0; WIDTH: 394px; HEIGHT: 346px; overflow-x: auto; overflow-y: auto; padding: 0px"></div>
+                        </div>
+                    </td>
+                    <td style="padding-left: 5px; padding-right: 1px; vertical-align: top;display:none">
+                        <div style="width:150px;HEIGHT: 346px;overflow-y:auto;" class="border_box">
+                            <table class="content" id="optList">
+                                <tbody>
+                                    <tr><th>양식세부정보</th></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px; vertical-align: top; padding-top: 3px;">
+                        <table class="content" style="vertical-align:top">
+                            <tbody>
+                                <tr>
+                                    <th>양식설명</th>
+                                    <td id="descrip" style="width: 320px;overflow-y:auto;">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="Latelytable" style="margin-top: 5px; display: none;width:100%;">
+            <tbody>
+                <tr>
+                    <td style="vertical-align: top;">
+                        <div class="border_gray">
+                            <div id="divlvtLatelyForm" style="border: 0; WIDTH: 100%; HEIGHT: 346px; overflow-x: hidden; overflow-y: auto; padding: 0px; table-layout:fixed"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top; padding-top: 3px;">
+                        <table class="content">
+                            <tbody>
+                                <tr>
+                                    <th>양식설명</th>
+                                    <td id="descrip3" style="width: 100%">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul class="btn_newtype">
+            <li class="ok" id="btnOK" onclick="return btnOK_onclick()">확인</li>
+            <li class="no" id="btncancel" onclick="return btncancel_onclick()">취소</li>
+        </ul>
+    </div>
+</body>
+</html>

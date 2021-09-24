@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody">
+            <div class="left_pims" title="일정관리">일정관리<span class="icon_tree tree_leftconfig" onclick="Function_Flag(11)" title="환경설정"></span></div>
+            <div class="btn_writeBox">
+
+                <p class="btn_write02" onclick="idxWriteSchedule()">일정등록</p>
+            </div>
+            <div class="leftscroll">
+                <h2 class="on"><span id="Schedule" onclick="Function_Flag(2)"><span class="icon_tree tree_lnbArrowDown"></span><span class="h2_text">일정관리</span></span></h2>
+                <ul class="leftList">
+                    <!-- 모든일정 -->
+                    <li><span class="tree_icon_entire"><input type="checkbox" id="icon_entire" caltype="entire" checked=""><label for="icon_entire" onclick="Function_Flag(12); return false;"><span></span></label></span><span id="menu_entire" class="li_text on" onclick="Function_Flag(12)">모든일정</span></li>
+                    <!-- 개인일정 -->
+                    <li><span class="tree_icon_individual"><input type="checkbox" id="icon_individual" caltype="individual" ownerid="DT027844" checked=""><label for="icon_individual" onclick="Function_Flag(13); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(13)">개인일정</span></li>
+                    <!-- 부서일정 -->
+                    <li><span class="tree_icon_department"><input type="checkbox" id="icon_department" caltype="department" ownerid="4KCT27" checked=""><label for="icon_department" onclick="Function_Flag(14); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(14)">부서일정 - 사무관리혁신</span></li>
+                    <!-- 공유,겸직 부서일정 -->
+                    <li><span class="tree_icon_department"><input type="checkbox" id="icon_department_BMADMBJpartner" caltype="department" ownerid="BMADMBJpartner" checked=""><label for="icon_department_BMADMBJpartner" onclick="Function_Flag(14); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(14)">부서일정 - MBJPartner</span></li>
+                    <!-- 공용일정 -->
+                    <!-- 사업장일정 -->
+                    <!-- 추가 사업장일정 -->
+                    <!-- 회사일정 -->
+                    <li><span class="tree_icon_company"><input type="checkbox" id="icon_company" caltype="company" checked=""><label for="icon_company" onclick="Function_Flag(15); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(15)">회사일정</span></li>
+                    <!-- 임원일정 -->
+                    <li style="display:none;"><span class="tree_icon_executive"><input type="checkbox" id="icon_executive" caltype="executive" checked="">/&gt;<label for="icon_executive" onclick="Function_Flag(16); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(16)">임원일정</span></li>
+                    <!-- 협업일정 -->
+                    <!-- 구글일정 -->
+                    <li id="li_google" style="display:none;"><span class="tree_icon_google"><input type="checkbox" id="icon_google" caltype="google" checked=""><label for="icon_google" onclick="Function_Flag(18); return false;"><span></span></label></span><span class="li_text" onclick="Function_Flag(18)">구글일정</span></li>
+                    <!-- 그룹일정 -->
+                    <li class="leftList_group"><ul id="groupScheduleList"></ul></li>
+                    <!-- 메뉴 -->
+                    <li onclick="Function_Flag(21)"><span class="li_text">일정그룹 추가</span></li>
+                    <li id="Schedule_Main" onclick="Function_Flag(2)" style="display:none;"><span class="icon_tree tree_config"></span><span class="li_text">일정관리</span></li>
+                    <li id="Schedule_Search" onclick="Function_Flag(6)"><span class="li_text">일정검색</span></li>
+                    <li id="Schedule_Public_Search" onclick="Function_Flag(10)"><span class="li_text">공개일정검색</span></li>
+                </ul>
+                <!-- 하위부서일정 -->
+
+            </div>
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>일보기</p>
+        </div>
+
+        <!-- 검색 설정 -->
+        <div class="lyp_search_wrap">
+            <dl>
+                <dt>검색어</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="and">
+                            <label for="and">AND</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="or">
+                            <label for="or">OR</label>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">제목</a>
+                                <ul>
+                                    <li>내용</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">내용</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">보낸사람</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>내용</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+                <dt>첨부파일</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="all">
+                            <label for="all">모두</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="include">
+                            <label for="include">포함</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="noinclude">
+                            <label for="noinclude">미포함</label>
+                        </span>
+                    </div>
+                </dd>
+                <dt>검색기간</dt>
+                <dd>
+                    <div class="select-box type01 new_sel linebox">
+                        <a href="javascript:void(0)">직접입력</a>
+                        <ul>
+                            <li>1주일</li>
+                            <li>1개월</li>
+                            <li>3개월</li>
+                            <li>직접입력</li>
+                        </ul>
+                    </div>
+                    <div class="input_wrap block mt5">
+                        <input type="text" value="2020.10.14" /><span class="bar">-</span><input type="text" value="2020.10.20" />
+                    </div>
+                </dd>
+            </dl>
+            <ul class="btn_newtype">
+                <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            </ul>
+        </div>
+        <!-- //검색 설정 -->
+
+        <div class="align_num">
+            <ul>
+                <li class="one"><a href="#none">오늘</a></li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="javascript:void(0)">달력</a>
+                        <ul>
+                            <li>1월</li>
+                            <li>2월</li>
+                            <li>3월</li>
+                            <li>4월</li>
+                            <li>5월</li>
+                            <li>6월</li>
+                            <li>7월</li>
+                            <li>8월</li>
+                            <li>7월</li>
+                            <li>8월</li>
+                            <li>9월</li>
+                            <li>10월</li>
+                            <li>11월</li>
+                            <li>12월</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="all_email">
+                <a href="#none" class="btn_reset"></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- //new sub title -->
+    <!-- //list -->
+
+    <!-- right -->
+    <span id="PreViewRayer" class="mainbody" style="display: block; min-width: 660px; width: 60%; height: calc(100% - 128px);">
+        <div class="scrollbar-inner">
+        </div>
+        
+    </span>
+    <!-- //right -->
+    
+    <span id="PreviewRayerH" style="min-width: 330px; display: block; float: none; height:  calc(100% - 128px);">
+        <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+            <p class="hbar_dotted">
+                <img src="/images/prevview_hbar_dotted.gif">
+            </p>
+        </span>
+        <span id="PreContent_RayerH" style="height:100%; overflow:auto;">
+            <div class="scrollbar-inner">
+                <div class="info_view_wrap">
+                    <div class="mainmenu_btn">
+                        <ul class="mainmenu_btnUL">
+                            <li>수정</li>
+                            <li>삭제</li>
+                            <li class="rightbtn btn_setup nobg">
+                                <div class="icon_box mr5">
+                                    <a href="#none" class="icon print"><span class="newSubicon newSubicon007"></span></a>
+                                </div>
+                                <div class="icon_box mr5">
+                                    <a href="#none" class="icon window"><span class="newSubicon newSubicon004"></span></a>
+                                </div>
+                                <div class="icon_box">
+                                    <a href="#none" class="icon close"><span class="newSubicon newSubicon003"></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 작성자 정보 -->
+                    <div class="writer_wrap">
+                        <div class="writer_day">
+                            <table>
+                                <colgroup>
+                                    <col width="10%" />
+                                    <col width="*" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>작성자</th>
+                                        <td>정하윤 <span class="c_gray">(자재관리팀)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>작성일</th>
+                                        <td>2020.10.15 13:56:50</td>
+                                    </tr>
+                                    <tr>
+                                        <th>참석자</th>
+                                        <td>김지민 책임매니저 <span class="block c_gray">(ICT 선행기술팀)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>중요도</th>
+                                        <td><span class="c_blue">보통</span></td><!-- 높음은 class="c_red" -->
+                                    </tr>
+                                    <tr>
+                                        <th>기간</th>
+                                        <td>2020.10.07 하루종일<br />~ 2020.10.08 하루종일</td>
+                                    </tr>
+                                    <tr>
+                                        <th>위치</th>
+                                        <td>서울특별시 강남구 테헤란로<br />203 대회의실 5층</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="writer_info">
+                            <div class="tit type2">
+                                <div class="schedule"><span class="all">모든일정</span></div><!-- 일정별로 한개씩 보여주면됩니다. -->
+                                <div class="schedule"><span class="individual">개인 일정</span></div>
+                                <div class="schedule"><span class="department">부서 일정 - ICT 선행 기술팀</span></div>
+                                <div class="schedule"><span class="head_office">사업장 일정 - 본사</span></div>
+                                <div class="schedule"><span class="company">회사 일정</span></div>
+                                <div class="schedule"><span class="executive">임원 일정</span></div>
+                                <p>코로나19 대응을 위한 교욱</p>
+                            </div>
+
+                            <div class="txt_box">
+                                '생활 속 거리두기' 집단방역 수칙과 관련하여 공동체의 방역관리자가 코로나 19의 전파 차단 및 예방을 위해 교육을 실시합니다.
+                            </div>
+
+                            <div class="mail_read_wrap read_schedule">
+                                <dl class="email_input_wrap">
+                                    <dt>
+                                        첨부파일
+                                        <div class="icon_box small">
+                                            <a href="javascript:void(0)" class="icon reference file"></a>
+                                        </div>
+                                    </dt>
+                                    <dd class="hidden_file" style="display: block;">
+                                        <div class="file_wrap">
+                                            <div class="tit">첨부파일 3개<span>(192KB)</span> <a href="#none">모두 다운로드</a></div>
+                                            <div class="file_scroll scrollbar-inner">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#none">
+                                                            <span class="img"><span class="fileIcon icon_pdf"></span></span>
+                                                            <div>
+                                                                <p>Hyundai_Mobis.psd <span>50KB</span></p>
+                                                            </div>
+                                                        </a>
+                                                        <span class="close"></span>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#none">
+                                                            <span class="img"><span class="fileIcon icon_zip"></span></span>
+                                                            <div>
+                                                                <p>Image.zip <span>100KB</span></p>
+                                                            </div>
+                                                        </a>
+                                                        <span class="close"></span>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#none">
+                                                            <span class="img"><span class="fileIcon icon_jpg"></span></span>
+                                                            <div>
+                                                                <p>Image.jpg <span>42KB</span></p>
+                                                            </div>
+                                                        </a>
+                                                        <span class="close"></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //작성자 정보 -->
+                </div>
+            </div>
+        </span>
+    </span>
+    
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

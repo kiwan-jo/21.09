@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+       
+    <!-- new mail list -->
+    <span id="PreViewRayer" class="mainbody" style="min-width: 330px; width: 20%; height: calc(100% - 128px); display: block;">
+        <div class="new_listview scrollbar-inner">
+            <ul>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk01">
+                            <label for="listview_chk01"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk02">
+                            <label for="listview_chk02"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk03">
+                            <label for="listview_chk03"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk04">
+                            <label for="listview_chk04"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk05">
+                            <label for="listview_chk05"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk06">
+                            <label for="listview_chk06"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk07">
+                            <label for="listview_chk07"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk08">
+                            <label for="listview_chk08"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk09">
+                            <label for="listview_chk09"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk10">
+                            <label for="listview_chk10"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+            </ul>
+            <div class="listview-nav">
+                <a href="#" class="prev blind">이전</a>
+                <span class="page-num"><em>1</em>/ 5</span>
+                <a href="#" class="next blind">다음</a>
+            </div>
+        </div>
+    </span>
+    <!-- //new mail list -->
+    <!-- //list -->
+</body>
+</html>

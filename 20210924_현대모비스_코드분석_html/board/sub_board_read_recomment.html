@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody">
+            <div class="left_mail" title="메일">
+                메일
+                <span class="icon_tree tree_leftconfig" onclick="mail_Config()" title="메일환경설정"></span>
+            </div>
+            <div class="btn_writeBox">
+                <p class="btn_write02" onclick="new_mail_onclick()">메일쓰기</p>
+                <p class="btn_write01" onclick="new_mail_onclick('tome')">내게쓰기</p>
+            </div>
+            <div class="leftscroll btnstyle2type">
+                <div class="leftscrollBox scrollbar-outer">
+                    <h2 id="h2_mail" class="on">
+                        <span onclick="Email_Menu_Click()">
+                            <span class="icon_tree tree_lnbArrowDown"></span>
+                            <span class="h2_text">메일</span>
+                        </span>
+                    </h2>
+                    <ul class="leftList">
+                        <div class="tree_scroll scrollbar-inner">
+                            <div class="tree" style="height: 100%;" id="PostTreeView">
+                                <span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="받은 편지함(43)" depth="0">받은 편지함(43)</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_8" name="PostTreeView_img_8" width="-1" height="-1"></span><span id="PostTreeView_node_8" name="PostTreeView_node_8" class="node_normal" style="display:inline-block;font-weight:bold white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="1(6)" depth="1">1(6)</span></div><span id="PostTreeView_child_8" name="PostTreeView_child_8" style="display: none;"></span></span></span></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_2" name="PostTreeView_img_2" width="-1" height="-1"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="보낸 편지함" depth="0">보낸 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="임시 보관함(234)" depth="0">임시 보관함(234)</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_4" name="PostTreeView_img_4" width="-1" height="-1"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="지운 편지함(2160)" depth="0">지운 편지함(2160)</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_5" name="PostTreeView_img_5" width="-1" height="-1"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="PERSONAL" depth="0">PERSONAL</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_6" name="PostTreeView_img_6" width="-1" height="-1"></span><span id="PostTreeView_node_6" name="PostTreeView_node_6" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="정크 메일" depth="0">정크 메일</span></div><span id="PostTreeView_child_6" name="PostTreeView_child_6" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_7" name="PostTreeView_img_7" style="cursor: pointer;"></span><span id="PostTreeView_node_7" name="PostTreeView_node_7" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="개인사서함" depth="0">개인사서함</span></div><span id="PostTreeView_child_7" name="PostTreeView_child_7" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_9" name="PostTreeView_img_9" width="-1" height="-1"></span><span id="PostTreeView_node_9" name="PostTreeView_node_9" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="0" depth="1">0</span></div><span id="PostTreeView_child_9" name="PostTreeView_child_9" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_10" name="PostTreeView_img_10" width="-1" height="-1"></span><span id="PostTreeView_node_10" name="PostTreeView_node_10" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="10" depth="1">10</span></div><span id="PostTreeView_child_10" name="PostTreeView_child_10" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_11" name="PostTreeView_img_11" width="-1" height="-1"></span><span id="PostTreeView_node_11" name="PostTreeView_node_11" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="11" depth="1">11</span></div><span id="PostTreeView_child_11" name="PostTreeView_child_11" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_12" name="PostTreeView_img_12" width="-1" height="-1"></span><span id="PostTreeView_node_12" name="PostTreeView_node_12" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12" depth="1">12</span></div><span id="PostTreeView_child_12" name="PostTreeView_child_12" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_13" name="PostTreeView_img_13" width="-1" height="-1"></span><span id="PostTreeView_node_13" name="PostTreeView_node_13" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12345678901234567890123456789012345678901234567890" depth="1">12345678901234567890123456789012345678901234567890</span></div><span id="PostTreeView_child_13" name="PostTreeView_child_13" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_14" name="PostTreeView_img_14" width="-1" height="-1"></span><span id="PostTreeView_node_14" name="PostTreeView_node_14" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="13" depth="1">13</span></div><span id="PostTreeView_child_14" name="PostTreeView_child_14" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_15" name="PostTreeView_img_15" width="-1" height="-1"></span><span id="PostTreeView_node_15" name="PostTreeView_node_15" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="14" depth="1">14</span></div><span id="PostTreeView_child_15" name="PostTreeView_child_15" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_16" name="PostTreeView_img_16" style="cursor: pointer;"></span><span id="PostTreeView_node_16" name="PostTreeView_node_16" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="2" depth="1">2</span></div><span id="PostTreeView_child_16" name="PostTreeView_child_16" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_17" name="PostTreeView_img_17" width="-1" height="-1"></span><span id="PostTreeView_node_17" name="PostTreeView_node_17" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="212" depth="1">212</span></div><span id="PostTreeView_child_17" name="PostTreeView_child_17" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_18" name="PostTreeView_img_18" width="-1" height="-1"></span><span id="PostTreeView_node_18" name="PostTreeView_node_18" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="3" depth="1">3</span></div><span id="PostTreeView_child_18" name="PostTreeView_child_18" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_19" name="PostTreeView_img_19" width="-1" height="-1"></span><span id="PostTreeView_node_19" name="PostTreeView_node_19" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="4" depth="1">4</span></div><span id="PostTreeView_child_19" name="PostTreeView_child_19" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_20" name="PostTreeView_img_20" width="-1" height="-1"></span><span id="PostTreeView_node_20" name="PostTreeView_node_20" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="5" depth="1">5</span></div><span id="PostTreeView_child_20" name="PostTreeView_child_20" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_21" name="PostTreeView_img_21" width="-1" height="-1"></span><span id="PostTreeView_node_21" name="PostTreeView_node_21" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="6" depth="1">6</span></div><span id="PostTreeView_child_21" name="PostTreeView_child_21" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_22" name="PostTreeView_img_22" width="-1" height="-1"></span><span id="PostTreeView_node_22" name="PostTreeView_node_22" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="7" depth="1">7</span></div><span id="PostTreeView_child_22" name="PostTreeView_child_22" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_23" name="PostTreeView_img_23" width="-1" height="-1"></span><span id="PostTreeView_node_23" name="PostTreeView_node_23" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="8" depth="1">8</span></div><span id="PostTreeView_child_23" name="PostTreeView_child_23" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_24" name="PostTreeView_img_24" style="cursor: pointer;"></span><span id="PostTreeView_node_24" name="PostTreeView_node_24" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더" depth="1">개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더</span></div><span id="PostTreeView_child_24" name="PostTreeView_child_24" style="display: none;"></span></span></span></span></span></span></span>
+                            </div>
+                        </div>
+                        <li>
+                            <h4 id="dlbtn" class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">승인메일함</span></h4>
+                            <ul class="leftList">
+
+                                <li id="ApproveMailRequest" onclick="goPage(26)"><span class="li_text">신청함</span></li>
+                                <li id="ApproveMailList" onclick="goPage(21)" style=""><span class="li_text">승인할 메일</span></li>
+                                <li id="ApproveMailCompleteList" onclick="goPage(24)" style=""><span class="li_text">승인완료 메일</span></li>
+                                <li id="ApproveAuth" onclick="goPage(25)" style="display:none"><span class="li_text">승인권자관리</span></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h4 class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">부가기능</span></h4>
+                            <ul class="leftList">
+
+                                <li onclick="folder_manage()"><span class="li_text">편지함관리</span></li>
+                                <li onclick="Open_ReservationManage()"><span class="li_text">예약발송관리</span></li>
+                                <li onclick="Open_Search()"><span class="li_text">메일검색</span></li>
+                                <li onclick="Open_Restore()"><span class="li_text">영구삭제메일복원</span></li>
+                                <li id="mailimport" onclick="mail_import()"><span class="li_text">메일가져오기</span></li>
+                                <li id="mailexportall" onclick="mail_exportall()" style="display: none;"><span class="li_text">편지함PC저장하기</span></li>
+
+                                <li onclick="mail_backup()"><span class="li_text">메일 백업</span></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <h2 id="h2_address"><span onclick="Address_Menu_Click()"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">명함관리</span></span></h2>
+                    <ul class="leftList">
+                        <div class="tree" style="height: 100%; max-height: 194px;" id="AddressTreeView"></div>
+                        <li onclick="address_Search()"><span class="li_text">명함검색</span></li>
+                        <li onclick="address_foldermanage()"><span class="li_text">명함관리</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left_mailgraphBox" style="display:none;"><!-- 삭제 -->
+                <dl class="left_mailgraphDL">
+                    <dt>메일사용량</dt>
+                    <dd id="currentmail"><span class="point">173MB</span> / 1.00GB</dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph"><span style="width: 17%; ">17%</span></p><!-- 메일사용량 그래프 width 값 -->
+
+                <dl class="left_mailgraphDL" style="margin-top:10px;">
+                    <dt>개인사서함</dt>
+                    <dd id="currentmail_personal"></dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph_personal" style="display:none;"></p><!-- 개인사서함 그래프 width 값 -->
+
+            </div>
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>일반 게시판</p>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 94px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <!-- 상단 -->
+            <div class="mainmenu_btn">
+                <ul class="mainmenu_btnUL">
+                    <li>목록</li>
+                    <li>메일로 발송</li>
+                    <li>다운로드</li>
+                    <li>변경 이력</li>
+                    <li class="sel mr0">
+                        <div class="select-box type01 new_sel">
+                            <a href="javascript:void(0)">추가기능</a>
+                            <ul>
+                                <li class="sel">중요도</li>
+                                <li class="sel">중요도</li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="rightbtn btn_setup nobg">
+                        <div class="btn_list">
+                            <a href="#none" class="prev"><span class="newSubicon newSubicon022"></span>이전</a>
+                            <a href="#none" class="next"><span class="newSubicon newSubicon023"></span>다음</a>
+                        </div>
+
+                        <div class="icon_box mr5">
+                            <a href="#none" class="icon print"><span class="newSubicon newSubicon007"></span></a>
+                        </div>
+                        <div class="icon_box">
+                            <a href="#none" class="icon window"><span class="newSubicon newSubicon004"></span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //상단 -->
+
+            <!-- 읽기란 -->
+            <div class="board_read_wrap">
+                <div class="publishing_info">
+                    <div class="thumbnail_img"><p></p></div>
+                    <dl>
+                        <dt>게시자</dt>
+                        <dd><span>정하윤 책임매니저</span>(자재관리팀)</dd>
+                        <dt>게시일</dt>
+                        <dd>정하윤 책임매니저 (자재관리팀)</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회수</dt>
+                        <dd>334</dd>
+                        <dt class="last">게시 종료일</dt>
+                        <dd class="last">영구 게시</dd>
+                    </dl>
+                </div>
+               
+                <div class="publishing_conts">
+                    <!-- 줌 -->
+                    <div class="f_zoom">
+                        <div class="icon_box small">
+                            <a href="#none" class="icon reduce"><span class="newSubicon newSubicon016"></span></a>
+                        </div>
+                        <div class="icon_box small">
+                            <a href="#none" class="icon expansion"><span class="newSubicon newSubicon017"></span></a>
+                        </div>
+                    </div>
+                    <!-- //줌 -->
+                    
+                    <div class="view_box">
+                        <p class="tit"><span class="newSubicon newSubicon025"></span>[코로나19 비상대응 TFT] 임직원 행동강령(일부 항목 강화)</p>
+                        <p class="txt">11월 정기 회의 일정입니다. 그 정치적 중립성은 준수된다.<br/>
+                            대법원과 각급법원의 조직은 법률로 정한다. 지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리한다.
+                        </p>
+
+                        <div class="view_slide">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide">
+                                        <div class="img"><img src="../images/sample.png"></div>
+                                        <div class="precaution">* 소회의실, 팀 단위 소규모 프로젝트 회의 가능 (대규모 회의 불가)</div>
+                                   </li>
+                                    <li class="swiper-slide">
+                                        <div class="img"><img src="../images/sample.png"></div>
+                                        <div class="precaution">* 소회의실, 팀 단위 소규모 프로젝트 회의 가능</div>
+                                    </li>
+                                </ul>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mail_read_wrap board">
+                        <div class="file_wrap">
+                            <div class="tit">첨부파일 3개<span>(192KB)</span> <a href="#none">모두 다운로드</a></div>
+                            <div class="scroll-wrapper file_scroll scrollbar-inner" style="position: relative;">
+                                <div class="file_scroll scrollbar-inner scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 60px;">
+                                    <ul>
+                                        <li>
+                                            <a href="#none">
+                                                <span class="img"><span class="fileIcon icon_pdf"></span></span>
+                                                <div>
+                                                    <p>Hyundai_Mobis.psd <span>50KB</span></p>
+                                                </div>
+                                            </a>
+                                            <span class="close"></span>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <span class="img"><span class="fileIcon icon_zip"></span></span>
+                                                <div>
+                                                    <p>Image.zip <span>100KB</span></p>
+                                                </div>
+                                            </a>
+                                            <span class="close"></span>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <span class="img"><span class="fileIcon icon_jpg"></span></span>
+                                                <div>
+                                                    <p>Image.jpg <span>42KB</span></p>
+                                                </div>
+                                            </a>
+                                            <span class="close"></span>
+                                        </li>
+                                    </ul>
+                                </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 100px;"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 98px;"></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="good_link">
+                        <a href="#none">
+                            <span class="newSubicon newSubicon027"></span>
+                            <p>좋아요</p>
+                            <span class="num">15</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="comments_wrap">
+                    <p class="tit">댓글 <span class="c_blue">2</span></p>
+                    <!-- 댓글 리스트 -->
+                    <ul class="comments_list">
+                        <li>
+                            <!--댓글 -->
+                            <div class="comments_info">
+                                <div class="img"></div>
+                                <div class="inbox">
+                                    <dl>
+                                        <dt>
+                                            <span class="name">윤태진</span>
+                                            <span class="num">2020.12.03</span>
+                                        </dt>
+                                        <dd>
+                                            <div class="comment" style="display:none;">
+                                                확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.
+                                                확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.
+
+                                                <!-- 버튼 -->
+                                                <div class="btn">
+                                                    <a href="#none" class="modify">수정</a>
+                                                    <a href="#none" class="reply">답글</a>
+                                                </div>
+                                                <!-- //버튼 -->
+                                            </div>
+
+                                            <!-- 비번 2글자 -->
+                                            <div class="comments_input recomment t4">
+                                                <div class="input">
+                                                    <div class="input_wrap text">
+                                                        <textarea>댓글을 작성해주세요.</textarea>
+                                                    </div>
+                                                    <div class="input_wrap password">
+                                                        <input type="password" value="비밀번호 입력">
+                                                    </div>
+                                                </div>
+                                                <a href="#none">수정하기</a>
+                                            </div>
+                                            <!-- //비번 2글자 -->
+                                            <!-- 비번 2글자 -->
+                                            <div class="comments_input recomment full t4">
+                                                <div class="input">
+                                                    <div class="input_wrap text">
+                                                        <textarea>댓글을 작성해주세요.</textarea>
+                                                    </div>
+                                                </div>
+                                                <a href="#none">수정하기</a>
+                                            </div>
+                                            <!-- //비번 2글자 -->
+                                        </dd>
+                                    </dl>
+                                    <div class="close"><span class="newSubicon newSubicon015"></span></div>
+                                </div>
+                            </div>
+                            <!--//댓글 -->
+                           
+                            <!-- 답글 -->
+                            <ul class="reply_wrap">
+                                <li>
+                                    <div class="comments_info">
+                                        <div class="img"></div>
+                                        <div class="inbox">
+                                            <dl>
+                                                <dt>
+                                                    <span class="name">윤태진</span>
+                                                    <span class="num">2020.12.03</span>
+                                                </dt>
+                                                <dd>
+                                                    <div class="comment">
+                                                        <span class="name">@윤태진</span>확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.
+                                                        확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.확인 완료하였습니다.
+
+                                                        <!-- 버튼 -->
+                                                        <div class="btn">
+                                                            <a href="#none" class="modify">수정</a>
+                                                            <a href="#none" class="reply">답글</a>
+                                                        </div>
+                                                        <!-- //버튼 -->
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                            <div class="close"><span class="newSubicon newSubicon015"></span></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!--//답글 -->
+                        </li>
+                    </ul>
+                    <!-- //댓글 리스트 -->
+                </div>
+            </div>
+            <!-- //읽기란 -->
+        </div>
+    </span>
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+    
+    <script type="text/javascript">
+    /* 읽기 슬라이드 */
+    $(document).ready(function(){
+        function view_slide() {
+            var swiper = new Swiper('.view_slide .swiper-container', {
+                cssMode: true,
+                navigation: {
+                    nextEl: '.view_slide .swiper-button-next',
+                    prevEl: '.view_slide .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.view_slide .swiper-pagination'
+                },
+                mousewheel: true,
+                keyboard: true,
+            });
+        };
+        view_slide();
+    });
+    </script>
+</body>
+</html>

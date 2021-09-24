@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>신청함</p>
+            <div class="search_box">
+                <div class="input_wrap">
+                    <input type="text" class="lnactive" value="Search" /> <a href="#none" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                </div>
+                <div class="icon_box">
+                    <a href="#none" class="icon searchmark"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 검색 설정 -->
+        <div class="lyp_search_wrap">
+            <dl>
+                <dt>검색어</dt>
+                <dd>
+                    <ul>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">이름</a>
+                                <ul>
+                                    <li>이름</li>
+                                    <li>부서</li>
+                                    <li>제목</li>
+                                    <li>이메일</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14">
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <ul class="btn_newtype">
+                <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            </ul>
+        </div>
+        <!-- //검색 설정 -->
+
+        <div class="align_num">
+            
+
+            <div class="all_email">
+                <p>신청메일</p>
+                <p><span class="c_blue">15 </span>/<span> 1654</span></p>
+                <a href="#none" class="btn_reset"></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- //new sub title -->
+    <!-- //list -->
+
+    <!-- right -->
+    <span id="PreViewRayer" class="mainbody" style="display: block; min-width: 660px; width: 100%; height: calc(100% - 128px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <!-- 개인 주소록(게시판)-->
+            <table class="com_list">
+                <colgroup>
+                    <col width="2%" />
+                    <col width="12%" />
+                    <col width="12%" />
+                    <col width="26%" />
+                    <col width="12%" />
+                    <col width="12%" />
+                    <col width="12%" />
+                    <col width="12%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>승인자명</th>
+                        <th>승인여부</th>
+                        <th>제목</th>
+                        <th>문서보안해제</th>
+                        <th>크기</th>
+                        <th>신청일</th>
+                        <th>승인일시</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>홍길동</td>
+                        <td>신청함</td>
+                        <td>[문서보안해제]AIP 테스트 001</td>
+                        <td>Y</td>
+                        <td>1KB</td>
+                        <td>2020-12-18 11:22</td>
+                        <td>2020-12-18 12:30</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- //개인 주소록(게시판)-->
+        </div>
+        <div class="listview-nav">
+            <a href="#" class="prev blind">이전</a>
+            <span class="page-num"><em>1</em>/ 5</span>
+            <a href="#" class="next blind">다음</a>
+        </div>
+    </span>
+    <!-- //right -->
+    
+    <span id="PreviewRayerH" style="min-width: 330px; display: block; float: none; height:  calc(100% - 128px); display:none;">
+        <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+            <p class="hbar_dotted"><img src="/images/prevview_hbar_dotted.gif"></p>
+        </span>
+        <span id="PreContent_RayerH" style="height:100%; overflow:auto;">
+            
+        </span>
+    </span>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 결재선 정보 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt>결재선 정보</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout">
+            <div class="pop_opinion">
+                <!-- 탭 -->
+                <ul class="mail_userinfoBtn">
+                    <li><span></span></li>
+                    <li class="on"><span></span></li>
+                </ul>
+
+                <ul class="contentlayout">
+                    <li class="contentlayout_none">
+                        <div class="tab_menuBox">
+                            <dl id="tab_menu_list" class="tab_menu">
+                                <dt class="on"><span>결재선</span></dt>
+                                <dt><span>참조</span></dt>
+                                <dt><span>첨부</span></dt>
+                                <dt><span>의견</span></dt>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+                <!-- //탭 -->
+
+                <table class="com_list">
+                    <colgroup>
+                        <col width="5%" />
+                        <col width="8%" />
+                        <col width="10%" />
+                        <col width="8%" />
+                        <col width="10%" />
+                        <col width="8%" />
+                        <col width="10%" />
+                        <col width="8%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>순번</th>
+                            <th>성명</th>
+                            <th>부서</th>
+                            <th>결제유형</th>
+                            <th>결제일시</th>
+                            <th>대리자</th>
+                            <th>대리자 부서</th>
+                            <th>결제상태</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="com_list_scroll scrollbar-inner">
+                    <table class="com_list noline">
+                        <colgroup>
+                            <col width="5%" />
+                            <col width="8%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                            <col width="10%" />
+                            <col width="8%" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>박문성 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>결재</td>
+                                <td>-</td>
+                                <td>정하윤 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td><span class="state gray">진행중</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>박문성 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>결재</td>
+                                <td>-</td>
+                                <td>정하윤 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td><span class="state gray">진행중</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>박문성 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>결재</td>
+                                <td>-</td>
+                                <td>정하윤 부장</td>
+                                <td>ICT 선행기술팀</td>
+                                <td><span class="state blue">기안</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //결재선 정보 -->
+</body>
+</html>

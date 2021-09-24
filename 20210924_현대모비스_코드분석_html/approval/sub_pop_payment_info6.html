@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body>
+<!-- 결제 정보 수정 -->
+<div class="popup">
+    <dl class="popupTitle">
+        <dt>결제 정보 수정</dt>
+        <dd><span class="newSubicon newSubicon004"></span></dd>
+        <dd><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout">
+        <div class="pop_opinion">
+            <!-- 탭 -->
+            <ul class="contentlayout">
+                <li class="contentlayout_none">
+                    <div class="tab_menuBox">
+                        <dl id="tab_menu_list" class="tab_menu">
+                            <dt><span>결재선</span></dt>
+                            <dt><span>수신처</span></dt>
+                            <dt class="on"><span>기타 옵션</span></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+            <!-- //탭 -->
+
+            <ul class="contentlayout payment_info_rectify">
+                <li class="contentlayout_none" style="height:553px;">
+                    <h2 class="h2_dot"><strong>문서 옵션 설정</strong></h2>
+                        <!-- 2020.11.05 yn 기안시 문서 옵션(보존연한) 변경 :: id 추가 -->
+                        <div id="divDocInfo" style="">
+                            <table class="com_list type2">
+                                <!-- 2020.11.05 yn 기안시 문서 옵션(보존연한) 변경 :: id 추가 -->
+                                <tbody>
+                                    <tr id="trItemCode" style="display: none;">
+                                        <th>분류코드</th>
+                                        <td>
+                                            <ul class="contentlayout">
+                                                <li class="contentlayout_none">
+                                                    <span class="spanText" id="tbitemCodeName" style=" width: auto; vertical-align: middle;text-align: left;"></span>
+                                                    <input type="hidden" id="tbItemCode" style="width: 80px; height: 20px;">
+                                                    <input type="hidden" id="tbItemName" style="width: 100px; height: 20px;">
+                                                    <input type="hidden" id="tbItemName2">
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a class="imgbtn" id="btndocinfo"><span id="btndocinfo2" onclick="movedraftinfo()">분류코드선택</span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr id="showSecurityInfo" style="display:none">
+                                        <th>보안등급</th>
+                                        <td>
+                                            <span class="spanText"><input type="radio" id="RSecurity" name="RSecurity" value="100" value2="1등급"><span>1등급</span>&nbsp;&nbsp;<input type="radio" id="RSecurity" name="RSecurity" value="200" value2="2등급"><span>2등급</span>&nbsp;&nbsp;<input type="radio" id="RSecurity" name="RSecurity" value="300" value2="3등급"><span>3등급</span>&nbsp;&nbsp;<input type="radio" id="RSecurity" name="RSecurity" value="400" value2="4등급"><span>4등급</span>&nbsp;&nbsp;<input type="radio" id="RSecurity" name="RSecurity" value="500" value2="5등급"><span>5등급</span>&nbsp;&nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    <!-- 2020.11.05 yn 기안시 문서 옵션(보존연한) 변경  -->
+
+                                    <tr id="showPeriodInfo" style="">
+                                        <th>보존기간</th>
+                                        <td>
+                                                <div class="input_wrap">
+                                                    <span class="listview-check radios">
+                                                        <input checked="checked" type="radio" id="RKeeptype" name="RKeeptype" style="" value="0.5" value2="6개월">
+                                                        <label for="RKeeptype">6개월</label>
+                                                    </span>
+                                                </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- 2020.11.05 yn 기안시 문서 옵션(보존연한) 변경 :: 보존연한 6개월
+                    <tr id="showPeriodInfo" style="display:none">
+                        <th>보존기간</th>
+                        <td> <span class='spanText'><input type='radio' id='RKeeptype' name='RKeeptype'  value='1' value2='1년' >1년&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='2' value2='2년' >2년&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='3' value2='3년' >3년&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='5' value2='5년' >5년&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='10' value2='10년' >10년&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='100' value2='준영구' >준영구&nbsp;&nbsp;<input type='radio' id='RKeeptype' name='RKeeptype'  value='1000' value2='영구' >영구&nbsp;&nbsp;</span></td>
+                    </tr> -->
+                                    <tr id="showPublicInfo" style="">
+                                        <th>공개여부</th>
+                                        <td>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="isPublicY" name="isPublic" value="Y" checked="checked">
+                                                    <label for="isPublicY">공개 (결재완료 후 문서함에서 모든 사용자 열람가능)</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="isPublicN" name="isPublic" value="N">
+                                                    <label for="isPublicN">비공개 (결재선에 포함된 사용자만 열람 가능)</label>
+                                                </span>
+                                            </div>                                            
+                                        </td>
+                                    </tr>
+                                    <tr id="showUrgentInfo" style="">
+                                        <th>긴급결재</th>
+                                        <td>
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input id="urgent" type="checkbox" name="checkbox" value="checkbox">
+                                                    <label for="urgent">(결재리스트에서 상위 결재자에게 결재문서의 긴급함을 표시)</label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="showKeywordInfo" style="">
+                                        <th>키워드</th>
+                                        <td>
+                                            <div class="input_wrap block">
+                                                <input id="keyword" type="text" name="textbox" maxlength="50" class="width100percent">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2 class="h2_dot mt15"><strong>요 약 전</strong></h2>
+                        <textarea id="taSummery" name="taSummery" style="height: 267px; width: 100%; box-sizing: border-box;"></textarea>
+                </li>
+            </ul>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li class="ok">확인</li>
+            <li class="no">취소</li>
+        </ul>
+    </div>
+</div>
+<!-- //결제 정보 수정 -->
+
+</body>
+</html>

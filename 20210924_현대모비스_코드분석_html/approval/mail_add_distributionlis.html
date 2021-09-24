@@ -1,0 +1,1600 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body class="popup">
+    <form name="Form1" method="post" action="./mail_add_distributionlist.aspx?companyid=10110000&amp;PAGETYPE=LAYER" id="Form1">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="OuWkmXIsnu4dIHNxJ54yLbwRSYpLTRcRy9eqELq2ZZdaz+dp0EhfjcIIdAwkhv7NhRVdEnTNTHfCoQha8Ea3EdZd9pi6QbSqBeCDz10kdAHpGwa2K4UYAthDFLSZH7ZMv2lTM4IiZUbUKF4WuWJD2uRAtz0UiGh4h2kkYXr5hxGVwRzMWwj5ARPmVlNTg9kHhWwvmc+z4uZuPthjMBiXVIv6wMV0wGKxJX+D7pYa+3ZIhT5OtkGKKtJrPVzXKZNZt62IIlVI1X6X1z8asWkScAJvwdTR9bCT2JtSfJW8IkEW2Do/w0kLT0HMKDcDlGQaW8Ppk8f3LR+VVHL8rDt4LccbAwyC4fZlf4pjFGdhbq5MTdobGywA/eZ3FFMu7swiETDen44CP5Eol4YG6H67LJORVb3KTbWB1w+M4ojMoKBWa6Rx8A10+aLxgW5KPM+ks1TW/Cu4rpQlIDHE1FNJuVILuWEg6OZBAhOBWH0ZSCE/pRUs">
+
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E598F618">
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="GfsHMqkuUu/L0On0Uk+GlpPjjqvhZfUyMZoyK5N/IYFjMgFjO1itKdj8ZrBV/IIY7GyVHGH3Bq8klNxF9QW48az4epgTnvNFibhNOdUWLsPVZIVCyu8spcW7fjNBTXKRCgeu1zVOp1vnFXEbDIepgiwYu/ZK3k/xbcKBZSfWUEd9S7B4WWAo0LE0MpUBonfTWKP6KWVgkHk6bjuBvkYPYHKvsYw5wpKiPoPjEcPzf4kvmbht">
+        <dl class="popupTitle">
+            <dt>공용배포그룹 추가/편집</dt>
+            <dd onclick="return DivPopUpShow_FullScreen(this);"><span class="newSubicon newSubicon005"></span></dd>
+            <dd onclick="return Layer_Close();"><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout" style="height: 752px;">
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <th>그룹이름</th>
+                        <td colspan="2">
+                            <input name="TextName" type="text" maxlength="24" id="TextName" class="txtClass" style="width:100%;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>그룹주소</th>
+                        <td>
+                            <input name="TextAlias" type="text" maxlength="100" id="TextAlias" class="txtClass" style="width:100%;">
+                        </td>
+                        <td>
+                            <select name="MailDomain" id="MailDomain">
+                                <option value="mobisdev.com">@mobisdev.com</option>
+                                <option value="gmobisdev.com">@gmobisdev.com</option>
+                                <option value="mobiscloud3.mail.onmicrosoft.com">@mobiscloud3.mail.onmicrosoft.com</option>
+                                <option value="mobiscloud3.mail2.onmicrosoft.com">@mobiscloud3.mail2.onmicrosoft.com</option>
+                                <option value="mobis-partners.com">@mobis-partners.com</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="contentlayout mt15" id="TreeViewTD">
+                <li class="contentlayout_right width230px">
+                    <h2 id="ToTitle" class="mt10 mb10">
+                        <span id="ToTitleStr">공용배포그룹 구성원 목록</span>
+                    </h2>
+                    <div class="border_box">
+                        <div id="ListViewMsgTo" style="Height: 512px; overflow:hidden;" ondblclick="DeleteReceiver(ListViewMsgTo)">
+                            <div class="scroll_overflow scrollbar-inner">
+                                <table id="MsgToList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver" width="100%" border="0" class="mainlist"><thead id="MsgToList_THEAD"><tr id="MsgToList_TH"></tr></thead><tbody style="background-color: rgb(255, 255, 255);"></tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="contentlayout_right">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="receivesBtn plr20" style="height:482px;">
+                                    <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon010"></span></a><br>
+                                    <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon009"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="contentlayout_none">
+                    <div id="OrganDIV" class="mainbody">
+
+
+
+
+                        <title></title>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                        <link rel="stylesheet" href="/css/default.css?ver=20210115171628190" type="text/css">
+
+                        <link rel="stylesheet" href="/css/jquery.scrollbar.css" type="text/css">
+                        <link rel="stylesheet" href="/css/common.css" type="text/css">
+                        <link rel="stylesheet" href="/css/content.css" type="text/css">
+                        <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css?ver=20180314131504000">
+                        <link rel="stylesheet" href="/JQuery/dateControls/jquery.ui.all.css?ver=20180122114922000">
+
+                        <script type="text/javascript" src="/JQuery/jquery-1.9.1.min.js?ver=20180122114922000"></script>
+
+
+                        <div id="TreeViewTD" style="display: block;">
+                            <ul class="contentlayout">
+                                <li class="contentlayout_none">
+                                    <div id="OrganDIV">
+                                        <ul class="contentlayout">
+                                            <li class="contentlayout_left receive_chart">
+                                                <!-- search -->
+                                                <div class="input_wrap">
+                                                    <form name="_ctl0" method="post" action="./Organ.aspx?companyid=10110000&amp;gubun=select&amp;PAGETYPE=LOAD&amp;_=1610698711515" id="_ctl0" style="display:none;" onsubmit="return false">
+                                                        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="rwDJ2ABX15hl3v8YUV6briojoXFA0SjsiZgS7jQqPgVrQEXYkl6a5h+v83CNX4vtT4Jbo0gUORVdS1lVJhsms0eQ8xOJZ5DemvqEZyuep9Ej9QfJ3W0q87r8BG5S/kvTwQP7HsvcprrzaOqhJa8BAhhqW5o=">
+
+                                                        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C8B70369">
+                                                        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="3ziv5nO4aqkuoqmoTdletz9vDNHvamlmZ4z9t3kD5n+kK1KrzuovgmKZuitvLnE7wOL3kMgK6qOKh+DoY9sIjZ6AvIYpK37tToiWdAXwu95BO/66">
+                                                        <select name="ListCompany" id="ListCompany" onchange="company_change()" style="width:100%;">
+                                                            <option selected="selected" value="10110000">현대모비스(주)</option>
+
+                                                        </select>
+                                                    </form>
+                                                    <input type="text" class="lnactive" placeholder="조직원을 검색해보세요." id="deptkeyword" onkeypress="search_press(event, 'dept')">
+                                                    <a href="#none" onclick="deptsearch_click()" class="btn_search20">
+                                                        <span class="newSubicon newSubicon079"></span>
+                                                    </a>
+                                                </div>
+
+                                                <!-- //search -->
+                                                <!-- treeView -->
+                                                <div class="scroll-wrapper tree border_box mt5 scrollbar-inner" style="position: relative;">
+                                                    <div style="overflow: auto; height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 511px;" id="TreeView" class="tree border_box mt5 scrollbar-inner scroll-content scroll-scrolly_visible">
+                                                        <div id="FromTreeView" nodecontext="" nodedrag="" nodeclick="TreeViewNodeClick" nodedblclick="" requestdata="RequestData" selectnodeid="FromTreeView_0_5_0_7" style="height: 486px;">
+                                                            <div class="node_div" id="FromTreeView_0" nodename="현대모비스(주)" nodelevel="0" endnode="true" value="현대모비스(주)" cn="10110000" displayname="현대모비스(주)" displayname2="HYUNDAI MOBIS" mail="G_M_10110000D@mobisdev.com" displayname1="현대모비스(주)" isleaf="FALSE" setnodeiconbyname="ICONCOMP" expanded="TRUE" nodes="
+      " style="white-space: nowrap;">
+                                                                <span id="imgNode_FromTreeView_0" class="icon_tree tree_lnbArrowDown" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0" class="icon_tree tree_company"></span><span id="spn_FromTreeView_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;); node_select(&quot;FromTreeView_0&quot;, &quot;현대모비스(주)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;);" style="cursor: pointer;">현대모비스(주)</span><div id="FromTreeView_0_sub">
+                                                                    <div class="node_div" id="FromTreeView_0_0" nodename="회장실" nodelevel="1" endnode="false" value="회장실" cn="10000051" displayname="회장실" displayname2="CHAIRMAN" mail="G_M_10000051D@mobisdev.com" displayname1="회장실" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_0" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_0" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;); node_select(&quot;FromTreeView_0_0&quot;, &quot;회장실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;);" style="cursor: pointer;">회장실</span><div id="FromTreeView_0_0_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_1" nodename="사장실" nodelevel="1" endnode="false" value="사장실" cn="10001259" displayname="사장실" displayname2="CEO" mail="G_M_10001259D@mobisdev.com" displayname1="사장실" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_1" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;); node_select(&quot;FromTreeView_0_1&quot;, &quot;사장실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;);" style="cursor: pointer;">사장실</span><div id="FromTreeView_0_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_2" nodename="해외법인" nodelevel="1" endnode="false" value="해외법인" cn="GMOBIS" displayname="해외법인" displayname2="GMOBIS" mail="GMOBISD@gmobisdev.com" displayname1="해외법인" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_2" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;); node_select(&quot;FromTreeView_0_2&quot;, &quot;해외법인&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;);" style="cursor: pointer;">해외법인</span><div id="FromTreeView_0_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_3" nodename="배치대기" nodelevel="1" endnode="false" value="배치대기" cn="10002050" displayname="배치대기" displayname2="배치대기" mail="G_M_10002050D@mobisdev.com" displayname1="배치대기" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_3" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_3&quot;); node_select(&quot;FromTreeView_0_3&quot;, &quot;배치대기&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">배치대기</span><div id="FromTreeView_0_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_4" nodename="공장파견" nodelevel="1" endnode="false" value="공장파견" cn="10000030" displayname="공장파견" displayname2="공장파견" mail="G_M_10000030D@mobisdev.com" displayname1="공장파견" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_4" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;); node_select(&quot;FromTreeView_0_4&quot;, &quot;공장파견&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;);" style="cursor: pointer;">공장파견</span><div id="FromTreeView_0_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5" nodename="그룹/협력사" nodelevel="1" endnode="true" value="그룹/협력사" cn="VAN" displayname="그룹/협력사" displayname2="Partners" mail="G_M_VAN@mobisdev.com" displayname1="그룹/협력사" isleaf="FALSE" expanded="TRUE" nodes="
+          " style="white-space: nowrap;">
+                                                                        <span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5" class="icon_tree tree_lnbArrowDown" onclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;); node_select(&quot;FromTreeView_0_5&quot;, &quot;그룹/협력사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;);" style="cursor: pointer;">그룹/협력사</span><div id="FromTreeView_0_5_sub">
+                                                                            <div class="node_div" id="FromTreeView_0_5_0" nodename="기타지원" nodelevel="2" endnode="false" value="기타지원" cn="4" displayname="기타지원" displayname2="기타지원" mail="G_M_4D@mobisdev.com" displayname1="기타지원" isleaf="FALSE" expanded="TRUE" nodes="
+              " style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0" class="icon_tree tree_lnbArrowDown" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_0" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;); node_select(&quot;FromTreeView_0_5_0&quot;, &quot;기타지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;);" style="cursor: pointer;">기타지원</span><div id="FromTreeView_0_5_0_sub"><div class="node_div" id="FromTreeView_0_5_0_0" nodename="새마을금고" nodelevel="3" endnode="false" value="새마을금고" cn="1PBZ00" displayname="새마을금고" displayname2="새마을금고" mail="G_M_1PBZ00D@mobisdev.com" displayname1="새마을금고" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_0" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_0" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_0&quot;); node_select(&quot;FromTreeView_0_5_0_0&quot;, &quot;새마을금고&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">새마을금고</span><div id="FromTreeView_0_5_0_0_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_1" nodename="고객센터" nodelevel="3" endnode="false" value="고객센터" cn="4KCJ90" displayname="고객센터" displayname2="고객센터" mail="G_M_4KCJ90D@mobisdev.com" displayname1="고객센터" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_1" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_1&quot;); node_select(&quot;FromTreeView_0_5_0_1&quot;, &quot;고객센터&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">고객센터</span><div id="FromTreeView_0_5_0_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_2" nodename="IT지원" nodelevel="3" endnode="false" value="IT지원" cn="4KCT11" displayname="IT지원" displayname2="IT지원" mail="G_M_4KCT11D@mobisdev.com" displayname1="IT지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_2" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_2&quot;); node_select(&quot;FromTreeView_0_5_0_2&quot;, &quot;IT지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">IT지원</span><div id="FromTreeView_0_5_0_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_3" nodename="태블릿지원" nodelevel="3" endnode="false" value="태블릿지원" cn="4KCT13" displayname="태블릿지원" displayname2="태블릿지원" mail="G_M_4KCT13D@mobisdev.com" displayname1="태블릿지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_3" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_3&quot;); node_select(&quot;FromTreeView_0_5_0_3&quot;, &quot;태블릿지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">태블릿지원</span><div id="FromTreeView_0_5_0_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_4" nodename="공장지원" nodelevel="3" endnode="false" value="공장지원" cn="4KCT16" displayname="공장지원" displayname2="공장지원" mail="G_M_4KCT16D@mobisdev.com" displayname1="공장지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_4" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_4&quot;); node_select(&quot;FromTreeView_0_5_0_4&quot;, &quot;공장지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">공장지원</span><div id="FromTreeView_0_5_0_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_5" nodename="수출선적업무지원" nodelevel="3" endnode="false" value="수출선적업무지원" cn="4KCT21" displayname="수출선적업무지원" displayname2="수출선적업무지원" mail="G_M_4KCT21D@mobisdev.com" displayname1="수출선적업무지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_5" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_5" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_5&quot;); node_select(&quot;FromTreeView_0_5_0_5&quot;, &quot;수출선적업무지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">수출선적업무지원</span><div id="FromTreeView_0_5_0_5_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_6" nodename="외부인접견실" nodelevel="3" endnode="false" value="외부인접견실" cn="4KCT25" displayname="외부인접견실" displayname2="외부인접견실" mail="G_M_4KCT25D@mobisdev.com" displayname1="외부인접견실" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_6" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_6" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_6" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_6&quot;); node_select(&quot;FromTreeView_0_5_0_6&quot;, &quot;외부인접견실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">외부인접견실</span><div id="FromTreeView_0_5_0_6_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_7" nodename="사무관리혁신" nodelevel="3" endnode="false" value="사무관리혁신" cn="4KCT27" displayname="사무관리혁신" displayname2="Office Work Innovation" mail="G_M_4KCT27D@mobisdev.com" displayname1="사무관리혁신" isleaf="TRUE" select="" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_7" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_7" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_7" class="node_selected" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_7&quot;); node_select(&quot;FromTreeView_0_5_0_7&quot;, &quot;사무관리혁신&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">사무관리혁신</span><div id="FromTreeView_0_5_0_7_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_8" nodename="차세대그룹웨어구축" nodelevel="3" endnode="false" value="차세대그룹웨어구축" cn="4KCT39" displayname="차세대그룹웨어구축" displayname2="차세대그룹웨어구축" mail="G_M_4KCT39D@mobisdev.com" displayname1="차세대그룹웨어구축" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_8" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_8" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_8" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_8&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_8&quot;); node_select(&quot;FromTreeView_0_5_0_8&quot;, &quot;차세대그룹웨어구축&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">차세대그룹웨어구축</span><div id="FromTreeView_0_5_0_8_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_9" nodename="지원팀" nodelevel="3" endnode="false" value="지원팀" cn="4KCT40" displayname="지원팀" displayname2="지원팀" mail="G_M_4KCT40D@mobisdev.com" displayname1="지원팀" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_9" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_9" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_9" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_9&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_9&quot;); node_select(&quot;FromTreeView_0_5_0_9&quot;, &quot;지원팀&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">지원팀</span><div id="FromTreeView_0_5_0_9_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_10" nodename="연구소지원" nodelevel="3" endnode="false" value="연구소지원" cn="4KCT9" displayname="연구소지원" displayname2="연구소지원" mail="G_M_4KCT9D@mobisdev.com" displayname1="연구소지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_10" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_10" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_10" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_10&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_10&quot;); node_select(&quot;FromTreeView_0_5_0_10&quot;, &quot;연구소지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">연구소지원</span><div id="FromTreeView_0_5_0_10_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_11" nodename="R&amp;D운영지원" nodelevel="3" endnode="false" value="R&amp;D운영지원" cn="4KCT98" displayname="R&amp;D운영지원" displayname2="R&amp;D운영지원" mail="G_M_4KCT98D@mobisdev.com" displayname1="R&amp;D운영지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_11" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_11" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_11" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_11&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_11&quot;); node_select(&quot;FromTreeView_0_5_0_11&quot;, &quot;R&amp;D운영지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">R&amp;D운영지원</span><div id="FromTreeView_0_5_0_11_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_12" nodename="Intern" nodelevel="3" endnode="false" value="Intern" cn="4KIT11" displayname="Intern" displayname2="Intern" mail="G_M_4KIT11D@mobisdev.com" displayname1="Intern" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_12" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_12" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_12" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_12&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_12&quot;); node_select(&quot;FromTreeView_0_5_0_12&quot;, &quot;Intern&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">Intern</span><div id="FromTreeView_0_5_0_12_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_13" nodename="개발지원" nodelevel="3" endnode="false" value="개발지원" cn="4KTEST" displayname="개발지원" displayname2="개발지원" mail="G_M_4KTESTD@mobisdev.com" displayname1="개발지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_13" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_13" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_13" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_13&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_13&quot;); node_select(&quot;FromTreeView_0_5_0_13&quot;, &quot;개발지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">개발지원</span><div id="FromTreeView_0_5_0_13_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_14" nodename="ERP지원" nodelevel="3" endnode="false" value="ERP지원" cn="4OAA00" displayname="ERP지원" displayname2="ERP지원" mail="G_M_4OAA00D@mobisdev.com" displayname1="ERP지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_14" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_14" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_14" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_14&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_14&quot;); node_select(&quot;FromTreeView_0_5_0_14&quot;, &quot;ERP지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">ERP지원</span><div id="FromTreeView_0_5_0_14_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_15" nodename="IT운영지원" nodelevel="3" endnode="false" value="IT운영지원" cn="4OCS00" displayname="IT운영지원" displayname2="IT운영지원" mail="G_M_4OCS00D@mobisdev.com" displayname1="IT운영지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_15" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_15" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_15" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_15&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_15&quot;); node_select(&quot;FromTreeView_0_5_0_15&quot;, &quot;IT운영지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">IT운영지원</span><div id="FromTreeView_0_5_0_15_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_16" nodename="협진통신" nodelevel="3" endnode="false" value="협진통신" cn="4OZY00" displayname="협진통신" displayname2="협진통신" mail="G_M_4OZY00D@mobisdev.com" displayname1="협진통신" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_16" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_16" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_16" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_16&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_16&quot;); node_select(&quot;FromTreeView_0_5_0_16&quot;, &quot;협진통신&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">협진통신</span><div id="FromTreeView_0_5_0_16_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_17" nodename="파견(4P)" nodelevel="3" endnode="false" value="파견(4P)" cn="4P" displayname="파견(4P)" displayname2="파견(4P)" mail="G_M_4PD@mobisdev.com" displayname1="파견(4P)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_17" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_17" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_17" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_17&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_17&quot;); node_select(&quot;FromTreeView_0_5_0_17&quot;, &quot;파견(4P)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">파견(4P)</span><div id="FromTreeView_0_5_0_17_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_18" nodename="MAPS TFT 지원(컨설턴트)" nodelevel="3" endnode="false" value="MAPS TFT 지원(컨설턴트)" cn="4KCT31" displayname="MAPS TFT 지원(컨설턴트)" displayname2="MAPS TFT Support(Consultant)" mail="G_M_4KCT31D@mobisdev.com" displayname1="MAPS TFT 지원(컨설턴트)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_18" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_18" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_18" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_18&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_18&quot;); node_select(&quot;FromTreeView_0_5_0_18&quot;, &quot;MAPS TFT 지원(컨설턴트)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">MAPS TFT 지원(컨설턴트)</span><div id="FromTreeView_0_5_0_18_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_19" nodename="MAPS TFT 지원(개발자)" nodelevel="3" endnode="true" value="MAPS TFT 지원(개발자)" cn="4KCT35" displayname="MAPS TFT 지원(개발자)" displayname2="MAPS TFT Support(Developer)" mail="G_M_4KCT35D@mobisdev.com" displayname1="MAPS TFT 지원(개발자)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_19" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_19" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_19" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_19&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_19&quot;); node_select(&quot;FromTreeView_0_5_0_19&quot;, &quot;MAPS TFT 지원(개발자)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">MAPS TFT 지원(개발자)</span><div id="FromTreeView_0_5_0_19_sub" style="display: none;"></div></div></div></div><div class="node_div" id="FromTreeView_0_5_1" nodename="그룹계열사" nodelevel="2" endnode="false" value="그룹계열사" cn="4ZZ" displayname="그룹계열사" displayname2="그룹계열사" mail="G_M_4ZZD@mobisdev.com" displayname1="그룹계열사" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_1" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;); node_select(&quot;FromTreeView_0_5_1&quot;, &quot;그룹계열사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;);" style="cursor: pointer;">그룹계열사</span><div id="FromTreeView_0_5_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_2" nodename="생산전문사" nodelevel="2" endnode="false" value="생산전문사" cn="QQQQQQQQ" displayname="생산전문사" displayname2="생산전문사" mail="G_M_QQQQQQQQD@mobisdev.com" displayname1="생산전문사" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_2" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;); node_select(&quot;FromTreeView_0_5_2&quot;, &quot;생산전문사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;);" style="cursor: pointer;">생산전문사</span><div id="FromTreeView_0_5_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_3" nodename="부품업체" nodelevel="2" endnode="false" value="부품업체" cn="VAN_AA" displayname="부품업체" displayname2="부품업체" mail="G_M_VAN_AAD@mobisdev.com" displayname1="부품업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_3" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;); node_select(&quot;FromTreeView_0_5_3&quot;, &quot;부품업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;);" style="cursor: pointer;">부품업체</span><div id="FromTreeView_0_5_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_4" nodename="사급업체" nodelevel="2" endnode="false" value="사급업체" cn="VAN_AB" displayname="사급업체" displayname2="사급업체" mail="G_M_VAN_ABD@mobisdev.com" displayname1="사급업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_4" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;); node_select(&quot;FromTreeView_0_5_4&quot;, &quot;사급업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;);" style="cursor: pointer;">사급업체</span><div id="FromTreeView_0_5_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_5" nodename="AUTO_TECH" nodelevel="2" endnode="false" value="AUTO_TECH" cn="VAN_AC" displayname="AUTO_TECH" displayname2="AUTO_TECH" mail="G_M_VAN_ACD@mobisdev.com" displayname1="AUTO_TECH" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_5" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_5" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;); node_select(&quot;FromTreeView_0_5_5&quot;, &quot;AUTO_TECH&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;);" style="cursor: pointer;">AUTO_TECH</span><div id="FromTreeView_0_5_5_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_6" nodename="용품업체" nodelevel="2" endnode="false" value="용품업체" cn="VAN_AD" displayname="용품업체" displayname2="용품업체" mail="G_M_VAN_ADD@mobisdev.com" displayname1="용품업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_6" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_6" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_6" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;); node_select(&quot;FromTreeView_0_5_6&quot;, &quot;용품업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;);" style="cursor: pointer;">용품업체</span><div id="FromTreeView_0_5_6_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_7" nodename="연구소협력업체" nodelevel="2" endnode="true" value="연구소협력업체" cn="VAN_AF" displayname="연구소협력업체" displayname2="연구소협력업체" mail="G_M_VAN_AFD@mobisdev.com" displayname1="연구소협력업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_7" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_7" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_7" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;); node_select(&quot;FromTreeView_0_5_7&quot;, &quot;연구소협력업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;);" style="cursor: pointer;">연구소협력업체</span><div id="FromTreeView_0_5_7_sub" style="display: none;"></div></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 280px; top: 210.147px;"></div></div></div>
+                                                </div>
+                                                <!-- //treeView -->
+                                            </li>
+                                            <li class="contentlayout_none receive_info">
+                                                <div id="DIV_UserList">
+                                                    <!-- search -->
+                                                    <ul class="contentlayout receive_search">
+                                                        <li class="contentlayout_left ">
+                                                            <div class="select-box type01 new_sel linebox">
+                                                                <a href="javascript:void(0)">통합</a>
+                                                                <ul>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(0).trigger('change');">통합</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(1).trigger('change');">이름</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(2).trigger('change');">E-mail</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(3).trigger('change');">이동전화</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(4).trigger('change');">사번</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(5).trigger('change');">내선번호</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(6).trigger('change');">사내전화</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(7).trigger('change');">팩스번호</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(8).trigger('change');">담당업무</li>
+                                                                    <li class="sel" onclick="$ContentDiv('#search_type').val(9).trigger('change');">직위</li>
+
+                                                                </ul>
+                                                                <select id="search_type" style="display: none;" onchange="Search_change()">
+                                                                    <option selected="" value="extensionAttribute13">통합</option>
+                                                                    <option value="displayname">이름</option>
+                                                                    <option value="mail">E-mail</option>
+                                                                    <option value="Mobile">이동전화</option>
+                                                                    <option value="EmpNo">사번</option>
+                                                                    <option value="TelephoneNumber_EX">내선번호</option>
+                                                                    <option value="TelephoneNumber">사내전화</option>
+                                                                    <option value="FACSIMILETELEPHONENUMBER">팩스번호</option>
+                                                                    <option value="ChargeBusiness">담당업무</option>
+                                                                    <option value="title">직위</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input_wrap">
+                                                                <input type="text" class="lnactive" placeholder="조직원을 검색해보세요." id="keyword" onkeypress="search_press(event, 'user')">
+                                                                <a href="#none" onclick="search_click('search')" class="btn_search20">
+                                                                    <span class="newSubicon newSubicon079"></span>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- //search -->
+                                                    <!-- receive_list -->
+                                                    <div class="border_box mt5 line_rds3">
+                                                        <ul class="contentlayout mail_userinfo">
+                                                            <li id="SelectDeptNM" countinfo=""><p class="tit">사무관리혁신</p><p class="subtxt">총<span class="c_blue">9</span>명</p></li>
+                                                            <li>
+                                                                <ul class="mail_userinfoBtn">
+                                                                    <li id="Listinfo_IMG" onclick="ChangeListView_onClick('IMG');" class="on">
+                                                                        <span class="newSubicon newSubicon019"></span>
+                                                                    </li>
+                                                                    <li class="" id="Listinfo_TXT" onclick="ChangeListView_onClick('TXT');">
+                                                                        <span class="newSubicon newSubicon021"></span>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+
+                                                        <div class="scroll-wrapper content_listtype hgt389 scrollbar-inner" style="position: relative;">
+                                                            <div class="content_listtype hgt389 scrollbar-inner scroll-content scroll-scrolly_visible" id="txtlist_Layer" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 389px;">
+                                                                <ul class="contentlayout content_listtype_photo">
+                                                                    <li _cn="DT019767" _mail="DT019767@mobisdev.com" _displayname="김현수" _displayname2="김현수" _description="사무관리혁신" _description2="Office Work Innovation" _title="부장" _mobile="01090294877" _department="4KCT27" _displayname1="김현수" _description1="사무관리혁신" _title1="부장" _title2="부장" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT019767">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT019767@mobisdev.com" data2="DT019767@mobisdev.com" data3="" data4="DT019767" data5="김현수" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>김현수 부장</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT019767@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT027844" _mail="DT027844@mobisdev.com" _displayname="김창영" _displayname2="김창영" _description="사무관리혁신" _description2="Office Work Innovation" _title="" _mobile="010-5832-0561" _department="4KCT27" _displayname1="김창영" _description1="사무관리혁신" _title1="" _title2="" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT027844">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/myoffice/Common/ezCommon_InterFace.aspx?TYPE=PERSONAL&amp;FILENAME=DT027844.jpg" data1="DT027844@mobisdev.com" data2="DT027844@mobisdev.com" data3="" data4="DT027844" data5="김창영" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>김창영 </strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>02-2222-2221</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT027844@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT067479" _mail="DT067479@mobisdev.com" _displayname="박효진" _displayname2="박효진" _description="사무관리혁신" _description2="Office Work Innovation" _title="차장" _mobile="01050292359" _department="4KCT27" _displayname1="박효진" _description1="사무관리혁신" _title1="차장" _title2="Deputy General Manager" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT067479">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT067479@mobisdev.com" data2="DT067479@mobisdev.com" data3="" data4="DT067479" data5="박효진" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>박효진 차장</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT067479@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT019858" _mail="DT019858@mobisdev.com" _displayname="유혜진" _displayname2="유혜진" _description="사무관리혁신" _description2="Office Work Innovation" _title="차장" _mobile="01082830937" _department="4KCT27" _displayname1="유혜진" _description1="사무관리혁신" _title1="차장" _title2="차장" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT019858">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT019858@mobisdev.com" data2="DT019858@mobisdev.com" data3="" data4="DT019858" data5="유혜진" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>유혜진 차장</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT019858@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT063602" _mail="DT063602@mobisdev.com" _displayname="장용한" _displayname2="장용한" _description="사무관리혁신" _description2="Office Work Innovation" _title="대리" _mobile="01055844779" _department="4KCT27" _displayname1="장용한" _description1="사무관리혁신" _title1="대리" _title2="대리" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT063602">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT063602@mobisdev.com" data2="DT063602@mobisdev.com" data3="" data4="DT063602" data5="장용한" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>장용한 대리</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT063602@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT045320" _mail="DT045320@mobisdev.com" _displayname="이인규" _displayname2="이인규" _description="사무관리혁신" _description2="Office Work Innovation" _title="사원" _mobile="010-6372-9259" _department="4KCT27" _displayname1="이인규" _description1="사무관리혁신" _title1="사원" _title2="사원" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT045320">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT045320@mobisdev.com" data2="DT045320@mobisdev.com" data3="" data4="DT045320" data5="이인규" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>이인규 사원</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT045320@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT050015" _mail="DT050015@mobisdev.com" _displayname="김태홍" _displayname2="김태홍" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="010-9555-8158" _department="4KCT27" _displayname1="김태홍" _description1="사무관리혁신" _title1="위원" _title2="위원" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT050015">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT050015@mobisdev.com" data2="DT050015@mobisdev.com" data3="" data4="DT050015" data5="김태홍" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>김태홍 위원</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT050015@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="DT060143" _mail="DT060143@mobisdev.com" _displayname="박창범" _displayname2="박창범" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="01087344336" _department="4KCT27" _displayname1="박창범" _description1="사무관리혁신" _title1="위원" _title2="위원" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="DT060143">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="DT060143@mobisdev.com" data2="DT060143@mobisdev.com" data3="" data4="DT060143" data5="박창범" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>박창범 위원</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>DT060143@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                    <li _cn="IMOBIS01" _mail="IMOBIS01@mobisdev.com" _displayname="imobis_01" _displayname2="imobis_01" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="" _department="4KCT27" _displayname1="imobis_01" _description1="사무관리혁신" _title1="위원" _title2="위원" class="contentlayout_none" onclick="event_listclick(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" id="IMOBIS01">
+                                                                        <table class="content_listtype_photo_list">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td rowspan="4" class="content_listtype_photo_pic">
+                                                                                        <div class="profile-img">
+                                                                                            <div class="photo-img s-90">
+                                                                                                <img src="/images/kr/main/profile.png" data1="IMOBIS01@mobisdev.com" data2="IMOBIS01@mobisdev.com" data3="" data4="IMOBIS01" data5="imobis_01" alt="프로필">
+                                                                                            </div>
+                                                                                            <div id="gnblayer" style="display:none ;z-index:10"><ul id="gnblayerUL" class="gnb_info"> <li id="info" onclick="openinfo(this)" class="info01 blind">정보</li> <li id="text" onclick="openinfo(this)" class="info02 blind">문자</li><li id="messagesend" onclick="openinfo(this)" class="info03 blind">메세지</li><li id="phone" onclick="openinfo(this)" class="info04 blind">전화</li><li id="favorites" onclick="openinfo(this)" class="info06 blind">즐겨찾기</li></ul> </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><strong>imobis_01 위원</strong><span>사무관리혁신</span></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>IMOBIS01@mobisdev.com</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </li>
+                                                                </ul>
+                                                            </div><div class="scroll-element scroll-x scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 88px;"></div></div></div><div class="scroll-element scroll-y scroll-scrolly_visible"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 126px; top: 0px;"></div></div></div>
+                                                        </div>
+                                                        <!-- //receive_list -->
+                                                        <!-- 페이징 -->
+                                                        <div id="tblPageRayer" class="listview-nav">
+                                                            <a href="#" onclick="GoToPageNavi( 1, 0, function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                               if (parseInt(PageNum)>
+                                                                0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                CurPage = PageNum;
+                                                                if (issearch)
+                                                                search_click();
+                                                                else
+                                                                displayUserList();
+                                                                }
+                                                                });" class="prev blind">prev
+                                                            </a><span class="page-num">
+                                                                <em class="input_wrap">
+                                                                    <input id="navPage" type="text" value="1" onkeyup="return InputPageMove(event, '1', '1', function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                                           if (parseInt(PageNum)> 0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                    CurPage = PageNum;
+                                                                    if (issearch)
+                                                                    search_click();
+                                                                    else
+                                                                    displayUserList();
+                                                                    }
+                                                                    });" style="width: 55px;">
+                                                                </em>&nbsp;/&nbsp;1
+                                                            </span><a href="#" onclick="GoToPageNavi(1, 1, function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                                      if (parseInt(PageNum)>
+                                                                0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                CurPage = PageNum;
+                                                                if (issearch)
+                                                                search_click();
+                                                                else
+                                                                displayUserList();
+                                                                }
+                                                                });" class="next blind">next
+                                                            </a>
+                                                        </div>
+                                                        <!-- //페이징 -->
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <script type="text/javascript" src="/myoffice/common/XmlHttpRequest.js?ver=20210115120046814"></script>
+                        <script type="text/javascript" src="/myoffice/ezOrgan/Controls/TreeView.js?ver=20210114175612481"></script>
+
+                        <script type="text/javascript" src="/myoffice/ezOrgan/Controls/ListView_list.js?ver=20210114133211026"></script>
+
+                        <script type="text/javascript" src="/myoffice/ezOrgan/lang/ezOrgan_ko_KR.js?ver=20190710154344000"></script>
+                        <script type="text/javascript" src="/JQuery/jquery-1.9.1.min.js?ver=20180122114922000"></script>
+
+                        <script type="text/javascript" src="/JQuery/common.js?ver=20210115150800844"></script>
+                        <script type="text/javascript" src="/JQuery/jquery.scrollbar.min.js?ver=20201106171010000"></script>
+                        <script type="text/javascript">
+                            var ListFlag = "U";
+                            var p_TreeSelectObject = null;
+                            var m_strColorSelect = "#DBE1E7";
+                            var p_ListOrderObject = null;
+                            var pSeach = false;
+                            var DeptName = "";
+                            var SELECT_DEPTID = "";
+                            var bSearch = false;
+                            var pListType = "TXT";
+                            var pListXML_Info = null;
+                            var strSearch = "";
+                            var RetValue;
+                            var ReturnFunction;
+                            var CurPage = "1";
+                            var searchk = false;
+
+                            document.onselectstart = function () {
+                                if (event.srcElement.tagName != "INPUT" && event.srcElement.tagName != "TEXTAREA")
+                                    return false;
+                                else
+                                    return true;
+                            };
+
+                            if (new RegExp(/Chrome/).test(navigator.userAgent) || new RegExp(/Safari/).test(navigator.userAgent)) {
+                                window.onblur = function () {
+                                    window.focus();
+                                }
+                            }
+
+                            document.onkeydown = function (evt) {
+                                var e = evt;
+                                if (e == null) e = window.event;
+                                if (new RegExp(/Safari/).test(navigator.userAgent) && navigator.userAgent.indexOf("Chrome") == -1) {
+                                    if ((e.keyCode > 47) && (e.keyCode < 58)) {
+                                        e.preventDefault();
+                                    }
+                                    else if ((e.keyCode > 95) && (e.keyCode < 106)) {
+                                        e.preventDefault();
+                                    }
+                                    else if ((e.keyCode > 64) && (e.keyCode < 91)) {
+                                        e.preventDefault();
+                                    }
+                                    else if ((e.keyCode == 106) ||
+                                        (e.keyCode == 107) ||
+                                        (e.keyCode == 109) ||
+                                        (e.keyCode == 110) ||
+                                        (e.keyCode == 111) ||
+                                        (e.keyCode == 186) ||
+                                        (e.keyCode == 187) ||
+                                        (e.keyCode == 188) ||
+                                        (e.keyCode == 189) ||
+                                        (e.keyCode == 190) ||
+                                        (e.keyCode == 191) ||
+                                        (e.keyCode == 192) ||
+                                        (e.keyCode == 219) ||
+                                        (e.keyCode == 220) ||
+                                        (e.keyCode == 221) ||
+                                        (e.keyCode == 222)) {
+                                        e.preventDefault();
+                                    }
+                                    else if ((e.keyCode == 229)) {
+                                        e.returnValue = false;
+                                    }
+                                }
+                            }
+
+                            var $ContentDiv = jQuery.noConflict();
+                            $ContentDiv(this).ready(function () {
+                                DeptName = "사무관리혁신";
+                                SELECT_DEPTID = "4KCT27";
+
+                                //document.getElementById("TreeView").style.height = (document.getElementById("LayerPopupLayout").offsetHeight - (document.getElementById("TreeView").offsetTop - 20)) + "px";
+                                //document.getElementById("txtlist_Layer").style.height = (document.getElementById("LayerPopupLayout").offsetHeight - (document.getElementById("txtlist_Layer").offsetTop + 28)) + "px";
+
+                                var pLayerPopupLayoutOffsetHeight = document.getElementById("LayerPopupLayout").offsetHeight;
+                                //document.getElementById("TreeView").style.height = pLayerPopupLayoutOffsetHeight - (document.getElementById("TreeView").offsetTop - 20) - (document.getElementsByClassName("exceptheight").length > 0 ? document.getElementsByClassName("exceptheight")[0].offsetHeight : 0) + "px";
+                                document.getElementById("txtlist_Layer").style.height = pLayerPopupLayoutOffsetHeight - (document.getElementById("txtlist_Layer").offsetTop + 28) - (document.getElementsByClassName("exceptheight").length > 0 ? document.getElementsByClassName("exceptheight")[0].offsetHeight : 0) + "px";
+
+                                TreeViewinitialize();
+
+                                var OrganListType = getCookie("OrganListType");
+                                if (OrganListType != null)
+                                    ChangeListView_onClick(OrganListType);
+                            });
+
+                            function TreeViewinitialize() {
+                                try {
+                                    var xmlpara = createXmlDom();
+                                    var xmlTree = createXmlDom();
+                                    var xmlHTTP = createXMLHttpRequest();
+                                    var objNode;
+                                    createNodeInsert(xmlpara, objNode, "DATA");
+
+                                    if (SelCompanyFlag)
+                                        createNodeAndInsertText(xmlpara, objNode, "DEPTID", "");
+                                    else
+                                        createNodeAndInsertText(xmlpara, objNode, "DEPTID", "4KCT27");
+
+                                    createNodeAndInsertText(xmlpara, objNode, "TOPID", document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value);
+                                    createNodeAndInsertText(xmlpara, objNode, "PROP", "displayname;displayname2;mail");
+                                    xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/GetDeptTreeInfo.aspx", false);
+                                    xmlHTTP.send(xmlpara);
+
+                                    xmlTree = loadXMLString(xmlHTTP.responseText);
+                                    document.getElementById('TreeView').innerHTML = "";
+
+                                    var treeView = new TreeView();
+                                    treeView.SetID("FromTreeView");
+                                    treeView.SetUseAgency(true);
+                                    treeView.SetRequestData("RequestData");
+                                    treeView.SetNodeClick("TreeViewNodeClick");
+                                    treeView.DataSource(xmlTree);
+                                    treeView.DataBind("TreeView");
+                                    document.getElementById("FromTreeView").style.height = "486px";
+
+
+                                }
+                                catch (ErrMsg) {
+                                    Alert_Message(" TreeViewinitialize : " + ErrMsg.description, null, "");
+                                }
+                            }
+                            var deptID;
+                            function RequestData(pNodeID, pTreeID) {
+                                var TreeIdx = pNodeID;
+                                var treeNode = new TreeNode();
+                                treeNode.LoadFromID(TreeIdx);
+                                deptID = treeNode.GetNodeData("CN");
+                                GetDeptSubTreeInfo(deptID, TreeIdx);
+                            }
+
+                            function GetDeptSubTreeInfo(deptID, TreeIdx) {
+                                var xmlHTTP = createXMLHttpRequest();
+                                var xmlRtn = createXmlDom();
+                                var xmlpara = createXmlDom();
+                                var objNode;
+                                createNodeInsert(xmlpara, objNode, "DATA");
+                                createNodeAndInsertText(xmlpara, objNode, "DEPTID", deptID);
+                                createNodeAndInsertText(xmlpara, objNode, "PROP", "mail;DisplayName");
+                                xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/GetDeptSubTreeInfo.aspx", false);
+                                xmlHTTP.send(xmlpara);
+                                xmlRtn = loadXMLString(xmlHTTP.responseText);
+                                if (SelectNodes(xmlRtn, "NODES/NODE/VALUE").length > 0) {
+                                    xmlRtn.getElementsByTagName("NODES")[0].getElementsByTagName("NODE")[0].appendChild(xmlRtn.getElementsByTagName("NODES")[0].getElementsByTagName("NODE")[0].getElementsByTagName("VALUE")[0]);
+                                }
+                                var treeView = new TreeView();
+                                treeView.LoadFromID("FromTreeView");
+                                treeView.AppendChildNodes(xmlRtn.documentElement, TreeIdx);
+                            }
+
+                            function TreeViewNodeClick() {
+                                issearch = false;
+                                CurPage = "1";
+                                var treeView = new TreeView();
+                                treeView.LoadFromID("FromTreeView");
+                                p_TreeSelectObject = treeView.GetSelectNode();
+                                SelectDeptNM.setAttribute("countinfo", "")
+                                SELECT_DEPTID = p_TreeSelectObject.GetNodeData("CN");
+                                DeptName = p_TreeSelectObject.GetNodeData("VALUE");
+                                displayUserList(SELECT_DEPTID);
+                                p_ListOrderObject = null;
+
+                            }
+
+                            function displayUserList(DeptID) {
+                                if (DeptID == undefined) {
+                                    var treeView = new TreeView();
+                                    treeView.LoadFromID("FromTreeView");
+                                    var selnode = treeView.GetSelectNode();
+                                    DeptID = selnode.GetNodeData("CN");
+                                }
+
+                                // ===============================================================================
+                                // 겸직 처리를 위해 Department 강제 추가
+                                var pPropList = ReturnDataField;
+                                var pPropArray = pPropList.split(";");
+                                var isDepartment = false;
+                                for (var i = 0; i < pPropArray.length; i++) {
+                                    if (pPropArray[i].toUpperCase() === "DEPARTMENT") {
+                                        isDepartment = true;
+                                    }
+                                }
+
+                                if (!isDepartment) {
+                                    if (pPropList.substring(pPropList.length - 1, pPropList.length) === ";") {
+                                        pPropList = pPropList + "department";
+                                    }
+                                    else {
+                                        pPropList = pPropList + ";department";
+                                    }
+                                }
+                                // =================================================================================
+
+                                listContentArry = new Array();
+                                var xmlpara = createXmlDom();
+                                var objRoot, objNode;
+                                objRoot = createNodeInsert(xmlpara, objRoot, "DATA");
+                                createNodeAndInsertText(xmlpara, objNode, "DEPTID", DeptID);
+                                //createNodeAndInsertText(xmlpara, objNode, "PROP", ReturnDataField);
+                                createNodeAndInsertText(xmlpara, objNode, "PROP", pPropList);
+                                createNodeAndInsertText(xmlpara, objNode, "PAGE", CurPage);
+                                createNodeAndInsertText(xmlpara, objNode, "LISTTYPE", pListType);
+                                createNodeAndInsertText(xmlpara, objNode, "RETURNTYPE", ReturnDataType);
+                                g_xmlHTTP = createXMLHttpRequest();
+                                if ("" == "choose")
+                                    g_xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/Get_MemberList2.aspx", true);
+                                else
+                                    g_xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/Get_MemberList.aspx", true);
+                                g_xmlHTTP.onreadystatechange = event_displayUserList;
+                                g_xmlHTTP.send(xmlpara);
+                            }
+
+                            var firstOpenFlag = true;
+                            function event_displayUserList() {
+                                if (g_xmlHTTP != null && g_xmlHTTP.readyState == 4) {
+                                    if (g_xmlHTTP.statusText == "OK" || g_xmlHTTP.status == 200) {
+                                        var UserList = loadXMLString(g_xmlHTTP.responseText);
+                                        document.getElementById("SelectDeptNM").innerHTML = "<p class='tit'>" + DeptName + "</p><p class='subtxt'>" + strLang23 + "<span class='c_blue'>" + getNodeText(SelectNodes(UserList, "DATA/TOTALCOUNT")[0]) + "</span>" + strLang32 + "</p>";
+                                        document.getElementById("txtlist_Layer").innerHTML = getNodeText(SelectNodes(UserList, "DATA/USERLIST")[0]);
+                                        totalPage = Math.ceil(new Number(getNodeText(SelectNodes(UserList, "DATA/TOTALCOUNT")[0]) / 50));
+                                        g_xmlHTTP = null;
+                                        pSeach = false;
+                                        MakePageNavi(totalPage, CurPage, 5, "tblPageRayer", MovePage);
+
+                                        if (firstOpenFlag && "" != "") {
+                                            event_listclick(document.getElementById(""));
+                                            if (typeof (SelectObj_View) === "function")
+                                                SelectObj_View(document.getElementById(""));
+
+                                            var objDiv = document.getElementById("txtlist_Layer");
+                                            objDiv.scrollTop = (document.getElementById("").offsetHeight * $(document.getElementById("")).index());
+
+                                            firstOpenFlag = false;
+                                        }
+                                    }
+                                    else
+                                        Alert_Message("조직도를 가져오는중 오류가 발생했습니다. - " + g_xmlHTTP.statusText, null, "");
+
+                                    g_xmlHTTP = null;
+                                }
+                                /*20201223 조직도 처리 */
+                                if (!searchk)
+                                    if (strSearch != "") {
+                                        document.getElementById('keyword').value = strSearch;
+                                        search_click();
+                                    }
+
+                                get_TeamsLayer();
+
+                            }
+
+                            var PressShiftKey = false;
+                            var PressCtrlKey = false;
+                            function event_listOnkeyUp(event) {
+                                if (navigator.userAgent.indexOf('Firefox') != -1) {
+                                    if (!event) event = window.event;
+                                }
+
+                                switch (event.keyCode) {
+                                    case 16: PressShiftKey = false; break;
+                                    case 17: PressCtrlKey = false; break;
+                                }
+                            }
+
+                            function event_listOnkeyDown(event) {
+                                if (navigator.userAgent.indexOf('Firefox') != -1) {
+                                    if (!event) event = window.event;
+                                }
+
+                                switch (event.keyCode) {
+                                    case 16: PressShiftKey = true; break;
+                                    case 17: PressCtrlKey = true; break;
+                                }
+                            }
+
+                            var listContentArry = new Array();
+                            var listSubContentArry = new Array();
+                            var listEventCheckbox = false;
+                            var listSubEventCheckbox = false;
+                            function event_listclick(obj) {
+                                if (ReturnDataType == "single") {
+                                    PressShiftKey = false;
+                                    PressCtrlKey = false;
+                                }
+
+                                if (PressCtrlKey) {
+                                    if (listContentArry.indexOf(obj.getAttribute("id")) != -1) {
+                                        setRowColors(obj, m_strColorDefault);
+                                        listContentArry.splice(listContentArry.indexOf(obj.getAttribute("id")), 1);
+                                    }
+                                    else {
+                                        setRowColors(obj, m_strColorSelect);
+                                        listContentArry.push(obj.getAttribute("id"));
+                                    }
+                                    p_ListOrderObject = obj;
+                                }
+                                else if (PressShiftKey) {
+                                    if (p_ListOrderObject != obj && p_ListOrderObject != null) {
+                                        var prevIdx = null;
+                                        var curIdx = null;
+                                        for (var RowCnt = 0; RowCnt < obj.parentNode.childNodes.length; RowCnt++) {
+                                            if ((obj.parentNode.childNodes[RowCnt].nodeName == "TR" || obj.parentNode.childNodes[RowCnt].nodeName == "LI")
+                                                && obj.parentNode.childNodes[RowCnt].getAttribute("_cn") != null) {
+
+                                                if (obj.parentNode.childNodes[RowCnt].getAttribute("id") == p_ListOrderObject.getAttribute("id"))
+                                                    prevIdx = RowCnt; // prev index
+
+                                                if (obj.parentNode.childNodes[RowCnt].getAttribute("id") == obj.getAttribute("id"))
+                                                    curIdx = RowCnt; // current index
+
+                                                setRowColors(obj.parentNode.childNodes[RowCnt], m_strColorDefault); // clear
+                                            }
+                                        }
+                                        listContentArry.splice(0, listContentArry.length); // clear
+
+                                        // insert
+                                        if (curIdx > prevIdx) {
+                                            for (var RowCnt = prevIdx; RowCnt <= curIdx; RowCnt++) {
+                                                setRowColors(obj.parentNode.childNodes[RowCnt], m_strColorSelect);
+                                                listContentArry.push(obj.parentNode.childNodes[RowCnt].getAttribute("id"));
+                                            }
+                                        }
+                                        else {
+                                            for (var RowCnt = prevIdx; RowCnt >= curIdx; RowCnt--) {
+                                                setRowColors(obj.parentNode.childNodes[RowCnt], m_strColorSelect);
+                                                listContentArry.push(obj.parentNode.childNodes[RowCnt].getAttribute("id"));
+                                            }
+                                        }
+                                    }
+                                }
+                                else {
+                                    listContentArry.splice(0, listContentArry.length);
+
+                                    if (ReturnDataType == "multi") {
+                                        for (var RowCnt = 0; RowCnt < obj.parentNode.childNodes.length; RowCnt++) {
+                                            if ((obj.parentNode.childNodes[RowCnt].nodeName == "TR" || obj.parentNode.childNodes[RowCnt].nodeName == "LI")
+                                                && obj.parentNode.childNodes[RowCnt].getAttribute("_cn") != null)
+                                                setRowColors(obj.parentNode.childNodes[RowCnt], m_strColorDefault);
+                                        }
+                                    }
+                                    else {
+                                        if (p_ListOrderObject != obj && p_ListOrderObject != null)
+                                            setRowColors(p_ListOrderObject, m_strColorDefault);
+                                    }
+
+                                    p_ListOrderObject = obj;
+                                    setRowColors(obj, m_strColorSelect);
+                                    listContentArry.push(obj.getAttribute("id"));
+                                }
+
+                                PressShiftKey = false;
+                                PressCtrlKey = false;
+                                p_TreeSelectObject = null;
+                            }
+
+                            function event_listclick_mail(obj) {
+                                if (listContentArry.indexOf(obj.getAttribute("id")) != -1) {
+                                    setRowColors(obj, m_strColorDefault);
+                                    listContentArry.splice(listContentArry.indexOf(obj.getAttribute("id")), 1);
+                                }
+                                else {
+                                    setRowColors(obj, m_strColorSelect);
+                                    listContentArry.push(obj.getAttribute("id"));
+                                }
+                                p_ListOrderObject = obj;
+                                p_TreeSelectObject = null;
+                            }
+
+                            function setRowColors(rowObj, strColor) {
+                                for (var RowCnt = 0; RowCnt < rowObj.childNodes.length; RowCnt++) {
+                                    if (rowObj.childNodes.item(RowCnt).nodeName != "#text") {
+                                        if (strColor == m_strColorDefault)
+                                            rowObj.childNodes.item(RowCnt).style.removeProperty("background-color");
+                                        else
+                                            rowObj.childNodes.item(RowCnt).style.backgroundColor = strColor;
+                                    }
+                                }
+                            }
+
+                            function ReturnData_Click(obj) {
+                                var RequestData = ReturnDataField.split(';');
+                                var ReturnData = [];
+                                var FieldData = {};
+
+                                if (ReturnDataType == "single") {
+                                    for (var k = 0; k < RequestData.length; k++) {
+                                        FieldData[RequestData[k]] = GetAttribute(obj, "_" + RequestData[k]);
+                                    }
+                                    FieldData["listflag"] = "U";
+                                    ReturnData.push(FieldData);
+                                }
+                                else {
+                                    //var LIstItem = document.getElementById("AnotherList_Layer").getElementsByTagName("li");
+                                }
+
+                                if (ReturnFunction != null)
+                                    ReturnFunction(ReturnData);
+                            }
+
+                            function Show_Member(obj) {
+
+                                //같은 부서에 같은 ID 사용자에 직위가 다를 경우 겸직 직위로 표시되도록 수정
+                                if (obj.children.length > 1) {
+                                    if (issearch) {
+                                        DivPopUpShow(600, 580, "/myoffice/common/showpersoninfo.aspx?id=" + GetAttribute(obj, "_cn") + "&dept=" + GetAttribute(obj, "_department") + "&title=" + obj.children.item(2).innerText);
+                                    }
+                                    else {
+                                        DivPopUpShow(600, 580, "/myoffice/common/showpersoninfo.aspx?id=" + GetAttribute(obj, "_cn") + "&dept=" + GetAttribute(obj, "_department") + "&title=" + obj.children.item(1).innerText);
+                                    }
+                                }
+                                else {
+                                    DivPopUpShow(600, 580, "/myoffice/common/showpersoninfo.aspx?id=" + GetAttribute(obj, "_cn") + "&dept=" + GetAttribute(obj, "_department"));
+                                }
+
+                            }
+
+                            function Select_Dept() {
+                                var RequestData = ReturnDataField.split(';');
+                                var ReturnData = [];
+                                var FieldData = {};
+
+                                if (ReturnDataType == "single") {
+                                    if (p_TreeSelectObject != null && p_ListOrderObject == null) {
+                                        FieldData["cn"] = SELECT_DEPTID;
+                                        FieldData["displayname"] = DeptName;
+                                        FieldData["listflag"] = "D";
+                                        ReturnData.push(FieldData);
+                                    }
+                                }
+                                else {
+                                    //var LIstItem = document.getElementById("AnotherList_Layer").getElementsByTagName("li");
+                                }
+
+                                if (ReturnFunction != null)
+                                    ReturnFunction(ReturnData);
+                            }
+
+                            function search_press(e, type) {
+                                if (window.event) {
+                                    if (window.event.keyCode == 13) {
+                                        debugger;
+                                        issearch = false;
+                                        if (type == "user")
+                                            search_click();
+                                        else
+                                            deptsearch_click();
+                                    }
+                                }
+                                else {
+                                    if (e.which == 13) {
+                                        issearch = false;
+                                        if (type == "user")
+                                            search_click();
+                                        else
+                                            deptsearch_click();
+                                    }
+                                }
+                            }
+
+                            var totalPage = "";
+                            var pageNum = "";
+                            var issearch = false;
+                            var searchKeyword = ""; //20200224 ahh #56057
+                            function search_click(type) {
+                                //20200224 ahh #56057 검색 이후 검색어가 빈 값인 경우 변경된 검색어와 상관없이 검색된 결과 유지
+                                if (typeof type != "undefined") {
+                                    issearch = false;
+                                }
+
+                                if (!issearch && document.getElementById("keyword").value == "") {
+                                    if (searchKeyword == "") {
+                                        Alert_Message("검색어를 입력해주세요.", null, "");
+                                        document.getElementById("keyword").focus();
+                                        return;
+                                    }
+                                    else {
+                                        issearch = true;
+                                    }
+                                }
+
+                                if (!issearch) {
+                                    CurPage = "1";
+                                    searchKeyword = document.getElementById("keyword").value;
+                                }
+                                //
+
+                                var xmlDom = createXmlDom();
+                                var objNode;
+
+                                createNodeInsert(xmlDom, objNode, "DATA");
+                                createNodeAndInsertText(xmlDom, objNode, "SEARCH", document.getElementById("search_type").value + "::" + searchKeyword); //20200224 ahh #56057
+                                createNodeAndInsertText(xmlDom, objNode, "PROP", ReturnDataField);
+                                createNodeAndInsertText(xmlDom, objNode, "PAGE", CurPage);
+                                createNodeAndInsertText(xmlDom, objNode, "RETURNTYPE", ReturnDataType);
+                                createNodeAndInsertText(xmlDom, objNode, "LISTTYPE", pListType);
+                                createNodeAndInsertText(xmlDom, objNode, "TYPE", "user");
+                                createNodeAndInsertText(xmlDom, objNode, "COMPANYID", document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value);
+
+                                g_xmlHTTP = createXMLHttpRequest();
+                                g_xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/Get_Searchlist.aspx", true);
+                                g_xmlHTTP.onreadystatechange = event_displayUserList2;
+                                g_xmlHTTP.send(xmlDom);
+                            }
+
+                            function event_displayUserList2() {
+                                if (g_xmlHTTP != null && g_xmlHTTP.readyState == 4) {
+                                    if (g_xmlHTTP.statusText == "OK" || g_xmlHTTP.status == 200) {
+                                        var UserList = loadXMLString(g_xmlHTTP.responseText);
+                                        issearch = true;
+                                        document.getElementById("SelectDeptNM").innerHTML = "<p class='subtxt'>" + strLang23 + "<span class='c_blue'>" + getNodeText(SelectNodes(UserList, "DATA/TOTALCOUNT")[0]) + "</span>" + strLang32 + "</p>";
+                                        document.getElementById("txtlist_Layer").innerHTML = getNodeText(SelectNodes(UserList, "DATA/USERLIST")[0]);
+                                        totalPage = Math.ceil(new Number(getNodeText(SelectNodes(UserList, "DATA/TOTALCOUNT")[0]) / 50));
+                                        g_xmlHTTP = null;
+                                        MakePageNavi(totalPage, CurPage, 5, "tblPageRayer", MovePage);
+                                    }
+                                    else
+                                        Alert_Message("조직도를 가져오는중 오류가 발생했습니다. - " + g_xmlHTTP.statusText, null, "");
+
+                                    g_xmlHTTP = null;
+                                }
+                                searchk = true;
+
+                                get_TeamsLayer();
+
+                            }
+                            function get_TeamsLayer() {
+                                // 사원 이미지 클릭시 호버 아이템 추가
+                                try {
+
+                                    var layer = "<div id='gnblayer' style='display:none ;z-index:10'><ul id='gnblayerUL' class='gnb_info'>";
+                                    layer += " <li id='info' onclick='openinfo(this)' class='info01 blind'>정보</li>";
+                                    layer += " <li id='text' onclick='openinfo(this)' class='info02 blind'>문자</li>";
+                                    layer += "<li id='messagesend' onclick='openinfo(this)' class='info03 blind'>메세지</li>";
+                                    layer += "<li id='phone' onclick='openinfo(this)' class='info04 blind'>전화</li>";
+                                    //layer += " <li id='media' onclick='openinfo(this)' class='info05 blind'>영상</li>";
+                                    layer += "<li id='favorites' onclick='openinfo(this)' class='info06 blind'>즐겨찾기</li>";
+                                    layer += "</ul> </div>";
+                                    $('.profile-img').each(function () {
+
+                                        if (!$(this).prop('gnblayer_enable')) {
+                                            $(this).append(layer);
+                                            $(this).hover(
+                                                function () {
+                                                    if ($(this).find(".photo-img").children("img").attr("data3") == "")
+                                                        $(this).find("#gnblayerUL").addClass('type01');
+
+                                                    $(this).children('div').find('li').attr('data1', $(this).find(".photo-img").children("img").attr("data1"));
+                                                    $(this).children('div').find('li').attr('data2', $(this).find(".photo-img").children("img").attr("data2"));
+                                                    $(this).children('div').find('li').attr('data3', $(this).find(".photo-img").children("img").attr("data3"));
+                                                    $(this).children('div').find('li').attr('data4', $(this).find(".photo-img").children("img").attr("data4"));
+                                                    $(this).children('div').find('li').attr('data5', $(this).find(".photo-img").children("img").attr("data5"));
+                                                    $(this).find("#gnblayer").show();
+                                                },
+                                                function () { $(this).find("#gnblayer").hide(); });
+                                            $(this).prop('gnblayer_enable', true);
+                                        }
+                                    });
+                                } catch (e) { }
+                            }
+
+
+                            var checkname2_dialogArguments = new Array();
+                            function deptsearch_click() {
+                                if (document.getElementById("deptkeyword").value == "") {
+                                    Alert_Message("검색어를 입력해주세요.", null, "");
+                                    document.getElementById("deptkeyword").focus();
+                                    return;
+                                }
+                                var objNode;
+                                var xmlHTTP = createXMLHttpRequest();
+                                var xmlDom = createXmlDom();
+                                createNodeInsert(xmlDom, objNode, "DATA");
+                                createNodeAndInsertText(xmlDom, objNode, "SEARCH", "displayname::" + document.getElementById("deptkeyword").value);
+                                createNodeAndInsertText(xmlDom, objNode, "CELL", "extensionAttribute3;displayname;extensionAttribute9");
+                                createNodeAndInsertText(xmlDom, objNode, "PROP", "");
+                                createNodeAndInsertText(xmlDom, objNode, "TYPE", "group");
+                                createNodeAndInsertText(xmlDom, objNode, "COMPANYID", document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value);
+                                try {
+                                    xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/GetSearchList.aspx", false);
+                                    xmlHTTP.send(xmlDom);
+                                    if (xmlHTTP.statusText != "OK" && xmlHTTP.status != 200) {
+                                        Alert_Message("조직도를 가져오는중 오류가 발생했습니다. - ", null, "");
+                                        xmlDom = null;
+                                        xmlHTTP = null;
+                                    }
+                                    else {
+                                        xmlDom = loadXMLString(xmlHTTP.responseText);
+                                        adCount = xmlDom.getElementsByTagName("ROW").length;
+                                    }
+                                }
+                                catch (e) {
+                                    Alert_Message("조직도를 가져오는중 오류가 발생했습니다. - ", null, "");
+                                    xmlDom = null;
+                                    xmlHTTP = null;
+                                }
+
+                                if (adCount == 0) {
+                                    Alert_Message(strLang535, null, "");
+                                    return;
+                                }
+                                else if (adCount == 1) {
+                                    bSearch = true;
+                                    g_xmlHTTP = createXMLHttpRequest();
+                                    //20200219 ahh 부서ID에 &->&amp; 치환
+                                    var strQuery = "<DATA><DEPTID>" + ReplaceXML(getNodeText(xmlDom.getElementsByTagName("DATA2").item(0))) + "</DEPTID><TOPID>" + document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value + "</TOPID><PROP></PROP></DATA>";
+                                    g_xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/GetDeptTreeInfo.aspx", true);
+                                    g_xmlHTTP.onreadystatechange = event_getDeptFullTree;
+                                    g_xmlHTTP.send(strQuery);
+                                }
+                                else {
+                                    rgParams["addrBook"] = xmlDom;
+                                    rgParams["deptid"] = "";
+                                    checkname2_dialogArguments[0] = rgParams;
+                                    checkname2_dialogArguments[1] = checkname2_Complete;
+                                    DivPopUpShow(600, 300, "/myoffice/ezOrgan/Admin/checkName2.aspx");
+                                }
+                            }
+
+                            var rgParams = new Array();
+                            function checkname2_Complete() {
+                                if (rgParams["deptid"] != "") {
+                                    bSearch = true;
+                                    g_xmlHTTP = createXMLHttpRequest();
+                                    //20200219 ahh 부서ID에 &->&amp; 치환
+                                    var strQuery = "<DATA><DEPTID>" + ReplaceXML(rgParams["deptid"]) + "</DEPTID><TOPID>" + document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value + "</TOPID><PROP>mail</PROP></DATA>";
+                                    g_xmlHTTP.open("POST", "/myoffice/ezOrgan/OrganInfo/GetDeptTreeInfo.aspx", true);
+                                    g_xmlHTTP.onreadystatechange = event_getDeptFullTree;
+                                    g_xmlHTTP.send(strQuery);
+                                    DivPopUpHidden();
+                                }
+                            }
+
+                            function event_getDeptFullTree() {
+                                if (g_xmlHTTP != null && g_xmlHTTP.readyState == 4) {
+                                    if (g_xmlHTTP.statusText == "OK" || g_xmlHTTP.status == 200) {
+                                        document.getElementById('TreeView').innerHTML = "";
+
+                                        var treeView = new TreeView();
+                                        treeView.SetID("FromTreeView");
+                                        treeView.SetUseAgency(true);
+                                        treeView.SetRequestData("RequestData");
+                                        treeView.SetNodeClick("TreeViewNodeClick");
+                                        treeView.DataSource(loadXMLString(g_xmlHTTP.responseText));
+                                        treeView.DataBind("TreeView");
+                                        document.getElementById("FromTreeView").style.height = "486px";
+                                    }
+                                    else {
+                                        Alert_Message("조직도를 가져오는중 오류가 발생했습니다. - " + g_xmlHTTP.statusText, null, "");
+                                        g_xmlHTTP = null;
+                                    }
+                                }
+                            }
+
+                            function ChangeListView_onClick(Div) {
+                                setCookie("OrganListType", Div, 7);
+                                pListType = Div;
+                                ListTypeChangeIcon();
+                            }
+
+                            function ListTypeChangeIcon() {
+
+                                if (pListType == "IMG") {
+                                    document.getElementById("Listinfo_TXT").className = "";
+                                    document.getElementById("Listinfo_IMG").className = "on";
+                                }
+                                else {
+                                    document.getElementById("Listinfo_TXT").className = "on";
+                                    document.getElementById("Listinfo_IMG").className = "";
+                                }
+
+                                if (issearch)
+                                    search_click();
+                                else
+                                    displayUserList(SELECT_DEPTID);
+                            }
+
+                            var SelCompanyFlag = false;
+                            function company_change() {
+                                SelCompanyFlag = true;
+                                TreeViewinitialize();
+                            }
+
+                            function keyword_Clear() {
+                                document.getElementsByName('keyword').value = "";
+                            }
+
+                            function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                if (parseInt(PageNum) > 0 && parseInt(PageNum) <= parseInt(TotalPage)) {
+                                    CurPage = PageNum;
+                                    if (issearch)
+                                        search_click();
+                                    else
+                                        displayUserList();
+                                }
+                            }
+
+                            var setCookie = function (name, value, exp) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+                                document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+                            };
+
+                            var getCookie = function (name) {
+                                var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+                                return value ? value[2] : null;
+                            };
+                        </script>
+
+                    </div>
+                </li>
+            </ul>
+            <ul class="btn_newtype" style="display:block;">
+                <li id="btnMailCheck" class="no" onclick="return Check_Click()">중복체크</li>
+                <li class="no" onclick="return OK_Click()">저장하기</li>
+            </ul>
+        </div>
+    </form>
+    <script type="text/javascript" src="/myoffice/common/XmlHttpRequest.js?ver=20210115120046814"></script>
+    <script type="text/javascript" src="/JQuery/jquery-1.9.1.min.js?ver=20180122114922000"></script>
+    <script type="text/javascript" src="/myoffice/ezOrgan/Controls/TreeView.js?ver=20210114175612481"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/js/ListView_list.js?ver=20210114133131169"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/lang/ezEmail_ko.js?ver=20201126100627320"></script>
+    <script type="text/javascript">
+        var cn = "";
+        var companyid = "10110000";
+        var pListType = "TXT";
+        var pListXML_Info = null;
+        var strLang1 = "명";
+        var strLang2 = "총 ";
+        var xmlHTTP2 = createXMLHttpRequest();
+        var ReturnFunction;
+        var RetValue;
+
+        var ReturnDataType; // single : 단일 데이터 , multi : 멀티 데이터 Return
+        var ReturnAddType; // all : 부서, 사용자 추가, dept : 부서 추가, user : 사용자 추가
+        var ReturnDataField; // Return 데이터 필드
+
+        var mailAlias = "";
+        var mailDomain = "";
+
+        var $ContentDiv = jQuery.noConflict();
+        $ContentDiv(this).ready(function () {
+            try {
+                RetValue = parent.mail_add_distributionlist_dialogArguments[0];
+                ReturnFunction = parent.mail_add_distributionlist_dialogArguments[1];
+            } catch (e) {
+                try {
+                    RetValue = opener.mail_add_distributionlist_dialogArguments[0];
+                    ReturnFunction = opener.mail_add_distributionlist_dialogArguments[1];
+                } catch (e) {
+                    RetValue = window.dialogArguments;
+                }
+            }
+
+            var dataObject = {
+                type: 'multi', // single : 단일 데이터 , multi : 멀티 데이터 Return , search : 직원 상세보기 View
+                addtype: 'user', // all : 부서, 사용자, 전체 추가, dept : 부서 추가, user : 사용자 추가
+                pagename: 'mail_add_distributionlist', // 페이지명 사이즈 조절용
+                requestfield: 'cn;mail;displayname;displayname2;description;description2;title;mobile' // Return 데이터 필드
+            };
+
+            ReturnDataType = dataObject.type;
+            ReturnAddType = dataObject.addtype;
+            ReturnDataField = dataObject.requestfield;
+
+            OrganFlag = true;
+            LoadUrlContent("/myoffice/ezOrgan/Organ.aspx?companyid=" + companyid + "&gubun=select", "OrganDIV");
+
+            recevieListview("MsgToList", "ListViewMsgTo");
+
+            if ("" != "") {
+                var xmlpara = createXmlDom();
+                var objRoot, objNode;
+                objRoot = createNodeInsert(xmlpara, objRoot, "DATA");
+                createNodeAndInsertText(xmlpara, objNode, "CN", "");
+
+                xmlHTTP2 = createXMLHttpRequest();
+                xmlHTTP2.open("POST", "/myoffice/ezEmail/Admin/remote/GetDistributionList.aspx", true);
+                xmlHTTP2.onreadystatechange = event_GetDistributionList;
+                xmlHTTP2.send(xmlpara);
+
+                document.getElementById("TextAlias").value = mailAlias;
+                document.getElementById("TextAlias").disabled = true;
+                document.getElementById("MailDomain").value = mailDomain;
+                document.getElementById("MailDomain").disabled = true;
+                document.getElementById("btnMailCheck").style.display = "none";
+            }
+
+            LayerPopupLayoutSize();
+        });
+
+        function event_GetDistributionList() {
+            if (xmlHTTP2 != null && xmlHTTP2.readyState == 4) {
+                if (xmlHTTP2.status == 200 || xmlHTTP2.statusText == "OK") {
+
+                    var result = loadXMLString(xmlHTTP2.responseText);
+                    var Resultxml = "";
+                    pparsingXML2 = "";
+                    pparsingXML = "";
+                    pparsingXML2 = "<LISTVIEWDATA><ROWS>";
+
+                    var nodes = SelectNodes(result, "DATA/ROW");
+
+                    for (var i = 0; i < nodes.length; i++) {
+                        pparsingXML = pparsingXML + "<ROW><CELL><DATA1>" + getNodeText(GetChildNodes(nodes[i])[1]) + "</DATA1>";
+                        if (getNodeText(GetChildNodes(nodes[i])[0]) == "user")
+                            pparsingXML = pparsingXML + "<VALUE>" + getNodeText(GetChildNodes(nodes[i])[2]) + "</VALUE></CELL></ROW>";
+                        else
+                            pparsingXML = pparsingXML + "<VALUE>" + "부서 : " + getNodeText(GetChildNodes(nodes[i])[2]) + "</VALUE></CELL></ROW>";
+                    }
+
+                    pparsingXML2 = pparsingXML2 + pparsingXML + "</ROWS></LISTVIEWDATA>";
+                    Resultxml = loadXMLString(pparsingXML2);
+
+                    var listview = new ListView();
+                    listview.SetID("MsgToList");
+                    listview.SetSelectFlag(false);
+                    listview.SetMulSelectable(false);
+                    listview.SetRowOnDblClick("DeleteReceiver");
+                    listview.DataSource(Resultxml);
+                    listview.RowDataBind();
+
+                    for (var i = 0; i < listview.GetRowCount(); i++) {
+                        listview.GetDataRows()[i].style.whiteSpace = "nowrap";
+                        listview.GetDataRows()[i].childNodes[0].setAttribute("height", "");
+                        listview.GetDataRows()[i].childNodes[0].style.whiteSpace = "";
+                        listview.GetDataRows()[i].childNodes[0].style.overflow = "";
+                        listview.GetDataRows()[i].childNodes[0].style.textOverflow = "";
+                    }
+                }
+                xmlHTTP2 = null;
+            }
+        }
+
+        function recevieListview(pID, pListView) {
+            var listview = new ListView();
+            listview.SetID(pID);
+            listview.SetSelectFlag(false);
+            listview.SetMulSelectable(true);
+            listview.SetRowOnDblClick("DeleteReceiver");
+            listview.DataSource(loadXMLString("<LISTVIEWDATA></LISTVIEWDATA>"));
+            listview.DataBind(pListView);
+            listview.RowDataBind();
+        }
+
+        String.prototype.trim = function () {
+            return this.replace(/(^\s*)|(\s*$)/g, "");
+        }
+
+        function OK_Click() {
+            if (document.all("TextName").value.trim() == "") {
+                Alert_Message("공용그룹의 이름을 입력해주세요.", null, "");
+                document.all("TextName").focus();
+                return;
+            }
+            if (document.all("TextAlias").value.trim() == "") {
+                Alert_Message("공용그룹의 주소를 입력해주세요.", null, "");
+                document.all("TextAlias").focus();
+                return;
+            }
+            var xmlDom = createXmlDom();
+            var xmlHTTP = createXMLHttpRequest();
+            var objNode = "";
+            createNodeInsert(xmlDom, objNode, "DATA");
+            createNodeAndInsertText(xmlDom, objNode, "COMPID", companyid);
+            createNodeAndInsertText(xmlDom, objNode, "CN", cn);
+            createNodeAndInsertText(xmlDom, objNode, "NAME", document.all("TextName").value);
+            createNodeAndInsertText(xmlDom, objNode, "ALIAS", document.getElementById("TextAlias").value);
+            createNodeAndInsertText(xmlDom, objNode, "MAILDOMAIN", document.getElementById("MailDomain").value);
+
+            for (var i = 0; i < document.getElementById("ListViewMsgTo").children.item(0).children.item(1).childNodes.length; i++) {
+                createNodeAndInsertText(xmlDom, objNode, "MEMBERID", GetAttribute(document.getElementById("ListViewMsgTo").children.item(0).children.item(1).children.item(i), "data1"));
+            }
+            xmlHTTP.open("POST", "/myoffice/ezEmail/Admin/remote/mail_save_distributionlist.aspx", false);
+            xmlHTTP.send(xmlDom);
+            if (xmlHTTP.status != 200 || xmlHTTP.responseText != "OK") {
+                if (xmlHTTP.responseText.indexOf("NOTFOUND:") != -1)
+                    Alert_Message(strLang411 + "\r\n" + xmlHTTP.responseText.split(':')[1], null, "");
+                else
+                    Alert_Message("공용배포그룹을 추가/편집하는 도중 오류 발생", null, "");
+            }
+            else {
+                Alert_Message("공용배포그룹을 저장하였습니다.", OK_Click_complete, "");
+            }
+        }
+
+        function OK_Click_complete() {
+            if (ReturnFunction != null)
+                ReturnFunction(1);
+            else
+                window.returnValue = 1;
+
+            Layer_Close();
+        }
+
+        function event_listDBclick(obj) {
+            InsertReceiver("MsgToList");
+        }
+
+        function InsertReceiver(pListView) {
+            var pparsingXML = "";
+            var pparsingXML2 = "";
+            var strSIP = "";
+            var pAddFlag = false;
+
+            var listid = "MsgToList";
+            var getlistview = new ListView();
+            getlistview.LoadFromID(listid);
+
+            var arrRows = getlistview.GetSelectedRows();
+            var length = arrRows.length;
+
+            if (p_ListOrderObject == null || p_ListOrderObject == "") {
+
+                var organTree = new TreeView();
+                organTree.LoadFromID("FromTreeView");
+                var nodeIdx = organTree.GetSelectNode();
+                var strId = nodeIdx.GetNodeData("CN")
+                var strName = nodeIdx.NodeName;
+
+                var bFlag = getlistview.ExistRow("data1", strId);
+                if (bFlag) {
+                    pAddFlag = true;
+                }
+                else {
+                    pparsingXML2 = "";
+                    pparsingXML = "";
+                    pparsingXML2 = "<LISTVIEWDATA2><ROWS>";
+                    pparsingXML = pparsingXML + "<ROW><CELL><DATA1>" + strId + "</DATA1>";
+                    pparsingXML = pparsingXML + "<VALUE>" + "부서 : " + MakeXMLString(strName) + "</VALUE></CELL></ROW>";
+                    pparsingXML2 = pparsingXML2 + pparsingXML + "</ROWS></LISTVIEWDATA2>";
+                    Resultxml = loadXMLString(pparsingXML2);
+
+                    var listview = new ListView();
+                    listview.LoadFromID(listid);
+
+                    var MaxID = 0;
+                    var InitTr = listview.GetDataRows();
+                    var MaxCntNum = 0;
+
+                    for (var j = 0; j < InitTr.length; j++) {
+                        var curnum = Number(listview.GetSelectedRowID(j).substring(listview.GetSelectedRowID(j).lastIndexOf('_') + 1), listview.GetSelectedRowID(j).length);
+                        if (MaxID < curnum) {
+                            MaxID = curnum;
+                            MaxCntNum = j;
+                        }
+                    }
+
+                    var objTr = listview.AddRow(InitTr.length);
+                    if (MaxCntNum != 0)
+                        MaxCntNum = MaxCntNum + 1;
+                    SetAttribute(objTr, "id", listview.GetSelectedRowID(MaxCntNum).substring(0, listview.GetSelectedRowID(MaxCntNum).lastIndexOf('_') + 1) + eval(MaxID + 1));
+                    listview.AddDataRow(objTr, Resultxml);
+
+                    var _tdlength = document.getElementById(listid).getElementsByTagName("TD").length;
+                    for (var y = 0; y < _tdlength; y++) {
+                        document.getElementById(listid).getElementsByTagName("TD")[y].style.textOverflow = "";
+                        document.getElementById(listid).getElementsByTagName("TD")[y].style.overflow = "";
+                    }
+                }
+            }
+            else {
+                if (listContentArry != "") {
+                    for (var i = 0; i < listContentArry.length; i++) {
+                        var strId = GetAttribute(document.getElementById(listContentArry[i]), "_cn");
+                        var strName = GetAttribute(document.getElementById(listContentArry[i]), "_displayname");
+                        var bFlag = getlistview.ExistRow("data1", strId);
+
+                        if (bFlag) {
+                            pAddFlag = true;
+                        }
+                        else {
+                            pparsingXML2 = "";
+                            pparsingXML = "";
+                            pparsingXML2 = "<LISTVIEWDATA2><ROWS>";
+                            pparsingXML = pparsingXML + "<ROW><CELL><DATA1>" + strId + "</DATA1>";
+                            pparsingXML = pparsingXML + "<VALUE>" + MakeXMLString(strName) + "</VALUE></CELL></ROW>";
+                            pparsingXML2 = pparsingXML2 + pparsingXML + "</ROWS></LISTVIEWDATA2>";
+                            Resultxml = loadXMLString(pparsingXML2);
+
+                            var listview = new ListView();
+                            listview.LoadFromID(listid);
+
+                            var MaxID = 0;
+                            var InitTr = listview.GetDataRows();
+                            var MaxCntNum = 0;
+
+                            for (var j = 0; j < InitTr.length; j++) {
+                                var curnum = Number(listview.GetSelectedRowID(j).substring(listview.GetSelectedRowID(j).lastIndexOf('_') + 1), listview.GetSelectedRowID(j).length);
+                                if (MaxID < curnum) {
+                                    MaxID = curnum;
+                                    MaxCntNum = j;
+                                }
+                            }
+
+                            var objTr = listview.AddRow(InitTr.length);
+                            if (MaxCntNum != 0)
+                                MaxCntNum = MaxCntNum + 1;
+                            SetAttribute(objTr, "id", listview.GetSelectedRowID(MaxCntNum).substring(0, listview.GetSelectedRowID(MaxCntNum).lastIndexOf('_') + 1) + eval(MaxID + 1));
+                            listview.AddDataRow(objTr, Resultxml);
+
+                            var _tdlength = document.getElementById(listid).getElementsByTagName("TD").length;
+                            for (var y = 0; y < _tdlength; y++) {
+                                document.getElementById(listid).getElementsByTagName("TD")[y].style.textOverflow = "";
+                                document.getElementById(listid).getElementsByTagName("TD")[y].style.overflow = "";
+                            }
+                        }
+                    }
+                }
+                else {
+                    var strId = GetAttribute(p_ListOrderObject, "_cn");
+                    var strName = GetAttribute(p_ListOrderObject, "_displayname");
+                    var bFlag = getlistview.ExistRow("data1", strId);
+
+                    if (bFlag) {
+                        pAddFlag = true;
+                    }
+                    else {
+                        pparsingXML2 = "";
+                        pparsingXML = "";
+                        pparsingXML2 = "<LISTVIEWDATA2><ROWS>";
+                        pparsingXML = pparsingXML + "<ROW><CELL><DATA1>" + strId + "</DATA1>";
+                        pparsingXML = pparsingXML + "<VALUE>" + MakeXMLString(strName) + "</VALUE></CELL></ROW>";
+                        pparsingXML2 = pparsingXML2 + pparsingXML + "</ROWS></LISTVIEWDATA2>";
+                        Resultxml = loadXMLString(pparsingXML2);
+
+                        var listview = new ListView();
+                        listview.LoadFromID(listid);
+
+                        var MaxID = 0;
+                        var InitTr = listview.GetDataRows();
+                        var MaxCntNum = 0;
+
+                        for (var j = 0; j < InitTr.length; j++) {
+                            var curnum = Number(listview.GetSelectedRowID(j).substring(listview.GetSelectedRowID(j).lastIndexOf('_') + 1), listview.GetSelectedRowID(j).length);
+                            if (MaxID < curnum) {
+                                MaxID = curnum;
+                                MaxCntNum = j;
+                            }
+                        }
+
+                        var objTr = listview.AddRow(InitTr.length);
+                        if (MaxCntNum != 0)
+                            MaxCntNum = MaxCntNum + 1;
+                        SetAttribute(objTr, "id", listview.GetSelectedRowID(MaxCntNum).substring(0, listview.GetSelectedRowID(MaxCntNum).lastIndexOf('_') + 1) + eval(MaxID + 1));
+                        listview.AddDataRow(objTr, Resultxml);
+
+                        var _tdlength = document.getElementById(listid).getElementsByTagName("TD").length;
+                        for (var y = 0; y < _tdlength; y++) {
+                            document.getElementById(listid).getElementsByTagName("TD")[y].style.textOverflow = "";
+                            document.getElementById(listid).getElementsByTagName("TD")[y].style.overflow = "";
+                        }
+                    }
+                }
+            }
+            var listid = "MsgToList";
+            //p_ListOrderObject = null;
+        }
+
+        function CheckMailReceiver(selRow, option) {
+            var rtnValue = false;
+            var email;
+            if (option == "1")
+                email = selRow.cells[0].DATA3;
+            else if (option == "2")
+                email = selRow.cells[0].DATA2;
+            else if (option == "3")
+                email = selRow;
+
+            var _listview = new ListView();
+            _listview.LoadFromID("MsgToList");
+            var arrRows = _listview.GetDataRows();
+            for (count2 = 0; count2 < arrRows.length; count2++) {
+                if (email == GetAttribute(arrRows[count2], "data1"))
+                    rtnValue = true;
+            }
+            return rtnValue
+        }
+
+        function DeleteReceiver(pListView) {
+            var listid = "MsgToList";
+            var selList = new ListView();
+            selList.LoadFromID(listid);
+
+            var arrRows = selList.GetSelectedRows();
+            var strName = "";
+
+            for (var i = 0; i < arrRows.length; i++) {
+                selList.DeleteRow(arrRows[i].id);
+            }
+        }
+
+        function Check_Click() {
+            if (document.all("TextAlias").value.trim() == "") {
+                Alert_Message("공용그룹의 주소를 입력해주세요.", null, "");
+                document.all("TextAlias").focus();
+                return;
+            }
+            var xmlDom = createXmlDom();
+            var xmlHTTP = createXMLHttpRequest();
+            var objNode = "";
+            createNodeInsert(xmlDom, objNode, "DATA");
+            createNodeAndInsertText(xmlDom, objNode, "ALIAS", document.getElementById("TextAlias").value);
+            createNodeAndInsertText(xmlDom, objNode, "MAILDOMAIN", document.getElementById("MailDomain").value);
+
+            xmlHTTP.open("POST", "/myoffice/ezEmail/Admin/remote/mail_checkEmail.aspx", false);
+            xmlHTTP.send(xmlDom);
+            if (xmlHTTP.status != 200) {
+                Alert_Message(xmlHTTP.responseText, null, "");
+            }
+            else {
+                if (xmlHTTP.responseText == "0") {
+                    Alert_Message("사용할 수 있는 공용그룹 주소 입니다.", null, "");
+                }
+                else {
+                    Alert_Message("공용그룹 주소가 중복입니다.", null, "");
+                }
+            }
+        }
+                //# sourceURL=mail_add_distributionlist.aspx
+    </script>
+
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"><div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div></div>
+</body>
+</html>

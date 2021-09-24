@@ -1,0 +1,702 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody">
+            <div class="left_appr" title="전자결재">
+                전자결재
+                <span class="icon_tree tree_leftconfig" id="ApprovalConfig" onclick="Open_Func(this)" title="결재환경설정"></span>
+            </div>
+            <div class="btn_writeBox">
+                <p class="btn_write02" onclick="openForm_Left();">기안하기</p>
+            </div>
+            <div class="leftscroll">
+                <!--  겸직  -->
+
+                <h2 class="on"><span id="APPROVAL" onclick="Open_Func(this);setPresentValue('미결함');"><span class="icon_tree tree_lnbArrowDown"></span><span class="h2_text">개인문서함<!--전자결재--></span></span></h2>
+                <ul id="iconul" class="leftListAppr">
+                    <!--결재할문서-->
+                    <li id="APPROVAL1" onclick="setPresentValue('미결함');convMain('1', '')">
+                        <span class="li_text">미결함<!--결재할문서--><span id="COUNT1" class="count"><b>(75)</b></span></span>
+                    </li>
+
+                    <!--결재진행문서-->
+                    <li id="APPROVAL2" onclick="setPresentValue('예결함');convMain('3', '')">
+                        <span class="li_text">예결함<!--결재진행문서--><span id="COUNT3" class="count"><b>(23)</b></span></span>
+                    </li>
+
+                    <!--2020.10.13 현대모비스 기결함 추가-->
+                    <li id="APPROVAL15" onclick="setPresentValue('기결함');convMain('15','')">
+                        <span class="li_text">기결함</span>
+                    </li>
+                    <!--참조/회람함-->
+                    <li id="APPROVAL10" onclick="setPresentValue('회람함');Open_Func(this)">
+                        <span class="li_text">회람함<!--참조/회람함--><span id="COUNT10" class="count"></span></span>
+                    </li>
+                    <!--기안한문서-->
+                    <li id="APPROVAL3" onclick="setPresentValue('기안함');convMain('2', '')">
+                        <span class="li_text">기안함<!--기안한문서--><span id="COUNT2" class="count"><b>(126)</b></span></span>
+                    </li>
+
+
+                    <!--개인완료함-->
+                    <li id="MYCONT" onclick="setPresentValue('완료함');Open_Func(this)">
+                        <span class="li_text">완료함<!--개인완료함--></span>
+                    </li>
+
+                    <!--반려함-->
+                    <li id="APPROVAL11" onclick="setPresentValue('반송/부결함');convMain('11', '')">
+                        <span class="li_text">반송/부결함<!--반려함--><span id="COUNT11" class="count"><b>(75)</b></span></span>
+                    </li>
+                    <!--회수함-->
+                    <li id="APPROVAL12" onclick="setPresentValue('회수함');convMain('12', '')" style="display:none">
+                        <span class="li_text">회수함<!--회수함--><span id="COUNT12" class="count"><b>(23)</b></span></span>
+                    </li>
+
+                    <!--선결문서함-->
+                    <li style="display:none" id="MYCONTSUN" onclick="setPresentValue('선결문서함');convMain('10', '')">
+                        <span class="li_text">선결문서함<!--선결문서함--><span id="COUNTSUN" class="count"></span></span>
+                    </li>
+                    <!--후결문서함-->
+                    <li id="MYCONTWHO" style="display:none" onclick="setPresentValue('후결문서함');Open_Func(this)">
+                        <span class="li_text">후결문서함<!--후결문서함--><span id="COUNTWHO" class="count"></span></span>
+                    </li>
+                    <!--임시보관함-->
+                    <li id="APPROVAL9" onclick="setPresentValue('임시보관함');convMain('9', '')">
+                        <span class="li_text">임시보관함<!--임시보관함--><span id="COUNT7" class="count"><b>(5)</b></span></span>
+                    </li>
+                    <!--  2020.10.26 현대모비스 통제함 추가 -->
+                    <li id="TONGJE" onclick="setPresentValue('통제함');Open_Func(this)">
+                        <span class="li_text">통제함</span>
+                    </li>
+                </ul>
+                <!-- 결재한문서 -->
+                <!-- 등록대장 -->
+                <!-- 결재문서함 -->
+                <h2><span id="MYDEPTCONT" onclick="Open_Func(this)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">팀문서함<!-- 결재문서함 --></span></span></h2>
+                <ul class="leftList">
+                    <!--부서수신함-->
+                    <li id="APPROVAL4" onclick="setPresentValue('미처리문서함');convMain('4', '')">
+                        <span style="width: 90%; display: inline-block; margin-left: 15px;"></span><span class="icon_tree tree_dotlist"></span><span class="li_text">미처리문서함<!--수신함--><span id="COUNT4" class="count"><b>(46)</b></span></span>
+                    </li>
+
+
+                    <!--부서문서함-->
+                    <!--발신함, 배부함, 반송함 사용안함, 문서함 순서조정 -->
+
+                    <li onclick="setPresentValue('결재문서함');cmdOK_onclick('\'0000000001\'', '결재문서함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">결재문서함</span></li>
+
+
+                    <li onclick="setPresentValue('협조문서함');cmdOK_onclick('\'0000000013\'', '협조문서함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">협조문서함</span></li>
+
+
+                    <li onclick="setPresentValue('수신문서함');cmdOK_onclick('\'0000000002\'', '수신문서함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">수신문서함</span></li>
+
+
+                    <li onclick="setPresentValue('참조/회람함');cmdOK_onclick('\'0000000029\'', '참조/회람함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">참조/회람함</span></li>
+
+
+                    <li onclick="setPresentValue('발신문서함');cmdOK_onclick('\'0000000012\'', '발신문서함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">발신문서함</span></li>
+
+
+                    <li onclick="setPresentValue('부결문서함');cmdOK_onclick('\'0000000011\'', '부결문서함', '')"><span class="icon_tree tree_dotlist"></span><span class="li_text">부결문서함</span></li>
+
+
+                </ul>
+                <!--DBField List-->
+                <!-- 분류코드별 문서함 -->
+                <span style="display:none">
+                    <!-- 2020.10.12 현대모비스 사용안하는 리스트 감춤 -->
+                    <h2><span><span class="icon_tree tree_documentboxappr"></span><span class="icon_tree tree_arrow_up"></span><span class="h2_text">등록대장</span></span></h2>
+                    <ul class="leftList">
+                        <!--20190123 전자결재-->
+                        <li style="width: 90%; display: inline-block;" id="DEPTDOC" onclick="setPresentValue('등록대장');Open_Func(this)">  <span class="icon_tree tree_dotlist"></span><span class="li_text">등록대장</span></li>
+                    </ul>
+                    <h2><span id="ITEMCONT" onclick="Open_Func(this)"><span class="icon_tree tree_classification"></span><span class="icon_tree tree_arrow_up"></span><span class="h2_text">분류코드별문서함</span></span></h2>
+                    <ul class="leftList">
+
+                        <li id="firstItemCont" onclick="setPresentValue('일반');cmdOK_onclick2('001', '일반', '일반') "><span class="icon_tree tree_fldr"></span><span class="li_text">일반</span></li>
+
+                    </ul>
+                </span> <!-- 2020.10.12 현대모비스 사용안하는 리스트 감춤 -->
+                <!-- 개인보관함 -->
+                <h2><span class="icon_tree tree_lnbArrowUp"></span><span id="USERCONT"><span class="h2_text">개인보관함</span></span></h2>
+                <ul class="leftList">
+                    <div class="tree" style="height: 100%;" id="divUserContTree"><div id="UserContTree" nodecontext="" nodedrag="" nodeclick="UserContNodeClick" nodedblclick="" requestdata="UserContRequestData"><div class="node_div" id="UserContTree_0" nodename="김창영" nodelevel="0" endnode="true" value="김창영" data1="0000000001" data2="ROOT" data3="개인문서함" data4="DT027844" isleaf="TRUE" expanded="FALSE" nodes="" style="white-space: nowrap;"><span id="imgNode_UserContTree_0" class="icon_tree tree_blank"></span><span id="subImgNode_UserContTree_0" class="icon_tree tree_fldr"></span><span id="spn_UserContTree_0" class="node_normal" onclick="treeicon_toggle(&quot;UserContTree_0&quot;, &quot;UserContTree&quot;, UserContRequestData, &quot;imgNode_UserContTree_0&quot;); node_select(&quot;UserContTree_0&quot;, &quot;김창영&quot;, &quot;UserContTree&quot;, UserContNodeClick); " style="cursor: pointer;">김창영</span><div id="UserContTree_0_sub" style="display: none;"></div></div></div></div>
+                    <li><span id="MNGUSERCONT" onclick="MngUserOnclick()"><span class="icon_tree tree_config" style="margin-right:10px;"></span><span class="li_text">개인보관함관리</span></span></li>
+                </ul>
+                <!-- 부서보관함-->
+                <h2><span class="icon_tree tree_lnbArrowUp"></span><span id="DEPTCONT"><span class="icon_tree tree_arrow_up"></span><span class="h2_text">팀보관함</span></span></h2>
+                <ul class="leftList">
+                    <div class="tree" style="height: 100%;" id="divDeptContTree"><div id="DeptContTree" nodecontext="" nodedrag="" nodeclick="DeptContNodeClick" nodedblclick="" requestdata="DeptContRequestData"><div class="node_div" id="DeptContTree_0" nodename="사무관리&amp;혁신" nodelevel="0" endnode="true" value="사무관리&amp;혁신" data1="0000000001" data2="ROOT" data3="문서함명" data4="4KCT27" data5="1" data6="" isleaf="TRUE" expanded="FALSE" nodes="" style="white-space: nowrap;"><span id="imgNode_DeptContTree_0" class="icon_tree tree_blank"></span><span id="subImgNode_DeptContTree_0" class="icon_tree tree_fldr"></span><span id="spn_DeptContTree_0" class="node_normal" onclick="treeicon_toggle(&quot;DeptContTree_0&quot;, &quot;DeptContTree&quot;, DeptContRequestData, &quot;imgNode_DeptContTree_0&quot;); node_select(&quot;DeptContTree_0&quot;, &quot;사무관리&amp;혁신&quot;, &quot;DeptContTree&quot;, DeptContNodeClick); " style="cursor: pointer;">사무관리&amp;혁신</span><div id="DeptContTree_0_sub" style="display: none;"></div></div></div></div>
+
+                    <li><span id="MNGDEPTCONT" onclick="MngDeptOnclick()"><span class="icon_tree tree_config" style="margin-right:10px;"></span><span class="li_text">팀보관함관리</span></span></li>
+
+                </ul>
+                <!-- 개인공유함 -->
+                <h2 style="display:none"><span class="icon_tree tree_individual_share"></span><span id="SHAREUSERCONT" onclick="Open_Func(this)"><span class="icon_tree tree_arrow_up"></span><span class="h2_text">개인공유함</span></span></h2>
+                <ul class="leftList">
+                    <div class="tree" style="height: 160px;" id="divShareUserContTree"><div id="ShareUserContTree" nodecontext="" nodedrag="" nodeclick="ShareUserContNodeClick" nodedblclick="" requestdata="ShareUserContRequestData"></div></div>
+                </ul>
+                <!-- 부서공유함-->
+                <h2 style="display:none"><span class="icon_tree tree_organdept_share"></span><span id="SHAREDEPTCONT" onclick="Open_Func(this)"><span class="icon_tree tree_arrow_up"></span><span class="h2_text">부서공유함</span></span></h2>
+                <ul class="leftList">
+                    <div class="tree" style="height: 100%;" id="divShareDeptContTree"><div id="ShareDeptContTree" nodecontext="" nodedrag="" nodeclick="ShareDeptContNodeClick" nodedblclick="" requestdata="ShareDeptContRequestData"></div></div>
+
+                </ul>
+                <!--전체문서 열람 관리자-->
+
+                <h2><span><span class="icon_tree tree_lnbArrowUp"></span><span class="icon_tree tree_arrow_up"></span><span class="h2_text">전체문서열람 (현대모비스(주))</span></span></h2>
+                <!-- 진행문서-->
+                <ul class="leftList">
+
+                    <li onclick="setPresentValue('진행문서');cmdOK_onclick5('APR', 'ADMINLIST_P_1__ADMINLIST', '진행문서')"><span class="icon_tree tree_fldr"></span><span class="li_text">진행문서</span></li>
+
+                    <!-- 완료문서 -->
+
+                    <li onclick="setPresentValue('완료문서');cmdOK_onclick5('END', 'ADMINLIST_P_1__ADMINLIST', '완료문서')"><span class="icon_tree tree_fldr"></span><span class="li_text">완료문서</span></li>
+
+                </ul>
+
+                <!--관리자메뉴-->
+
+            </div>
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>완료함</p>
+            <div class="search_box">
+                <div class="input_wrap">
+                    <input type="text" class="lnactive" value="Search" /> <a href="#none" class="btn_search"></a>
+                </div>
+                <div class="icon_box">
+                    <a href="#none" class="icon searchmark"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 검색 설정 -->
+        <div class="lyp_search_wrap">
+            <dl>
+                <dt>검색어</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="and">
+                            <label for="and">AND</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="or">
+                            <label for="or">OR</label>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">제목</a>
+                                <ul>
+                                    <li>내용</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">내용</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">보낸사람</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>내용</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+                <dt>첨부파일</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="all">
+                            <label for="all">모두</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="include">
+                            <label for="include">포함</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="noinclude">
+                            <label for="noinclude">미포함</label>
+                        </span>
+                    </div>
+                </dd>
+                <dt>검색기간</dt>
+                <dd>
+                    <div class="select-box type01 new_sel linebox">
+                        <a href="javascript:void(0)">직접입력</a>
+                        <ul>
+                            <li>1주일</li>
+                            <li>1개월</li>
+                            <li>3개월</li>
+                            <li>직접입력</li>
+                        </ul>
+                    </div>
+                    <div class="input_wrap block mt5">
+                        <input type="text" value="2020.10.14" /><span class="bar">-</span><input type="text" value="2020.10.20" />
+                    </div>
+                </dd>
+            </dl>
+            <ul class="btn_newtype">
+                <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            </ul>
+        </div>
+        <!-- //검색 설정 -->
+
+        <div class="align_num">
+            <ul>
+                <li class="one">
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox"></label>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">정렬</a>
+                        <ul>
+                            <li>기본 보기</li>
+                            <li>받는 사람</li>
+                            <li>중요도</li>
+                            <li>보낸 날짜</li>
+                            <li>제목</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none">회람</a></li>
+                <li class="one"><a href="#none">시행문 변환</a></li>
+                <li class="one"><a href="#none">개인 보관함 등록</a></li>
+                <li class="one"><a href="#none">부서 보관함 등록</a></li>
+                <li class="one"><a href="#none">삭제</a></li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">최근 1년</a>
+                        <ul>
+                            <li>3개월</li>
+                            <li>6개월</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pd0">
+                    <div class="etc_box">
+                        <a href="#none" class="tit"><span class="newSubicon newSubicon080"></span></a>
+                        <ul>
+                            <li><a href="#none">PC저장</a></li>
+                            <li><a href="#none">리스트 엑셀 저장</a></li>
+                            <li><a href="#none">전체 엑셀 저장</a></li>
+                            <li><a href="#none">문서 보기</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="all_email">
+                <p>전체메일</p>
+                <p><span class="c_blue">15 </span>/<span> 1654</span></p>
+                <a href="#none" class="btn_reset"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- //new sub title -->
+    <span id="PreViewRayer" class="mainbody" style="min-width: 330px; width: 20%; height: calc(100% - 128px); display: block;">
+        <div class="new_listview scrollbar-inner">
+            <ul>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk01">
+                            <label for="listview_chk01"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_ongoing">진행중</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk02">
+                            <label for="listview_chk02"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk03">
+                            <label for="listview_chk03"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk04">
+                            <label for="listview_chk04"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk05">
+                            <label for="listview_chk05"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk06">
+                            <label for="listview_chk06"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk07">
+                            <label for="listview_chk07"></label>
+                        </span>
+                        <span class="contentlayout_left listview-appr">홍길동</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">ICT 선행기술팀</span>
+                        <span class="contentlayout_left listview-line">l</span>
+                        <span class="contentlayout_left listview-appr">2020.11.25</span>
+                        <span class="contentlayout_right icon16_listview i_opinion"></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview i_detailview"></span>
+                        <span class="contentlayout_right icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left"><span class="appr_completion">완료</span></span>
+                        <span class="contentlayout_none listview-document">ICT선행기술팀-2020-10-11</span>
+                    </span>
+                </li>
+            </ul>
+            <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; z-index: 5000; display: none;" id="mailPanel" onclick="ContextMenuHidden();" oncontextmenu="ContextMenuHidden(); return false;"></div>
+            <div style="z-index: 1000; top: 332.5px; left: 442.5px; display: none;" id="MailProgress"></div>
+        </div>
+        <div class="listview-nav">
+            <a href="#" class="prev blind">이전</a>
+            <span class="page-num"><em>1</em>/ 5</span>
+            <a href="#" class="next blind">다음</a>
+        </div>
+    </span>
+    <!-- //list -->
+    <!-- right -->
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+        <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+            <p class="hbar_dotted">
+                <img src="/images/prevview_hbar_dotted.gif">
+            </p>
+        </span>
+        <span id="PreContent_RayerH" style="overflow: auto; height: 100%;">
+            <span class="PreContent_RayerH_box">
+                <!-- 미리보기 영역 -->
+                <span class="previewmail_info" id="PreContent_RayerH_Info">
+                    <form name="_ctl0" method="post" action="" id="_ctl0">
+                        <div>
+                            <div class="mainmenu_btn line">
+                                <ul class="mainmenu_btnUL">
+                                    <li>접수</li>
+                                    <li>회송</li>
+                                    <li>접수자 전결</li>
+                                    <li>결재선 변경</li>
+                                    <li>수신처 변경</li>
+                                    <li>의견</li>
+                                    <li class="sel pd0">
+                                        <div class="etc_box">
+                                            <a href="#none" class="tit"><span class="newSubicon newSubicon080"></span></a>
+                                            <ul>
+                                                <li><a href="#none">수신거부</a></li>
+                                                <li><a href="#none">스팸처리</a></li>
+                                                <li><a href="#none">읽은상태</a></li>
+                                                <li><a href="#none">안읽은상태</a></li>
+                                                <li><a href="#none">영구삭제</a></li>
+                                                <li><a href="#none">복사</a></li>
+                                                <li><a href="#none">책갈피</a></li>
+                                                <li><a href="#none">PC 저장</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="rightbtn btn_setup nobg">
+                                        <div class="icon_box mr5">
+                                            <a href="#none" class="icon print"><span class="newSubicon newSubicon007"></span></a>
+                                        </div>
+                                        <div class="icon_box">
+                                            <a href="#none" class="icon window"><span class="newSubicon newSubicon004"></span></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- 본문내용 -->
+                            <div id="contenttable" class="publishing_conts">
+                                <div class="payment_tab_wrap">
+                                    <!-- 탭 -->
+                                    <ul class="contentlayout">
+                                        <li class="contentlayout_none">
+                                            <div class="tab_menuBox mb0">
+                                                <dl id="tab_menu_list" class="tab_menu">
+                                                    <dt class="on"><span>첨부파일</span></dt>
+                                                    <dt><span>결제 문서 첨부</span></dt>
+                                                </dl>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <!-- //탭 -->
+
+                                    <div class="payment_conts payment01 mail_read_wrap">
+                                        <div class="icon_box small">
+                                            <a href="#none" class="icon reference file"></a>
+                                        </div>
+
+                                        <div class="hidden_file">
+                                            <div class="file_wrap">
+                                                <div class="file_scroll scrollbar-inner">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <span class="img"><span class="fileIcon icon_pdf"></span></span>
+                                                                <div>
+                                                                    <p>Hyundai_Mobis.psd <span>50KB</span></p>
+                                                                </div>
+                                                            </a>
+                                                            <span class="close"></span>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <span class="img"><span class="fileIcon icon_zip"></span></span>
+                                                                <div>
+                                                                    <p>Image.zip <span>100KB</span></p>
+                                                                </div>
+                                                            </a>
+                                                            <span class="close"></span>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#none">
+                                                                <span class="img"><span class="fileIcon icon_jpg"></span></span>
+                                                                <div>
+                                                                    <p>Image.jpg <span>42KB</span></p>
+                                                                </div>
+                                                            </a>
+                                                            <span class="close"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="payment_conts payment02" style="display:none;">
+                                        <div class="icon_box small">
+                                            <a href="#none" class="icon reduce"></a>
+                                        </div>
+
+                                        <div class="file_wrap">
+                                            <ul>
+                                                <li>
+                                                    <a href="#none">
+                                                        <span class="img"></span>
+                                                        <div>
+                                                            <p>Hyundai_Mobis.psd <span>50KB</span></p>
+                                                        </div>
+                                                    </a>
+                                                    <span class="close"></span>
+                                                </li>
+                                                <li>
+                                                    <a href="#none">
+                                                        <span class="img"></span>
+                                                        <div>
+                                                            <p>Image.zip <span>100KB</span></p>
+                                                        </div>
+                                                    </a>
+                                                    <span class="close"></span>
+                                                </li>
+                                                <li>
+                                                    <a href="#none">
+                                                        <span class="img"></span>
+                                                        <div>
+                                                            <p>Image.jpg <span>42KB</span></p>
+                                                        </div>
+                                                    </a>
+                                                    <span class="close"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="view_box">adsadadad</div>
+                            </div>
+                            <!-- //본문내용 -->
+                        </div>
+                    </form>
+                </span>
+            </span>
+        </span>
+    </span>
+    <!-- //right -->
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

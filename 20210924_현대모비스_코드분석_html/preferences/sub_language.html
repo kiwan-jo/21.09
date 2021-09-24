@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>언어 및 표준 시간대 설정 
+                <span>언어 및 표준 시간대를 설정할 수 있습니다.</span>
+           </p>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 97px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <div class="pd30">
+                <table class="com_list type2">
+                    <colgroup>
+                        <col width="10%" />
+                        <col width="*" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>언어</th>
+                            <td>
+                                <ul class="com_chk language">
+                                    <li class="on">
+                                        <div class="img01"></div>
+                                        <p>Korea / 한국어</p>
+                                    </li>
+                                    <li>
+                                        <div class="img02"></div>
+                                        <p>U.S.A / English</p>
+                                    </li>
+                                    <li>
+                                        <div class="img03"></div>
+                                        <p>Japan / 日本語</p>
+                                    </li>
+                                    <li>
+                                        <div class="img04"></div>
+                                        <p>China / 中文</p>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>현대 표준 시간대</th>
+                            <td>
+                                <div class="select-box type01 new_sel linebox" style="width:200px">
+                                    <a href="javascript:void()">시간대</a>
+                                    <ul>
+                                        <li>(UTC+09:00) 서울</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ul class="btn_newtype">
+                    <li class="ok">저장</li>
+                </ul>
+            </div>
+        </div>
+    </span>
+</body>
+</html>

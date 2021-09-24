@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/content.css" type="text/css">
+    <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        //탭
+        $(document).ready(function () {
+
+            $('.login-tabs li').click(function () {
+                var tab_id = $(this).attr('data-tab');
+
+                $('.login-tabs li').removeClass('on');
+                $('.login-cont').removeClass('on');
+
+                $(this).addClass('on');
+                $("#" + tab_id).addClass('on');
+            })
+
+        })
+    </script>
+</head>
+
+<body class="login_body">
+
+  <div class="login-wrap">
+	<div>
+		<h1><img src="images/+Logo.png" alt="현대 모비스 로고"></h1>
+		<div class="cont">
+			<h2 class="tit">이메일 로그인</h2>
+			<ul class="login-tabs">
+				<li class="on" data-tab="FIDO">FIDO</li>			
+				<li data-tab="password">비밀번호</li>
+			</ul>
+			
+			<!-- FIDO -->
+			<div id="FIDO" class="login-cont on">
+				<p class="desc">*생체인증(지문/안면인식) 옵션을 선택하셨습니다. <br> 로그인 버튼 클릭 후, 모바일 앱으로 인증하세요. </p>
+				<fieldset class="login-form">
+					<legend>로그인</legend>
+					<div class="input-box">
+						<input type="text" placeholder="아이디 입력">
+					</div>
+					<div class="input-box">
+						<input type="password" placeholder="비밀번호 입력" disabled>
+					</div>
+
+					<div class="login-check checks">
+						<input type="checkbox" id="login_chk">
+						<label for="login_chk" id="label_login_chk">아이디 기억하기</label>
+					</div>
+					<input type="submit" value="로그인" class="login-btn on"><!-- 정보입력 완료시 로그인 버튼 활성화 (class on 추가)-->
+				</fieldset>
+			</div>
+			<!-- //FIDO -->
+			<!-- 비밀번호 -->
+			<div id="password" class="login-cont">
+				<p class="desc">*비밀번호 로그인을 선택하였습니다. <br> 아래의 경우 인증서 추가 인증이 필요합니다. <br>-임직원 : 결재,인사정보 메뉴 접속 시</p>
+				<fieldset class="login-form">
+					<legend>로그인</legend>
+					<div class="input-box">
+						<input type="text" placeholder="아이디 입력" class="int" maxlength="41">
+					</div>
+					<div class="input-box">
+						<input type="password" id="pw" name="pw" placeholder="비밀번호 입력" maxlength="16">
+					</div>
+
+					<div class="login-check checks">
+						<input type="checkbox" id="login_chk1">
+						<label for="login_chk1" id="label_login_chk1">아이디 기억하기</label>
+					</div>
+
+					<input type="submit" value="로그인" class="login-btn"> <!-- 정보입력 완료시 로그인 버튼 활성화 (class on 추가)  -->
+				</fieldset>
+			</div>
+			<!-- //비밀번호 -->
+		</div>
+
+		<p class="notice">
+			본 화면은 개선되는 iMobis 그룹웨어의 E-MAIL 전용 로그인 화면입니다. <br>	
+			iMobis 포탈 전체의 기능 사용을 위한 로그인을 원하시면 <a href="#">여기</a>를 클릭해주세요.
+		</p>
+	</div>
+  </div>
+
+
+</body>
+</html>

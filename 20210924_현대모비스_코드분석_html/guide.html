@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/default.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/content.css" type="text/css">
+    <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="background:none">
+<style>
+    .guide {padding:20px;}
+    .guide .inbox  {padding:20px; width:100%; border:solid 1px #000; box-sizing:border-box;}
+    .guide .inbox p {display:block;}
+    .guide .inbox ul {list-style:none; margin:0; padding:0;}
+    .guide .inbox ul li {display:block; margin-top:10px;}
+</style>
+<div class="guide">
+    <div class="inbox">
+        <p>인풋 박스</p>
+        <ul>
+            <li>
+                <div class="input_wrap">
+                    <input type="text" value="Search" />
+                </div>
+            </li>
+            <li>
+                <div class="input_wrap block">
+                    <input type="text" class="lnactive" value="Search"> <a href="#none" class="btn_search"></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br/>
+    <div class="inbox">
+        <p>셀렉트 박스</p>
+        <ul>
+            <li>
+                <div class="select-box type01 new_sel">
+                    <a href="javascript:void()">졍렬</a>
+                    <ul>
+                        <li>최신</li>
+                        <li>휴가현황</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="select-box type01 new_sel linebox">
+                    <a href="javascript:void()">졍렬</a>
+                    <ul>
+                        <li>최신</li>
+                        <li>휴가현황</li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="select-box type01 new_sel small linebox">
+                    <a href="javascript:void()">졍렬</a>
+                    <ul>
+                        <li>최신</li>
+                        <li>휴가현황</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br />
+    <div class="inbox">
+        <p>체크박스,라디오박스</p>
+        <ul>
+            <li>
+                <div class="input_wrap">
+                    <span class="listview-check checks">
+                        <input type="checkbox" id="checkbox">
+                        <label for="checkbox"></label>
+                    </span>
+                </div>
+            </li>
+            <li>               
+                <div class="input_wrap">
+                    <span class="listview-check checks">
+                        <input type="checkbox" id="checkbox2">
+                        <label for="listview_chk2">가나다 정렬</label>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br />
+    <div class="inbox">
+        <p>아이콘</p>
+        <ul>
+            <li>
+                <div class="icon_box">
+                    <a href="#none" class="icon searchmark"></a>
+                </div>
+
+                <div class="icon_box">
+                    <a href="#none" class="icon window"></a>
+                </div>
+
+                <div class="icon_box">
+                    <a href="#none" class="icon bookmark"></a>
+                </div>
+
+                <div class="icon_box">
+                    <a href="#none" class="icon more"></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 자원정보 -->
+    <div class="popup">
+        <dl class="popupTitle">
+            <dt id="h1Title">자원정보</dt>
+            <dd><span class="newSubicon newSubicon004"></span></dd>
+            <dd><span class="newSubicon newSubicon003"></span></dd>
+        </dl>
+        <div class="layout" id="LayerPopupLayout">
+            <div class="tb_info">
+                <table>
+                    <colgroup>
+                        <col width="20%">
+                        <col width="*">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>담당자</th>
+                            <td>윤시우</td>
+                        </tr>
+                        <tr>
+                            <th>자원명</th>
+                            <td>1704호 회의실</td>
+                        </tr>
+                        <tr>
+                            <th>정원</th>
+                            <td>6명</td>
+                        </tr>
+                        <tr>
+                            <th>보유설비</th>
+                            <td>노트북, 전화기, 빔프로젝터</td>
+                        </tr>
+                        <tr>
+                            <th>등록일</th>
+                            <td>2020. 10 .15</td>
+                        </tr>
+                        <tr>
+                            <th>예약절차</th>
+                            <td>바로 승인</td>
+                        </tr>
+                        <tr>
+                            <th>반납절차</th>
+                            <td>자동 반납</td>
+                        </tr>
+                        <tr>
+                            <th>출력자</th>
+                            <td>윤시우</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="slide_wrap">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="../images/sample.png"></li>
+                        <li class="swiper-slide"><img src="../images/sample.png"></li>
+                    </ul>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="precaution">* 소회의실, 팀 단위 소규모 프로젝트 회의 가능 (대규모 회의 불가)</div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <!-- //자원정보 -->
+    <script type="text/javascript">
+        /* 예약 상황 조회 */
+        $(document).ready(function () {
+            function pop_slide() {
+                var swiper = new Swiper('.swiper-container', {
+                    cssMode: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination'
+                    },
+                    mousewheel: true,
+                    keyboard: true,
+                });
+            }; pop_slide();
+        });
+    </script>
+</body>
+</html>

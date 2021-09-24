@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="overflow:hidden;">
+    <div class="iframe_file">
+        <div class="link">
+            <a href="#none">파일첨부</a><a href="#none">전체삭제</a>
+        </div>
+        <div class="file_box">
+            <div class="file_box_scroll scrollbar-inner">
+                <span class="nofile" style="display:none;">여러개의 파일을 마우스로 끓어놓으세요.</span><!-- 파일넣으면 숨겨짐 -->
+                <table class="file_table">
+                    <colgroup>
+                        <col width="30" />
+                        <col width="*" />
+                        <col width="80" />
+                        <col width="30" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td align="left"><span class="newSubicon newSubicon014"></span></td>
+                            <td align="left">images.zip</td>
+                            <td align="right">87KB</td>
+                            <td align="center"><span class="newSubicon newSubicon015"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><span class="newSubicon newSubicon014"></span></td>
+                            <td align="left">images.zip</td>
+                            <td align="right">87KB</td>
+                            <td align="center"><span class="newSubicon newSubicon015"></span></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><span class="newSubicon newSubicon014"></span></td>
+                            <td align="left">images.zip</td>
+                            <td align="right">87KB</td>
+                            <td align="center"><span class="newSubicon newSubicon015"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="file_boxText">
+            <span>첨부파일은 대용량 메일(링크형식)로 변환되며, 승인 후 14일(336시간)동안 다운로드 가능합니다. (개별파일 500MB 이하, 최대1GB까지 가능)</span>
+            <span>파일 용량 총합 1MB 이상일 경우 수신자 파일 다운로드 時 부가인증(ARS, SMS, E-mail) 인증 필요</span>
+            <span>보안문서 등급 극비일 경우 첨부 불가</span>
+            <span>「도면 등 회사 중요정보는 승인을 득하고 외부발송 하시기 바랍니다.」</span>
+        </div>
+    </div>
+</body>
+</html>

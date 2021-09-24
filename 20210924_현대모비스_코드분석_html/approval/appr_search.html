@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- 검색 설정(결제) -->
+    <div class="lyp_search_wrap" style="display:block;">
+        <dl>
+            <dt>검색어</dt>
+            <dd>
+                <div class="input_wrap">
+                    <span class="listview-check radios">
+                        <input type="radio" id="title" name="payment">
+                        <label for="title">제목</label>
+                    </span>
+                    <span class="listview-check radios">
+                        <input type="radio" id="draftsman" name="payment">
+                        <label for="draftsman">기안자</label>
+                    </span>
+                    <span class="listview-check checks block">
+                        <input type="checkbox" id="details">
+                        <label for="details" class="details_btn mt10">세부검색</label>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+        <dl class="details_active" style="display:none;">
+            <dd style="margin-bottom:0px;">
+                <div class="input_wrap">
+                    <input type="text" class="input lnactive" value="" />
+                    <div class="mainmenu_btn pd0 inline">
+                        <ul class="mainmenu_btnUL">
+                            <li class="mt0 mr0">양식명</li>
+                        </ul>
+                    </div>
+                </div>
+            </dd>
+            <dd>
+                <ul>
+                    <li>
+
+                    </li>
+                    <li>
+                        <div class="input_wrap block" style="width:100%;">
+                            제목
+                            <input type="text" value="" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input_wrap block" style="width:100%;">
+                            기안자
+                            <input type="text" value="" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input_wrap block" style="width:100%;">
+                            기안팀
+                            <input type="text" value="" />
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input_wrap block" style="width:100%;">
+                            키워드
+                            <input type="text" value="" />
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+            <dt>기안한일자</dt>
+            <dd>
+                <div class="select-box type01 new_sel linebox">
+                    <a href="javascript:void(0)">ALL</a>
+                    <ul>
+                        <li>1주일</li>
+                        <li>1개월</li>
+                        <li>3개월</li>
+                        <li>직접입력</li>
+                    </ul>
+                </div>
+                <div class="input_wrap block mt5">
+                    <input type="text" id="Sdatepicker" name="DatePicker" value="2021-01-05" class="hasDatepicker" size="10" disabled="" style="float:left; width:107px;">
+                    <span class="bar">-</span>
+                    <input type="text" id="Edatepicker" name="DatePicker" value="2021-01-12" class="hasDatepicker" size="10" disabled="" style="float:left; width:107px;">
+                </div>
+            </dd>
+        </dl>
+        <ul class="btn_newtype">
+            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+        </ul>
+    </div>
+    <!-- //검색 설정(결제) -->
+
+</body>
+</html>

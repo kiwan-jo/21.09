@@ -1,0 +1,476 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+        <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+<body class="popup">
+    <dl class="popupTitle">
+        <dt id="h1Title">수신자 설정</dt>
+        <dd onclick="return DivPopUpShow_FullScreen(this);"><span class="newSubicon newSubicon004"></span></dd>
+        <dd onclick="return Layer_Close();"><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout" id="LayerPopupLayout">
+        <ul class="contentlayout">
+            <li class="contentlayout_left"></li>
+            <li class="contentlayout_right"></li>
+            <!-- 탭 -->
+            <li class="contentlayout_none">
+                <div class="tab_menuBox">
+
+                    <dl id="tab_menu_list" class="tab_menu">
+                        <dt class="on"><span>조직도</span></dt>
+                        <dt><span>주소록</span></dt>
+                        <dt><span>공용그룹</span></dt>
+                    </dl>
+                </div>
+            </li>
+            <!-- //탭 -->
+        </ul>
+        <ul class="contentlayout">
+            <li class="contentlayout_left receive_box">
+                <!-- 조직도 -->
+                <div id="TreeViewTD" style="display: block;">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_none">
+                            <div id="OrganDIV" class="mainbody">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_left receive_chart">
+                                        <!-- search -->
+                                        <div class="select-box type01 new_sel linebox">
+                                            <a href="javascript:void(0)">현대모비스(주)</a>
+                                            <ul>
+                                                <li>현대모비스(주)</li>
+                                                <li>현대모비스(주)</li>
+                                            </ul>
+                                        </div>
+                                        <!-- //search -->
+                                        <!-- treeView -->
+                                        <div style="overflow: auto; height: 458px;" id="TreeView" class="tree border_box mt5">
+                                            <div class="tree_top">
+                                                <div class="input_wrap">
+                                                    <input type="text" class="lnactive" value="조직을 검색해보세요."> <a href="#none" onclick="search_click('search')" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div id="FromTreeView" nodecontext="" nodedrag="" nodeclick="TreeViewNodeClick" nodedblclick="" requestdata="RequestData" selectnodeid="FromTreeView_0_5_0_7">
+                                                <div class="node_div" id="FromTreeView_0" nodename="현대모비스(주)" nodelevel="0" endnode="true" value="현대모비스(주)" cn="10110000" displayname="현대모비스(주)" displayname2="HYUNDAI MOBIS" mail="G_M_10110000D@mobisdev.com" displayname1="현대모비스(주)" isleaf="FALSE" setnodeiconbyname="ICONCOMP" expanded="TRUE" nodes="" style="white-space: nowrap;">
+                                                    <span id="imgNode_FromTreeView_0" class="icon_tree tree_minus" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;);" style="cursor: pointer;"></span>
+                                                    <span id="subImgNode_FromTreeView_0" class="icon_tree tree_company"></span>
+                                                    <span id="spn_FromTreeView_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;); node_select(&quot;FromTreeView_0&quot;, &quot;현대모비스(주)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0&quot;);" style="cursor: pointer;">현대모비스(주)</span>
+                                                    <div id="FromTreeView_0_sub">
+                                                        <div class="node_div" id="FromTreeView_0_0" nodename="회장실" nodelevel="1" endnode="false" value="회장실" cn="10000051" displayname="회장실" displayname2="CHAIRMAN" mail="G_M_10000051D@mobisdev.com" displayname1="회장실" isleaf="FALSE" style="white-space: nowrap;">
+                                                            <span class="icon_tree tree_blank"></span>
+                                                            <span id="imgNode_FromTreeView_0_0" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;);" style="cursor: pointer;"></span>
+                                                            <span id="subImgNode_FromTreeView_0_0" class="icon_tree tree_organdept"></span>
+                                                            <span id="spn_FromTreeView_0_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;); node_select(&quot;FromTreeView_0_0&quot;, &quot;회장실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_0&quot;);" style="cursor: pointer;">회장실</span><div id="FromTreeView_0_0_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_1" nodename="사장실" nodelevel="1" endnode="false" value="사장실" cn="10001259" displayname="사장실" displayname2="CEO" mail="G_M_10001259D@mobisdev.com" displayname1="사장실" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_1" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;); node_select(&quot;FromTreeView_0_1&quot;, &quot;사장실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_1&quot;);" style="cursor: pointer;">사장실</span><div id="FromTreeView_0_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_2" nodename="해외법인" nodelevel="1" endnode="false" value="해외법인" cn="GMOBIS" displayname="해외법인" displayname2="GMOBIS" mail="GMOBISD@gmobisdev.com" displayname1="해외법인" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_2" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;); node_select(&quot;FromTreeView_0_2&quot;, &quot;해외법인&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_2&quot;);" style="cursor: pointer;">해외법인</span><div id="FromTreeView_0_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_3" nodename="배치대기" nodelevel="1" endnode="false" value="배치대기" cn="10002050" displayname="배치대기" displayname2="배치대기" mail="G_M_10002050D@mobisdev.com" displayname1="배치대기" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_3" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_3&quot;); node_select(&quot;FromTreeView_0_3&quot;, &quot;배치대기&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">배치대기</span><div id="FromTreeView_0_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_4" nodename="공장파견" nodelevel="1" endnode="false" value="공장파견" cn="10000030" displayname="공장파견" displayname2="공장파견" mail="G_M_10000030D@mobisdev.com" displayname1="공장파견" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_4" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;); node_select(&quot;FromTreeView_0_4&quot;, &quot;공장파견&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_4&quot;);" style="cursor: pointer;">공장파견</span><div id="FromTreeView_0_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5" nodename="그룹/협력사" nodelevel="1" endnode="true" value="그룹/협력사" cn="VAN" displayname="그룹/협력사" displayname2="Partners" mail="G_M_VAN@mobisdev.com" displayname1="그룹/협력사" isleaf="FALSE" expanded="TRUE" nodes="" style="white-space: nowrap;">
+                                                            <span class="icon_tree tree_blank"></span>
+                                                            <span id="imgNode_FromTreeView_0_5" class="icon_tree tree_minus" onclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;);" style="cursor: pointer;"></span>
+                                                            <span id="subImgNode_FromTreeView_0_5" class="icon_tree tree_organdept"></span>
+                                                            <span id="spn_FromTreeView_0_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;); node_select(&quot;FromTreeView_0_5&quot;, &quot;그룹/협력사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5&quot;);" style="cursor: pointer;">그룹/협력사</span>
+                                                            <div id="FromTreeView_0_5_sub">
+                                                                <div class="node_div" id="FromTreeView_0_5_0" nodename="기타지원" nodelevel="2" endnode="false" value="기타지원" cn="4" displayname="기타지원" displayname2="기타지원" mail="G_M_4D@mobisdev.com" displayname1="기타지원" isleaf="FALSE" expanded="TRUE" nodes="" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0" class="icon_tree tree_minus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_0" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;); node_select(&quot;FromTreeView_0_5_0&quot;, &quot;기타지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0&quot;);" style="cursor: pointer;">기타지원</span><div id="FromTreeView_0_5_0_sub"><div class="node_div" id="FromTreeView_0_5_0_0" nodename="새마을금고" nodelevel="3" endnode="false" value="새마을금고" cn="1PBZ00" displayname="새마을금고" displayname2="새마을금고" mail="G_M_1PBZ00D@mobisdev.com" displayname1="새마을금고" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_0" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_0" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_0&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_0&quot;); node_select(&quot;FromTreeView_0_5_0_0&quot;, &quot;새마을금고&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">새마을금고</span><div id="FromTreeView_0_5_0_0_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_1" nodename="고객센터" nodelevel="3" endnode="false" value="고객센터" cn="4KCJ90" displayname="고객센터" displayname2="고객센터" mail="G_M_4KCJ90D@mobisdev.com" displayname1="고객센터" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_1" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_1&quot;); node_select(&quot;FromTreeView_0_5_0_1&quot;, &quot;고객센터&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">고객센터</span><div id="FromTreeView_0_5_0_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_2" nodename="IT지원" nodelevel="3" endnode="false" value="IT지원" cn="4KCT11" displayname="IT지원" displayname2="IT지원" mail="G_M_4KCT11D@mobisdev.com" displayname1="IT지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_2" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_2&quot;); node_select(&quot;FromTreeView_0_5_0_2&quot;, &quot;IT지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">IT지원</span><div id="FromTreeView_0_5_0_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_3" nodename="태블릿지원" nodelevel="3" endnode="false" value="태블릿지원" cn="4KCT13" displayname="태블릿지원" displayname2="태블릿지원" mail="G_M_4KCT13D@mobisdev.com" displayname1="태블릿지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_3" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_3&quot;); node_select(&quot;FromTreeView_0_5_0_3&quot;, &quot;태블릿지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">태블릿지원</span><div id="FromTreeView_0_5_0_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_4" nodename="공장지원" nodelevel="3" endnode="false" value="공장지원" cn="4KCT16" displayname="공장지원" displayname2="공장지원" mail="G_M_4KCT16D@mobisdev.com" displayname1="공장지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_4" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_4&quot;); node_select(&quot;FromTreeView_0_5_0_4&quot;, &quot;공장지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">공장지원</span><div id="FromTreeView_0_5_0_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_5" nodename="수출선적업무지원" nodelevel="3" endnode="false" value="수출선적업무지원" cn="4KCT21" displayname="수출선적업무지원" displayname2="수출선적업무지원" mail="G_M_4KCT21D@mobisdev.com" displayname1="수출선적업무지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_5" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_5" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_5&quot;); node_select(&quot;FromTreeView_0_5_0_5&quot;, &quot;수출선적업무지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">수출선적업무지원</span><div id="FromTreeView_0_5_0_5_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_6" nodename="외부인접견실" nodelevel="3" endnode="false" value="외부인접견실" cn="4KCT25" displayname="외부인접견실" displayname2="외부인접견실" mail="G_M_4KCT25D@mobisdev.com" displayname1="외부인접견실" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_6" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_6" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_6" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_6&quot;); node_select(&quot;FromTreeView_0_5_0_6&quot;, &quot;외부인접견실&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">외부인접견실</span><div id="FromTreeView_0_5_0_6_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_7" nodename="사무관리혁신" nodelevel="3" endnode="false" value="사무관리혁신" cn="4KCT27" displayname="사무관리혁신" displayname2="Office Work Innovation" mail="G_M_4KCT27D@mobisdev.com" displayname1="사무관리혁신" isleaf="TRUE" select="" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_7" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_7" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_7" class="node_selected" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_7&quot;); node_select(&quot;FromTreeView_0_5_0_7&quot;, &quot;사무관리혁신&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">사무관리혁신</span><div id="FromTreeView_0_5_0_7_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_8" nodename="차세대그룹웨어구축" nodelevel="3" endnode="false" value="차세대그룹웨어구축" cn="4KCT39" displayname="차세대그룹웨어구축" displayname2="차세대그룹웨어구축" mail="G_M_4KCT39D@mobisdev.com" displayname1="차세대그룹웨어구축" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_8" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_8" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_8" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_8&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_8&quot;); node_select(&quot;FromTreeView_0_5_0_8&quot;, &quot;차세대그룹웨어구축&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">차세대그룹웨어구축</span><div id="FromTreeView_0_5_0_8_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_9" nodename="지원팀" nodelevel="3" endnode="false" value="지원팀" cn="4KCT40" displayname="지원팀" displayname2="지원팀" mail="G_M_4KCT40D@mobisdev.com" displayname1="지원팀" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_9" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_9" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_9" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_9&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_9&quot;); node_select(&quot;FromTreeView_0_5_0_9&quot;, &quot;지원팀&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">지원팀</span><div id="FromTreeView_0_5_0_9_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_10" nodename="연구소지원" nodelevel="3" endnode="false" value="연구소지원" cn="4KCT9" displayname="연구소지원" displayname2="연구소지원" mail="G_M_4KCT9D@mobisdev.com" displayname1="연구소지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_10" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_10" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_10" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_10&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_10&quot;); node_select(&quot;FromTreeView_0_5_0_10&quot;, &quot;연구소지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">연구소지원</span><div id="FromTreeView_0_5_0_10_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_11" nodename="R&amp;D운영지원" nodelevel="3" endnode="false" value="R&amp;D운영지원" cn="4KCT98" displayname="R&amp;D운영지원" displayname2="R&amp;D운영지원" mail="G_M_4KCT98D@mobisdev.com" displayname1="R&amp;D운영지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_11" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_11" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_11" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_11&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_11&quot;); node_select(&quot;FromTreeView_0_5_0_11&quot;, &quot;R&amp;D운영지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">R&amp;D운영지원</span><div id="FromTreeView_0_5_0_11_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_12" nodename="Intern" nodelevel="3" endnode="false" value="Intern" cn="4KIT11" displayname="Intern" displayname2="Intern" mail="G_M_4KIT11D@mobisdev.com" displayname1="Intern" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_12" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_12" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_12" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_12&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_12&quot;); node_select(&quot;FromTreeView_0_5_0_12&quot;, &quot;Intern&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">Intern</span><div id="FromTreeView_0_5_0_12_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_13" nodename="개발지원" nodelevel="3" endnode="false" value="개발지원" cn="4KTEST" displayname="개발지원" displayname2="개발지원" mail="G_M_4KTESTD@mobisdev.com" displayname1="개발지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_13" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_13" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_13" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_13&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_13&quot;); node_select(&quot;FromTreeView_0_5_0_13&quot;, &quot;개발지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">개발지원</span><div id="FromTreeView_0_5_0_13_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_14" nodename="ERP지원" nodelevel="3" endnode="false" value="ERP지원" cn="4OAA00" displayname="ERP지원" displayname2="ERP지원" mail="G_M_4OAA00D@mobisdev.com" displayname1="ERP지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_14" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_14" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_14" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_14&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_14&quot;); node_select(&quot;FromTreeView_0_5_0_14&quot;, &quot;ERP지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">ERP지원</span><div id="FromTreeView_0_5_0_14_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_15" nodename="IT운영지원" nodelevel="3" endnode="false" value="IT운영지원" cn="4OCS00" displayname="IT운영지원" displayname2="IT운영지원" mail="G_M_4OCS00D@mobisdev.com" displayname1="IT운영지원" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_15" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_15" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_15" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_15&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_15&quot;); node_select(&quot;FromTreeView_0_5_0_15&quot;, &quot;IT운영지원&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">IT운영지원</span><div id="FromTreeView_0_5_0_15_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_16" nodename="협진통신" nodelevel="3" endnode="false" value="협진통신" cn="4OZY00" displayname="협진통신" displayname2="협진통신" mail="G_M_4OZY00D@mobisdev.com" displayname1="협진통신" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_16" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_16" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_16" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_16&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_16&quot;); node_select(&quot;FromTreeView_0_5_0_16&quot;, &quot;협진통신&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">협진통신</span><div id="FromTreeView_0_5_0_16_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_17" nodename="파견(4P)" nodelevel="3" endnode="false" value="파견(4P)" cn="4P" displayname="파견(4P)" displayname2="파견(4P)" mail="G_M_4PD@mobisdev.com" displayname1="파견(4P)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_17" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_17" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_17" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_17&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_17&quot;); node_select(&quot;FromTreeView_0_5_0_17&quot;, &quot;파견(4P)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">파견(4P)</span><div id="FromTreeView_0_5_0_17_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_18" nodename="MAPS TFT 지원(컨설턴트)" nodelevel="3" endnode="false" value="MAPS TFT 지원(컨설턴트)" cn="4KCT31" displayname="MAPS TFT 지원(컨설턴트)" displayname2="MAPS TFT Support(Consultant)" mail="G_M_4KCT31D@mobisdev.com" displayname1="MAPS TFT 지원(컨설턴트)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_18" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_18" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_18" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_18&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_18&quot;); node_select(&quot;FromTreeView_0_5_0_18&quot;, &quot;MAPS TFT 지원(컨설턴트)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">MAPS TFT 지원(컨설턴트)</span><div id="FromTreeView_0_5_0_18_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_0_19" nodename="MAPS TFT 지원(개발자)" nodelevel="3" endnode="true" value="MAPS TFT 지원(개발자)" cn="4KCT35" displayname="MAPS TFT 지원(개발자)" displayname2="MAPS TFT Support(Developer)" mail="G_M_4KCT35D@mobisdev.com" displayname1="MAPS TFT 지원(개발자)" isleaf="TRUE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_0_19" class="icon_tree tree_blank"></span><span id="subImgNode_FromTreeView_0_5_0_19" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_0_19" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_0_19&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_0_19&quot;); node_select(&quot;FromTreeView_0_5_0_19&quot;, &quot;MAPS TFT 지원(개발자)&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " style="cursor: pointer;">MAPS TFT 지원(개발자)</span><div id="FromTreeView_0_5_0_19_sub" style="display: none;"></div></div></div></div><div class="node_div" id="FromTreeView_0_5_1" nodename="그룹계열사" nodelevel="2" endnode="false" value="그룹계열사" cn="4ZZ" displayname="그룹계열사" displayname2="그룹계열사" mail="G_M_4ZZD@mobisdev.com" displayname1="그룹계열사" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_1" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_1" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;); node_select(&quot;FromTreeView_0_5_1&quot;, &quot;그룹계열사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_1&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_1&quot;);" style="cursor: pointer;">그룹계열사</span><div id="FromTreeView_0_5_1_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_2" nodename="생산전문사" nodelevel="2" endnode="false" value="생산전문사" cn="QQQQQQQQ" displayname="생산전문사" displayname2="생산전문사" mail="G_M_QQQQQQQQD@mobisdev.com" displayname1="생산전문사" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_2" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_2" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_2" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;); node_select(&quot;FromTreeView_0_5_2&quot;, &quot;생산전문사&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_2&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_2&quot;);" style="cursor: pointer;">생산전문사</span><div id="FromTreeView_0_5_2_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_3" nodename="부품업체" nodelevel="2" endnode="false" value="부품업체" cn="VAN_AA" displayname="부품업체" displayname2="부품업체" mail="G_M_VAN_AAD@mobisdev.com" displayname1="부품업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_3" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_3" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_3" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;); node_select(&quot;FromTreeView_0_5_3&quot;, &quot;부품업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_3&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_3&quot;);" style="cursor: pointer;">부품업체</span><div id="FromTreeView_0_5_3_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_4" nodename="사급업체" nodelevel="2" endnode="false" value="사급업체" cn="VAN_AB" displayname="사급업체" displayname2="사급업체" mail="G_M_VAN_ABD@mobisdev.com" displayname1="사급업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_4" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_4" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_4" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;); node_select(&quot;FromTreeView_0_5_4&quot;, &quot;사급업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_4&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_4&quot;);" style="cursor: pointer;">사급업체</span><div id="FromTreeView_0_5_4_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_5" nodename="AUTO_TECH" nodelevel="2" endnode="false" value="AUTO_TECH" cn="VAN_AC" displayname="AUTO_TECH" displayname2="AUTO_TECH" mail="G_M_VAN_ACD@mobisdev.com" displayname1="AUTO_TECH" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_5" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_5" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_5" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;); node_select(&quot;FromTreeView_0_5_5&quot;, &quot;AUTO_TECH&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_5&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_5&quot;);" style="cursor: pointer;">AUTO_TECH</span><div id="FromTreeView_0_5_5_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_6" nodename="용품업체" nodelevel="2" endnode="false" value="용품업체" cn="VAN_AD" displayname="용품업체" displayname2="용품업체" mail="G_M_VAN_ADD@mobisdev.com" displayname1="용품업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_6" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_6" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_6" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;); node_select(&quot;FromTreeView_0_5_6&quot;, &quot;용품업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_6&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_6&quot;);" style="cursor: pointer;">용품업체</span><div id="FromTreeView_0_5_6_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_0_5_7" nodename="연구소협력업체" nodelevel="2" endnode="true" value="연구소협력업체" cn="VAN_AF" displayname="연구소협력업체" displayname2="연구소협력업체" mail="G_M_VAN_AFD@mobisdev.com" displayname1="연구소협력업체" isleaf="FALSE" style="white-space: nowrap;"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank"></span><span id="imgNode_FromTreeView_0_5_7" class="icon_tree tree_plus" onclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;);" style="cursor: pointer;"></span><span id="subImgNode_FromTreeView_0_5_7" class="icon_tree tree_organdept"></span><span id="spn_FromTreeView_0_5_7" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;); node_select(&quot;FromTreeView_0_5_7&quot;, &quot;연구소협력업체&quot;, &quot;FromTreeView&quot;, TreeViewNodeClick); " ondblclick="treeicon_toggle(&quot;FromTreeView_0_5_7&quot;, &quot;FromTreeView&quot;, RequestData, &quot;imgNode_FromTreeView_0_5_7&quot;);" style="cursor: pointer;">연구소협력업체</span>
+                                                                    <div id="FromTreeView_0_5_7_sub" style="display: none;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                -->
+                                        </div>
+                                        <!-- //treeView -->
+                                    </li>
+                                    <li class="contentlayout_none receive_info">
+                                        <div id="DIV_UserList">
+                                            <!-- search -->
+                                            <ul class="contentlayout receive_search">
+                                                <li class="contentlayout_left ">
+                                                    <div class="select-box type01 new_sel linebox">
+                                                        <a href="javascript:void(0)">내선번호</a>
+                                                        <ul>
+                                                            <li>내선번호</li>
+                                                            <li>내선번호</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="input_wrap">
+                                                        <input type="text" class="lnactive" value="조직원을 검색해보세요."> <a href="#none" onclick="search_click('search')" class="btn_search20"><span class="newSubicon newSubicon079"></span></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- //search -->
+                                            <!-- receive_list -->
+                                            <div class="border_box mt5 line_rds3">
+                                                <ul class="contentlayout mail_userinfo">
+                                                    <li>
+                                                        <p id="SelectDeptNM" class="tit">전략사업개발팀</p>
+                                                        <p class="subtxt">총<span class="c_blue">20</span>명</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <ul class="mail_userinfoBtn">
+                                                            <li id="Listinfo_TXT" onclick="ChangeListView_onClick('TXT');">
+                                                                <span class="newSubicon newSubicon019"></span>
+                                                            </li>
+                                                            <li class="on" id="Listinfo_IMG" onclick="ChangeListView_onClick('IMG');">
+                                                                <span class="newSubicon newSubicon020"></span>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="content_listtype hgt389 scrollbar-inner" id="txtlist_Layer">
+                                                    <table class="receive_list" onkeyup="event_listOnkeyUp" onkeydown="event_listOnkeyDown">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>이름</th>
+                                                                <th>직위</th>
+                                                                <th>사내전화</th>
+                                                                <th>담당업무</th>
+                                                            </tr>
+                                                            <tr class="on" onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT019767" _mail="DT019767@mobisdev.com" _displayname="김현수" _displayname2="김현수" _description="사무관리혁신" _description2="Office Work Innovation" _title="부장" _mobile="IAXFz7/grM4GbhrzKIzLJw==" _usesystem="" _department="4KCT27" _displayname1="김현수" _description1="사무관리혁신" _title1="부장" _title2="부장" id="DT019767">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT027844" _mail="DT027844@mobisdev.com" _displayname="김창영" _displayname2="김창영" _description="사무관리혁신" _description2="Office Work Innovation" _title="차장" _mobile="dbvbqNEcVikrjCBOIh7Gvw==" _usesystem="" _department="4KCT27" _displayname1="김창영" _description1="사무관리혁신" _title1="차장" _title2="Deputy General Manager" id="DT027844">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT067479" _mail="DT067479@mobisdev.com" _displayname="박효진" _displayname2="박효진" _description="사무관리혁신" _description2="Office Work Innovation" _title="차장" _mobile="tOIbsY/2vso6fpYjNl882A==" _usesystem="" _department="4KCT27" _displayname1="박효진" _description1="사무관리혁신" _title1="차장" _title2="Deputy General Manager" id="DT067479">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT019858" _mail="DT019858@mobisdev.com" _displayname="유혜진" _displayname2="유혜진" _description="사무관리혁신" _description2="Office Work Innovation" _title="차장" _mobile="QdvnMfCDjF/h20IIi9l/wg==" _usesystem="" _department="4KCT27" _displayname1="유혜진" _description1="사무관리혁신" _title1="차장" _title2="차장" id="DT019858">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT063602" _mail="DT063602@mobisdev.com" _displayname="장용한" _displayname2="장용한" _description="사무관리혁신" _description2="Office Work Innovation" _title="대리" _mobile="QMeJCZyV6HlG+W3hL6HGIA==" _usesystem="" _department="4KCT27" _displayname1="장용한" _description1="사무관리혁신" _title1="대리" _title2="대리" id="DT063602">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT045320" _mail="DT045320@mobisdev.com" _displayname="이인규" _displayname2="이인규" _description="사무관리혁신" _description2="Office Work Innovation" _title="사원" _mobile="4gw8/i65KRZqwqc1mtYT3A==" _usesystem="" _department="4KCT27" _displayname1="이인규" _description1="사무관리혁신" _title1="사원" _title2="사원" id="DT045320">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT050015" _mail="DT050015@mobisdev.com" _displayname="김태홍" _displayname2="김태홍" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="iJykC6J21mVWEQS8rufHdA==" _usesystem="" _department="4KCT27" _displayname1="김태홍" _description1="사무관리혁신" _title1="위원" _title2="위원" id="DT050015">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT060143" _mail="DT060143@mobisdev.com" _displayname="박창범" _displayname2="박창범" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="d6icGFh/nVRaxgi3LueO/Q==" _usesystem="" _department="4KCT27" _displayname1="박창범" _description1="사무관리혁신" _title1="위원" _title2="위원" id="DT060143">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="IMOBIS01" _mail="IMOBIS01@mobisdev.com" _displayname="imobis_01" _displayname2="imobis_01" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="cAjUEggwEn7ehZrF8OpHLw==" _usesystem="" _department="4KCT27" _displayname1="imobis_01" _description1="사무관리혁신" _title1="위원" _title2="위원" id="IMOBIS01">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT060143" _mail="DT060143@mobisdev.com" _displayname="박창범" _displayname2="박창범" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="d6icGFh/nVRaxgi3LueO/Q==" _usesystem="" _department="4KCT27" _displayname1="박창범" _description1="사무관리혁신" _title1="위원" _title2="위원" id="DT060143">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="IMOBIS01" _mail="IMOBIS01@mobisdev.com" _displayname="imobis_01" _displayname2="imobis_01" _description="사무관리혁신" _description2="Office Work Innovation" _title="위원" _mobile="cAjUEggwEn7ehZrF8OpHLw==" _usesystem="" _department="4KCT27" _displayname1="imobis_01" _description1="사무관리혁신" _title1="위원" _title2="위원" id="IMOBIS01">
+                                                                <td>윤태진</td>
+                                                                <td>책임매니저</td>
+                                                                <td>02-1234-5678</td>
+                                                                <td>기술영입총괄</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- //receive_list -->
+                                            </div>
+                                            <!-- 페이징 -->
+                                            <div class="listview-nav">
+                                                <a href="#" class="prev blind">이전</a>
+                                                <span class="page-num"><em>1</em>/ 5</span>
+                                                <a href="#" class="next blind">다음</a>
+                                            </div>
+                                            <!-- //페이징 -->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //조직도 -->
+                <!-- 주소록 -->
+                <div id="ListViewTD" style="display: none">
+                    <ul class="contentlayout mt10" id="AddrSearch" style="display: none;">
+                        <li class="contentlayout_left mr5">
+                            <select name="search_case" id="search_case">
+                                <option value="SNAME">
+                                    이름
+                                </option>
+                                <option value="SCOMPANY">
+                                    회사
+                                </option>
+                                <option value="SEMAIL">
+                                    E-Mail
+                                </option>
+                            </select>
+                        </li>
+                        <li class="contentlayout_left mr5"><input id="search_text" type="text" value="" onkeyup="AddrSearch_press()" class="width150px" name="Input"></li>
+                        <li class="contentlayout_left mr5"><a class="imgbtn"><span onclick="AddrSearch_click()">검색</span></a></li>
+                        <li class="contentlayout_right"><a class="imgbtn"><span id="groupmember_span" onclick="groupmember_click()" style="display:none;">구성원 보기 및 선택</span></a></li>
+                    </ul>
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left width250px mr10 mt5">
+                            <div id="AddressTreeView" class="tree border_box" style="overflow: auto; height: 519px;"></div>
+                        </li>
+                        <li class="contentlayout_none mt5">
+                            <div class="border_box">
+                                <ul class="contentlayout mail_userinfo">
+                                    <li class="contentlayout_none">
+                                        <span class="spanText">
+                                            <span class="icon_tree tree_fldr"></span>
+                                            <span id="addressFolderName" style="font-weight: bold;"></span>
+                                            -[<span id="addressFolderCnt" style="color: #017BEC; font-weight: bold;"></span>]
+                                        </span>
+                                    </li>
+                                </ul>
+
+                                <div style="height: 435px; overflow: auto;" class="content_listtype" id="AddressListView"></div>
+                            </div>
+                            <div id="tblPageRayer_addr" class="pagenavi"></div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //주소록 -->
+                <!-- 공용그룹 -->
+                <div id="ListViewDLTD" style="display: none">
+                    <ul class="contentlayout mt10">
+                        <li class="contentlayout_right" id="dlmember" style="display: none">
+                            <a class="imgbtn"><span onclick="dlmember_click()">구성원 보기 및 선택</span></a>
+                        </li>
+                    </ul>
+                    <div style="height: 519px; overflow: auto;" id="ListViewDL" class="border_box mt5"></div>
+                </div>
+                <!-- //공용그룹 -->
+                <!-- 중역/실장/법인지사장/팀장/셀리더 -->
+                <div id="ListViewExFTD" style="display: none">
+                    <div id="ListViewExFDL" style="height: 555px; overflow: auto;" class="border_box mt5"></div>
+                    <div id="tblPageRayerEx" class="pagenavi"></div>
+                </div>
+                <!-- //중역/실장/법인지사장/팀장/셀리더 -->
+                <!-- 그룹사 -->
+                <div id="ListViewGroupTD" style="display: none">
+                    <ul class="contentlayout mt10">
+                        <li class="contentlayout_left">
+                            <select id="GroupSa_search_type">
+                                <option selected="" value="displayname" usedefault="1">이름</option>
+                                <option value="description" usedefault="1">부서</option>
+                                <option value="title" usedefault="1">직위</option>
+                            </select>
+                            <input type="text" class="width100percent" id="GroupSa_keyword" onkeyup="Group_search_press(event)" onmousedown="GroupSa_keyword_Clear();">
+                            <a class="imgbtn"><span onclick="GroupSearch_click()">검색</span></a>
+                        </li>
+                        <li class="contentlayout_right">
+                            <select id="MobisCompanyList"></select>
+                        </li>
+                    </ul>
+                    <div style="height: 519px; overflow: auto;" id="ListViewDLGroup" class="border_box mt5"></div>
+                </div>
+                <!-- //그룹사 -->
+                <!-- 직접입력 -->
+                <div id="ListViewINPUT" style="display: none">
+                    <div id="ManualView" style="height: 558px;" class="border_box">
+                        <div style="margin:-1px;">
+                            <table class="content">
+                                <tbody>
+                                    <tr>
+                                        <th>이름</th>
+                                        <td><input type="text" id="emailname" style="WIDTH: 100%; ime-mode: active; box-sizing: border-box; -moz-box-sizing: border-box;"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일</th>
+                                        <td><input type="text" id="emailaddr" style="WIDTH: 100%; ime-mode: inactive; box-sizing: border-box; -moz-box-sizing: border-box;" onkeyup="return on_keydown()"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- //직접입력 -->
+            </li>
+            <li class="contentlayout_right receives">
+                <!-- right -->
+                <table id="listType1">
+                    <!-- 받는사람 -->
+                    <tbody>
+                        <tr id="ListMsgTo">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="ToTitle" onclick="SelectReceiverWindow(ToTitle,ListViewMsgTo)" class="receive_tit">
+                                            <span id="ToTitleStr">받는 사람</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="toMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgTo, ListViewMsgBCC)"><span>BCC</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgTo, ListViewMsgCC)"><span>CC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                    <li class="contentlayout_right" id="sortli" style="display:none;">
+                                        <div class="radio_wrap">
+                                            <span class="contentlayout_left listview-check checks" onclick="document.getElementById('chk_sort').click(); return false;">
+                                                <input type="checkbox" id="listview_chk">
+                                                <label for="listview_chk">가나다 정렬</label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="border_box">
+                                    <div id="ListViewMsgTo" class="conts_box scrollbar-inner" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" onclick="SelectReceiverWindow(ToTitle,this)" ondblclick="DeleteReceiver(ListViewMsgTo)">
+                                        <table id="MsgToList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver">
+                                            <thead id="MsgToList_THEAD">
+                                                <tr id="MsgToList_TH"></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td class="on">윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //받는사람 -->
+                        <!-- 참조 -->
+                        <tr id="ListMsgCC">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgCC)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgCC)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="CCTitle" onclick="SelectReceiverWindow(CCTitle,ListViewMsgCC)" class="receive_tit">
+                                            <span>참조</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="ccMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgBCC)"><span>BCC</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgCC)"><span>CC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="border_box">
+                                    <div id="ListViewMsgCC" class="conts_box scrollbar-inner" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" onclick="SelectReceiverWindow(CCTitle,this)" ondblclick="DeleteReceiver(ListViewMsgCC)">
+                                        <table id="MsgCCList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver">
+                                            <thead id="MsgCCList_THEAD">
+                                                <tr id="MsgCCList_TH"></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //참조 -->
+                        <!-- 숨은참조 -->
+                        <tr id="ListMsgBCC">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgBCC)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgBCC)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="BCCTitle" onclick="SelectReceiverWindow(BCCTitle,ListViewMsgBCC)" class="receive_tit">
+                                            <span>숨은 참조</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="bccMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgBCC)"><span>BCC</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgCC)"><span>CC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                </ul>
+                                <div class="border_box mb0">
+                                    <div id="ListViewMsgBCC" class="conts_box scrollbar-inner" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" onclick="SelectReceiverWindow(BCCTitle,this)" ondblclick="DeleteReceiver(ListViewMsgBCC)">
+                                        <table id="MsgBCCList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver">
+                                            <thead id="MsgBCCList_THEAD">
+                                                <tr id="MsgBCCList_TH"></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                                <tr><td>윤태진</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //숨은참조 -->
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <ul class="btn_newtype">
+        <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+        <li id="Submit2" class="no" onclick="return CANCEL()">취소</li>
+    </ul>
+
+    <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1000; background: none rgba(0,0,0,0.7); display: none;" id="Main_mailPanel">&nbsp;</div>
+    <div class="layerpopup" style="z-index: 2000; position: absolute;display: none;" id="Main_iFramePanel">
+        <p class="loader" title="loading"></p>
+        <iframe src="/myoffice/blank.htm" style="border:none;" id="Main_iFrameLayer"></iframe>
+    </div>
+</body>
+</html>

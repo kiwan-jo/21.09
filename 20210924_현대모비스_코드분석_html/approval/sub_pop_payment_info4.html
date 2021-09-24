@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body>
+<!-- 결제 정보 수정 -->
+<div class="popup">
+    <dl class="popupTitle">
+        <dt>결제 정보 수정</dt>
+        <dd><span class="newSubicon newSubicon004"></span></dd>
+        <dd><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout">
+        <div class="pop_opinion">
+            <!-- 탭 -->
+            <ul class="contentlayout">
+                <li class="contentlayout_none">
+                    <div class="tab_menuBox">
+                        <dl id="tab_menu_list" class="tab_menu">
+                            <dt class="on"><span>결재선</span></dt>
+                            <dt><span>기타 옵션</span></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+            <!-- //탭 -->
+
+            <ul class="contentlayout payment_info_rectify">
+                <li class="contentlayout_left payment_search_wrap">
+                    <ul class="top_search">
+                        <li>
+                            <div class="input_wrap block">
+                                <input type="text" class="lnactive" value="이름 또는 부서 입력"> <a href="#none" class="btn_search"></a>
+                            </div>
+                        </li>
+                        <li class="btn_link">이름검색</li>
+                        <li class="btn_link">부서검색</li>
+                    </ul>
+
+                    <div class="tab_box">
+                        <ul>
+                            <li><a href="#payment1" class="on">조직도</a></li>
+                            <li><a href="#payment2">결재선 즐겨찾기</a></li>
+                        </ul>
+
+                        <div class="tab_conts" id="payment1">
+                            <div class="scrollbar-inner">
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                                조직도<br />
+                            </div>
+                        </div>
+
+                        <div class="tab_conts" id="payment2">
+                            <div class="scrollbar-inner">
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                                결재선 즐겨찾기<br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 부서원 전화번호 -->
+                    <div class="pop_opinion">
+                        <table class="com_list">
+                            <colgroup>
+                                <col width="10%" />
+                                <col width="15%" />
+                                <col width="30%" />
+                                <col width="20%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="tb_pd10">
+                                        <div class="input_wrap">
+                                            <span class="listview-check checks">
+                                                <input type="checkbox" id="checkbox">
+                                                <label for="checkbox"></label>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th class="tb_pd10">성명</th>
+                                    <th class="tb_pd10 tb_center">부서</th>
+                                    <th class="tb_pd10">사내전화</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="com_list_scroll scrollbar-inner number">
+                            <table class="com_list noline com_fixed">
+                                <colgroup>
+                                    <col width="10%" />
+                                    <col width="20%" />
+                                    <col width="25%" />
+                                    <col width="25%" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="tb_pd10">
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input type="checkbox" id="checkbox1">
+                                                    <label for="checkbox1"></label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="tb_pd10"><strong>정하윤</strong></td>
+                                        <td class="tb_pd10">책임매니저 전략사업개발팀</td>
+                                        <td class="tb_pd10">02.1234-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb_pd10">
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input type="checkbox" id="checkbox2">
+                                                    <label for="checkbox2"></label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="tb_pd10"><strong>정하윤</strong></td>
+                                        <td class="tb_pd10">책임매니저 전략사업개발팀</td>
+                                        <td class="tb_pd10">02.1234-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb_pd10">
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input type="checkbox" id="checkbox3">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="tb_pd10"><strong>정하윤</strong></td>
+                                        <td class="tb_pd10">책임매니저 전략사업개발팀</td>
+                                        <td class="tb_pd10">02.1234-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb_pd10">
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input type="checkbox" id="checkbox4">
+                                                    <label for="checkbox4"></label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="tb_pd10"><strong>정하윤</strong></td>
+                                        <td class="tb_pd10">책임매니저 전략사업개발팀</td>
+                                        <td class="tb_pd10">02.1234-5678</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb_pd10">
+                                            <div class="input_wrap">
+                                                <span class="listview-check checks">
+                                                    <input type="checkbox" id="checkbox5">
+                                                    <label for="checkbox5"></label>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td class="tb_pd10"><strong>정하윤</strong></td>
+                                        <td class="tb_pd10">책임매니저 전략사업개발팀</td>
+                                        <td class="tb_pd10">02.1234-5678</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //부서원 전화번호 -->
+                </li>
+                <li class="contentlayout_left payment_list_btn">
+                    <div class="left_control">
+                        <a href="#none" class="btn_link block">일반결재</a>
+                        <a href="#none" class="btn_link block">개인협조</a>
+                        <br />
+                        <a href="#none" class="btn_link block">팀 참조</a>
+                    </div>
+                </li>
+                <li class="contentlayout_right payment_list_wrap">
+                    <div class="list_box">
+                        <!-- 결재선 리스트 -->
+                        <div class="tit">
+                            <p>결재선 리스트</p>
+                            <div class="btn">
+                                <a href="#none" class="txt">삭제</a>
+                                <div class="icon_box small">
+                                    <a href="#none" class="icon"><span class="newSubicon newSubicon022"></span></a>
+                                </div>
+                                <div class="icon_box small">
+                                    <a href="#none" class="icon"><span class="newSubicon newSubicon023"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pop_opinion">
+                            <div class="com_list_scroll scrollbar-inner payment">
+                                
+                            </div>
+                        </div>
+                        <!-- //결재선 리스트 -->
+
+                    </div>
+
+                    <a href="#none" class="btn_link">결재선 즐겨찾기 저장</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="btn_newtype" style="display:block;">
+            <li class="ok">확인</li>
+            <li class="no">취소</li>
+        </ul>
+    </div>
+</div>
+<!-- //결제 정보 수정 -->
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+
+    </div>
+    <!-- //lnb 메뉴 -->
+
+    <!-- list -->
+    <!-- 설문리스트 -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>설문리스트</p>
+            <div class="search_box">
+                <div class="input_wrap">
+                    <input type="text" class="lnactive" value="Search" /> <a href="#none" class="btn_search"></a>
+                </div>
+                <div class="icon_box">
+                    <a href="#none" class="icon searchmark"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 검색 설정 -->
+        <div class="lyp_search_wrap">
+            <dl>
+                <dt>검색어</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check radios">
+                            <input type="radio" id="and" name="listview_radio">
+                            <label for="and">AND</label>
+                        </span>
+                        <span class="listview-check radios">
+                            <input type="radio" id="or" name="listview_radio">
+                            <label for="or">OR</label>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                제목
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                보낸사람
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                수신참조
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+                <dt>첨부파일</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check radios">
+                            <input type="radio" id="all">
+                            <label for="all">모두</label>
+                        </span>
+                        <span class="listview-check radios">
+                            <input type="radio" id="include">
+                            <label for="include">포함</label>
+                        </span>
+                        <span class="listview-check radios">
+                            <input type="radio" id="noinclude">
+                            <label for="noinclude">미포함</label>
+                        </span>
+                    </div>
+                </dd>
+                <dt>검색기간</dt>
+                <dd>
+                    <div class="select-box type01 new_sel linebox">
+                        <a href="javascript:void(0)">직접입력</a>
+                        <ul>
+                            <li>1주일</li>
+                            <li>1개월</li>
+                            <li>3개월</li>
+                            <li>직접입력</li>
+                        </ul>
+                    </div>
+                    <div class="input_wrap block mt5">
+                        <input type="text" value="2020.10.14" /><span class="bar">-</span><input type="text" value="2020.10.20" />
+                    </div>
+                </dd>
+            </dl>
+            <ul class="btn_newtype">
+                <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            </ul>
+        </div>
+        <!-- //검색 설정 -->
+
+        <div class="align_num">
+            <ul>
+                <li class="one">
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox"></label>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">정렬</a>
+                        <ul>
+                            <li>기본 보기</li>
+                            <li>받는 사람</li>
+                            <li>중요도</li>
+                            <li>보낸 날짜</li>
+                            <li>제목</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none" class="valign">오름차순<span></span></a></li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">필터</a>
+                        <ul>
+                            <li>기본 보기</li>
+                            <li>읽지 않는 메일</li>
+                            <li>첨부파일</li>
+                            <li>책갈피</li>
+                            <li>내부 메일</li>
+                            <li>외부 메일</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none">삭제</a></li>
+                <li class="one"><a href="#none">미응답자 알림 발송</a></li>
+            </ul>
+
+            <div class="all_email">
+                <p>전체메일</p>
+                <p><span class="c_blue">15 </span>/<span> 1654</span></p>
+                <a href="#none" class="btn_reset"></a>
+            </div>
+        </div>
+    </div>
+    <!-- //설문리스트 -->
+    <!-- new mail list -->
+    <span id="PreViewRayer" class="mainbody" style="min-width: 330px; width: 20%; height: calc(100% - 128px); display: block;">
+        <div class="new_listview scrollbar-inner">
+            <!-- 테이블 리스트 들어가는 영역 -->
+            <table class="com_list com_fixed noline">
+                <colgroup>
+                    <col width="25%" />
+                    <col width="*" />
+                    <col width="30%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>진행여부</th>
+                        <th>제목</th>
+                        <th>유효일</th>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ing">진행중</span></td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ing">진행중</span></td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ing">진행중</span></td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ing">진행중</span></td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ing">진행중</span></td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t_state ok">완료</span></td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>2020.10.15</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- //테이블 리스트 들어가는 영역 -->
+        </div>
+        <div class="listview-nav">
+            <a href="#" class="prev blind">이전</a>
+            <span class="page-num"><em>1</em>/ 5</span>
+            <a href="#" class="next blind">다음</a>
+        </div>
+    </span>
+    <!-- //new mail list -->
+    <!-- right -->
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+        <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+            <p class="hbar_dotted"><img src="/images/prevview_hbar_dotted.gif"></p>
+        </span>
+        <span id="PreContent_RayerH" style="overflow: auto; height: 100%;">
+            <span class="PreContent_RayerH_box">
+                <!-- 작성 들어가는 영역 -->
+                <div class="mainmenu_btn">
+                    <ul class="mainmenu_btnUL">
+                        <li>목록</li>
+                        <li>삭제</li>
+                        <li>정보수정</li>
+                        <li>상세분석</li>
+                        <li class="sel pd0">
+                            <div class="etc_box">
+                                <a href="#none" class="tit"><span class="newSubicon newSubicon080"></span></a>
+                                <ul>
+                                    <li><a href="#none">수신거부</a></li>
+                                    <li><a href="#none">스팸처리</a></li>
+                                    <li><a href="#none">읽은상태</a></li>
+                                    <li><a href="#none">안읽은상태</a></li>
+                                    <li><a href="#none">영구삭제</a></li>
+                                    <li><a href="#none">복사</a></li>
+                                    <li><a href="#none">책갈피</a></li>
+                                    <li><a href="#none">PC 저장</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="rightbtn btn_setup nobg">
+                            <div class="btn_list">
+                                <a href="#none" class="prev"><span class="newSubicon newSubicon022"></span>이전</a>
+                                <a href="#none" class="next"><span class="newSubicon newSubicon023"></span>다음</a>
+                            </div>
+
+                            <div class="icon_box">
+                                <a href="#none" class="icon window"><span class="newSubicon newSubicon004"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 입력란 -->
+                <div class="contentwrite">
+                    <div class="title">설문 작성 Step 1. 설문조사 항목 중 제목 및 목적, 유효기간 등을 수정합니다.</div>
+
+                    <ul class="contentwrite_list email_input_wrap">
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>설문기간</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <div class="input_wrap wd_ly2 mr">
+                                        <input type="text" value="2020.11.03">
+                                    </div>
+                                    <div class="input_wrap wd_ly2">
+                                        <input type="text" value="2020.11.06">
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>공개기간</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <span class="inline">설문종료 후</span>
+                                    <div class="input_wrap" style="width:80px">
+                                        <input type="text" />
+                                    </div>
+                                    <span class="inline">일간</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>조사설정</p>
+                                </li>
+                                <li class="contentlayout_none ly3_sel">
+                                    <div class="select-box type01 new_sel linebox small">
+                                        <a href="javascript:void()">기명여부</a>
+                                        <ul>
+                                            <li>기명</li>
+                                        </ul>
+                                    </div>
+                                    <div class="select-box type01 new_sel linebox small">
+                                        <a href="javascript:void()">중복응답</a>
+                                        <ul>
+                                            <li>허용</li>
+                                            <li>비허용</li>
+                                        </ul>
+                                    </div>
+                                    <div class="select-box type01 new_sel linebox small">
+                                        <a href="javascript:void()">조사결과</a>
+                                        <ul>
+                                            <li>공개</li>
+                                            <li>비공개</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>대상자설정</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <div class="mainmenu_btn pd0">
+                                        <ul class="mainmenu_btnUL">
+                                            <li>대상자</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="half">
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>검토자설정</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <dl class="review">
+                                        <dt>이서준</dt>
+                                        <dd>
+                                            <div class="mainmenu_btn pd0">
+                                                <ul class="mainmenu_btnUL">
+                                                    <li>검토자</li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="half">
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>승인자설정</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <dl class="review">
+                                        <dt>이서준</dt>
+                                        <dd>
+                                            <div class="mainmenu_btn pd0">
+                                                <ul class="mainmenu_btnUL">
+                                                    <li>승인자</li>
+                                                </ul>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>설문제목</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <div class="input_wrap block">
+                                        <input type="text" value="설문제목" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>설문목적</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <div class="edtor_content" style="height: 200px; border:1px solid #D6DBE4"></div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="title mt25">설문 작성 Step 2. 질문 및 보기를 입력합니다.</div>
+                    <ul class="contentwrite_list email_input_wrap">
+                        <li>
+                            <ul class="contentlayout">
+                                <li class="contentlayout_left">
+                                    <p>질문작성</p>
+                                </li>
+                                <li class="contentlayout_none">
+                                    <div class="question_top">
+                                        <ul class="control">
+                                            <li><div class="btn_tbox">추가</div></li>
+                                            <li><div class="btn_tbox">수정</div></li>
+                                            <li><div class="btn_tbox">삭제</div></li>
+                                            <li><div class="btn_tbox">복사</div></li>
+                                        </ul>
+
+                                        <div class="order_change">
+                                            <p>질문순서 변경</p>
+                                            <div class="icon_box small">
+                                                <span class="newSubicon newSubicon022"></span>
+                                            </div>
+                                            <div class="icon_box small">
+                                                <span class="newSubicon newSubicon023"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="question_box scrollbar-inner">
+                                        <ul>
+                                            <li class="on">1. 질문1</li>
+                                            <li>2. 질문2</li>
+                                            <li>3. 질문3</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //입력란 -->
+                <!-- //작성 들어가는 영역 -->
+            </span>
+        </span>
+    </span>
+    <!-- //right -->
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

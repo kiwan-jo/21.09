@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+        <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+<body class="popup">
+    <dl class="popupTitle">
+        <dt id="h1Title">수신자 설정</dt>
+        <dd onclick="return DivPopUpShow_FullScreen(this);"><span class="newSubicon newSubicon005"></span></dd>
+        <dd onclick="return Layer_Close();"><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout" id="LayerPopupLayout" style="height: 712px;">
+        <ul class="contentlayout">
+            <li class="contentlayout_left"></li>
+            <li class="contentlayout_right"></li>
+            <!-- 탭 -->
+            <li class="contentlayout_none">
+                <div class="tab_menuBox">
+                    <dl id="tab_menu_list" class="tab_menu">
+                        <!-- 조직도 -->
+                        <dt><span id="orgTabButton" onclick="orgTabButton_onClick()" src="/images/tab_org.gif">조직도</span></dt>
+                        <!-- 중역 -->
+                        <dt><span id="ExF1TabButton" onclick="pageEx=1; GetExFGroupList(1);">중역</span></dt>
+                        <!-- 실장/법인지사장 -->
+                        <dt><span id="ExF2TabButton" onclick="pageEx=1; GetExFGroupList(2);">실장/법인지사장</span></dt>
+                        <!-- 팀장/셀리더 -->
+                        <dt><span id="ExF3TabButton" onclick="pageEx=1; GetExFGroupList(3);">팀장/셀리더</span></dt>
+                        <!-- 주소록 -->
+                        <dt  class="on"><span id="contactTabButton" onclick="contactTabButton_onClick()" src="/images/tab_addr1.gif">명함</span></dt>
+                        <!-- 공용배포그룹 -->
+                        <dt><span id="dlTabButton" onclick="dlTabButton_onClick()" src="/imagefs/tab_dl1.gif">공용그룹</span></dt>
+                        <!-- 그룹사 -->
+                        <dt><span id="Group1TabButton" onclick="dlResultSearch_onClick()">그룹사</span></dt>
+                        <!-- 직책그룹 -->
+                        <dt><span id="Group2TabButton" onclick="dlPositionButton_onclick();">직책그룹</span></dt>
+                        <!-- 공용배포그룹 커스텀 -->
+                        <dt><span id="dlCustomTabButton" onclick="dlCustomGroupButton_onClick();">공용그룹(M)</span></dt>
+                        <!-- 직접입력 -->
+                        <dt style="display:none;"><span id="inputTabButton" onclick="inputTabButton_onClick()">직접입력</span></dt>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+        <ul class="contentlayout">
+            <li class="contentlayout_left receive_box">
+                <!-- 조직도 -->
+                <div id="TreeViewTD">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_none">
+                            <div id="OrganDIV" class="mainbody">
+                                <div id="TreeViewTD">
+                                    <ul class="contentlayout">
+                                        <li class="contentlayout_none">
+                                            <div id="OrganDIV">
+                                                <ul class="contentlayout">
+                                                    <li class="contentlayout_left receive_chart">
+                                                        <!-- treeView -->
+                                                        <div id="TreeView" class="tree border_box">
+                                                            <div class="hgt524" id="FromTreeView" nodecontext="" nodedrag="" nodeclick="TreeViewNodeClick" nodedblclick="" requestdata="RequestData" selectnodeid="FromTreeView_0_5_0_7">
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- //treeView -->
+                                                    </li>
+                                                    <li class="contentlayout_none receive_info">
+                                                        <div id="DIV_UserList">
+                                                            <!-- search -->
+                                                            <ul class="contentlayout receive_search newtype">
+                                                                <li class="contentlayout_left">
+                                                                    <div class="select-box type01 new_sel linebox">
+                                                                        <a href="javascript:void(0)">통합</a>
+                                                                        <ul>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(0).trigger('change');">통합</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(1).trigger('change');">이름</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(2).trigger('change');">E-mail</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(3).trigger('change');">이동전화</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(4).trigger('change');">사번</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(5).trigger('change');">내선번호</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(6).trigger('change');">사내전화</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(7).trigger('change');">팩스번호</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(8).trigger('change');">담당업무</li>
+                                                                            <li class="sel" onclick="$ContentDiv('#search_type').val(9).trigger('change');">직위</li>
+                                                                        </ul>
+                                                                        <select id="search_type" style="display: none;" onchange="Search_change()">
+                                                                            <option selected="" value="extensionAttribute13">통합</option>
+                                                                            <option value="displayname">이름</option>
+                                                                            <option value="mail">E-mail</option>
+                                                                            <option value="Mobile">이동전화</option>
+                                                                            <option value="EmpNo">사번</option>
+                                                                            <option value="TelephoneNumber_EX">내선번호</option>
+                                                                            <option value="TelephoneNumber">사내전화</option>
+                                                                            <option value="FACSIMILETELEPHONENUMBER">팩스번호</option>
+                                                                            <option value="ChargeBusiness">담당업무</option>
+                                                                            <option value="title">직위</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="contentlayout_none">
+                                                                    <div class="input_wrap">
+                                                                        <input type="text" class="lnactive" placeholder="조직원을 검색해보세요." id="keyword" onkeypress="search_press(event, 'user')">
+                                                                        <a href="#none" onclick="search_click('search')" class="btn_search20">
+                                                                            <span class="newSubicon newSubicon079"></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            <!-- //search -->
+                                                            <!-- receive_list -->
+                                                            <div class="border_box mt5 line_rds3">
+                                                                <ul class="contentlayout mail_userinfo">
+                                                                    <li id="SelectDeptNM" countinfo=""><p class="tit">개인명함</p><p class="subtxt">총<span class="c_blue">9</span>명</p></li>
+                                                                </ul>
+
+                                                                <div class="content_listtype hgt336 scrollbar-inner" id="txtlist_Layer">
+                                                                    <table class="mainlist" onkeyup="event_listOnkeyUp" onkeydown="event_listOnkeyDown">
+                                                                        <colgroup>
+                                                                            <col width="30%" />
+                                                                            <col width="30%" />
+                                                                            <col width="*" />
+                                                                        </colgroup>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th>이름</th>
+                                                                                <th>회사</th>
+                                                                                <th>E-MAIL</th>
+                                                                            </tr>
+                                                                            <tr onclick="event_listclick_mail(this);" ondblclick="event_listDBclick(this);" draggable="true" ondragstart="event_orglistdragstart(this);" _cn="DT019767" _mail="DT019767@mobisdev.com" _displayname="김현수" _displayname2="김현수" _description="사무관리혁신" _description2="Office Work Innovation" _title="부장" _mobile="01090294877" _usesystem="V" _department="4KCT27" _displayname1="김현수" _description1="사무관리혁신" _title1="부장" _title2="부장" id="DT019767">
+                                                                                <td>김현수</td>
+                                                                                <td>부장</td>
+                                                                                <td>g4dfd@ancd.com</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                                <!-- //receive_list -->
+                                                                <!-- 페이징 -->
+                                                                <div id="tblPageRayer" class="listview-nav">
+                                                                    <a href="#" onclick="GoToPageNavi( 1, 0, function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                                       if (parseInt(PageNum)>
+                                                                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                        CurPage = PageNum;
+                                                                        if (issearch)
+                                                                        search_click();
+                                                                        else
+                                                                        displayUserList();
+                                                                        }
+                                                                        });" class="prev blind">prev
+                                                                    </a><span class="page-num">
+                                                                        <em class="input_wrap">
+                                                                            <input id="navPage" type="text" value="1" onkeyup="return InputPageMove(event, '1', '1', function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                                                   if (parseInt(PageNum)> 0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                            CurPage = PageNum;
+                                                                            if (issearch)
+                                                                            search_click();
+                                                                            else
+                                                                            displayUserList();
+                                                                            }
+                                                                            });" style="width: 55px;">
+                                                                        </em>&nbsp;/&nbsp;1
+                                                                    </span><a href="#" onclick="GoToPageNavi(1, 1, function MovePage(PageNum, TotalPage) { // MovePage 함수가 실제 모듈별로 페이지 이동 시 리스트 변환 함수
+                                                                              if (parseInt(PageNum)>
+                                                                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                                                                        CurPage = PageNum;
+                                                                        if (issearch)
+                                                                        search_click();
+                                                                        else
+                                                                        displayUserList();
+                                                                        }
+                                                                        });" class="next blind">next
+                                                                    </a>
+                                                                </div>
+                                                                <!-- //페이징 -->
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //조직도 -->
+                <!-- 주소록 -->
+                <div id="ListViewTD" style="display: none">
+                    <ul class="contentlayout mt10" id="AddrSearch">
+                        <li class="contentlayout_left mr5">
+                            <select name="search_case" id="search_case">
+                                <option value="SNAME">이름</option>
+                                <option value="SCOMPANY">회사</option>
+                                <option value="SEMAIL">E-Mail</option>
+                            </select>
+                        </li>
+                        <li class="contentlayout_left mr5"><input id="search_text" type="text" value="" onkeyup="AddrSearch_press()" class="width150px" name="Input"></li>
+                        <li class="contentlayout_left mr5"><a class="imgbtn"><span onclick="AddrSearch_click()">검색</span></a></li>
+                        <li class="contentlayout_right"><a class="imgbtn"><span id="groupmember_span" onclick="groupmember_click()" style="display:none;">구성원 보기 및 선택</span></a></li>
+                    </ul>
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left width250px mr10 mt5">
+                            <div id="AddressTreeView" class="tree border_box" style="overflow: auto; height: 519px;"></div>
+                        </li>
+                        <li class="contentlayout_none mt5">
+                            <div class="border_box">
+                                <ul class="contentlayout mail_userinfo">
+                                    <li class="contentlayout_none">
+                                        <span class="spanText">
+                                            <span class="icon_tree tree_fldr"></span>
+                                            <span id="addressFolderName" style="font-weight: bold;"></span>
+                                            -[<span id="addressFolderCnt" style="color: #017BEC; font-weight: bold;"></span>]
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div style="height: 503px; overflow: auto;" class="content_listtype" id="AddressListView"></div>
+                            </div>
+                            <div id="tblPageRayer_addr" class="pagenavi"></div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //주소록 -->
+                <!-- 공용그룹 -->
+                <div id="ListViewDLTD" style="display: none">
+                    <ul class="contentlayout mt10">
+                        <li class="contentlayout_right" id="dlmember" style="display: none">
+                            <a class="imgbtn"><span onclick="dlmember_click()">구성원 보기 및 선택</span></a>
+                        </li>
+                    </ul>
+                    <div style="height: 493px; overflow: auto;" id="ListViewDL" class="border_box mt5"></div>
+                </div>
+                <!-- //공용그룹 -->
+                <!-- 중역/실장/법인지사장/팀장/셀리더 -->
+                <div id="ListViewExFTD" style="display: none">
+                    <div class="border_box mt5">
+                        <div id="ListViewExFDL" class="scroll_overflow scrollbar-inner"></div>
+                    </div>
+                    <div id="tblPageRayerEx" class="listview-nav"></div>
+                </div>
+                <!-- //중역/실장/법인지사장/팀장/셀리더 -->
+                <!-- 그룹사 -->
+                <div id="ListViewGroupTD" style="display: none">
+                    <ul class="contentlayout mt10">
+                        <li class="contentlayout_left">
+                            <select id="GroupSa_search_type">
+                                <option selected="" value="displayname" usedefault="1">이름</option>
+                                <option value="description" usedefault="1">부서</option>
+                                <option value="title" usedefault="1">직위</option>
+                            </select>
+                            <input type="text" class="width100percent" id="GroupSa_keyword" onkeyup="Group_search_press(event)" onmousedown="GroupSa_keyword_Clear();">
+                            <a class="imgbtn"><span onclick="GroupSearch_click()">검색</span></a>
+                        </li>
+                        <li class="contentlayout_right">
+                            <select id="MobisCompanyList"></select>
+                        </li>
+                    </ul>
+                    <div style="height: 503px; overflow: auto;" id="ListViewDLGroup" class="border_box mt5"></div>
+                </div>
+                <!-- //그룹사 -->
+                <!-- 직접입력 -->
+                <div id="ListViewINPUT" style="display: none">
+                    <div id="ManualView" style="height: 503px;" class="border_box">
+                        <div style="margin:-1px;">
+                            <table class="content">
+                                <tbody>
+                                    <tr>
+                                        <th>이름</th>
+                                        <td><input type="text" id="emailname" style="WIDTH: 100%; ime-mode: active; box-sizing: border-box; -moz-box-sizing: border-box;"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일</th>
+                                        <td><input type="text" id="emailaddr" style="WIDTH: 100%; ime-mode: inactive; box-sizing: border-box; -moz-box-sizing: border-box;" onkeyup="return on_keydown()"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- //직접입력 -->
+            </li>
+            <li class="contentlayout_right receives">
+                <!-- right -->
+                <table id="listType1">
+                    <!-- 받는사람 -->
+                    <tbody>
+                        <tr id="ListMsgTo">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgTo)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="ToTitle" onclick="SelectReceiverWindow(ToTitle, ListViewMsgTo)" class="receive_tit" style="font-weight: bold;">
+                                            <span id="ToTitleStr">받는 사람</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="toMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgTo, ListViewMsgCC)"><span>CC</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgTo, ListViewMsgBCC)"><span>BCC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                    <li class="contentlayout_right" id="sortli" style="display:none;">
+                                        <div class="input_wrap">
+                                            <span class="contentlayout_left listview-check checks" onclick="document.getElementById('chk_sort').click(); return false;">
+                                                <input type="checkbox" id="listview_chk">
+                                                <label for="listview_chk">가나다 정렬</label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="border_box">
+                                    <div id="ListViewMsgTo" class="conts_box scrollbar-inner" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" onclick="SelectReceiverWindow(ToTitle,this)">
+                                        <table id="MsgToList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver" width="100%" border="0" class="mainlist">
+                                            <thead id="MsgToList_THEAD"><tr id="MsgToList_TH"></tr></thead>
+                                            <tbody style="background-color: rgb(255, 255, 255);"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //받는사람 -->
+                        <!-- 참조 -->
+                        <tr id="ListMsgCC">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgCC)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgCC)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="CCTitle" onclick="SelectReceiverWindow(CCTitle,ListViewMsgCC)" class="receive_tit" style="font-weight: normal;">
+                                            <span>참조</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="ccMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgTo)"><span>TO</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgCC, ListViewMsgBCC)"><span>BCC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                </ul>
+                                <div class="border_box">
+                                    <div class="scroll-wrapper conts_box scrollbar-inner" style="position: relative;">
+                                        <div id="ListViewMsgCC" class="conts_box scrollbar-inner scroll-content" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" style="width: 218px; height: 120px; overflow: hidden; margin-bottom: 0px; margin-right: 0px; max-height: none;" onclick="SelectReceiverWindow(CCTitle,this)" "=" ">
+                                            <table id="MsgCCList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver" width="100%" border="0" class="mainlist">
+                                                <thead id="MsgCCList_THEAD">
+                                                    <tr id="MsgCCList_TH"></tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //참조 -->
+                        <!-- 숨은참조 -->
+                        <tr id="ListMsgBCC">
+                            <td class="plr20">
+                                <a class="btn_arrow mb5" onclick="InsertReceiver(ListViewMsgBCC)"><span class="newSubicon newSubicon010"></span></a>
+                                <a class="btn_arrow" onclick="DeleteReceiver(ListViewMsgBCC)"><span class="newSubicon newSubicon009"></span></a>
+                            </td>
+                            <td class="inbox">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none inline">
+                                        <h2 id="BCCTitle" onclick="SelectReceiverWindow(BCCTitle,ListViewMsgBCC)" class="receive_tit" style="font-weight: normal;">
+                                            <span>숨은 참조</span>
+                                        </h2>
+                                    </li>
+                                    <li class="contentlayout_right btn_receive" id="bccMove">
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgBCC, ListViewMsgTo)"><span>TO</span></a>
+                                        <a class="txt" onclick="MoveReceiver(ListViewMsgBCC, ListViewMsgCC)"><span>CC</span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'UP')"><span class="newSubicon newSubicon022"></span></a>
+                                        <a class="arrow" onclick="MoveReceiver_Priority(ListViewMsgTo, 'DOWN')"><span class="newSubicon newSubicon023"></span></a>
+                                    </li>
+                                </ul>
+                                <div class="border_box mb0">
+                                    <div class="scroll-wrapper conts_box scrollbar-inner" style="position: relative;"><div id="ListViewMsgBCC" class="conts_box scrollbar-inner scroll-content" ondragover="onDragEnter(event, this)" ondrop="onDrop(event, this)" style="width: 218px; height: 120px; overflow: hidden; margin-bottom: 0px; margin-right: 0px; max-height: none;" onclick="SelectReceiverWindow(BCCTitle,this)"><table id="MsgBCCList" cellspacing="0" cellpadding="0" multiselectable="true" useocs="false" rowondblclick="DeleteReceiver" width="100%" border="0" class="mainlist"><thead id="MsgBCCList_THEAD"><tr id="MsgBCCList_TH"></tr></thead><tbody style="background-color: rgb(255, 255, 255);"></tbody></table></div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="width: 100px;"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar" style="height: 100px;"></div></div></div></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- //숨은참조 -->
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+        <ul class="btn_newtype" style="margin:20px 0 0 0;">
+            <li id="cmd_ok" class="ok" onclick="confirm_onClick()">확 인</li>
+            <li class="no" onclick="return Layer_Close()">취 소</li>
+        </ul>
+    </div>
+</body>
+</html>

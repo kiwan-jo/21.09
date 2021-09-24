@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+<!-- 결재선 정보 -->
+<div class="popup">
+    <dl class="popupTitle">
+        <dt>결재선 정보</dt>
+        <dd><span class="newSubicon newSubicon004"></span></dd>
+        <dd><span class="newSubicon newSubicon003"></span></dd>
+    </dl>
+    <div class="layout">
+        <div class="pop_opinion">
+            <!-- 탭 -->
+            <ul class="mail_userinfoBtn">
+                <li><span></span></li>
+                <li class="on"><span></span></li>
+            </ul>
+
+            <ul class="contentlayout">
+                <li class="contentlayout_none">
+                    <div class="tab_menuBox">
+                        <dl id="tab_menu_list" class="tab_menu">
+                            <dt><span>결재선</span></dt>
+                            <dt class="on"><span>참조</span></dt>
+                            <dt><span>첨부</span></dt>
+                            <dt><span>의견</span></dt>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+            <!-- //탭 -->
+
+            <table class="com_list">
+                <colgroup>
+                    <col width="33.3%" />
+                    <col width="33.3%" />
+                    <col width="33.3%" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>성명</th>
+                        <th>부서</th>
+                        <th>결재유형</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="com_list_scroll scrollbar-inner">
+                <table class="com_list noline">
+                    <colgroup>
+                        <col width="33.3%" />
+                        <col width="33.3%" />
+                        <col width="33.3%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>윤태진 책임매니저</td>
+                            <td>ICT 선행기술팀</td>
+                            <td>결재</td>
+                        </tr>
+                        <tr>
+                            <td>윤태진 책임매니저</td>
+                            <td>ICT 선행기술팀</td>
+                            <td>결재</td>
+                        </tr>
+                        <tr>
+                            <td>윤태진 책임매니저</td>
+                            <td>ICT 선행기술팀</td>
+                            <td>기안</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //결재선 정보 -->
+</body>
+</html>

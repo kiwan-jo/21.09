@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+<!-- 의견 -->
+<div class="notification newType">
+    <dl class="notificationDL">
+        <dt class="tit_notification">의견</dt>
+        <dd class="text_notification">
+            <div class="pop_opinion">
+                <div class="top_tit">
+                    <p>[물품구매요청서(본사)](2020년도 10월 사무용품 구매신청)</p>
+                    <span>ICT선행기술팀 2020-10-11</span>
+                </div>
+
+                <div class="opinion_info">
+                    <p>의견 내용</p>
+                    <div class="box scrollbar-inner">
+                        <dl>
+                            <dt>최재원 책임 매니저 <span class="c_gray">ICT선행기술팀 | 결재자</span></dt>
+                            <dd>설정을 통해 결재 시 인증수단을 추가할 수 있습니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt><span class="c_blue">최재원 책임 매니저</span> <span class="c_gray">ICT선행기술팀 | 결재자</span></dt>
+                            <dd>각 편지함에 저장된 메일들을 정리하셔서 사용한 메일 용량을 줄이시기 바랍니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt>최재원 책임 매니저 <span class="c_gray">ICT선행기술팀 | 결재자</span></dt>
+                            <dd>설정을 통해 결재 시 인증수단을 추가할 수 있습니다.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <ul class="contentlayout">
+                    <li class="contentlayout_none">
+                        <div class="tab_menuBox">
+                            <dl id="tab_menu_list" class="tab_menu">
+                                <dt class="on"><span>결제선</span></dt>
+                                <dt><span>결제선(참조 포함)</span></dt>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+                <table class="com_list">
+                    <colgroup>
+                        <col width="5%" />
+                        <col width="12%" />
+                        <col width="12%" />
+                        <col width="10%" />
+                        <col width="12%" />
+                        <col width="8%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>순번</th>
+                            <th>성명</th>
+                            <th>부서</th>
+                            <th>결제유형</th>
+                            <th>결제일시</th>
+                            <th>결제상태</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="com_list_scroll scrollbar-inner">
+                    <table class="com_list noline">
+                        <colgroup>
+                            <col width="5%" />
+                            <col width="12%" />
+                            <col width="12%" />
+                            <col width="10%" />
+                            <col width="12%" />
+                            <col width="8%" />
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>김명윤 책임매니저</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>일반 결재</td>
+                                <td>2020.10.15</td>
+                                <td><span class="state blue">기안</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>주시은 책임매니저</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>일반 결재</td>
+                                <td>-</td>
+                                <td><span class="state gray">미결</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>김명윤 책임매니저</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>일반 결재</td>
+                                <td>2020.10.15</td>
+                                <td><span class="state blue">기안</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>주시은 책임매니저</td>
+                                <td>ICT 선행기술팀</td>
+                                <td>일반 결재</td>
+                                <td>-</td>
+                                <td><span class="state gray">미결</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </dd>
+        <dd class="close_notification">
+            <a href="#none" class="pop_close"></a>
+        </dd>
+    </dl>
+</div>
+<!-- //의견 -->
+</body>
+</html>

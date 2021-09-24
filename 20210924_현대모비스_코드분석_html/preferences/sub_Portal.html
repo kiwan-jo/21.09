@@ -1,0 +1,1535 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>포틀릿 목록 설정</p>
+            <div class="search_box">
+                <div class="input_wrap">
+                    <input type="text" class="lnactive" value="검색어를 입력해주세요." /> <a href="#none" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="align_num type2">
+            <ul>
+                <li class="one">
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox"></label>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="javascript:void()">필터</a>
+                        <ul>
+                            <li>차량</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none">전사 통합 정보</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- list -->
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+        <table class="com_list type3">
+            <colgroup>
+                <col width="5%" />
+                <col width="10%" />
+                <col width="12%" />
+                <col width="15%" />
+                <col width="*" />
+                <col width="10%" />
+                <col width="16%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="td_c"></th>
+                    <th class="td_c">구분</th>
+                    <th>시스템명</th>
+                    <th>Full Name</th>
+                    <th>상세설명</th>
+                    <th>담당자</th>
+                    <th>Data Map</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="com_list_wrap portlet_scroll scrollbar-inner">
+            <table class="com_list noline type3">
+                <colgroup>
+                    <col width="5%" />
+                    <col width="10%" />
+                    <col width="12%" />
+                    <col width="15%" />
+                    <col width="*" />
+                    <col width="10%" />
+                    <col width="16%" />
+                </colgroup>
+                <tbody>
+                    <!-- 차량 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car01" checked>
+                                    <label for="car01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>STAMS</td>
+                        <td>Just In Sequence Vehicle Location Tracking Management System</td>
+                        <td>모듈공장 직서열 납품차량 위치의 실시간 관제 시스템 구축을 통한 납품 지연, 서열위반 등을 모니터링</td>
+                        <td>김상우</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car02">
+                                    <label for="car02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>G-EPI</td>
+                        <td>Global Effective Point Information Management System </td>
+                        <td>OEM/MOBIS EO를 EPI 시스템을 이용하여 전산화, 이력화 - 관리를 통한 업무 FLOW 준수 및 적용시점 관련 유관부서의 적극적인 업무 참여를 통한 품질문제 사전 방지 </td>
+                        <td>이승윤</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car03" checked>
+                                    <label for="car03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>GBI EIS</td>
+                        <td>Global Business Intelligence EIS </td>
+                        <td>(모듈/부품/전동화) GBI EIS</td>
+                        <td>김진기</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car04">
+                                    <label for="car04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>영업정보</td>
+                        <td>MOBIS Sales Information System </td>
+                        <td>영업부문 수주, 매출, 영업정보 통합 관리 시스템</td>
+                        <td>이길영</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car05">
+                                    <label for="car05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>EIS</td>
+                        <td>Executive Information System</td>
+                        <td>모듈 및 부품제조공장 / 권역별 종합 관리 시스템</td>
+                        <td></td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car06">
+                                    <label for="car06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>MTMS</td>
+                        <td>Module Task Management System</td>
+                        <td>모듈사업부 업무관리시스템 </td>
+                        <td>김용삼</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car07">
+                                    <label for="car07"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>MSP</td>
+                        <td>Manufacturing System Portal</td>
+                        <td>제조 시스템 포털</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car08">
+                                    <label for="car08"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>GMP</td>
+                        <td>글로벌 마케팅 포털 </td>
+                        <td>전사 마케팅자산(시장자료, 홍보자료 등)의 등록, 배포, 관리를 위한 시스템</td>
+                        <td>박호은</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="car09">
+                                    <label for="car09"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">차량</td>
+                        <td>GBM</td>
+                        <td>Global Benchmarking System</td>
+                        <td>생산공장 상향 표준화를 위하여 우수 개선사례에 대한 제안,심사,수행,관리를 위한 시스템</td>
+                        <td>김재우</td>
+                        <td></td>
+                    </tr>
+                    <!-- //차량 -->
+                    <!-- rnd -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd01" checked>
+                                    <label for="rnd01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>PLM</td>
+                        <td>Product Lifecycle Management</td>
+                        <td>제품수명주기와 관련된 제품정보데이터를 통합하여 관리하는 시스템입니다.▶영역: 통합결재/권한신청, 대시보드, 프로젝트, 설계, 해석/시험, 협업개발, 기술정보, 설계원가</td>
+                        <td>김경모</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd02" checked>
+                                    <label for="rnd02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>MPGMS</td>
+                        <td>Mobis Proving Ground Management System</td>
+                        <td>서산주행시험장 시험차로 예약, 시험차량 모니터링 외</td>
+                        <td>조재원</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd03" checked>
+                                    <label for="rnd03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>RDMMS</td>
+                        <td>R&D Material Management System </td>
+                        <td>연구소 시험자재 입/출고 및 재고/폐기 관리 시스템</td>
+                        <td>박건우</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd04" checked>
+                                    <label for="rnd04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>생산기술포털</td>
+                        <td>Production & Development Engineering System</td>
+                        <td>생산기술 업무 및 정보 통합관리시스템</td>
+                        <td>이동영</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd05" checked>
+                                    <label for="rnd05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>금형개발정보</td>
+                        <td>Mold Development Information System</td>
+                        <td>금형개발정보시스템</td>
+                        <td>이동영</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd06" checked>
+                                    <label for="rnd06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>도서정보</td>
+                        <td>Mobis Technology Library</td>
+                        <td>도서 대출관리 및 논문검색 </td>
+                        <td>박진주</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd07" checked>
+                                    <label for="rnd07"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>Mclovir</td>
+                        <td>Mobis Cloud Virtualization Management System</td>
+                        <td>연구개발 클라우드 관리 시스템</td>
+                        <td>장우경</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd08" checked>
+                                    <label for="rnd08"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>LINK</td>
+                        <td>Hyundai NGV LINK</td>
+                        <td>글로벌 자동차 기술정보 동향 포털</td>
+                        <td>김상률</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="rnd09" checked>
+                                    <label for="rnd09"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">R&D</td>
+                        <td>PRS</td>
+                        <td>Purchasing Request System</td>
+                        <td>연구소 구매청구 시스템</td>
+                        <td>서영경</td>
+                        <td></td>
+                    </tr>
+                    <!-- //rnd -->
+                    <!-- 품질 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="quality01" checked>
+                                    <label for="quality01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">품질</td>
+                        <td>MCMS</td>
+                        <td>MCMS</td>
+                        <td>MCMS</td>
+                        <td>서정일</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="quality02" checked>
+                                    <label for="quality02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">품질</td>
+                        <td>QMS</td>
+                        <td>Quality Management System</td>
+                        <td>주요 품질지표 경영층 제공 및 실시간 품질현황 모니터링 제공</td>
+                        <td>이준호</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <!-- //품질 -->
+                    <!-- as -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as01" checked>
+                                    <label for="as01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>GPASS</td>
+                        <td>Global Parts & Accessories Support System</td>
+                        <td>법인 독자적인 가격관리 및 손익, 조정, 효과 분석 System</td>
+                        <td>정다미</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as02" checked>
+                                    <label for="as02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>WPC</td>
+                        <td>WEB PARTS CATALOG </td>
+                        <td>차량의 A/S 부품을 검색하는 System</td>
+                        <td>황문혁</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as03" checked>
+                                    <label for="as03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>GIM</td>
+                        <td>Global Inventory Management </td>
+                        <td>해외법인 재고정보를 하나로 통합관리하여 통합수요예측 및 글로벌 재고관리 등의 모니터링 서비스 제공 </td>
+                        <td>유정은</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as04" checked>
+                                    <label for="as04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>부품본사EIS</td>
+                        <td>Service Parts Executive Information System </td>
+                        <td>서비스부품본부 주요 지표 종합 관리 시스템</td>
+                        <td>변인수</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as05" checked>
+                                    <label for="as05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>SMART</td>
+                        <td>Smart MOBIS Agent for Reaching Global Top5</td>
+                        <td>AS부품업무지원시스템</td>
+                        <td>심호진</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as06" checked>
+                                    <label for="as06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>MIDAS</td>
+                        <td>Mobis Integration Data Analysis System </td>
+                        <td>통합데이터분석시스템 </td>
+                        <td>김새롬</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as07" checked>
+                                    <label for="as07"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>SPIN</td>
+                        <td>Smart Part Information Network </td>
+                        <td>협력업체 부품업무 정보공유 시스템</td>
+                        <td>김새롬</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as08" checked>
+                                    <label for="as08"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>MGN</td>
+                        <td>Mobis Global Net</td>
+                        <td>해외 대리점 업무 지원 시스템</td>
+                        <td>강기조</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as09" checked>
+                                    <label for="as09"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>부품거점EIS</td>
+                        <td>Service Parts Subsidary Executive Information System </td>
+                        <td>서비스부품본부 국내/외 사업장별 주요 지표 관리 시스템</td>
+                        <td>변인수</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as10" checked>
+                                    <label for="as10"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>서비스부품상황실</td>
+                        <td>Service Parts Monitoring Center</td>
+                        <td>서비스부품본부 거점별 주요 지표 현황 정보 제공</td>
+                        <td>변인수</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as11" checked>
+                                    <label for="as11"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>AS통합시스템</td>
+                        <td>AS System Integration Community</td>
+                        <td>AS 통합시스템 구축 관련 커뮤니케이션 & 질의응답 시스템</td>
+                        <td>오진석</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as12" checked>
+                                    <label for="as12"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>SRS</td>
+                        <td>Smart Part Information Network</td>
+                        <td>협력업체 부품업무 정보공유 시스템</td>
+                        <td>MAPS TFT Email</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as13" checked>
+                                    <label for="as13"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>nMGN</td>
+                        <td>New Mobis Global Net</td>
+                        <td>해외 대리점 업무 지원 시스템</td>
+                        <td>MAPS TFT Email</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as14" checked>
+                                    <label for="as14"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>HDS</td>
+                        <td>ideabank </td>
+                        <td>수평 전개 시스템</td>
+                        <td>MAPS TFT Email</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as15" checked>
+                                    <label for="as15"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>MAPS 포탈</td>
+                        <td>MAPS Portal</td>
+                        <td>MAPS 임직원용 업무 포탈 </td>
+                        <td>MAPS TFT Email</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="as16">
+                                    <label for="as16"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">AS</td>
+                        <td>MAPS 전자결재</td>
+                        <td>MAPS 연동 전자결재 시스템</td>
+                        <td>MAPS와 연동된 전자결재문서를 열람하고 결재처리하는 시스템 </td>
+                        <td>MAPS TFT Email</td>
+                        <td></td>
+                    </tr>
+                    <!-- //as -->
+                    <!-- 구매 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase01" checked>
+                                    <label for="purchase01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>CIMS</td>
+                        <td>CKD Intergrated Management System</td>
+                        <td>법인-본사간 CKD 수출 프로세스에 대한 통합 관리 및 모니터링 시스템</td>
+                        <td>조항덕</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase02" checked>
+                                    <label for="purchase02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>MPOS</td>
+                        <td>MOBIS Procurement Operating System</td>
+                        <td>구매본부 업무시스템의 대/내외 접근 채널 단일화를 위한 포털 시스템 - 타 시스템 SSO처리, 사용자(내부, 협력업체) 공지사항 - 구매시스템 기본정보 관리(차종, 업체마스터 등)</td>
+                        <td>이윤정</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase03" checked>
+                                    <label for="purchase03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>VAATZ</td>
+                        <td>Value Advanced Automotive Trade Zone</td>
+                        <td>모비스 일반/설비자재 구매 시스템</td>
+                        <td>HKMC</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase04" checked>
+                                    <label for="purchase04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>구매EIS</td>
+                        <td>Value Advanced Automotive Trade Zone</td>
+                        <td>모비스 일반/설비자재 구매 시스템</td>
+                        <td>조항덕</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase05" checked>
+                                    <label for="purchase05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>LIMS</td>
+                        <td>Logistics Integrated Management System </td>
+                        <td>전사 물류 업체 통합 관리 시스템</td>
+                        <td>조항덕</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="purchase06" checked>
+                                    <label for="purchase06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">구매</td>
+                        <td>MPOSSchd</td>
+                        <td>일정관리  </td>
+                        <td>구매본부 주요 일정관리 시스템</td>
+                        <td>이윤정</td>
+                        <td></td>
+                    </tr>
+                    <!-- //구매 -->
+                    <!-- 경영 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management01" checked>
+                                    <label for="management01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>GHRIS</td>
+                        <td>Global HR Information System </td>
+                        <td>글로벌 인력 현황 및 주요 인사 지표를 집계/리포팅 하는 시스템 </td>
+                        <td>박성묵</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management02" checked>
+                                    <label for="management02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>MGMS</td>
+                        <td>Mobis Green Management System </td>
+                        <td>법인, 사업장, 배출시설 일반정보 관리 및 배출량 관리 시스템</td>
+                        <td>이아진</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management03" checked>
+                                    <label for="management03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>MICMS</td>
+                        <td>Mobis Intergrated Cost Management System</td>
+                        <td>모비스 생산 제품들의 원가를 산출하는 시스템으로, 수주전 -견적 기준가 산출 및 수주 확정후 양산 개발 차종의 원가 관리 </td>
+                        <td>강상태</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management04" checked>
+                                    <label for="management04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>REMS</td>
+                        <td>Real Estate Management System</td>
+                        <td>보유 부동산의 종합관리 시스템. 토지, 건물의 자산정보 등록 및 관리</td>
+                        <td>김정윤</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management05" checked>
+                                    <label for="management05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>전사과제관리</td>
+                        <td>Strategic Project Management System</td>
+                        <td>전략과제 및 중점추진 과제 관리 시스템(진행현황 및 KPI 관리) </td>
+                        <td>윤재원</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management06" checked>
+                                    <label for="management06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>투자관리</td>
+                        <td>Mobis Global Investment System</td>
+                        <td>모비스 투자에 대한 관리를 위한 시스템으로 투자계획수립, 투자품의 상신, 투자실적 관리 등의 기능을 제공</td>
+                        <td>김순원</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management07" checked>
+                                    <label for="management07"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>해외출장결과</td>
+                        <td>해외출장 결과보기 </td>
+                        <td>해외출장후 출장결과를 등록/공유하는 시스템</td>
+                        <td>박성묵</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management08" checked>
+                                    <label for="management08"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>G-MDM</td>
+                        <td>Global Master Data Management</td>
+                        <td>글로벌 기준정보 통합관리</td>
+                        <td>정재완</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management09" checked>
+                                    <label for="management09"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>안전환경</td>
+                        <td>Safety Health & Environmental</td>
+                        <td>안전환경 표준 점검 및 운영 시스템</td>
+                        <td>서형우</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management10" checked>
+                                    <label for="management10"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>직원식당예약</td>
+                        <td>Cafeteria Reservation</td>
+                        <td>직원 식당 예약 시스템</td>
+                        <td>고성희</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management11" checked>
+                                    <label for="management11"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>LPIMS작성시스템</td>
+                        <td>Long-term Planning Integrated Management System 작성시스템</td>
+                        <td>모비스 중장기 사업계획 작성 시스템</td>
+                        <td>전승종</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management12" checked>
+                                    <label for="management12"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>글로벌법무시스템</td>
+                        <td>Global Legal System (GLS)</td>
+                        <td>법무팀에 법률자문, 분쟁 등을 의뢰하는 시스템</td>
+                        <td>김은혜</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management13" checked>
+                                    <label for="management13"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>CMS</td>
+                        <td>CashFlow Monitoring System </td>
+                        <td>국내/해외 일일 자금현황 Monitoring 시스템 </td>
+                        <td>김승환</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management14" checked>
+                                    <label for="management14"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>AIMS</td>
+                        <td>Attendance Information Management System</td>
+                        <td>부품사업장 연장근로 관리 시스템</td>
+                        <td>박성묵</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management15" checked>
+                                    <label for="management15"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>RIMS</td>
+                        <td>Royalty Integrated Management System</td>
+                        <td>로열티 정보 통합관리 시스템</td>
+                        <td>김원태</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management16" checked>
+                                    <label for="management16"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>GMEMS</td>
+                        <td>Global Mobis Energy Management System</td>
+                        <td>제조공장의 에너지 사용량을 실시간 모니터링/분석하여 효율적으로 관리하고 절감하는 시스템</td>
+                        <td>문주호</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management17" checked>
+                                    <label for="management17"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>GPOMS</td>
+                        <td>Global Process Operation & Management System</td>
+                        <td>본사 및 해외법인의 업무 프로세스를 정의하고 공유함 - 전사업무표준 관리체계 구축 TFT 주도로 금년도 프로세스 정의 예정 </td>
+                        <td>성창현</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management18" checked>
+                                    <label for="management18"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>수익개선전략회의</td>
+                        <td>Profit and Risk Strategy System</td>
+                        <td>지시사항 이행현황, 양산 수익개선 진행현황, 중장기 제품경쟁력 활동현황, 주요현안 등으로 구성</td>
+                        <td>송한식</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management19" checked>
+                                    <label for="management19"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>HMGPrime</td>
+                        <td>Hyundai Motor Group Prime</td>
+                        <td>리더 역할 수행 및 리더십의 발현에 도움이 되는 지식 컨텐츠 제공(임원,팀장,주재원 대상)</td>
+                        <td>이강록</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management20" checked>
+                                    <label for="management20"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>BLMS</td>
+                        <td>Business Location Management Support System</td>
+                        <td>신규 거점에 대한 경영지원본부 지원 기준 가이드 제공 및 해외법인 총무업무 관리 시스템</td>
+                        <td>전영규</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management21" checked>
+                                    <label for="management21"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>정원관리</td>
+                        <td>Global Manufacturing Personnel Management System</td>
+                        <td>생산물량에 연동한 효율적인 인원운영(案) 제시</td>
+                        <td>강자훈</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management22" checked>
+                                    <label for="management22"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>계약관리</td>
+                        <td>Global Contract Management System (GCMS)</td>
+                        <td>법무팀에 계약검토를 의뢰하고 전자계약을 체결 및 관리하는 시스템</td>
+                        <td>이선우</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management23" checked>
+                                    <label for="management23"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>통합유지관리</td>
+                        <td>Facility Maintenance System</td>
+                        <td>사업장 시설물 유지관리 및 LCC 주기 관리 시스템</td>
+                        <td>강원형</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management24" checked>
+                                    <label for="management24"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>ITIM</td>
+                        <td>IT Investment Management</td>
+                        <td>IT 프로젝트 관리를 위한 시스템</td>
+                        <td>이경재</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management25" checked>
+                                    <label for="management25"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>모비스쿨</td>
+                        <td>MOBISCHOOL</td>
+                        <td>교육 사이트(진단/IDP수립, 역량개발활동-교육신청,수강,멘토링,학습동아리,사외교육,S-OJT,이력관리 등)</td>
+                        <td>이우찬</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management26" checked>
+                                    <label for="management26"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>회의통합관리</td>
+                        <td>Meeting Management System</td>
+                        <td>전사 경영회의체 운영 및 회의결과 이행 관리 시스템</td>
+                        <td>이신희</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management27" checked>
+                                    <label for="management27"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>통합공사관리시스템  </td>
+                        <td>통합공사관리시스템</td>
+                        <td>시설물 공사 및 공정 관리 시스템</td>
+                        <td>강원형</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management28" checked>
+                                    <label for="management28"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>기술자료요청</td>
+                        <td>Technical Data Management System</td>
+                        <td>하도급법 제12조3 관련 수급사업자에게 기술자료 요청시, 서면 발급 및 동의절차 진행</td>
+                        <td>추영훈</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management29" checked>
+                                    <label for="management29"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>IT Helpdesk</td>
+                        <td>IT Helpdesk</td>
+                        <td>IT 헬프데스크</td>
+                        <td>이호근</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management30" checked>
+                                    <label for="management30"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>판매가/재료비</td>
+                        <td>Mobis Sales Price and Material cost management system (MSPM)</td>
+                        <td>프로젝트 전기간 동안의 판매가 및 재료비의 변동금액과 변동사유 분석/관리 시스템</td>
+                        <td>이재호</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management31" checked>
+                                    <label for="management31"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>GBI Hub</td>
+                        <td>Global Business Intelligence</td>
+                        <td>정보의 통합 분석을 위한 대량 Data 수집, 분석 목적의 솔루션</td>
+                        <td>김진기</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management32" checked>
+                                    <label for="management32"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>IMS</td>
+                        <td>IR 투자자관리시스템</td>
+                        <td>IR 투자자관리시스템</td>
+                        <td>김동규</td>
+                        <td><a href="#none" class="t_link">추가 정보 보기 &gt;</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management33" checked>
+                                    <label for="management33"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>금리비딩관리</td>
+                        <td>금리비딩관리</td>
+                        <td>자금운용 / 차입과 관련된 금융기관 금리 비딩 진행 및 제반사항 관리</td>
+                        <td>이규영</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management34" checked>
+                                    <label for="management34"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>DDMRP</td>
+                        <td>DDMRP R+ solution</td>
+                        <td>수요기반 PR발행 전문 솔루션</td>
+                        <td>박정수</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management35" checked>
+                                    <label for="management35"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>Flow</td>
+                        <td>Flow</td>
+                        <td>Flow</td>
+                        <td>송화신</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="management36" checked>
+                                    <label for="management36"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">경영</td>
+                        <td>자율준수</td>
+                        <td>자율준수사이트 </td>
+                        <td>공정거래 준수 안내 및 신고를 위한 대외사이트 </td>
+                        <td>김도연</td>
+                        <td></td>
+                    </tr>
+                    <!-- //경영 -->
+                    <!-- 홍보 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion01" checked>
+                                    <label for="promotion01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>모비스홈페이지</td>
+                        <td>모비스홈페이지 </td>
+                        <td>회사소개, 사회책임, 회사홍보, 고객지원의 대외 홍보사이트</td>
+                        <td>한지현</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion02" checked>
+                                    <label for="promotion02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>피버스</td>
+                        <td>Phoebus</td>
+                        <td>피버스 농구단 팬을 위한 홍보사이트</td>
+                        <td>김연중</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion03" checked>
+                                    <label for="promotion03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>공감</td>
+                        <td>공감</td>
+                        <td>기업문화 홍보 및 직원/가족의 복지사이트</td>
+                        <td>송화신</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion04" checked>
+                                    <label for="promotion04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>Mcarfe</td>
+                        <td>Mcarfe</td>
+                        <td>자동차 관련 지식, Tip, 모비스 통신원 등의 블로그</td>
+                        <td>권혁만</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion05" checked>
+                                    <label for="promotion05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>L!nk</td>
+                        <td>Leading Intelligence & Networking Knowledge</td>
+                        <td>Leading Intelligence & Networking Knowledge</td>
+                        <td>김상률</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="promotion06" checked>
+                                    <label for="promotion06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">홍보</td>
+                        <td>현대자동차그룹</td>
+                        <td>그룹사 홈페이지</td>
+                        <td>현대자동차그룹 공식 홈페이지</td>
+                        <td>HKMC</td>
+                        <td></td>
+                    </tr>
+                    <!-- //홍보 -->
+                    <!-- 보안 -->
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="security01" checked>
+                                    <label for="security01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">보안</td>
+                        <td>IM</td>
+                        <td>Identity Management</td>
+                        <td>업무시스템 계정/권한 신청 및 관리 시스템 </td>
+                        <td>조예리</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="security02" checked>
+                                    <label for="security02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">보안</td>
+                        <td>보안포탈</td>
+                        <td>Security Potal System</td>
+                        <td>출입관리, 보안관리, 보안공지 등의 기능을 제공하는 포털</td>
+                        <td>남충모</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="security03" checked>
+                                    <label for="security03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">보안</td>
+                        <td>통합파일전송</td>
+                        <td>File Transmission System</td>
+                        <td>사내/사외 간 파일 공유를 위한 웹하드, 대용량의 메일을 발송 기능 제공</td>
+                        <td>하광수</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="security04" checked>
+                                    <label for="security04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">보안</td>
+                        <td>방문자예약</td>
+                        <td>Visitor Reservation System </td>
+                        <td>외부 방문객 관리 기능을 제공하는 포털</td>
+                        <td>김기남</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="security05" checked>
+                                    <label for="security05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">보안</td>
+                        <td>전자서약시스템</td>
+                        <td>Global Pledge Management System</td>
+                        <td> 보안서약, compliance 서약 등 전자서약관리시스템</td>
+                        <td>김상구</td>
+                        <td></td>
+                    </tr>
+                    <!-- //보안 -->
+                </tbody>
+            </table>
+        </div>
+
+        <ul class="btn_newtype type2">
+            <li class="ok">저장</li>
+            <li class="no">닫기</li>
+        </ul>
+    </span>
+</body>
+</html>

@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="css/default.css" type="text/css">
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/content.css" type="text/css">
+	<link rel="stylesheet" href="css/layout.css" type="text/css">
+	<script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="JQuery/raphael-min.js"></script>
+	<script type="text/javascript" src="JQuery/common.js"></script>
+</head>
+
+<body style="background-color:#E7E8EA;">
+	<div class="wrap">
+		<div class="header">
+			<h1><img src="images/kr/main/logo.png" alt="현대모비스 로고"></h1>
+			<div class="util">
+				<ul>
+					<li class="search">
+						<input type="text" placeholder="검색어를 입력해주세요">	<span class="search-btn blind">검색</span>
+					</li>
+					<li class="employee-search blind">직원검색</li>
+					<li class="notice blind"><span><span></span></span>알림</li>
+					<li class="myinfo">
+						<img src="images/kr/main/profile.png" alt="프로필">
+						<p><em>홍길동</em> (자재관리팀 이사)</p>
+						<ul class="sub-menu">
+							<li>관리자 설정</li>
+							<li>환경설정</li>
+							<li>로그아웃</li>
+						</ul>
+
+					</li>
+					<li class="view-menu blind">메뉴보기  
+						<ul class="sub-menu">
+							<li>워크앤라이프지원</li>
+							<li>FLOW</li>
+							<li>M.FIELDs</li>
+							<li>Chatebot</li>
+							<li>IT Service</li>
+							<li>백과사전</li>
+							<li>용어사전</li>
+							<li>인증센터</li>
+							<li>원격지원</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="left-gnb"> 
+				<div class="scrollbar-inner">
+					<ul>
+						<li class="gnb menu01">
+							<span>메일</span>
+
+						</li>
+						<li class="gnb menu02">
+							<span>결재</span>
+						</li>
+						<li class="gnb menu03">
+							<span>일정관리</span>
+						</li>
+						<li class="gnb menu04">
+							<span>예약관리</span>
+						</li>
+						<li class="gnb menu05">
+							<span>OneDrive</span>
+						</li>
+						<li class="gnb menu06">
+							<span>HR지원</span>
+						</li>
+						<li class="gnb menu07">
+							<span>커뮤니티</span>
+						</li>
+						<li class="gnb menu08">
+							<span>협업</span>
+						</li>
+						<li class="gnb menu09">
+							<span class="blind">문의사항</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="content-wrap">
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				내용<br>
+				<!-- 우측 fixed 버튼-->
+				<div class="right-btn-box">
+					<div class="view-btn">
+						<a href="#" id="rightViewBtn" class="blind">메뉴더보기</a>
+						<div class="view-btn-pop">
+							<ul>
+								<li class="menu01"><a href="#"><span class="tit">메일쓰기</span><i></i></a></li>
+								<li class="menu02"><a href="#"><span class="tit">기안작성</span><i></i></a></li>
+								<li class="menu03"><a href="#"><span class="tit">M365 바로가기</span><i></i></a></li>
+								<li class="menu04"><a href="#"><span class="tit">직원검색</span><i></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<a href="#" ID="topBtn" class="top-btn blind">상단으로</a>
+				</div>
+				<!-- 우측 fixed 버튼-->
+			</div>
+			
+		</div>
+	</div>
+	<script>
+
+	$(document).ready(function(){
+		$(".left-gnb .gnb").click(function(){
+			var submenu = $(this).children('.sub-menu');
+ 
+			if( submenu.is(":visible") ){
+				submenu.hide(300);
+			}else{
+				submenu.show(300);
+			}
+		}).mouseover(function(){
+			$(this).next('.sub-menu').hide();
+		});
+	
+		$(".gnb:eq(1)").click();
+	});
+
+
+	/* lnb */
+	(function($){
+	  
+	  var lnbUI = {
+	    click : function (target, speed) {
+	      var _self = this,
+	          $target = $(target);
+	      _self.speed = speed || 300;
+	      
+	      $target.each(function(){
+	        if(findChildren($(this))) {
+	          return;
+	        }
+	        $(this).addClass('noDepth');
+	      });
+	      
+	      function findChildren(obj) {
+	        return obj.find('> ul').length > 0;
+	      }
+	      
+	      $target.on('click','a', function(e){
+	          e.stopPropagation();
+	          var $this = $(this),
+	              $depthTarget = $this.next(),
+	              $siblings = $this.parent().siblings();
+	        
+	        $this.parent('li').find('ul li').removeClass('on');
+	        $siblings.removeClass('on');
+	        $siblings.find('ul').slideUp(250);
+	        
+	        if($depthTarget.css('display') == 'none') {
+	          _self.activeOn($this);
+	          $depthTarget.slideDown(_self.speed);
+	        } else {
+	          $depthTarget.slideUp(_self.speed);
+	          _self.activeOff($this);
+	        }
+	        
+	      })
+	      
+	    },
+	    activeOff : function($target) {
+	      $target.parent().removeClass('on');
+	    },
+	    activeOn : function($target) {
+	      $target.parent().addClass('on');
+	    }
+	  };
+	  
+	  
+	  // Call lnbUI
+	  $(function(){
+	    lnbUI.click('.gnb-depth li', 300)
+	  });
+	  
+	  
+	}(jQuery));
+	</script>
+</body>
+
+</html>

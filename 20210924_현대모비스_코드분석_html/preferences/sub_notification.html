@@ -1,0 +1,965 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody">
+            <div class="left_mail" title="메일">
+                메일
+                <span class="icon_tree tree_leftconfig" onclick="mail_Config()" title="메일환경설정"></span>
+            </div>
+            <div class="btn_writeBox">
+                <p class="btn_write02" onclick="new_mail_onclick()">메일쓰기</p>
+                <p class="btn_write01" onclick="new_mail_onclick('tome')">내게쓰기</p>
+            </div>
+            <div class="leftscroll btnstyle2type">
+                <div class="leftscrollBox scrollbar-outer">
+                    <h2 id="h2_mail" class="on">
+                        <span onclick="Email_Menu_Click()">
+                            <span class="icon_tree tree_lnbArrowDown"></span>
+                            <span class="h2_text">메일</span>
+                        </span>
+                    </h2>
+                    <ul class="leftList">
+                        <div class="tree_scroll scrollbar-inner">
+                            <div class="tree" style="height: 100%;" id="PostTreeView">
+                                <span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="받은 편지함(43)" depth="0">받은 편지함(43)</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_8" name="PostTreeView_img_8" width="-1" height="-1"></span><span id="PostTreeView_node_8" name="PostTreeView_node_8" class="node_normal" style="display:inline-block;font-weight:bold white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="1(6)" depth="1">1(6)</span></div><span id="PostTreeView_child_8" name="PostTreeView_child_8" style="display: none;"></span></span></span></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_2" name="PostTreeView_img_2" width="-1" height="-1"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="보낸 편지함" depth="0">보낸 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="임시 보관함(234)" depth="0">임시 보관함(234)</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_4" name="PostTreeView_img_4" width="-1" height="-1"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="지운 편지함(2160)" depth="0">지운 편지함(2160)</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_5" name="PostTreeView_img_5" width="-1" height="-1"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="PERSONAL" depth="0">PERSONAL</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_6" name="PostTreeView_img_6" width="-1" height="-1"></span><span id="PostTreeView_node_6" name="PostTreeView_node_6" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="정크 메일" depth="0">정크 메일</span></div><span id="PostTreeView_child_6" name="PostTreeView_child_6" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_7" name="PostTreeView_img_7" style="cursor: pointer;"></span><span id="PostTreeView_node_7" name="PostTreeView_node_7" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="개인사서함" depth="0">개인사서함</span></div><span id="PostTreeView_child_7" name="PostTreeView_child_7" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_9" name="PostTreeView_img_9" width="-1" height="-1"></span><span id="PostTreeView_node_9" name="PostTreeView_node_9" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="0" depth="1">0</span></div><span id="PostTreeView_child_9" name="PostTreeView_child_9" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_10" name="PostTreeView_img_10" width="-1" height="-1"></span><span id="PostTreeView_node_10" name="PostTreeView_node_10" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="10" depth="1">10</span></div><span id="PostTreeView_child_10" name="PostTreeView_child_10" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_11" name="PostTreeView_img_11" width="-1" height="-1"></span><span id="PostTreeView_node_11" name="PostTreeView_node_11" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="11" depth="1">11</span></div><span id="PostTreeView_child_11" name="PostTreeView_child_11" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_12" name="PostTreeView_img_12" width="-1" height="-1"></span><span id="PostTreeView_node_12" name="PostTreeView_node_12" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12" depth="1">12</span></div><span id="PostTreeView_child_12" name="PostTreeView_child_12" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_13" name="PostTreeView_img_13" width="-1" height="-1"></span><span id="PostTreeView_node_13" name="PostTreeView_node_13" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12345678901234567890123456789012345678901234567890" depth="1">12345678901234567890123456789012345678901234567890</span></div><span id="PostTreeView_child_13" name="PostTreeView_child_13" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_14" name="PostTreeView_img_14" width="-1" height="-1"></span><span id="PostTreeView_node_14" name="PostTreeView_node_14" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="13" depth="1">13</span></div><span id="PostTreeView_child_14" name="PostTreeView_child_14" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_15" name="PostTreeView_img_15" width="-1" height="-1"></span><span id="PostTreeView_node_15" name="PostTreeView_node_15" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="14" depth="1">14</span></div><span id="PostTreeView_child_15" name="PostTreeView_child_15" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_16" name="PostTreeView_img_16" style="cursor: pointer;"></span><span id="PostTreeView_node_16" name="PostTreeView_node_16" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="2" depth="1">2</span></div><span id="PostTreeView_child_16" name="PostTreeView_child_16" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_17" name="PostTreeView_img_17" width="-1" height="-1"></span><span id="PostTreeView_node_17" name="PostTreeView_node_17" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="212" depth="1">212</span></div><span id="PostTreeView_child_17" name="PostTreeView_child_17" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_18" name="PostTreeView_img_18" width="-1" height="-1"></span><span id="PostTreeView_node_18" name="PostTreeView_node_18" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="3" depth="1">3</span></div><span id="PostTreeView_child_18" name="PostTreeView_child_18" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_19" name="PostTreeView_img_19" width="-1" height="-1"></span><span id="PostTreeView_node_19" name="PostTreeView_node_19" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="4" depth="1">4</span></div><span id="PostTreeView_child_19" name="PostTreeView_child_19" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_20" name="PostTreeView_img_20" width="-1" height="-1"></span><span id="PostTreeView_node_20" name="PostTreeView_node_20" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="5" depth="1">5</span></div><span id="PostTreeView_child_20" name="PostTreeView_child_20" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_21" name="PostTreeView_img_21" width="-1" height="-1"></span><span id="PostTreeView_node_21" name="PostTreeView_node_21" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="6" depth="1">6</span></div><span id="PostTreeView_child_21" name="PostTreeView_child_21" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_22" name="PostTreeView_img_22" width="-1" height="-1"></span><span id="PostTreeView_node_22" name="PostTreeView_node_22" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="7" depth="1">7</span></div><span id="PostTreeView_child_22" name="PostTreeView_child_22" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_23" name="PostTreeView_img_23" width="-1" height="-1"></span><span id="PostTreeView_node_23" name="PostTreeView_node_23" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="8" depth="1">8</span></div><span id="PostTreeView_child_23" name="PostTreeView_child_23" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_24" name="PostTreeView_img_24" style="cursor: pointer;"></span><span id="PostTreeView_node_24" name="PostTreeView_node_24" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더" depth="1">개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더</span></div><span id="PostTreeView_child_24" name="PostTreeView_child_24" style="display: none;"></span></span></span></span></span></span></span>
+                            </div>
+                        </div>
+                        <li>
+                            <h4 id="dlbtn" class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">승인메일함</span></h4>
+                            <ul class="leftList">
+
+                                <li id="ApproveMailRequest" onclick="goPage(26)"><span class="li_text">신청함</span></li>
+                                <li id="ApproveMailList" onclick="goPage(21)" style=""><span class="li_text">승인할 메일</span></li>
+                                <li id="ApproveMailCompleteList" onclick="goPage(24)" style=""><span class="li_text">승인완료 메일</span></li>
+                                <li id="ApproveAuth" onclick="goPage(25)" style="display:none"><span class="li_text">승인권자관리</span></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h4 class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">부가기능</span></h4>
+                            <ul class="leftList">
+
+                                <li onclick="folder_manage()"><span class="li_text">편지함관리</span></li>
+                                <li onclick="Open_ReservationManage()"><span class="li_text">예약발송관리</span></li>
+                                <li onclick="Open_Search()"><span class="li_text">메일검색</span></li>
+                                <li onclick="Open_Restore()"><span class="li_text">영구삭제메일복원</span></li>
+                                <li id="mailimport" onclick="mail_import()"><span class="li_text">메일가져오기</span></li>
+                                <li id="mailexportall" onclick="mail_exportall()" style="display: none;"><span class="li_text">편지함PC저장하기</span></li>
+
+                                <li onclick="mail_backup()"><span class="li_text">메일 백업</span></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <h2 id="h2_address"><span onclick="Address_Menu_Click()"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">명함관리</span></span></h2>
+                    <ul class="leftList">
+                        <div class="tree" style="height: 100%; max-height: 194px;" id="AddressTreeView"></div>
+                        <li onclick="address_Search()"><span class="li_text">명함검색</span></li>
+                        <li onclick="address_foldermanage()"><span class="li_text">명함관리</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left_mailgraphBox" style="display:none;"><!-- 삭제 -->
+                <dl class="left_mailgraphDL">
+                    <dt>메일사용량</dt>
+                    <dd id="currentmail"><span class="point">173MB</span> / 1.00GB</dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph"><span style="width: 17%; ">17%</span></p><!-- 메일사용량 그래프 width 값 -->
+
+                <dl class="left_mailgraphDL" style="margin-top:10px;">
+                    <dt>개인사서함</dt>
+                    <dd id="currentmail_personal"></dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph_personal" style="display:none;"></p><!-- 개인사서함 그래프 width 값 -->
+
+            </div>
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>알림설정 
+                <span>알림 환경을 설정 할 수 있습니다.</span>
+           </p>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 94px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <div class="notification_box">
+                <ul class="notification_tit">
+                    <li>서명목록</li>
+                    <li>메일</li>
+                    <li>웹알림</li>
+                    <li>메신져</li>
+                    <li>모바일PUSH</li>
+                </ul>
+
+                <ul class="notification_list">
+                    <!-- 메일 -->
+                    <li class="one">
+                        <div class="tit">
+                            <p>메일 </p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification01-1">
+                                    <label for="notification01-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification01-2">
+                                    <label for="notification01-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification01-3">
+                                    <label for="notification01-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification01-4">
+                                    <label for="notification01-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- //메일 -->
+                    <!-- 결제 -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>결제 <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all02-1" class="checkall02-1">
+                                    <label for="notification_all02-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all02-2" class="checkall02-1">
+                                    <label for="notification_all02-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all02-3" class="checkall02-1">
+                                    <label for="notification_all02-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all02-4" class="checkall02-1">
+                                    <label for="notification_all02-4"></label>
+                                </span>
+                            </div>                           
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-1-1" name="checkall02-1" class="check02-1">
+                                            <label for="notification_02-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-2-1">
+                                            <label for="notification_02-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-3-1">
+                                            <label for="notification_02-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-4-1">
+                                            <label for="notification_02-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-1-2" name="checkall02-1" class="check02-1">
+                                            <label for="notification_02-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-2-2">
+                                            <label for="notification_02-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-3-2">
+                                            <label for="notification_02-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-4-2">
+                                            <label for="notification_02-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-1-3" name="checkall02-1" class="check02-1">
+                                            <label for="notification_02-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-2-3">
+                                            <label for="notification_02-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-3-3">
+                                            <label for="notification_02-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-4-3">
+                                            <label for="notification_02-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-1-4" name="checkall02-1" class="check02-1">
+                                            <label for="notification_02-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-2-4">
+                                            <label for="notification_02-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-3-4">
+                                            <label for="notification_02-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_02-4-4">
+                                            <label for="notification_02-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //결제 -->
+                    <!-- 결제(G) -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>결제(G) <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all03-1">
+                                    <label for="notification_all03-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all03-2">
+                                    <label for="notification_all03-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all02-3">
+                                    <label for="notification_all03-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all03-4">
+                                    <label for="notification_all03-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-1-1">
+                                            <label for="notification_03-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-2-1">
+                                            <label for="notification_03-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-3-1">
+                                            <label for="notification_03-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-4-1">
+                                            <label for="notification_03-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-1-2">
+                                            <label for="notification_02-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-2-2">
+                                            <label for="notification_03-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-3-2">
+                                            <label for="notification_03-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-4-2">
+                                            <label for="notification_03-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-1-3">
+                                            <label for="notification_03-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-2-3">
+                                            <label for="notification_03-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-3-3">
+                                            <label for="notification_03-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-4-3">
+                                            <label for="notification_03-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-1-4">
+                                            <label for="notification_03-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-2-4">
+                                            <label for="notification_03-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-3-4">
+                                            <label for="notification_03-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_03-4-4">
+                                            <label for="notification_03-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //결제(G) -->
+                    <!-- 커뮤니티 -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>커뮤니티 <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all04-1">
+                                    <label for="notification_all04-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all04-2">
+                                    <label for="notification_all04-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all04-3">
+                                    <label for="notification_all04-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all04-4">
+                                    <label for="notification_all04-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-1-1">
+                                            <label for="notification_04-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-2-1">
+                                            <label for="notification_04-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-3-1">
+                                            <label for="notification_04-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-4-1">
+                                            <label for="notification_04-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-1-2">
+                                            <label for="notification_04-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-2-2">
+                                            <label for="notification_04-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-3-2">
+                                            <label for="notification_04-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-4-2">
+                                            <label for="notification_04-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-1-3">
+                                            <label for="notification_04-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-2-3">
+                                            <label for="notification_04-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-3-3">
+                                            <label for="notification_04-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-4-3">
+                                            <label for="notification_04-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-1-4">
+                                            <label for="notification_04-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-2-4">
+                                            <label for="notification_04-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-3-4">
+                                            <label for="notification_04-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_04-4-4">
+                                            <label for="notification_04-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //커뮤니티 -->
+                    <!-- 예약관리 -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>예약관리 <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all05-1">
+                                    <label for="notification_all05-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all05-2">
+                                    <label for="notification_all05-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all05-3">
+                                    <label for="notification_all05-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all05-4">
+                                    <label for="notification_all05-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-1-1">
+                                            <label for="notification_05-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-2-1">
+                                            <label for="notification_05-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-3-1">
+                                            <label for="notification_05-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-4-1">
+                                            <label for="notification_05-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-1-2">
+                                            <label for="notification_05-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-2-2">
+                                            <label for="notification_05-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-3-2">
+                                            <label for="notification_05-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-4-2">
+                                            <label for="notification_05-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-1-3">
+                                            <label for="notification_05-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-2-3">
+                                            <label for="notification_05-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-3-3">
+                                            <label for="notification_05-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-4-3">
+                                            <label for="notification_05-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-1-4">
+                                            <label for="notification_05-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-2-4">
+                                            <label for="notification_05-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-3-4">
+                                            <label for="notification_05-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_05-4-4">
+                                            <label for="notification_05-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //예약관리 -->
+                    <!-- 일정관리 -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>일정관리 <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all06-1">
+                                    <label for="notification_all06-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all06-2">
+                                    <label for="notification_all06-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all06-3">
+                                    <label for="notification_all06-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all06-4">
+                                    <label for="notification_all06-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-1-1">
+                                            <label for="notification_06-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-2-1">
+                                            <label for="notification_06-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-3-1">
+                                            <label for="notification_06-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-4-1">
+                                            <label for="notification_06-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-1-2">
+                                            <label for="notification_06-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-2-2">
+                                            <label for="notification_06-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-3-2">
+                                            <label for="notification_06-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-4-2">
+                                            <label for="notification_06-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-1-3">
+                                            <label for="notification_06-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-2-3">
+                                            <label for="notification_06-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-3-3">
+                                            <label for="notification_06-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-4-3">
+                                            <label for="notification_06-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-1-4">
+                                            <label for="notification_06-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-2-4">
+                                            <label for="notification_06-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-3-4">
+                                            <label for="notification_06-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_06-4-4">
+                                            <label for="notification_06-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //일정관리 -->
+                    <!-- 설문 -->
+                    <li class="one">
+                        <div class="tit">
+                            <p>설문 </p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification07-1">
+                                    <label for="notification07-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification07-2">
+                                    <label for="notification07-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification07-3">
+                                    <label for="notification07-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification07-4">
+                                    <label for="notification07-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- //설문 -->
+                    <!-- 소통 -->
+                    <li class="active">
+                        <div class="tit">
+                            <p>소통 <span></span></p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all08-1">
+                                    <label for="notification_all08-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all08-2">
+                                    <label for="notification_all08-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all08-3">
+                                    <label for="notification_all08-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification_all08-4">
+                                    <label for="notification_all08-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 서브 메뉴 -->
+                        <ul class="notification_sublist">
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 답변 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-1-1">
+                                            <label for="notification_08-1-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-2-1">
+                                            <label for="notification_08-2-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-3-1">
+                                            <label for="notification_08-3-1"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-4-1">
+                                            <label for="notification_08-4-1"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 게시글에 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-1-2">
+                                            <label for="notification_08-1-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-2-2">
+                                            <label for="notification_08-2-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-3-2">
+                                            <label for="notification_08-3-2"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-4-2">
+                                            <label for="notification_08-4-2"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>내 덧글 덧글 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-1-3">
+                                            <label for="notification_08-1-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-2-3">
+                                            <label for="notification_08-2-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-3-3">
+                                            <label for="notification_08-3-3"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-4-3">
+                                            <label for="notification_08-4-3"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <p>승인 게시판 글 승인 시 알림</p>
+                                    <div class="input_wrap">
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-1-4">
+                                            <label for="notification_08-1-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-2-4">
+                                            <label for="notification_08-2-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-3-4">
+                                            <label for="notification_08-3-4"></label>
+                                        </span>
+                                        <span class="listview-check checks">
+                                            <input type="checkbox" id="notification_08-4-4">
+                                            <label for="notification_08-4-4"></label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- //서브 메뉴 -->
+                    </li>
+                    <!-- //소통 -->
+                    <!-- 공지 -->
+                    <li class="one">
+                        <div class="tit">
+                            <p>공지 </p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification09-1">
+                                    <label for="notification09-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification09-2">
+                                    <label for="notification09-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification09-3">
+                                    <label for="notification09-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification09-4">
+                                    <label for="notification09-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- //공지 -->
+                    <!-- 기타 -->
+                    <li class="one">
+                        <div class="tit">
+                            <p>기타 </p>
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification10-1">
+                                    <label for="notification10-1"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification10-2">
+                                    <label for="notification10-2"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification10-3">
+                                    <label for="notification10-3"></label>
+                                </span>
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="notification10-4">
+                                    <label for="notification10-4"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- //기타 -->
+                </ul>
+            </div>
+
+            <ul class="btn_newtype">
+                <li class="ok">저장</li>
+                <li class="no">취소</li>
+            </ul>
+        </div>
+    </span>
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

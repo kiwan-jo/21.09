@@ -1,0 +1,757 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <link rel="stylesheet" href="../css/swiper-bundle.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript" src="../jQuery/swiper-bundle.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 31px);">
+        <!-- 결재시간 통계 -->
+        <div class="time_statistics_wrap">
+            <!-- 상단 -->
+            <div class="statistics_wrap">
+                <div class="statistics">
+                    <div class="tit">
+                        <p>결재시간 통계</p>
+                        <ul>
+                            <li class="on">당월</li>
+                            <li>최근 3개월</li>
+                        </ul>
+                    </div>
+                    <div class="time">
+                        <p>당월 평균 <span>8시간 30분</span></p>
+                    </div>
+
+                    <div class="graph_box">
+                        <ul class="txt">
+                            <li class="my">본인</li>
+                            <li class="department">내 부서</li>
+                            <li class="headquarters">본부</li>
+                            <li class="company">회사</li>
+                        </ul>
+                        <div class="graph">
+                            <ul>
+                                <li><div class="bar my"><span style="width:60%"></span></div></li>
+                                <li><div class="bar department"><span style="width:10%"></span></div></li>
+                                <li><div class="bar headquarters"><span style="width:40%"></span></div></li>
+                                <li><div class="bar company"><span style="width:80%"></span></div></li>
+                            </ul>
+                            <div class="display first">
+                                <span class="bar"></span>
+                                <span class="num">5시간</span>
+                            </div>
+                            <div class="display second">
+                                <span class="bar"></span>
+                                <span class="num">5시간</span>
+                            </div>
+                            <div class="display third">
+                                <span class="bar"></span>
+                                <span class="num">5시간</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document_info">
+                    <ul>
+                        <li class="approval">
+                            <dl>
+                                <dt>내가 결제할 문서</dt>
+                                <dd><span>2</span>건</dd>
+                            </dl>
+                        </li>
+                        <li class="ing">
+                            <dl>
+                                <dt>진행중인 문서</dt>
+                                <dd><span>11</span>건</dd>
+                            </dl>
+                        </li>
+                        <li class="department">
+                            <dl>
+                                <dt>부서 수신 문서</dt>
+                                <dd><span>2</span>건</dd>
+                            </dl>
+                        </li>
+                        <li class="reference">
+                            <dl>
+                                <dt>참조 문서</dt>
+                                <dd><span>2</span>건</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //상단 -->
+            <!-- 문서 테블릿 -->
+            <div class="payment_template">
+                <!-- 박스 -->
+                <div class="template_box">
+                    <div class="top_tit">진행중인 결제 <a href="#none"></a></div>
+                    <div class="conts_box">
+                        <ul class="payment_ing">
+                            <li>
+                                <div class="tit">
+                                    <span class="i_issue"></span>
+                                    <a href="#none" class="txt">[기안문] 2020년도 1월 사무용품 구매 신청서 [기안문] 2020년도 1월 사무용품 구매 신청서</a>
+                                    <a href="#none" class="i_file"></a>
+                                    <a href="#none" class="i_message"></a>
+                                </div>
+                                <ul class="info">
+                                    <li class="ok">
+                                        <p>기안 <span>결제</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>2020.10.15  13:15:11</dd>
+                                        </dl>
+                                    </li>
+                                    <li class="ing">
+                                        <p>기안 <span>대기</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>-</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <span class="i_issue"></span>
+                                    <a href="#none" class="txt">[기안문] 2020년도 1월 사무용품 구매 신청서</a>
+                                    <a href="#none" class="i_file"></a>
+                                    <a href="#none" class="i_message"></a>
+                                </div>
+                                <ul class="info">
+                                    <li class="ok">
+                                        <p>기안 <span>결제</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>2020.10.15  13:15:11</dd>
+                                        </dl>
+                                    </li>
+                                    <li class="ing">
+                                        <p>기안 <span>대기</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>-</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="tit">
+                                    <span class="i_issue"></span>
+                                    <a href="#none" class="txt">[기안문] 2020년도 1월 사무용품 구매 신청서</a>
+                                    <a href="#none" class="i_file"></a>
+                                    <a href="#none" class="i_message"></a>
+                                </div>
+                                <ul class="info">
+                                    <li class="ok">
+                                        <p>기안 <span>결제</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>2020.10.15  13:15:11</dd>
+                                        </dl>
+                                    </li>
+                                    <li class="ing">
+                                        <p>기안 <span>대기</span></p>
+                                        <div class="img"></div>
+                                        <dl>
+                                            <dt>ICT 선행기술팀 주시은 매니저</dt>
+                                            <dd>-</dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //박스 -->
+                <div class="left_box">
+                    <div class="template_box mb0">
+                        <div class="top_tit">결제 지연 <a href="#none"></a></div>
+                        <div class="conts_box">
+                            <div class="document_list">
+                                <div class="swiper-container">
+                                    <ul class="swiper-wrapper">
+                                        <li class="swiper-slide">
+                                            <ul class="info">
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <ul class="info">
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="swiper-slide">
+                                            <ul class="info">
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="conts_l">
+                                                        <p>+30</p>
+                                                        <span>Days</span>
+                                                    </div>
+
+                                                    <div class="conts_r">
+                                                        <a href="#none">
+                                                            <div class="t_right">
+                                                                <span class="i_message"></span>
+                                                            </div>
+                                                            <div class="t_right">
+                                                                <span class="i_file"></span>
+                                                            </div>
+                                                            <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                            <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="right_box">
+                    <li>
+                        <div class="template_box">
+                            <div class="top_tit">부서 수신함 <a href="#none"></a></div>
+                            <div class="conts_box">
+                                <div class="document_list">
+                                    <ul class="info">
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <div class="t_right">
+                                                    <span class="i_file"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <div class="t_right">
+                                                    <span class="i_file"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[지출결의서] 2020년도 1월 사무용품 구...</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <div class="t_right">
+                                                    <span class="i_file"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[물품구매신청서] 2020년도 1월 사무용...</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="template_box">
+                            <div class="top_tit">최근 기안한 문서 <a href="#none"></a></div>
+                            <div class="conts_box">
+                                <div class="document_list">
+                                    <ul class="info">
+                                        <li>
+                                            <a href="#none">
+                                                <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                <span class="day">2020.10.08</span>
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[지출결의서] 2020년도 1월 사무용품 구...</p>
+                                                <span class="day">2020.10.08</span>
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <p><span class="i_issue"></span>[물품구매신청서] 2020년도 1월 사무용...</p>
+                                                <span class="day">2020.10.08</span>
+                                            </a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="template_box mb0">
+                            <div class="top_tit">완료함 <a href="#none"></a></div>
+                            <div class="conts_box">
+                                <div class="document_list">
+                                    <ul class="info">
+                                        <li>
+                                            <a href="#none">
+                                                <p><span class="i_issue"></span>[기안서] 2020년도 1월 사무용품 구매 신청서</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[지출결의서] 2020년도 1월 사무용품 구...</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <div class="t_right">
+                                                    <span class="i_message"></span>
+                                                </div>
+                                                <p><span class="i_issue"></span>[물품구매신청서] 2020년도 1월 사무용...</p>
+                                                <span class="day">ICT 선행기술팀 조서현 책임 2020.10.08</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="template_box mb0">
+                            <div class="top_tit">결재 양식 <a href="#none" class="more"></a></div>
+                            <div class="conts_box">
+                                <div class="payment_form_list">
+                                    <div class="swiper-container">
+                                        <ul class="swiper-wrapper">
+                                            <li class="swiper-slide">
+                                                <ul class="info">
+                                                    <li><a href="#none">기안문</a></li>
+                                                    <li><a href="#none">법인카드 경비 신청서</a></li>
+                                                    <li><a href="#none">추가 물품 구매 신청서</a></li>
+                                                    <li><a href="#none">지출결의서</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="swiper-slide">
+                                                <ul class="info">
+                                                    <li><a href="#none">기안문</a></li>
+                                                    <li><a href="#none">법인카드 경비 신청서</a></li>
+                                                    <li><a href="#none">추가 물품 구매 신청서</a></li>
+                                                    <li><a href="#none">지출결의서</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <!-- Add Pagination -->
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //문서 테블릿 -->
+        </div>
+        <!-- //결재시간 통계 -->
+    </span>
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+    <script type="text/javascript">
+        /* 결제 지연 */
+        $(document).ready(function () {
+            function document_list_slide() {
+                var swiper = new Swiper('.document_list .swiper-container', {
+                    cssMode: true,
+                    pagination: {
+                        el: '.document_list .swiper-pagination',
+                        clickable: true,
+                    }
+                });
+            }; document_list_slide();
+        });
+        /* 결재 양식 */
+        $(document).ready(function () {
+            function payment_form_list_slide() {
+                var swiper = new Swiper('.payment_form_list .swiper-container', {
+                    cssMode: true,
+                    pagination: {
+                        el: '.payment_form_list .swiper-pagination',
+                        clickable: true,
+                    }
+                });
+            }; payment_form_list_slide();
+        });
+    </script>
+</body>
+</html>

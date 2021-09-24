@@ -1,0 +1,1614 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+<body id="parentBody" class="mainbody">
+    <div>
+        <div id="mainmenu" class="mainmenu_btn">
+
+            <ul class="mainmenu_btnUL">
+                <li class="on" onclick="Send_onClick()" tabindex="1" href="javascript:Send_onClick()" title="발송">발송</li>
+                <li onclick="isAutoSave=false;Save_onClick('tempsave');" title="저장">저장</li>
+                <li onclick="NameCertify_onClick()" title="이름확인">이름확인</li>
+                <li onclick="LoadFormat_onClick()" style="display:none;" title="템플릿">템플릿</li>
+                <li id="LiOption" onclick="Option_onClick()" title="옵션">옵션</li>
+                <li class="sel">
+                    <select name="importantSelect" id="importantSelect" onchange="important_change()">
+                        <option value="0">중요도 낮음</option>
+                        <option value="1" selected="selected">중요도 보통</option>
+                        <option value="2">중요도 높음</option>
+                    </select>
+                </li>
+                <li class="sel" style="display: none;">
+                    <select id="SelMailSign" onchange="MailSignSel()">
+                        <option value="0" selected="">서명 사용안함</option>
+                        <option value="1">서명1</option>
+                        <option value="2">서명2</option>
+                        <option value="3">서명3</option>
+                        <option value="4">회사기본서명1</option>
+                        <option value="5">회사기본서명2</option>
+                        <option value="6">회사기본서명3</option>
+                        <option value="7">회사기본서명4</option>
+                    </select>
+                </li>
+                <li class="sel" style="display: none;">
+                    <select id="selChangeSenderName" onchange="ChangeSenderName(this);" style="max-width:115px;"><option value="NONE">발신자명</option><option value="CHANG DONG CHEOL">CHANG DONG CHEOL</option></select>
+                </li>
+                <li onclick="Print_onClick()" title="인쇄"><span class="icon16 printing"></span></li>
+                <li id="embed_Close" class="rightbtn" onclick="PreView_Close()" style=""><span class="icon16 backhistory"></span></li>
+                <li id="embed_Open" class="rightbtn" onclick="WindowPopup_Open()" style="display:none"><span class="icon16 new_window"></span></li>
+
+
+                <li id="liexcel"><span onclick="Excel_onClick()">수신자 Import</span></li>
+
+            </ul>
+
+        </div>
+        <div class="contentwrite">
+            <ul class="contentwrite_list">
+                <li id="MsgTo_TR">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left indispensable">
+                            <span class="linkText" onclick="SelectReceiver_onClick('To')">
+                                <label for="checkbox02">받는 사람</label>
+                            </span>
+                        </li>
+                        <li class="contentlayout_left">
+                            <input type="checkbox" id="toMe" onchange="MailToMe_Onclick(this)">
+                            <span id="chk_toMe" class="linkText" style="text-decoration: none;" onclick="document.getElementById('toMe').click(); return false;">
+                                <label for="toMe">내게쓰기</label>
+                            </span>
+                        </li>
+                        <li class="contentlayout_right">
+                            <select id="SelectToAddress" onchange="simple_select('TO',this)"><option value="-간편주소록-">-간편주소록-</option><option value="개인 그룹명함|#|AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEOAAAIxaULPOSBRpV/CFWeqeJQAAG7LElJAAA=|!|P|#|mailgroup">개인 그룹명함</option><option value="김명윤|#|DT028231@mobisdev.com|#|mail">김명윤</option></select>
+                            <a class="imgbtn"><span onclick="new_Address()">설정</span></a>
+                        </li>
+                        <li class="contentlayout_none">
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input id="MsgTo" style="ime-mode:active;" type="text" class="width100percent receiverInput ui-autocomplete-input" onkeyup="return on_keydown(event)" autocomplete="off">
+                            <ul id="MsgToGot" class="drop_list_write" style="max-height: 60px; overflow: auto;"></ul>
+                        </li>
+                    </ul>
+                </li>
+                <li id="MsgCC_TR">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left">
+                            <span class="linkText" onclick="SelectReceiver_onClick('CC')">
+                                <label for="checkbox02">참조</label>
+                            </span>
+                            <span id="BccViewer" class="icon16 collapse_down" status="off" onclick="MailBCCView(this);"></span>
+                        </li>
+                        <li class="contentlayout_left">
+                            <input type="checkbox" id="ccMe" onchange="MailToMe_Onclick(this)">
+                            <span id="chk_ccMe" class="linkText" style="text-decoration: none;" onclick="document.getElementById('ccMe').click(); return false;">
+                                <label for="ccMe">내게쓰기</label>
+                            </span>
+                        </li>
+                        <li class="contentlayout_right">
+                            <select id="SelectCcAddress" onchange="simple_select('CC',this)"><option value="-간편주소록-">-간편주소록-</option><option value="개인 그룹명함|#|AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEOAAAIxaULPOSBRpV/CFWeqeJQAAG7LElJAAA=|!|P|#|mailgroup">개인 그룹명함</option><option value="김명윤|#|DT028231@mobisdev.com|#|mail">김명윤</option></select>
+                            <a class="imgbtn"><span onclick="new_Address()">설정</span></a>
+                        </li>
+                        <li id="MsgCC_TRu" class="contentlayout_none">
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input id="MsgCC" style="ime-mode:active;" type="text" class="width100percent receiverInput ui-autocomplete-input" onkeyup="return on_keydown(event)" autocomplete="off">
+                            <ul id="MsgCCGot" class="drop_list_write" style="max-height: 60px; overflow: auto;"></ul>
+                        </li>
+                    </ul>
+                </li>
+                <li id="MsgBCC_TR" style="display: none;">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left">
+                            <span class="linkText" onclick="SelectReceiver_onClick('BCC')">
+                                <label for="checkbox02">숨은 참조</label>
+                            </span>
+                        </li>
+                        <li class="contentlayout_left">
+                            <input type="checkbox" id="bccMe" onchange="MailToMe_Onclick(this)">
+                            <span id="chk_bccMe" class="linkText" style="text-decoration: none;" onclick="document.getElementById('bccMe').click(); return false;">
+                                <label for="bccMe">내게쓰기</label>
+                            </span>
+                        </li>
+                        <li class="contentlayout_right">
+                            <select id="SelectBCCAddress" onchange="simple_select('BCC',this)"><option value="-간편주소록-">-간편주소록-</option><option value="개인 그룹명함|#|AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEOAAAIxaULPOSBRpV/CFWeqeJQAAG7LElJAAA=|!|P|#|mailgroup">개인 그룹명함</option><option value="김명윤|#|DT028231@mobisdev.com|#|mail">김명윤</option></select>
+                            <a class="imgbtn"><span onclick="new_Address()">설정</span></a>
+                        </li>
+                        <li id="MsgBCC_TRu" class="contentlayout_none">
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input id="MsgBCC" style="ime-mode:active;" type="text" class="width100percent receiverInput ui-autocomplete-input" onkeyup="return on_keydown(event)" autocomplete="off">
+                            <ul id="MsgBCCGot" class="drop_list_write" style="max-height: 60px; overflow: auto;"></ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left">
+                            <span class="titleText indispensable">제목</span>
+                        </li>
+                        <li class="contentlayout_left">
+                            <input type="checkbox" id="highImportant" onchange="highImportant_Onclick()">
+                            <span id="checkbox03" class="linkText" style="text-decoration: none;" onclick="document.getElementById('highImportant').click(); return false;">
+                                <label for="highImportant">중요</label>
+                            </span>
+                        </li>
+
+                        <li class="contentlayout_right">
+                            <select id="SelectTemplate" style="min-width:124px;" onchange="onchange_template();">
+                                <option value="">Select Template</option>
+
+                                <option value="업무보고.htm">업무보고</option>
+
+                                <option value="업무지시.htm">업무지시</option>
+
+                                <option value="출장보고.htm">출장보고</option>
+
+                                <option value="회의록.htm">회의록</option>
+
+                            </select>
+                        </li>
+
+                        <li class="contentlayout_none">
+                            <input id="eSubject" style="ime-mode:active;" type="text" class="width100percent">
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li id="trApprovalMail" style="display:none">
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left"><span>승인자 선택</span></li>
+                        <li class="contentlayout_left">
+                            <select id="selApprovalID" style="display: none"><option value="dt027844">김창영</option></select>
+                        </li>
+                        <li class="contentlayout_left">
+                            <input type="radio" name="chkApproveMail" id="chkApproveMail" value="1">
+                            <span style="padding-top: 0px;">문서보안 해제</span>
+                            <input type="radio" name="chkApproveMail" id="chkApproveMail2" value="2">
+                            <span style="padding-top: 0px;">문서보안 해제(승인불필요,팀장/실장 참조)</span>
+
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li style="">
+                    <ul class="contentlayout">
+
+                        <li class="contentlayout_left">
+                            &nbsp;
+                        </li>
+                        <li class="contentlayout_left">
+                            <!-- 2016.03.09 :: 현대모비스 :: 전달/회신/전체회신 금지 -->
+
+                            <input type="checkbox" id="chkReSendFlag">
+                            <span class="linkText" style="text-decoration: none;">
+                                <label for="chkReSendFlag">전달/회신/전체회신 금지</label>
+                            </span>
+
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul class="contentlayout">
+                        <li class="contentlayout_left">
+                            <span class="titleText">첨부파일</span>
+                        </li>
+                        <li class="contentlayout_left">
+                            <span id="AttachmentIcon" class="icon16 collapse_up" onclick="MailAttachmentView(this)"></span>
+                        </li>
+                    </ul>
+                </li>
+                <li id="AttachmentIcon_li" class="contentlayout_none2" style="">
+
+                    <div class="attachedfile">
+                        <ul class="contentlayout">
+                            <li class="contentlayout_none">
+                                <a id="btnilban" class="imgbtn" onclick="btnfileup()" style="display: none;"><span>파일추가</span></a>
+
+                                <a id="btnbig" class="imgbtn" onclick="btnfileup_big()"><span>파일추가</span></a>
+                                <a class="imgbtn" onclick="btnfiledel()"><span>파일삭제</span></a>
+                            </li>
+                            <li class="contentlayout_none">
+                                <div id="lstAttachLink" class="filelistTable" ondragenter="onDragEnter(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)" style="height:85px;">
+                                    <table id="filelist" class="sublist" style="width: 100%;"><tr><th style="width: 15px;"><input type="checkbox" id="checkboxall" onclick="checkall();"></th><th style="width: 80%;">파일명</th><th style="width: 100px;"></th><th style="width: 20%;">파일크기</th></tr></table>
+                                </div>
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_none">
+                                        <span class="spanText" style="color: #3a76c3; font-weight: bold;line-height:20px;">
+                                            첨부파일은 대용량 메일(링크형식)로 변환되며, 승인 후 14일(336시간)동안 다운로드 가능합니다. (개별파일 500MB 이하, 최대1GB까지 가능)
+                                        </span>
+                                    </li>
+
+                                    <li class="contentlayout_none">
+                                        <span class="spanText" style="color: #3a76c3; font-weight: bold; line-height:14px;">
+                                            <img src="/images/i_urgency.gif" align="absmiddle">&nbsp;
+                                            파일 용량 총합 1MB 이상일 경우 수신자 파일 다운로드 時 부가인증(
+
+                                            ARS, SMS, E-mail) 인증 필요
+
+
+                                        </span>
+                                    </li>
+                                    <li class="contentlayout_none">
+                                        <span class="spanText" style="color: #3a76c3; font-weight: bold;line-height:14px;">
+                                            <img src="/images/i_urgency.gif" align="absmiddle">&nbsp;
+                                            보안문서 등급 극비일 경우 첨부 불가
+
+
+                                        </span>
+                                    </li>
+
+                                    <li class="contentlayout_none">
+                                        <span class="spanText" style="color: #3a76c3; font-weight: bold;line-height:14px;">
+                                            &nbsp;※ 「도면 등 회사 중요정보는 승인을 득하고 외부발송 하시기 바랍니다.」
+
+
+                                        </span>
+                                    </li>
+
+                                </ul>
+                                <div id="progdiv" class="progarea" style="display:none">
+                                    <p class="prog_bar"><span id="prog_bar" style="width:0%"></span></p> <span class="prog_num"><strong id="prog_num">0</strong>%</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <!-- 본문쓰기 -->
+        <div class="edtor_content" style="height: 330px;" id="EdtorSize">
+            <!-- 2020.11.23 현대모비스 Editor 상단 뜨는 부분 제거  mt10 -->
+            <textarea id="plainTextContent" style="height: 100%; width: 100%; overflow-y: scroll; font-size: 13px; box-sizing: border-box; display:none;"></textarea>
+            <table style="width: 100%; height: 100%; border: 1px solid #b6b6b6;">
+                <tbody>
+                    <tr>
+                        <td style="height: 100%;">
+                            <iframe id="tbContentElement" class="viewbox" src="/myoffice/ezEditor/Select_Editor.aspx?type=MAIL" name="message" style="padding: 0; height: 100%; width: 100%; overflow: auto;"></iframe>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <xmp id="xmpTo" style="display: none"></xmp>
+        <xmp id="xmpCc" style="display: none"></xmp>
+        <xmp id="xmpBcc" style="display: none"></xmp>
+        <xmp id="xmpFrom" style="display: none">"김창영" <DT027844@mobisdev.com></xmp>
+        <xmp id="xmpSubject" style="display: none"></xmp>
+        <xmp id="test" style="display: none"></xmp>
+        <xmp id="xmpMailSign1" style="display: none">
+            <DIV>
+                <table width="720" height="125" border="0" cellpadding="0" cellspacing="0" style="width:720px; height:125px; border:0px; border-collapse:collapse; border-spacing:0;">
+                    <tbody>
+                        <tr>
+                            <td width="215" height="125" valign="top" style="width:215px; height:125px; vertical-align:top;"><img src="https://ngw.mobisdev.com/myoffice/Common/ezCommon_InterFace.aspx?TYPE=MAILSIGN&amp;FILENAME=93e1f577-4477-42b8-8d34-a2f9548e4e08.jpg" title="" alt="" align="top" border="0" style="width: 215px; height: 125px; border: 0px solid rgb(0, 0, 0);"><br></td>
+                            <td style="vertical-align:top;">
+                                <table width="313" height="125" border="0" cellpadding="0" cellspacing="0" style="width:313px; height:125px; border:0px; border-collapse:collapse; border-spacing:0;">
+                                    <tbody>
+                                        <tr>
+                                            <td width="32" height="125" style="width:32px; height:125px; vertical-align:top;">
+                                                &nbsp;
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                <table width="281" height="125" border="0" cellpadding="0" cellspacing="0" style="width:281px; height:125px; border:0px; border-collapse:collapse; border-spacing:0;"><tbody><tr><td height="21" valign="top" style=" height: 21px; vertical-align: top;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td></tr><tr><td height="24" valign="middle" style=" height: 24px; vertical-align: middle;"><strong style="font-size: 11pt;"><span style="font-size: 11pt; font-family: &quot;맑은 고딕&quot;;">홍길동&nbsp;&nbsp;Hong Gil Dong</span></strong></td></tr><tr><td height="20" valign="middle" style=" height: 20px; vertical-align: middle;"><font style="font-size: 14px; color: rgb(19, 19, 19); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;"><span style="font-size: 10pt; font-family: &quot;맑은 고딕&quot;;">책임매니저</span>&nbsp;<font style="font-size: 12px; color: rgb(215, 215, 215); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">l</font>&nbsp;<span style="font-size: 10pt; font-family: &quot;맑은 고딕&quot;;">전시/커뮤니케이션팀</span></font></td></tr><tr><td height="18" valign="middle" style=" height: 18px; vertical-align: middle;"><font style="font-size: 10px; color: rgb(104, 104, 104); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;"><span style="font-size: 8pt; font-family: &quot;맑은 고딕&quot;;">Senior Manager</span>&nbsp;<font style="font-size: 12px; color: rgb(215, 215, 215); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">l</font>&nbsp;EXHIBITION/COMMUNICATION TEAM</font></td></tr><tr><td height="26" valign="middle" style=" height: 26px; vertical-align: middle;"><span style="font-size: 10pt; font-family: &quot;맑은 고딕&quot;;">Hyundai Mobis Co., Ltd.</span></td></tr><tr><td height="12" valign="top" style=" height: 12px; vertical-align: top;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td></tr></tbody></table>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </td>
+                            <td style="vertical-align:top;">
+                                <table width="192" height="125" border="0" cellpadding="0" cellspacing="0" style="width:192px; height:125px; border:0px; border-collapse:collapse; border-spacing:0;">
+                                    <tbody>
+                                        <tr>
+                                            <td width="1" height="125" style="width:1px; height:125px;"><img src="https://ngw.mobisdev.com/myoffice/Common/ezCommon_InterFace.aspx?TYPE=MAILSIGN&amp;FILENAME=67da7dd8-08d7-40aa-b23e-df5f680f1bf9.jpg" title="" alt="" align="middle" border="0" style="width: 1px; height: 72px; border: 0px solid rgb(0, 0, 0);"><br></td>
+                                            <td width="20" height="125" style="width:20px; height:125px;"></td>
+                                            <td>
+                                                <table width="173" height="125" border="0" cellpadding="0" cellspacing="0" style="width:173px; height:125px; border:0px; border-collapse:collapse; border-spacing:0;"><tbody><tr><td width="20" height="21" align="center" valign="top" style=" width: 20px; height: 21px; vertical-align: top; text-align: center;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td><td height="21" valign="top" style=" height: 21px; vertical-align: top;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td></tr><tr><td width="20" height="20" align="center" valign="middle" style="width:20px; height:20px; vertical-align:middle; text-align:center;"><strong><font style="font-size: 13px; color: rgb(0, 0, 0); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">T</font></strong></td><td height="20" valign="middle" style="height:20px; vertical-align:middle;"><span style="font-size: 9pt; font-family: &quot;맑은 고딕&quot;;">02-0000-0000</span></td></tr><tr><td width="20" height="20" align="center" valign="middle" style="width:20px; height:20px; vertical-align:middle; text-align:center;"><strong><font style="font-size: 13px; color: rgb(0, 0, 0); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">M</font></strong></td><td height="20" valign="middle" style="height:20px; vertical-align:middle;"><span style="font-size: 9pt; font-family: &quot;맑은 고딕&quot;;">010-0000-0000</span></td></tr><tr><td width="20" height="20" align="center" valign="middle" style="width:20px; height:20px; vertical-align:middle; text-align:center;"><strong><font style="font-size: 13px; color: rgb(0, 0, 0); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">F</font></strong></td><td height="20" valign="middle" style="height:20px; vertical-align:middle;"><span style="font-size: 9pt; font-family: &quot;맑은 고딕&quot;;">02-0000-0000</span></td></tr><tr><td width="20" height="20" align="center" valign="middle" style="width:20px; height:20px; vertical-align:middle; text-align:center;"><strong><font style="font-size: 13px; color: rgb(0, 0, 0); font-family: &quot;맑은 고딕&quot;; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">E</font></strong></td><td height="20" valign="middle" style="height: 20px; vertical-align: middle;"><span style="font-size: 9pt; font-family: &quot;맑은 고딕&quot;;">honggildong@mobis.co.kr</span></td></tr><tr><td width="20" height="20" align="center" valign="top" style="width:20px; height:20px; vertical-align:top; text-align:center;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td><td height="20" valign="top" style="height:20px; vertical-align:top;"><p style="font-family: &quot;맑은 고딕&quot;; font-size: 12pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p></td></tr></tbody></table>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table><p style="font-family: &quot;맑은 고딕&quot;; font-size: 10pt; line-height: 1.2; margin-top: 0px; margin-bottom: 0px;">&nbsp;</p>
+            </DIV>
+        </xmp>
+        <xmp id="xmpMailSign2" style="display: none"></xmp>
+        <xmp id="xmpMailSign3" style="display: none"></xmp>
+        <xmp id="xmpMailSign4" style="DISPLAY: none"><br /><br /><br /><br /><br /><br /><table id="kaoni_sign4" width="800" height="176" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;font-size:0px;"><tr><td valign="top" align="left" height="147" width="231"><IMG alt=로고 src="https://ngw.mobisdev.com/images/email/sign/new_logo_1.png"></td><td valign="top" width="15" height="176">&nbsp;</td><td valign="top" width="554" height="176"><table width="554" height="176" border="0" cellspacing="0" cellpadding="0" style='table-layout:fixed;font-family: "현대하모니 L","Malgun Gothic"; font-size: 13px;'><tr><td><DIV style='FONT-SIZE: 15px; FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; LINE-HEIGHT: 1.2'><STRONG>김창영 &nbsp;&nbsp;김창영</STRONG></DIV></td></tr><tr><td><DIV style="PADDING-TOP: 4px; LINE-HEIGHT: 1.2">차장 <SPAN style="COLOR: rgb(153,153,153)">|</SPAN> 사무관리혁신</DIV></td></tr><tr><td><DIV style="PADDING-TOP: 4px; LINE-HEIGHT: 1.2"> <SPAN style="COLOR: rgb(153,153,153)">|</SPAN> Office Work Innovation</DIV></td></tr><tr><td height="12"></td></tr><tr><td><DIV style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; PADDING-TOP: 0px; LINE-HEIGHT: 1.2'><STRONG>Hyundai Mobis Co., Ltd.</STRONG></DIV></td></tr><tr><td><DIV style="PADDING-TOP: 3px; LINE-HEIGHT: 1.2"><SPAN style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; COLOR: rgb(7,45,116)'><STRONG>Tel</STRONG></SPAN> &nbsp;</DIV></td></tr><tr><td><DIV style="PADDING-TOP: 3px; LINE-HEIGHT: 1.2"><SPAN style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; COLOR: rgb(7,45,116)'><STRONG>Fax</STRONG></SPAN> &nbsp;</DIV></td></tr><tr><td><DIV style="PADDING-TOP: 3px; LINE-HEIGHT: 1.2"><SPAN style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; COLOR: rgb(7,45,116)'><STRONG>Mobile</STRONG></SPAN> &nbsp;010-5832-0561</DIV></td></tr><tr><td><DIV style="PADDING-TOP: 3px; LINE-HEIGHT: 1.2"><SPAN style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; COLOR: rgb(7,45,116)'><STRONG>E-mail</STRONG></SPAN> &nbsp;DT027844@mobisdev.com</DIV></td></tr><tr><td><DIV style='FONT-FAMILY: "현대하모니 M", "Malgun Gothic"; COLOR: rgb(7,45,116); PADDING-TOP: 3px; LINE-HEIGHT: 1.2'><STRONG>www.mobis.co.kr</STRONG></DIV></td></tr></table></td></tr></table><p>&nbsp;</p></xmp>
+        <xmp id="xmpMailSign5" style="DISPLAY: none"><br /><br /><br /><br /><br /><br /><table id='kaoni_sign5' width="842" height="145" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;border:1px solid rgb(227, 227, 227); font-size:0px;"><tr><td valign="middle" align="left" height="105" width="224"><img alt="로고" src="https://ngw.mobisdev.com/images/email/sign/new_logo_2.png"></td><td valign="top" width="614" height="147"><table width="614" border="0" cellspacing="0" cellpadding="0" style='table-layout:fixed;font-family: "현대하모니 L","Malgun Gothic"; font-size: 13px;'><tr><td height="15"></td></tr><tr><td><div style='line-height: 1.2; font-family: "현대하모니 M","Malgun Gothic"; font-size: 15px;'><strong>김창영 &nbsp;&nbsp;김창영</strong></div></td></tr><tr><td><div style="line-height: 1.2; padding-top: 5px;">차장 <span style="color: rgb(153, 153, 153);">|</span> 사무관리혁신 &nbsp;&nbsp; <span style="color: rgb(153, 153, 153);">|</span> Office Work Innovation</div></td></tr><tr><td height="17"></td></tr><tr><td><div style='line-height: 1.2; padding-top: 0px; font-family: "현대하모니 M","Malgun Gothic";'><strong>Hyundai Mobis Co., Ltd.</strong></div><div style="line-height: 1.2; padding-top: 4px;"><span style='font-family: "현대하모니 M","Malgun Gothic";'><strong>T</strong></span>  <span style="color: rgb(153, 153, 153);">|</span> <span style='font-family: "현대하모니 M","Malgun Gothic";'><strong>F</strong></span>  <span style="color: rgb(153, 153, 153);">|</span> <span style='font-family: "현대하모니 M","Malgun Gothic";'><strong>M</strong></span> 010-5832-0561 <span style="color: rgb(153, 153, 153);">|</span> <span style='font-family: "현대하모니 M","Malgun Gothic";'><strong>E</strong></span> DT027844@mobisdev.com</div><div style='line-height: 1.2; padding-top: 4px; font-family: "현대하모니 M","Malgun Gothic";'><strong>www.mobis.co.kr</strong></div></td></tr></table></td></tr></table><p>&nbsp;</p></xmp>
+        <xmp id="xmpMailSign6" style="DISPLAY: none"><br /><br /><br /><br /><div id='kaoni_sign6' style='display: inline-block; zoom: 1; width: auto;'><div style='padding-bottom:20px; padding-top:20px; border-bottom:rgb(181,181,181) 1px solid;'><img src='https://ngw.mobisdev.com/images/email/sign/new_logo_3.png' alt='로고'></div><div style='padding-top:20px; font-size:13px; font-family:"현대하모니 L","Malgun Gothic";'><div style='line-height:1.2; font-family:"현대하모니 M","Malgun Gothic";'><strong>김창영 &nbsp;&nbsp;김창영</strong></div><div style='line-height:1.2; padding-top:4px;'>차장 <span style='color:rgb(153,153,153);'>|</span> 사무관리혁신</div><div style='line-height:1.2; padding-top:4px;'> <span style='color:rgb(153,153,153)'>|</span> Office Work Innovation</div><div style='line-height:1.2; padding-top:17px; font-family:"현대하모니 M","Malgun Gothic";'><strong>Hyundai Mobis Co., Ltd.</strong></div><div style='line-height:1.2; padding-top:3px;'><span style='font-family:"현대하모니 M","Malgun Gothic"; color: rgb(7,45,116);'><strong>Tel</strong></span> &nbsp;</div><div style='line-height:1.2; padding-top:3px;'><span style='font-family:"현대하모니 M","Malgun Gothic"; color: rgb(7,45,116);'><strong>Fax</strong></span> &nbsp;</div><div style='line-height:1.2; padding-top:3px;'><span style='font-family:"현대하모니 M","Malgun Gothic"; color: rgb(7,45,116);'><strong>Mobile</strong></span> &nbsp;010-5832-0561</div><div style='line-height:1.2; padding-top:3px;'><span style='font-family:"현대하모니 M","Malgun Gothic"; color: rgb(7,45,116);'><strong>E-mail</strong></span> &nbsp;DT027844@mobisdev.com</div><div style='line-height:1.2; padding-top:3px; font-family:"현대하모니 M","Malgun Gothic"; color:rgb(7,45,116);'><strong>www.mobis.co.kr</strong></div></div></div><p>&nbsp;</p></xmp>
+        <xmp id="xmpMailSign7" style="DISPLAY: none"><br /><br /><br /><br /><br /><br /><p>&nbsp;</p><table id='kaoni_sign7' width="802" height="145" border="0" cellspacing="0" cellpadding="0" style="border:1px solid rgb(227, 227, 227); font-size:0px;table-layout:fixed;"><tr><td valign="top" width="15" height="147">&nbsp;</td><td valign="top" width="550" height="147"><table width="550" border="0" cellspacing="0" cellpadding="0" style='table-layout:fixed;font-family: "현대하모니 L","Malgun Gothic"; font-size: 13px;'><tr><td height="15">&nbsp;</td></tr><tr><td><div style='line-height: 1.2; font-family: "현대하모니 M","Malgun Gothic"; font-size: 15px;'><strong>김창영 &nbsp;&nbsp;김창영</strong></div></td></tr><tr><td><div style="line-height: 1.2; padding-top: 5px;">차장 <span style="color: rgb(153, 153, 153);">|</span> 사무관리혁신 &nbsp;&nbsp;<span style="font-size: 11px;;"></span> <span style="color: rgb(153, 153, 153);">|</span> <span style="font-size: 11px;;">Office Work Innovation</span></div></td></tr><tr><td height="17">&nbsp;</td></tr><tr><td><div style='line-height:1.2;padding-top:0px;font-family:"현대하모니 M","Malgun Gothic";'><strong>Hyundai Mobis Co., Ltd.</strong></div><div style="line-height: 1.2; padding-top: 4px;"><span style='font-family: "현대하모니 M","Malgun Gothic";'><strong>T</strong></span>  <span style='color:#999'>|</span> <span style='font-family:"현대하모니 M","Malgun Gothic";'><strong>F</strong></span>  <span style="color: rgb(153, 153, 153);">|</span><span style='font-family: "현대하모니 M","Malgun Gothic";'> <strong>M</strong></span> 010-5832-0561 <span style="color: rgb(153, 153, 153);">|</span><span style='font-family: "현대하모니 M","Malgun Gothic";'> <strong>E</strong></span> DT027844@mobisdev.com</div><div style='line-height: 1.2; padding-top: 4px; font-family: "현대하모니 M","Malgun Gothic";'><strong>www.mobis.co.kr</strong></div></td></tr></table></td><td valign="top" align="right" height="147" width="276" border=0><img alt="로고" src="https://ngw.mobisdev.com/images/email/sign/new_logo_4.png"></td></tr></table><p>&nbsp;</p><p>&nbsp;</p></xmp>
+        <pre id="bodyValue" style="display: none"></pre>
+        <pre id="tempbody" style="display: none"></pre>
+        <xmp id="AttachXmlList" style="display: none;">&nbsp;</xmp>
+        <xmp id="xmpMailDisclaimer" style="display: none"></xmp>
+    </div>
+    <div id="AutoCompleteResults"><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-2" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-3" tabindex="0" style="display: none;"></ul></div>
+    <iframe id="frmPrint" name="printname" src="/myoffice/blank.htm" frameborder="0" style="width: 5px; height: 5px; display: none"></iframe>
+    <input id="eFrom" type="hidden" name="eFrom" value="&quot;김창영&quot; <DT027844@mobisdev.com>">
+    <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1000; background: none rgba(0,0,0,0.7); display: none;" id="mailPanel">&nbsp;</div>
+    <span class="loading_layer" style="z-index: 6000; position: absolute; top: 50%; left: 50%; margin: -14px 0px 0px -119px; display: none;" id="loadingLayer">
+        <span class="right">
+            <img src="/images/loading/loading.gif" width="24" height="24">메일을 발송중입니다.잠시만 기다려주세요.
+        </span>
+    </span>
+
+    <iframe name="AttachDownFrame" id="AttachDownFrame" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" style="display: none"></iframe>
+    <input id="publicModulus" value="-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwf3qWWbcp8mN8iw28VZu
+aWWQEHu4j7PUfBY3Ji/JaqFrTXxwK9MeAe3YLBtXlnzhQJNDXaS5Urvz5bZpp/nC
+NU5SLwf9s6u/Ys1cAYRTin8T+w66gh4iwwfO3DHzmYHdTWb3ucu+43PSk+Sfc1zK
+0ocf7y/plVWNkTHD6bBvZOi0ozZbOLNxSJ9KK3+USkHZFzuxWVcqXtX9x39EkwBv
+kKDcNfxxvZ7HnoYz/nv+0pV4V8T+23LzMjj7iWs0hypdbWnBU24KJyrRTuHMl/EJ
+T7LI7pDzhpwgzdKVCuvMpu6qHnsgUBoTSGUCDxOeXIVewXxKcuWSnHzOhtDSBPZq
+AQIDAQAB
+-----END PUBLIC KEY-----" type="hidden">
+    <script type="text/javascript" src="/myoffice/common/XmlHttpRequest.js?ver=20201126181009021"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/lang/ezEmail_ko.js?ver=20201126100627320"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/js/newMail.js?ver=20201127173353572"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/js/AttachMain.js?ver=20201127095835258"></script>
+    <script type="text/javascript" src="/myoffice/ezEmail/js/AttachItem.js?ver=20180213145334000"></script>
+    <script type="text/javascript" src="/JQuery/dateControls/jquery-1.9.1.js?ver=20180122114922000"></script>
+    <script type="text/javascript" src="/JQuery/jquery-ui.js?ver=20180122114922000"></script>
+
+    <script type="text/javascript" src="/crypto/pidcrypt.js?ver=20181227182540000"></script>
+    <script type="text/javascript" src="/crypto/pidcrypt_util.js?ver=20181227174402000"></script>
+    <script type="text/javascript" src="/crypto/asn1.js?ver=20181227174310000"></script>
+    <script type="text/javascript" src="/crypto/jsbn.js?ver=20181227174326000"></script>
+    <script type="text/javascript" src="/crypto/rng.js?ver=20181227174432000"></script>
+    <script type="text/javascript" src="/crypto/prng4.js?ver=20181227174416000"></script>
+    <script type="text/javascript" src="/crypto/rsa.js?ver=20181227182742000"></script>
+    <script type="text/javascript">
+        var g_szAuthor = "";
+        var g_szExchange = "exchange";
+        var g_cmd = "NEW";
+        var Org_cmd = "NEW";
+        var g_servername = document.location.hostname;
+        var g_myname = "김창영";
+        var g_myemail = "DT027844@mobisdev.com";
+        var g_szUserID = "DT027844";
+        var g_companyID = "10110000";
+        var g_senderinfo = "현대모비스(주), 사무관리혁신, 차장";
+        var g_eImportance = "1";
+        var g_ePostType = "0";
+        var g_url = "";
+        var g_unread = "";
+        var m_rgParams4PostOption = new Array();
+        var g_bDirty = false;
+        var m_addrBook = null;
+        var g_bSended = false;
+        var objMHT;
+        var g_SendFrom = "";
+        var g_charset = "utf-8";
+        var g_encoding = "BASE64";
+        var g_font = "굴림";
+        var g_showdisplay = "";
+        var g_simplemimeencoding = "7bit";
+        var g_simplemime = "0";
+        var g_xmldoc = createXmlDom();
+        var useMultiLangMail = "1";
+        var g_isFormat = false;
+        var g_DisplayNamePrintable = "김창영";
+        var g_showEnglishDisplay = "";
+        var g_charsetCheck = "1";
+        var g_use_ApprovalG = "NO";
+        var g_ReSendFlag = "N";
+        var _AttachSizeLimit = 10;
+        var _BigAttachSizeLimit = 1024;
+        var _BigAttachDuration = 14;
+        var _BigAttachUsagePwd = "N";
+        var _BigAttachUsageDownCount = "Y";
+        var _BigAttachDownCount = 5;
+        var _BigAttachDescPeriod = "2020-11-30 ~ 2020-12-14";
+        var charsetControlFlag = "1";
+        var userTimezone = "Korea Standard Time|09:00                         ";
+        var isPrimary = "1";
+        var initFlag = false;
+        var gg_cmd = "NEW";
+        var gg_url = "";
+        var g_newid = "";
+        var FileUploadtype = "";
+        var pEachmail = "false";
+        var pSecurity = "1";
+        var docHref = "";
+        var isReserve = "NO";
+        var pCDOMessageId = "";
+        var Add_xmlhttp = "";
+        var mailsel = "1";
+        var mailpath = "";
+        var fileSize_add = "";
+        var fileName_add = "";
+        var fileType_add = "";
+        var bigtrue = 0;
+        var tmpXML = "";
+        var tempUrl = "";
+        var folderDate = "20201130";
+        var filedate = "66c71936-848c-45c3-b35e-83493adafcd2";
+        var gubunlist = "1";
+        var tempvalue = "0";
+        var ua = navigator.userAgent;
+        var InnerDomain = "mobisdev.com";
+        var inMailColor = "#808080";
+        var outMailColor = "#0080ff";
+        var docfilesize = "0";
+        var receiverDetail = "NO"; // 수신자 출력 포맷
+        var detailFormat = "{DEPT}/{NAME}/{TITLE}"; // 수신자 출력 포맷
+        var blockDeptAddr = "";
+        var g_sname = SetFullName("김창영",
+            "현대모비스(주)",
+            "사무관리혁신",
+            "차장"); // 수신자 출력 포맷
+        var attachConversion = "NO"; // 첨부 전환 플래그
+        var g_eachLimit = "0";
+        var g_eachLimitMsg = "5명 이상 개별 발송할 수 없습니다.";
+        var _open = "";
+        var g_overrideURL = "https://mgw.mobisdev.com";
+        var g_intervalID = 0;
+        var g_folderpath = "";
+        var g_cFeedPostID = "";
+        var exeInterSend = false; // intersend 를 실행했는지의 여부, 실행했다면 deldrafts를 사용 하지 않음
+
+        var g_o365use = "N";
+        var g_o365Webconfig = "AD";
+
+        /*20201006 추가*/
+        var massword = "[" + "대용량" + "] "; //대용량문구 추가
+        var dlmailYN = "N";
+        var dlposition = "N";
+        var dlApprovYN = "Y";
+        var isTempSave = "";
+        var g_mymobile = "010-5832-0561";
+        var g_myCompany = "현대모비스(주)";
+        var g_mytitle = "차장";
+
+        var OneBigSizeMailAttachLimit = "500";
+        var BigSizeMailAppAttachLimite = "1"; // * 1024 * 1024;
+        var OneBigSizeMailAttachLimitKB = OneBigSizeMailAttachLimit * 1024 * 1024;
+        var BigSizeMailAppAttachLimiteKB = BigSizeMailAppAttachLimite * 1024 * 1024;
+        var DLMAil_Write = "";
+        var selfAdd = '';
+        var pUserID = "DT027844";
+        var userLang = "1";
+        var dlcmd = "";
+        var junhwachk = false;
+        var reUse = "";
+        // js, css 파일 include중복 제거
+        if (typeof jscssfile_removecheck == 'function') {
+            jscssfile_removecheck();
+        }
+        var $ContentDiv = jQuery.noConflict();
+        $ContentDiv(this).ready(function () {
+            Write_Flag = true;
+            initPopUpSetting("메일쓰기");
+            if (g_unread == "1") {
+                try {
+                    window.opener.document.Script.refreshUnreadCount()
+                } catch (e) { }
+            }
+            if (pSecurity == "Security") {
+                pSecurity = "3";
+            }
+            if (typeof (document.getElementById("xmpSubject").outerText) != "undefined" && document.getElementById("xmpSubject").outerText != "")
+                document.getElementById("eSubject").value = document.getElementById("xmpSubject").outerText;
+
+            /*20201006 승인메일관련 추가 */
+            if (dlmailYN == "Y" || dlmailYN == "B") {
+                document.getElementById("trApprovalMail").style.display = "";
+                document.getElementById("selApprovalID").style.display = "";
+                document.getElementById("liexcel").style.display = "";
+                document.getElementById("LiOption").style.display = "none";
+            }
+
+
+            eFrom.value = xmpFrom.innerHTML;
+            importantSelect.selectedIndex = g_eImportance;
+            if (g_eImportance == "2")
+                document.getElementById("highImportant").checked = true;
+            m_rgParams4PostOption["important"] = g_eImportance;
+            m_rgParams4PostOption["postType"] = g_ePostType;
+            m_rgParams4PostOption["replySendTime"] = "0";
+            m_rgParams4PostOption["replyReadTime"] = "1";
+            m_rgParams4PostOption["delaySendDate"] = "";
+            if ("" != "")
+                isReserve = "YES";
+            m_rgParams4PostOption["tagMsgCC"] = MsgCC_TR;
+            m_rgParams4PostOption["tagMsgCCu"] = MsgCC_TRu;
+            m_rgParams4PostOption["tagMsgBCC"] = MsgBCC_TR;
+            m_rgParams4PostOption["tagMsgBCCu"] = MsgBCC_TRu;
+            m_rgParams4PostOption["bodyType"] = g_simplemime;
+            m_rgParams4PostOption["EachMail"] = pEachmail;
+            m_rgParams4PostOption["SecurityMail"] = pSecurity;
+            m_rgParams4PostOption["EncryptMail"] = "false";
+            m_rgParams4PostOption["expireSendDate"] = "";
+
+            // 한번에 데이터 가져와서 처리
+            if (xmpTo.innerHTML != "") {
+                CompleteEmailAddressFullRest(getEmailAddressListCallXX(xmpTo.innerHTML), document.getElementById('MsgToGot'), '0', xmpTo.innerHTML);
+            }
+            if (xmpCc.innerHTML != "") {
+                CompleteEmailAddressFullRest(getEmailAddressListCallXX(xmpCc.innerHTML), document.getElementById('MsgCCGot'), '1', xmpCc.innerHTML);
+            }
+            if (xmpBcc.innerHTML != "") {
+                CompleteEmailAddressFullRest(getEmailAddressListCallXX(xmpBcc.innerHTML), document.getElementById('MsgBCCGot'), '2', xmpBcc.innerHTML);
+            }
+
+            g_bDirty = false;
+            if (g_charsetCheck == "0") {
+                if (confirm("원본메일의 문자셋이 한글이 아닙니다. 원본메일을 첨부로 넣으시겠습니까?")) {
+                    location.href = location.href + "&attach=1";
+                }
+            }
+            SelMailSign.value = "1";
+
+            Simple_Choice();
+            var pSaveTime = "120";
+            var pSaveInterval = parseInt(pSaveTime) * 1000;
+            if (pSaveInterval > 0 && "" == "")
+                g_intervalID = window.setInterval("Mail_AutoSave()", pSaveInterval);
+
+            //var ua = navigator.userAgent;
+            //if (ua.indexOf("Safari") > 0 && ua.indexOf("Chrome") == -1) {
+            //    document.getElementById("file1").multiple = false;
+            //}
+
+
+
+            // <iframe id="dadiframe" name="dadiframe" style="width: 100%; border: 0px; height: 140px" src="/myoffice/ezEmail/DragandDropiframe.aspx"></iframe>
+            // Window.open으로 열경우 DragnDrop관련 시점 오류가 발생하여 ready에서 로드하도록 처리.
+            /*20201007 수정*/
+            //document.getElementById("dadiframe").src = "/myoffice/ezEmail/DragandDropiframe.aspx";
+
+            if (dlmailYN == "Y" || dlmailYN == "B")
+                document.getElementById("dadiframe").src = "/myoffice/ezEmail/DragandDropiframe.aspx?gubun=B&dlcmd=" + dlcmd;
+            else
+                document.getElementById("dadiframe").src = "/myoffice/ezEmail/DragandDropiframe.aspx";
+
+
+            document.getElementById("dadiframe").onload = dadiframe_onload;
+
+            initAutoComplete();
+        });
+
+        $ContentDiv(this).resize(function () {
+            msg_editorResize();
+        });
+
+        window.onresize = function () {
+            msg_editorResize();
+        }
+
+        function msg_editorResize() {
+            try {
+                var CurrentHeight_Size = 0;
+                try {
+                    if (parent != null && parent.document.documentElement.clientHeight < document.documentElement.clientHeight) {
+                        var IndexScreen_Height = 0;
+                        if (parent.document.getElementById("top") != null)
+                            IndexScreen_Height = parent.document.getElementById("top").clientHeight;
+
+                        CurrentHeight_Size = parent.document.documentElement.clientHeight - IndexScreen_Height;
+                    }
+                    else {
+                        CurrentHeight_Size = document.documentElement.clientHeight;
+                    }
+                }
+                catch (e) {
+                    CurrentHeight_Size = document.documentElement.clientHeight;
+                }
+
+                if ((CurrentHeight_Size - document.getElementById("EdtorSize").offsetTop - 10) > 200) {
+                    document.getElementById("EdtorSize").style.height = (CurrentHeight_Size - document.getElementById("EdtorSize").offsetTop - 10) + "PX";
+                }
+                else {
+                    document.getElementById("EdtorSize").style.height = "200PX";
+                }
+
+                if (typeof message.Editor_Resize == "function") {
+                    message.Editor_Resize();
+                }
+
+                // 태그프리에디터 최소 높이 문제로 인해 추가(최소높이가 300px이상)
+                setTimeout(function () {
+                    try {
+                        if (document.getElementById("tbContentElement").contentWindow.document.documentElement.scrollHeight > document.getElementById("EdtorSize").clientHeight) {
+                            document.getElementById("EdtorSize").style.height = document.getElementById("tbContentElement").contentWindow.document.documentElement.scrollHeight + "px";
+                        }
+                    }
+                    catch (e) { }
+                }, 100);
+            } catch (e) { }
+        }
+
+        var IsInsert_MsgTo = false;
+        function initAutoComplete() { // 자동완성 및 수신자 붙여넣기
+            $ContentDiv("#MsgTo").autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    $ContentDiv.ajax({
+                        type: 'post',
+                        url: "/myoffice/ezEmail/remote/mail_get_autocompleteList.aspx",
+                        dataType: "xml",
+                        data: { value: request.term },
+                        success: function (xmlResponse) {
+                            var data = $ContentDiv("ROW", xmlResponse).map(function (ul, item) {
+                                return {
+                                    //label: $ContentDiv.trim($ContentDiv("NAME", this).text()) + SetFullName($ContentDiv.trim($ContentDiv("COMPANY", this).text()), $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()), $ContentDiv.trim($ContentDiv("TITLE", this).text())),
+                                    label: $ContentDiv.trim($ContentDiv("NAME", this).text()) + " " + $ContentDiv.trim($ContentDiv("TITLE", this).text()) + " " + $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()) + " " + $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    value: $ContentDiv.trim($ContentDiv("NAME", this).text()),
+                                    email: $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    href: $ContentDiv.trim($ContentDiv("HREF", this).text()),
+                                    company: $ContentDiv.trim($ContentDiv("COMPANY", this).text()),
+                                    dept: $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()),
+                                    title: $ContentDiv.trim($ContentDiv("TITLE", this).text()),
+                                    sname: SetFullName($ContentDiv.trim($ContentDiv("NAME", this).text()), $ContentDiv.trim($ContentDiv("COMPANY", this).text()), $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()), $ContentDiv.trim($ContentDiv("TITLE", this).text()))
+                                };
+                            });
+                            response(data);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    newElem = PrepareMailTag(0, (ui.item.href == ui.item.email ? "email" : "mailgroup"), htmlDecode(ui.item.value), ui.item.email, ui.item.href, htmlDecode(ui.item.sname));
+                    IsInsert_MsgTo = CheckMailReceiver(newElem);
+                    if (!IsInsert_MsgTo) {
+                        MsgToGot.appendChild(newElem);
+                        IsInsert_MsgTo = true;
+                    }
+                    msg_editorResize();
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                close: function (event, ui) {
+                    if (IsInsert_MsgTo)
+                        document.getElementById("MsgTo").value = "";
+                    IsInsert_MsgTo = false;
+                },
+                appendTo: "#AutoCompleteResults"
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $ContentDiv("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a title='" + item.email + "'><table class='width100percent' style='display:inline-table; white-space:nowrap;'><tr><td style='width:10%; min-width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.value + "</td><td style='width:5%; min-width:55px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.title + "</td><td style='width:20%; min-width:130px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.dept + "</td><td style='width:65%; max-width:300px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.email + "</td></tr></table></a>")
+                    .appendTo(ul);
+            };
+
+            var IsInsert_MsgCC = false;
+            $ContentDiv("#MsgCC").autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    $ContentDiv.ajax({
+                        type: 'post',
+                        url: "/myoffice/ezEmail/remote/mail_get_autocompleteList.aspx",
+                        dataType: "xml",
+                        data: { value: request.term },
+                        success: function (xmlResponse) {
+                            var data = $ContentDiv("ROW", xmlResponse).map(function (ul, item) {
+                                return {
+                                    label: $ContentDiv.trim($ContentDiv("NAME", this).text()) + " " + $ContentDiv.trim($ContentDiv("TITLE", this).text()) + " " + $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()) + " " + $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    value: $ContentDiv.trim($ContentDiv("NAME", this).text()),
+                                    email: $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    href: $ContentDiv.trim($ContentDiv("HREF", this).text()),
+                                    company: $ContentDiv.trim($ContentDiv("COMPANY", this).text()),
+                                    dept: $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()),
+                                    title: $ContentDiv.trim($ContentDiv("TITLE", this).text()),
+                                    sname: SetFullName($ContentDiv.trim($ContentDiv("NAME", this).text()), $ContentDiv.trim($ContentDiv("COMPANY", this).text()), $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()), $ContentDiv.trim($ContentDiv("TITLE", this).text()))
+                                };
+                            });
+                            response(data);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    newElem = PrepareMailTag(1, (ui.item.href == ui.item.email ? "email" : "mailgroup"), htmlDecode(ui.item.value), ui.item.email, ui.item.href, htmlDecode(ui.item.sname));
+                    IsInsert_MsgCC = CheckMailReceiver(newElem);
+                    if (!IsInsert_MsgCC) {
+                        MsgCCGot.appendChild(newElem);
+                        IsInsert_MsgCC = true;
+                    }
+                    msg_editorResize();
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                close: function (event, ui) {
+                    if (IsInsert_MsgCC)
+                        document.getElementById("MsgCC").value = "";
+                    IsInsert_MsgCC = false;
+                },
+                appendTo: "#AutoCompleteResults"
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $ContentDiv("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a title='" + item.email + "'><table class='width100percent' style='display:inline-table; white-space:nowrap;'><tr><td style='width:10%; min-width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.value + "</td><td style='width:5%; min-width:55px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.title + "</td><td style='width:20%; min-width:130px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.dept + "</td><td style='width:65%; max-width:300px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.email + "</td></tr></table></a>")
+                    .appendTo(ul);
+            };
+
+            var IsInsert_MsgBCC = false;
+            $ContentDiv("#MsgBCC").autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    $ContentDiv.ajax({
+                        type: 'post',
+                        url: "/myoffice/ezEmail/remote/mail_get_autocompleteList.aspx",
+                        dataType: "xml",
+                        data: { value: request.term },
+                        success: function (xmlResponse) {
+                            var data = $ContentDiv("ROW", xmlResponse).map(function (ul, item) {
+                                return {
+                                    label: $ContentDiv.trim($ContentDiv("NAME", this).text()) + " " + $ContentDiv.trim($ContentDiv("TITLE", this).text()) + " " + $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()) + " " + $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    value: $ContentDiv.trim($ContentDiv("NAME", this).text()),
+                                    email: $ContentDiv.trim($ContentDiv("EMAIL", this).text()),
+                                    href: $ContentDiv.trim($ContentDiv("HREF", this).text()),
+                                    company: $ContentDiv.trim($ContentDiv("COMPANY", this).text()),
+                                    dept: $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()),
+                                    title: $ContentDiv.trim($ContentDiv("TITLE", this).text()),
+                                    sname: SetFullName($ContentDiv.trim($ContentDiv("NAME", this).text()), $ContentDiv.trim($ContentDiv("COMPANY", this).text()), $ContentDiv.trim($ContentDiv("DESCRIPTION", this).text()), $ContentDiv.trim($ContentDiv("TITLE", this).text()))
+                                };
+                            });
+                            response(data);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    newElem = PrepareMailTag(2, (ui.item.href == ui.item.email ? "email" : "mailgroup"), htmlDecode(ui.item.value), ui.item.email, ui.item.href, htmlDecode(ui.item.sname));
+                    IsInsert_MsgBCC = CheckMailReceiver(newElem);
+                    if (!IsInsert_MsgBCC) {
+                        MsgBCCGot.appendChild(newElem);
+                        IsInsert_MsgBCC = true;
+                    }
+                    msg_editorResize();
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                close: function (event, ui) {
+                    if (IsInsert_MsgBCC)
+                        document.getElementById("MsgBCC").value = "";
+                    IsInsert_MsgCC = false;
+                },
+                appendTo: "#AutoCompleteResults"
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $ContentDiv("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a title='" + item.email + "'><table class='width100percent' style='display:inline-table; white-space:nowrap;'><tr><td style='width:10%; min-width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.value + "</td><td style='width:5%; min-width:55px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.title + "</td><td style='width:20%; min-width:130px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.dept + "</td><td style='width:65%; max-width:300px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; display:inline-block;'>" + item.email + "</td></tr></table></a>")
+                    .appendTo(ul);
+            };
+
+            // 수신자 붙여넣기 처리
+            $ContentDiv(".receiverInput").bind("paste", function (e) {
+                var clipboardData, pastedData;
+
+                e.stopPropagation();
+                e.preventDefault();
+
+                clipboardData = e.originalEvent.clipboardData || window.clipboardData;
+                pastedData = clipboardData.getData('Text');
+
+                $ContentDiv(this).val(pastedData.replace(/\r\n|\n/g, ''));
+            });
+        }
+
+        var isAutoSave = false;
+        var MailStatus = "NO";
+        function Mail_AutoSave() {
+            if (MailStatus == "NO") {
+                isAutoSave = true;
+                Save_onClick("tempsave");
+            }
+        }
+
+        function KeEventControl(obj) {
+            useragt = navigator.userAgent.toUpperCase();
+            if (useragt.indexOf("SAFARI") > 0 && useragt.indexOf("CHROME") < 0) {
+                useragt = useragt.substring(useragt.indexOf("VERSION/") + 8, useragt.indexOf("VERSION/") + 9);
+                if (parseInt(useragt) > 5) {
+                    return;
+                }
+            }
+            obj.onkeydown = function () {
+                if (parseInt(window.event.keyCode) >= 48 && parseInt(window.event.keyCode) <= 126)
+                    return false;
+                if (parseInt(window.event.keyCode) == 189 || parseInt(window.event.keyCode) == 187 ||
+                    parseInt(window.event.keyCode) == 220 || parseInt(window.event.keyCode) == 219 ||
+                    parseInt(window.event.keyCode) == 221 || parseInt(window.event.keyCode) == 222 ||
+                    parseInt(window.event.keyCode) == 186 || parseInt(window.event.keyCode) == 188 ||
+                    parseInt(window.event.keyCode) == 190 || parseInt(window.event.keyCode) == 191 || parseInt(window.event.keyCode) == 32)
+                    return false;
+            }
+        }
+
+        function JSleep(sTime) {
+            var xmlhttp = createXMLHttpRequest();
+            xmlhttp.open("GET", "/myoffice/ezEmail/remote/userSleep.aspx?time=" + sTime + "&newid=" + g_newid, false);
+            xmlhttp.send();
+            xmlhttp = null;
+        }
+
+        Page_OnUnload_Event = true;
+        function Window_Unload() {
+            window.clearInterval(g_intervalID);
+
+            if (!exeInterSend && g_url != "" && g_cmd != "EDIT") { //20200807
+                delDrafts(g_url);
+                g_url = "";
+            }
+        }
+
+        window.onbeforeunload = function () {
+            if (GetPageType() == "POPUP") {
+                Window_Unload();
+            }
+        }
+
+        function delDrafts(url) {
+            if (url == "") return;
+            if (typeof navigator.sendBeacon == "function") {
+                navigator.sendBeacon("/myoffice/ezEmail/remote/mail_del_drafts.aspx?itemid=" + encodeURIComponent(url));
+            }
+            else {
+                var xmlhttp = createXMLHttpRequest();
+                xmlhttp.open("GET", "/myoffice/ezEmail/remote/mail_del_drafts.aspx?itemid=" + encodeURIComponent(url), false);
+                xmlhttp.send();
+                xmlhttp = null;
+            }
+        }
+
+        var PrintEvent = false;
+        function Print_onClick() {
+            try { // 20170818 파일 첨부 중 타 기능 방지
+                if (dadiframe.isfileup) {
+                    Alert_Message(strLang86, null, "");
+                    return;
+                }
+            } catch (e) { }
+
+            DivPopUpShow(750, 710, "/myoffice/ezEmail/mail_write_print.aspx");
+        }
+
+        function initPrint() {
+            var fdoc = document.getElementById("Main_iFrameLayer").contentWindow.document;
+
+            fdoc.getElementById("LabelSubject").innerText = document.getElementById("eSubject").value;
+            fdoc.getElementById("LabelFromName").innerText = "김창영";
+
+            var importantText = "";
+            switch (importantSelect.selectedIndex) {
+                case 0:
+                    importantText = "낮음";
+                    break;
+                case 1:
+                    importantText = "보통";
+                    break;
+                case 2:
+                    importantText = "높음";
+                    break;
+                default:
+                    importantText = "보통";
+                    break;
+            }
+
+            fdoc.getElementById("important").innerText = importantText;
+
+            fdoc.getElementById("MsgToGot").innerText = GetAddrFormatEmail(MsgToGot, 'name');
+            fdoc.getElementById("MsgCCGot").innerText = GetAddrFormatEmail(MsgCCGot, 'name');
+            fdoc.getElementById("MsgBCCGot").innerText = GetAddrFormatEmail(MsgBCCGot, 'name');
+
+            fdoc.getElementById("contenttable").innerHTML = message.GetEditorContent();
+
+            fdoc.getElementById("attachDiv").innerHTML = dadiframe.document.getElementById("lstAttachLink").outerHTML;
+            if (dadiframe.document.getElementById("filelist").childNodes.length > 1)
+                fdoc.getElementById("attachBlock").style.display = "";
+        }
+
+        var mail_formatlist_dialogArguments = new Array();
+        function LoadFormat_onClick() {
+            try { // 20170818 파일 첨부 중 타 기능 방지
+                if (dadiframe.isfileup) {
+                    Alert_Message(strLang86, null, "");
+                    return;
+                }
+            } catch (e) { }
+
+            mail_formatlist_dialogArguments[1] = LoadFormat_onClick_Complete;
+            mail_formatlist_dialogArguments[2] = DivPopUpHidden;
+            DivPopUpShow(470, 490, "/myoffice/ezEmail/Admin/mail_FormatList.aspx");
+        }
+
+        function LoadFormat_onClick_Complete(strFileName) {
+            DivPopUpHidden();
+            if (typeof (strFileName) == "undefined")
+                return;
+            var xmpMailSign = "";
+            try {
+                xmpMailSign = message.EditorElementHTML("MailSign", "2");
+            } catch (e) {
+            }
+            var tmpContent = message.GetEditorContent();
+            var formatContent = "";
+
+            var xmlhttp = createXMLHttpRequest();
+            var xmlpara = createXmlDom();
+            var objNode;
+            createNodeInsert(xmlpara, objNode, "PARAMETER");
+            createNodeAndInsertText(xmlpara, objNode, "strURL", strFileName);
+            xmlhttp.open("POST", "/myoffice/ezEmail/remote/LoadHtml.aspx", false);
+            xmlhttp.send(xmlpara);
+            formatContent = xmlhttp.responseText;
+            xmlhttp = null;
+
+            //message.SetEditorContentURL_Format(fullPath);
+            message.SetEditorContent(formatContent + tmpContent);
+        }
+
+        function ReplaceText(orgStr, findStr, replaceStr) {
+            var re = new RegExp(findStr, "gi");
+            return (orgStr.replace(re, replaceStr));
+        }
+
+        function Rebody() {
+            var defaultSignHTML = (g_cmd == "EDIT" ? "" : "<p/><DIV id='MailSign'>{sign}</DIV>");
+            var disclaimerHTML = (g_cmd == "EDIT" ? "" : document.getElementById("xmpMailDisclaimer").innerHTML);
+            if (document.getElementById("bodyValue").innerHTML != "") {
+                if (mailsel == "0" || mailsel == "")
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", "") + disclaimerHTML + document.getElementById("bodyValue").innerHTML);
+                else {
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", document.getElementById("xmpMailSign" + mailsel).innerHTML) + disclaimerHTML + document.getElementById("bodyValue").innerHTML);
+                    tempvalue = "1";
+                }
+            }
+            else if (document.getElementById("tempbody").innerHTML != "") {
+                if (mailsel == "0" || mailsel == "")
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", "") + document.getElementById("tempbody").innerHTML);
+                else {
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", document.getElementById("xmpMailSign" + mailsel).innerHTML) + document.getElementById("tempbody").innerHTML);
+                    tempvalue = "1";
+                }
+            }
+            else {
+                if (mailsel == "0" || mailsel == "")
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", "") + disclaimerHTML);
+                else {
+                    message.SetEditorContent(defaultSignHTML.replace("{sign}", document.getElementById("xmpMailSign" + mailsel).innerHTML) + disclaimerHTML + document.getElementById("bodyValue").innerHTML);
+                    tempvalue = "1";
+                }
+            }
+            /*20201126 추가  재상신*/
+            try {
+                var MailBodyContent = message.GetEditorContent();
+                var tempDiv = document.createElement("DIV");
+                tempDiv.innerHTML = MailBodyContent;
+                if ("" == "Y") {
+                    var divColl;
+                    try {
+                        divColl = tempDiv.all.tags("DIV");
+                    } catch (e) {
+                        divColl = tempDiv.getElementsByTagName("DIV");
+                    }
+
+                    for (var i = 0; i < divColl.length; i++) {
+                        if (typeof (divColl.item(i).id) != "undefined" && divColl.item(i).id.indexOf("BigAttachListHtml") > -1) {
+                            var OrgSrc = divColl.item(i);
+                            tempDiv.innerHTML = tempDiv.innerHTML.replace(OrgSrc.outerHTML, "");
+                            message.SetEditorContent(tempDiv.innerHTML);
+
+                        }
+                    }
+
+                }
+            } catch (e) { }
+
+            setTimeout(function () { document.getElementById("MsgTo").focus(); }, 300);
+        }
+
+        function MailSignSel() {
+            var sign = "";
+            try {
+                var signValue = message.EditorElement("MailSign");
+                if (signValue == null) {
+                    if (gg_cmd == "REPLY" || gg_cmd == "REPLYALL" || gg_cmd == "FORWARD") {
+                        message.SetEditorContent("<P>&nbsp;</P><P>&nbsp;</P><DIV id='MailSign'></div>" + message.GetEditorContent());
+                    }
+                    else {
+                        message.SetEditorContent(message.GetEditorContent() + "<P>&nbsp;</P><P>&nbsp;</P><DIV id='MailSign'></div>");
+                    }
+                }
+            } catch (e) { }
+            if (SelMailSign.value == "0")
+                sign = "";
+            else
+                navigator.userAgent.indexOf('Firefox') != -1 ? sign = document.getElementById("xmpMailSign" + SelMailSign.value).innerHTML : sign = document.getElementById("xmpMailSign" + SelMailSign.value).innerText;
+
+            message.EditorElementSetHtml("MailSign", sign);
+        }
+
+        function MailSignLoad() {
+            SelMailSign.value = "1";
+            MailSignSel();
+        }
+
+        function new_Address() {
+            try { // 20170818 파일 첨부 중 타 기능 방지
+                if (dadiframe.isfileup) {
+                    Alert_Message(strLang86, null, "");
+                    return;
+                }
+            } catch (e) { }
+
+            var type = "config";
+            var receiverData = new Array();
+            receiverData["window"] = this;
+            mail_newreceiverchoose_dialogArguments[0] = receiverData;
+            mail_newreceiverchoose_dialogArguments[1] = new_Address_Complete;
+
+            DivPopUpShow(970, 710, "/myoffice/ezEmail/mail_NewreceiverChoose.aspx?defaultwin=&type=" + type);
+        }
+
+        function new_Address_Complete() {
+            DivPopUpHidden();
+            Simple_Choice();
+        }
+
+        function Simple_Choice() {
+            document.getElementById("SelectToAddress").innerHTML = "";
+            document.getElementById("SelectCcAddress").innerHTML = "";
+            document.getElementById("SelectBCCAddress").innerHTML = "";
+            newoption1 = new Option(strLang199, strLang199);
+            CCnewoption1 = new Option(strLang199, strLang199);
+            BCCnewoption1 = new Option(strLang199, strLang199);
+            document.getElementById("SelectToAddress").options[0] = newoption1;
+            document.getElementById("SelectToAddress").options[0].selected = true;
+            document.getElementById("SelectCcAddress").options[0] = CCnewoption1;
+            document.getElementById("SelectCcAddress").options[0].selected = true;
+            document.getElementById("SelectBCCAddress").options[0] = BCCnewoption1;
+            document.getElementById("SelectBCCAddress").options[0].selected = true;
+            Add_xmlhttp = createXMLHttpRequest();
+            Add_xmlhttp.open("Post", "/myoffice/ezEmail/remote/mail_get_address.aspx", true);
+            Add_xmlhttp.onreadystatechange = Simple_Choice_complete;
+            Add_xmlhttp.send("");
+        }
+
+        function Simple_Choice_complete() {
+            try {
+                var gubunGount = 1;
+                if (Add_xmlhttp == null || Add_xmlhttp.readyState != 4)
+                    return;
+                if (Add_xmlhttp.status >= 200 && Add_xmlhttp.status < 300) {
+
+                    var xmlDom = loadXMLString(Add_xmlhttp.responseText);
+                    var objNodes = SelectNodes(xmlDom, "NewDataSet/Table");
+                    for (var count = 0; count < objNodes.length; count++) {
+                        lastindex = document.getElementById("SelectToAddress").length;
+                        newoption = new Option(getNodeText(SelectSingleNode(objNodes[count], "NAME")), getNodeText(SelectSingleNode(objNodes[count], "NAME")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "EMAIL")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "TYPE")));
+                        CCnewoption = new Option(getNodeText(SelectSingleNode(objNodes[count], "NAME")), getNodeText(SelectSingleNode(objNodes[count], "NAME")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "EMAIL")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "TYPE")));
+                        BCCnewoption = new Option(getNodeText(SelectSingleNode(objNodes[count], "NAME")), getNodeText(SelectSingleNode(objNodes[count], "NAME")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "EMAIL")) + "|#|" + getNodeText(SelectSingleNode(objNodes[count], "TYPE")));
+                        document.getElementById("SelectToAddress").options[lastindex] = newoption;
+                        document.getElementById("SelectCcAddress").options[lastindex] = CCnewoption;
+                        document.getElementById("SelectBCCAddress").options[lastindex] = BCCnewoption;
+                    }
+                }
+            }
+            catch (e) {
+                Alert_Message(e.message, null, "");
+            }
+            Add_xmlhttp = null;
+        }
+
+        function simple_select(Type, obj) {
+            switch (Type) {
+                case "TO":
+                    SimpleEmailAddress(SelectToAddress.value, MsgToGot, 0);
+                    break;
+                case "CC":
+                    SimpleEmailAddress(SelectCcAddress.value, MsgCCGot, 1);
+                    break;
+                case "BCC":
+                    SimpleEmailAddress(SelectBCCAddress.value, MsgBCCGot, 2);
+                    break;
+                default:
+                    break;
+            }
+            obj.item(0).selected = true;
+            msg_editorResize();
+        }
+
+        function SimpleEmailAddress(formName, validDIV, iType) {
+            if (formName != "") {
+                var mailArr = String(formName).split("|#|");
+                var mailName = ReplaceText(mailArr[0], " ", "");
+                var pemail = ReplaceText(mailArr[1], " ", "");
+                var mailType = ReplaceText(mailArr[2], " ", "").toUpperCase();
+                var newElem;
+                if (mailType == "MAIL")
+                    newElem = PrepareMailTag(iType, "email", mailName, pemail, "");
+                else
+                    newElem = PrepareMailTag(iType, "mailgroup", mailName, strLang126, pemail);
+                var IsInsert = CheckMailReceiver(newElem);
+
+                if (!IsInsert) {
+                    switch (iType) {
+                        case 0:
+                            MsgToGot.appendChild(newElem);
+                            break;
+
+                        case 1:
+                            MsgCCGot.appendChild(newElem);
+                            break;
+
+                        case 2:
+                            MsgBCCGot.appendChild(newElem);
+                            break;
+
+                    }
+                }
+                formName = "";
+                g_bDirty = true;
+            }
+            return true;
+        }
+
+        function returnvalue(strXML) {
+            pAttachXml = loadXMLString(strXML);
+            var nodes = SelectNodes(pAttachXml, "ROOT/NODES/NODE");
+            for (i = 0; i < nodes.length; i++) {
+                if (getNodeText(GetChildNodes(nodes[i])[1]) == "true") {
+                    if (getNodeText(GetChildNodes(nodes[i])[3]) == 0) {
+                        Alert_Message(strLang89, null, "");
+                        return;
+                    }
+                }
+                else if (getNodeText(GetChildNodes(nodes[i])[1]) == "overflow") {
+                    Alert_Message(strLang168 + AttachLimit + "MB" + strLang169, null, "");
+                    return;
+                }
+                else if (getNodeText(GetChildNodes(nodes[i])[1]) == "denied") {
+                    Alert_Message(strLang323, null, "");
+                }
+                else {
+                    Alert_Message(filename + strLang85 + "\n\n" + result, null, "");
+                }
+            }
+            AttachFileInfo(strXML);
+        }
+
+        function FileUpdateAfter(strXML) {
+            tempXML = strXML;
+            pAttachXml = loadXMLString(strXML);
+            var nodes = SelectNodes(pAttachXml, "ROOT/NODES/NODE");
+            var xmlDoc = createXmlDom();
+            var objNode;
+            var objRow;
+            var objRows;
+            var objRowRow;
+            objNode = createNodeInsert(xmlDoc, objNode, "DATA");
+            createNodeAndInsertText(xmlDoc, objNode, "CMD", "ADD");
+            createNodeAndInsertText(xmlDoc, objNode, "URL", g_url);
+            objRow = createNodeAndAppandNode(xmlDoc, objNode, objRow, "FILELIST");
+            for (var i = 0; i < nodes.length; i++) {
+                if (getNodeText(GetChildNodes(nodes[i])[1]) != "denied") {
+                    objRows = createNodeAndAppandNode(xmlDoc, objRow, objRows, "FILE");
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "NAME", getNodeText(GetChildNodes(nodes[i])[2]));
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "PATH", getNodeText(GetChildNodes(nodes[i])[4]));
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "BIG", getNodeText(GetChildNodes(nodes[i])[5]));
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "SIZE", getNodeText(GetChildNodes(nodes[i])[3]));
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "ITEMID", "Y");
+                }
+            }
+            xmlhttp = createXMLHttpRequest();
+            xmlhttp.open("POST", "/myoffice/ezEmail/remote/mail_interattach_CK.aspx", false);
+            xmlhttp.send(xmlDoc);
+            var aitem;
+            var xmlReturnValue = createXmlDom();
+            var objNode;
+            var objRow;
+            var objRows;
+            objNode = createNodeInsert(xmlReturnValue, objNode, "DATA");
+            if (xmlhttp.status == "200" && xmlhttp.responseText != "") {
+                xmlDoc = loadXMLString(xmlhttp.responseText);
+                g_url = getNodeText(xmlDoc.getElementsByTagName("URL").item(0));
+                var filelist = SelectNodes(xmlDoc, "DATA/FILELIST/FILE");
+                for (var i = 0; i < filelist.length; i++) {
+                    filename = SelectSingleNodeValue(filelist[i], "NAME");
+                    path = SelectSingleNodeValue(filelist[i], "PATH");
+                    big_yn = SelectSingleNodeValue(filelist[i], "BIG");
+                    size = SelectSingleNodeValue(filelist[i], "SIZE");
+                    attid = SelectSingleNodeValue(filelist[i], "ITEMID");
+                    aitem = document.location.protocol + "//" + document.location.hostname + "/myoffice/ezEmail/remote/mail_ReadAttach_Ews.aspx?mode=Attach&ID=" + escape(g_url) + "&ATTID=" + escape(attid);
+                    if (big_yn == "Y") {
+                        bigtrue = bigtrue + 1;
+                        aitem = document.location.protocol + "//" + document.location.hostname + "/Common/DownloadAttach_Common.aspx?fileid=" + escape(path) + "&filedate=" + escape(attid.split('\\')[0]);
+                    }
+                    else {
+                        aitem = document.location.protocol + "//" + document.location.hostname + "/myoffice/ezEmail/remote/mail_ReadAttach_Ews.aspx?mode=Attach&ID=" + escape(g_url) + "&ATTID=" + escape(attid);
+                    }
+                    objRows = createNodeAndAppandNode(xmlReturnValue, objNode, objRows, "ROW");
+                    createNodeAndAppandNodeText(xmlReturnValue, objRows, objRow, "FILEPATH", path);
+                    createNodeAndAppandNodeText(xmlReturnValue, objRows, objRow, "URL", aitem);
+                    createNodeAndAppandNodeText(xmlReturnValue, objRows, objRow, "BIG", big_yn);
+                    createNodeAndAppandNodeText(xmlReturnValue, objRows, objRow, "ITEMID", attid);
+                }
+            }
+            else {
+                Alert_Message(xmlhttp.status + " : " + strLang241, null, "");
+            }
+            return xmlReturnValue;
+        }
+
+        //function btn_AttachSelect_onclick() {
+        //    document.getElementById('mode').value = "ATT";
+        //    document.form.file1.click();
+        //}
+
+        function MailBCCView(obj) {
+            if (GetAttribute(obj, "status") == "off") {
+                obj.setAttribute("class", "icon16 collapse_up");
+                obj.setAttribute("status", "on");
+                document.getElementById("MsgBCC_TR").style.display = "";
+            }
+            else {
+                obj.setAttribute("class", "icon16 collapse_down");
+                obj.setAttribute("status", "off");
+                document.getElementById("MsgBCC_TR").style.display = "none";
+            }
+
+            msg_editorResize();
+        }
+
+        function ChangeSenderName(obj) {
+            if (obj.value != "NONE")
+                g_showdisplay = obj.value;
+            else
+                g_showdisplay = "";
+        }
+
+        function shownoti(str) {
+            if (str.trim() != "")
+                Alert_Message(str, null, "");
+        }
+
+        function DownloadAttach(DownloadUrl) {
+            AttachDownFrame.location.href = DownloadUrl;
+        }
+
+        function SetFullName(name, company, dept, jikwe) {
+            //var arr = new Array();
+            //if (jikwe != "" && jikwe != null && typeof (jikwe) != "undefined") arr[arr.length] = jikwe;
+            //if (dept != "" && dept != null && typeof (dept) != "undefined") arr[arr.length] = dept;
+            //if (company != "" && company != null && typeof (company) != "undefined") arr[arr.length] = company;
+
+            //if (arr.length > 0) return "/" + arr.join("/");
+            //else return "";
+
+            var ret = detailFormat;
+
+            try {
+                if (name != "" && name != null && typeof (name) != "undefined")
+                    ret = ret.replace(/\{NAME\}/gi, name);
+                else
+                    ret = ret.replace(/\{NAME\}/gi, "");
+
+                if (jikwe != "" && jikwe != null && typeof (jikwe) != "undefined")
+                    ret = ret.replace(/\{TITLE\}/gi, jikwe);
+                else
+                    ret = ret.replace(/\{TITLE\}/gi, "");
+
+                if (dept != "" && dept != null && typeof (dept) != "undefined")
+                    ret = ret.replace(/\{DEPT\}/gi, dept);
+                else
+                    ret = ret.replace(/\{DEPT\}/gi, "");
+
+                if (company != "" && company != null && typeof (company) != "undefined")
+                    ret = ret.replace(/\{COMPANY\}/gi, company);
+                else
+                    ret = ret.replace(/\{COMPANY\}/gi, "");
+            }
+            catch (e) {
+                ret = "undefined";
+            }
+
+            return ret;
+        }
+
+        function ShowAttachment() {
+            if (document.getElementById("AttachmentIcon").getAttribute("class").toUpperCase() == "ICON16 COLLAPSE_UP") {
+                document.getElementById("AttachmentIcon").setAttribute("class", "icon16 collapse_up");
+                document.getElementById("AttachmentIcon_li").style.display = "";
+            }
+            else {
+                document.getElementById("AttachmentIcon").setAttribute("class", "icon16 collapse_down");
+                document.getElementById("AttachmentIcon_li").style.display = "none";
+            }
+        }
+
+        function MailAttachmentView(obj) {
+            if (GetAttribute(obj, "class").toUpperCase() == "ICON16 COLLAPSE_UP") {
+                obj.setAttribute("class", "icon16 collapse_down");
+                document.getElementById("AttachmentIcon_li").style.display = "none";
+            }
+            else {
+                obj.setAttribute("class", "icon16 collapse_up");
+                document.getElementById("AttachmentIcon_li").style.display = "";
+            }
+
+            msg_editorResize();
+        }
+
+        function PreView_Close() {
+            if (Write_Flag)
+                Confirm_Alert_Message(PageCloseStr, PreView_Close_Complete, "");
+            else
+                PreView_Close_Complete(true);
+        }
+
+        function PreView_Close_Complete(flag) {
+            if (typeof DivPopUpHidden === "function") {
+                DivPopUpHidden();
+            }
+
+            if (flag) {
+                Write_Flag = false;
+                if (document.getElementById("PreContent_RayerH_Info") != null) {
+                    LoadUrlContent("/myoffice/ezEmail/blank.htm", "PreContent_RayerH_Info");
+                    PreviewRayerChange('OFF');
+                    ResponsiveLeftRightView();
+                    PreviewOnResize();
+                }
+                else if (_open == "PORTLET" && GetPageType() == "LAYER") {
+                    try { parent.portlet_complete("MAIL"); } catch (e) { parent.DivPopUpHidden(); }
+                    return;
+                }
+                else if (GetPageType() == "LAYER") {
+                    if (typeof parent.DivPopUpHidden === "function") {
+                        parent.DivPopUpHidden();
+                    }
+                    return;
+                }
+                else {
+                    window.close();
+                }
+            }
+
+            try { contentList_Resize(); } catch (e) { }
+        }
+
+        function WindowPopup_Open() {
+            Confirm_Alert_Message(strLang389, WindowPopup_Open_Complete, "");
+        }
+
+        function WindowPopup_Open_Complete(flag) {
+            if (flag) {
+                Page_OnUnload_Event = false;
+
+                var pSessionStorageGuid = MakeSessionStorageData_Mail();
+                var pLinkURL = "https://ngw.mobisdev.com/myoffice/ezEmail/mail_write.aspx";
+                if (pLinkURL.indexOf("?") > 0) {
+                    pLinkURL = pLinkURL + (pSessionStorageGuid === "" ? "" : "&SSGUID=" + pSessionStorageGuid);
+                }
+                else {
+                    pLinkURL = pLinkURL + (pSessionStorageGuid === "" ? "" : "?SSGUID=" + pSessionStorageGuid);
+                }
+
+                GetOpenWindow(pLinkURL, "", 1024, 750, "YES");
+                PreView_Close_Complete(true);
+            }
+
+            try {
+                if (typeof parent.DivPopUpHidden === "function") {
+                    parent.DivPopUpHidden();
+                }
+                else if (typeof DivPopUpHidden === "function") {
+                    DivPopUpHidden();
+                }
+            }
+            catch (e) {
+                DivPopUpHidden();
+            }
+        }
+
+        function Editor_Complete() {
+            PopupData("EDITOR");
+
+        }
+
+        var DragDropAttachObjetLoading = false;
+        function dadiframe_onload() {
+            DragDropAttachObjetLoading = true;
+
+            PopupData("ATTACH");
+
+
+            // 첨부 프레임 초기화 완료 시 파싱
+            if ((g_cmd == "FORWARD" || g_cmd == "EDIT" || g_ReSendFlag == "Y") && document.getElementById("AttachXmlList").innerHTML != "") {
+                AddAttachFileInfoXmlParsing(document.getElementById("AttachXmlList").innerHTML);
+            }
+
+            if (dadiframe.dlmailYN == "Y" || dadiframe.dlmailYN == "B") {
+
+                dadiframe.document.getElementById("btnbig").style.display = "";
+                dadiframe.document.getElementById("btnilban").style.display = "NONE";
+
+            } else {
+                dadiframe.document.getElementById("btnilban").style.display = "";
+                dadiframe.document.getElementById("btnbig").style.display = "NONE";
+            }
+
+
+            /*20201106 일반 메일 첨부로 변환 작업  및 변환처리*/
+            if ("" == "DLFORWARD") {
+
+                var objAttachNodes = dadiframe.document.getElementById("filelist").childNodes;
+                var pTotalRowsLen = objAttachNodes.length;
+
+                var xmlDoc = createXmlDom();
+                var objNode;
+                var objRow;
+                var objRows;
+                var objRowRow;
+                objNode = createNodeInsert(xmlDoc, objNode, "DATA");
+                createNodeAndInsertText(xmlDoc, objNode, "FILEDATE", filedate);
+                objRow = createNodeAndAppandNode(xmlDoc, objNode, objRow, "FILELIST");
+                for (var i = 1; i < pTotalRowsLen; i++) {
+                    dadiframe.AttachConversion(objAttachNodes[i]);
+                    /* 첨부파일 세션 업데이트  */
+                    var curUploadSN = objAttachNodes[i].getAttribute("value");
+                    var curName = objAttachNodes[i].getAttribute("_orgfilename");
+
+                    var curHref = objAttachNodes[i].getAttribute('_itemid');
+                    var curSize = Number(objAttachNodes[i].getAttribute('_filesize'));
+                    var curIsBig = objAttachNodes[i].getAttribute('_big');
+
+                    objRows = createNodeAndAppandNode(xmlDoc, objRow, objRows, "FILE");
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "NAME", curUploadSN);
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "UPLOADYN", "true");
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "CURNAME", curName);
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "SIZE", curSize);
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "URL", folderDate + "|!|" + curUploadSN);
+                    createNodeAndAppandNodeText(xmlDoc, objRows, objRowRow, "BIG", "Y");
+                }
+
+                xmlhttp = createXMLHttpRequest();
+                xmlhttp.open("POST", "/myoffice/ezEmail/remote/FilelistSession_Update.aspx", false);
+                xmlhttp.send(xmlDoc);
+                if (xmlhttp == null || xmlhttp.readyState != 4)
+                    return;
+
+                if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
+                    var result = xmlhttp.responseText;
+                    if (result != "OK") {
+                        parentAlert(strLang321);
+                        return;
+                    }
+                }
+                MailForward_Hidden_Progress();
+
+            }
+        }
+
+        var pLoadState = { "EDITOR": false, "ATTACH": false };
+        function PopupData(param) {
+            if (param === "EDITOR") {
+                pLoadState.EDITOR = true;
+            }
+            else if (param === "ATTACH") {
+                pLoadState.ATTACH = true;
+            }
+
+            // 에디터 및 첨부프레임 로드 완료 시 동작
+            if (pLoadState.EDITOR && pLoadState.ATTACH) {
+                msg_editorResize();
+
+                if (initFlag == false) {
+                    initFlag = true;
+
+                    if (Org_cmd == "board") {
+                        GetBoardItemInfo_New("", "", "");
+                    }
+                    else if (Org_cmd == "Community") {
+                        GetBoardItemInfo_New3("", "");
+                    }
+                    else if (Org_cmd == "report") {
+                        GetUpmooItemInfo_New("", "")
+                    }
+                    else if (Org_cmd == "docsend" || Org_cmd == "docsenddoc") {
+                        GetDocumentInfo("", "", "", "");
+                    }
+                    else if (g_cFeedPostID != "") { // 협업 뉴스피드 연동
+                        GetCollaborationFeedInfo(g_cFeedPostID);
+                    }
+                }
+                Rebody();
+            }
+
+            // 팝업시 동작
+
+        }
+
+        function ReserverdMail_Save() {
+            var xmlhttp_1 = createXMLHttpRequest();
+            var strQuery = "<DATA><MESSAGEID>" + "" + "</MESSAGEID></DATA>";
+            xmlhttp_1.open("POST", "/myoffice/ezEmail/remote/ReservedMailCheck.aspx", false);
+            xmlhttp_1.send(strQuery);
+            if (xmlhttp_1.responseText == "<DATA>MAIL-EXISTS</DATA>")
+                Send_onClick();
+            else
+                Alert_Message(strLang243, null, "");
+        }
+
+        function htmlDecode(input) {
+            if (input.trim() == "")
+                return "";
+
+            var e = document.createElement('div');
+            e.innerHTML = input;
+            return e.childNodes[0].nodeValue;
+        }
+
+        function show_personinfo(email) {
+            DivPopUpShow(600, 600, "/myoffice/common/ShowPersonInfo.aspx?email=" + escape(email));
+        }
+
+        function onchange_template() {
+            LoadFormat_onClick_Complete("/mobis/" + document.getElementById("SelectTemplate").value);
+            document.getElementById("SelectTemplate").value = "";
+        }
+
+        var mail_receiver_import_dialogArguments = new Array();
+        function Excel_onClick() {
+            mail_receiver_import_dialogArguments[0] = null;
+            mail_receiver_import_dialogArguments[1] = Excel_onClick_Complete;
+
+            DivPopUpShow(560, 240, "/myoffice/ezEmail/htm/mail_receiver_import.aspx");
+        }
+
+        function Excel_onClick_Complete(ret) {
+            DivPopUpHidden();
+            if (typeof ret == "undefined" || ret == null)
+                return;
+
+            var tempXML = loadXMLString(ret);
+            var nodes = SelectNodes(tempXML, "DATA/ROW");
+            for (var i = 0; i < nodes.length; i++) {
+                var name = getNodeText(GetChildNodes(nodes[i])[0]);
+                var address = getNodeText(GetChildNodes(nodes[i])[1]);
+                var newElem = PrepareMailTag(0, "email", name, address, "", name);
+
+                if (typeof (newElem) == "undefined" || newElem == null)
+                    continue;
+
+                var IsInsert = CheckMailReceiver(newElem);
+                if (!IsInsert) {
+                    document.getElementById('MsgToGot').appendChild(newElem);
+                }
+            }
+        }
+
+        function DL_BigFile_Convert(bigYN, DLmailYN) {
+            alert("대용량변환 해봅시다.");
+        }
+
+            //# sourceURL=/mail_write.aspx
+    </script>
+
+
+    <iframe id="dext_context_iframe" title="DEXT5Editor Context" scrolling="no" frameborder="0" src="" style="margin: 0px; padding: 0px; z-index: 12000; position: absolute; overflow: hidden auto; display: none;"></iframe>
+</body>
+</html>

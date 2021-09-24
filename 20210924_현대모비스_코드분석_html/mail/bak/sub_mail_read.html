@@ -1,0 +1,1467 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody">
+            <div class="left_mail" title="메일">
+                메일
+                <span class="icon_tree tree_leftconfig" onclick="mail_Config()" title="메일환경설정"></span>
+            </div>
+            <div class="btn_writeBox">
+                <p class="btn_write02" onclick="new_mail_onclick()">메일쓰기</p>
+                <p class="btn_write01" onclick="new_mail_onclick('tome')">내게쓰기</p>
+            </div>
+            <div class="leftscroll btnstyle2type">
+                <div class="leftscrollBox scrollbar-outer">
+                    <h2 id="h2_mail" class="on">
+                        <span onclick="Email_Menu_Click()">
+                            <span class="icon_tree tree_lnbArrowDown"></span>
+                            <span class="h2_text">메일</span>
+                        </span>
+                    </h2>
+                    <ul class="leftList">
+                        <div class="tree_scroll scrollbar-inner">
+                            <div class="tree" style="height: 100%;" id="PostTreeView">
+                                <span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_1" name="PostTreeView_img_1" style="cursor: pointer;"></span><span id="PostTreeView_node_1" name="PostTreeView_node_1" class="node_selected" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="받은 편지함(43)" depth="0">받은 편지함(43)</span></div><span id="PostTreeView_child_1" name="PostTreeView_child_1" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_8" name="PostTreeView_img_8" width="-1" height="-1"></span><span id="PostTreeView_node_8" name="PostTreeView_node_8" class="node_normal" style="display:inline-block;font-weight:bold white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="1(6)" depth="1">1(6)</span></div><span id="PostTreeView_child_8" name="PostTreeView_child_8" style="display: none;"></span></span></span></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_2" name="PostTreeView_img_2" width="-1" height="-1"></span><span id="PostTreeView_node_2" name="PostTreeView_node_2" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="보낸 편지함" depth="0">보낸 편지함</span></div><span id="PostTreeView_child_2" name="PostTreeView_child_2" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_3" name="PostTreeView_img_3" width="-1" height="-1"></span><span id="PostTreeView_node_3" name="PostTreeView_node_3" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="임시 보관함(234)" depth="0">임시 보관함(234)</span></div><span id="PostTreeView_child_3" name="PostTreeView_child_3" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_4" name="PostTreeView_img_4" width="-1" height="-1"></span><span id="PostTreeView_node_4" name="PostTreeView_node_4" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="지운 편지함(2160)" depth="0">지운 편지함(2160)</span></div><span id="PostTreeView_child_4" name="PostTreeView_child_4" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_5" name="PostTreeView_img_5" width="-1" height="-1"></span><span id="PostTreeView_node_5" name="PostTreeView_node_5" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="PERSONAL" depth="0">PERSONAL</span></div><span id="PostTreeView_child_5" name="PostTreeView_child_5" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank" id="PostTreeView_img_6" name="PostTreeView_img_6" width="-1" height="-1"></span><span id="PostTreeView_node_6" name="PostTreeView_node_6" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="정크 메일" depth="0">정크 메일</span></div><span id="PostTreeView_child_6" name="PostTreeView_child_6" style="display: none;"></span></span><span style="display: block;"><div class="node_div"><span class="icon_tree tree_lnbArrowDown" id="PostTreeView_img_7" name="PostTreeView_img_7" style="cursor: pointer;"></span><span id="PostTreeView_node_7" name="PostTreeView_node_7" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:145px;" title="개인사서함" depth="0">개인사서함</span></div><span id="PostTreeView_child_7" name="PostTreeView_child_7" style="display: inline-block;"><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_9" name="PostTreeView_img_9" width="-1" height="-1"></span><span id="PostTreeView_node_9" name="PostTreeView_node_9" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="0" depth="1">0</span></div><span id="PostTreeView_child_9" name="PostTreeView_child_9" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_10" name="PostTreeView_img_10" width="-1" height="-1"></span><span id="PostTreeView_node_10" name="PostTreeView_node_10" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="10" depth="1">10</span></div><span id="PostTreeView_child_10" name="PostTreeView_child_10" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_11" name="PostTreeView_img_11" width="-1" height="-1"></span><span id="PostTreeView_node_11" name="PostTreeView_node_11" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="11" depth="1">11</span></div><span id="PostTreeView_child_11" name="PostTreeView_child_11" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_12" name="PostTreeView_img_12" width="-1" height="-1"></span><span id="PostTreeView_node_12" name="PostTreeView_node_12" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12" depth="1">12</span></div><span id="PostTreeView_child_12" name="PostTreeView_child_12" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_13" name="PostTreeView_img_13" width="-1" height="-1"></span><span id="PostTreeView_node_13" name="PostTreeView_node_13" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="12345678901234567890123456789012345678901234567890" depth="1">12345678901234567890123456789012345678901234567890</span></div><span id="PostTreeView_child_13" name="PostTreeView_child_13" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_14" name="PostTreeView_img_14" width="-1" height="-1"></span><span id="PostTreeView_node_14" name="PostTreeView_node_14" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="13" depth="1">13</span></div><span id="PostTreeView_child_14" name="PostTreeView_child_14" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_15" name="PostTreeView_img_15" width="-1" height="-1"></span><span id="PostTreeView_node_15" name="PostTreeView_node_15" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="14" depth="1">14</span></div><span id="PostTreeView_child_15" name="PostTreeView_child_15" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_16" name="PostTreeView_img_16" style="cursor: pointer;"></span><span id="PostTreeView_node_16" name="PostTreeView_node_16" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="2" depth="1">2</span></div><span id="PostTreeView_child_16" name="PostTreeView_child_16" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_17" name="PostTreeView_img_17" width="-1" height="-1"></span><span id="PostTreeView_node_17" name="PostTreeView_node_17" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="212" depth="1">212</span></div><span id="PostTreeView_child_17" name="PostTreeView_child_17" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_18" name="PostTreeView_img_18" width="-1" height="-1"></span><span id="PostTreeView_node_18" name="PostTreeView_node_18" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="3" depth="1">3</span></div><span id="PostTreeView_child_18" name="PostTreeView_child_18" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_19" name="PostTreeView_img_19" width="-1" height="-1"></span><span id="PostTreeView_node_19" name="PostTreeView_node_19" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="4" depth="1">4</span></div><span id="PostTreeView_child_19" name="PostTreeView_child_19" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_20" name="PostTreeView_img_20" width="-1" height="-1"></span><span id="PostTreeView_node_20" name="PostTreeView_node_20" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="5" depth="1">5</span></div><span id="PostTreeView_child_20" name="PostTreeView_child_20" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_21" name="PostTreeView_img_21" width="-1" height="-1"></span><span id="PostTreeView_node_21" name="PostTreeView_node_21" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="6" depth="1">6</span></div><span id="PostTreeView_child_21" name="PostTreeView_child_21" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_22" name="PostTreeView_img_22" width="-1" height="-1"></span><span id="PostTreeView_node_22" name="PostTreeView_node_22" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="7" depth="1">7</span></div><span id="PostTreeView_child_22" name="PostTreeView_child_22" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_blank" id="PostTreeView_img_23" name="PostTreeView_img_23" width="-1" height="-1"></span><span id="PostTreeView_node_23" name="PostTreeView_node_23" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="8" depth="1">8</span></div><span id="PostTreeView_child_23" name="PostTreeView_child_23" style="display: none;"></span></span></span><span style="display: block; width: 150px;"><span style="display: block;"><div class="node_div"><span class="icon_tree tree_blank"></span><span class="icon_tree tree_lnbArrowUp" id="PostTreeView_img_24" name="PostTreeView_img_24" style="cursor: pointer;"></span><span id="PostTreeView_node_24" name="PostTreeView_node_24" class="node_normal" style="display:inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width:131px;" title="개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더" depth="1">개인사서함 폴더명 길어질 경우개인사서함 폴더명 길어질 경우개인사서함 폴더</span></div><span id="PostTreeView_child_24" name="PostTreeView_child_24" style="display: none;"></span></span></span></span></span></span></span>
+                            </div>
+                        </div>
+                        <li>
+                            <h4 id="dlbtn" class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">승인메일함</span></h4>
+                            <ul class="leftList">
+
+                                <li id="ApproveMailRequest" onclick="goPage(26)"><span class="li_text">신청함</span></li>
+                                <li id="ApproveMailList" onclick="goPage(21)" style=""><span class="li_text">승인할 메일</span></li>
+                                <li id="ApproveMailCompleteList" onclick="goPage(24)" style=""><span class="li_text">승인완료 메일</span></li>
+                                <li id="ApproveAuth" onclick="goPage(25)" style="display:none"><span class="li_text">승인권자관리</span></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h4 class="on" onclick="toggleMailSubMenu(event)"><span class="icon_tree tree_lnbArrowDown" style="display:block; margin:7px 0px 0px 0px;"></span><span class="h2_text">부가기능</span></h4>
+                            <ul class="leftList">
+
+                                <li onclick="folder_manage()"><span class="li_text">편지함관리</span></li>
+                                <li onclick="Open_ReservationManage()"><span class="li_text">예약발송관리</span></li>
+                                <li onclick="Open_Search()"><span class="li_text">메일검색</span></li>
+                                <li onclick="Open_Restore()"><span class="li_text">영구삭제메일복원</span></li>
+                                <li id="mailimport" onclick="mail_import()"><span class="li_text">메일가져오기</span></li>
+                                <li id="mailexportall" onclick="mail_exportall()" style="display: none;"><span class="li_text">편지함PC저장하기</span></li>
+
+                                <li onclick="mail_backup()"><span class="li_text">메일 백업</span></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <h2 id="h2_address"><span onclick="Address_Menu_Click()"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">명함관리</span></span></h2>
+                    <ul class="leftList">
+                        <div class="tree" style="height: 100%; max-height: 194px;" id="AddressTreeView"></div>
+                        <li onclick="address_Search()"><span class="li_text">명함검색</span></li>
+                        <li onclick="address_foldermanage()"><span class="li_text">명함관리</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left_mailgraphBox" style="display:none;"><!-- 삭제 -->
+                <dl class="left_mailgraphDL">
+                    <dt>메일사용량</dt>
+                    <dd id="currentmail"><span class="point">173MB</span> / 1.00GB</dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph"><span style="width: 17%; ">17%</span></p><!-- 메일사용량 그래프 width 값 -->
+
+                <dl class="left_mailgraphDL" style="margin-top:10px;">
+                    <dt>개인사서함</dt>
+                    <dd id="currentmail_personal"></dd>
+                </dl>
+                <p class="left_mailgraph" id="left_mailgraph_personal" style="display:none;"></p><!-- 개인사서함 그래프 width 값 -->
+
+            </div>
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        메일
+    </div>
+    <!-- //new sub title -->
+    <span id="PreViewRayer" class="mainbody" style="min-width: 330px; width: 20%; height: calc(100% - 128px); display: block;">
+        <div class="new_listview scrollbar-inner">
+            <ul>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk01">
+                            <label for="listview_chk01"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk02">
+                            <label for="listview_chk02"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk03">
+                            <label for="listview_chk03"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk04">
+                            <label for="listview_chk04"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk05">
+                            <label for="listview_chk05"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk06">
+                            <label for="listview_chk06"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk07">
+                            <label for="listview_chk07"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk08">
+                            <label for="listview_chk08"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk09">
+                            <label for="listview_chk09"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_unread"></span>
+                        <span class="contentlayout_right icon16_listview view_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview newAttach"></span>
+                        <span class="contentlayout_none listview-title"><strong>프로젝트 디자인 일정 전달드립니다.</strong></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left listview-check checks">
+                            <input type="checkbox" id="listview_chk10">
+                            <label for="listview_chk10"></label>
+                        </span>
+                        <span class="contentlayout_left icon16_listview icon_msg_read"></span>
+                        <span class="contentlayout_right icon16_listview icon_flag"></span>
+                        <span class="contentlayout_right icon16_listview wastebasket"></span>
+                        <span class="contentlayout_right listview-day">2020.11.25</span>
+                        <span class="contentlayout_none listview-name">홍길동</span>
+                    </span>
+                    <span class="contentlayout">
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_left icon16_listview icon_blank"></span>
+                        <span class="contentlayout_none listview-title">프로젝트 디자인 일정 전달드립니다.읽은메일 입니다. 읽은메일 입니다.</span>
+                    </span>
+                </li>
+            </ul>
+            <!--<h1>
+                받은 편지함<span id="mailBoxInfo"></span>
+            </h1>
+            <div class="mainmenu_btn">
+                <ul class="mainmenu_btnUL">
+                    <li onclick="MailListRefresh()" title="새로고침"><span class="icon16 refresh"></span></li>
+                    <li onclick="new_qcms()">기술자료요청</li>
+                    <li class="on" id="reply" onclick="reply_mail_onclick()" title="회신">회신</li>
+                    <li class="on" onclick="all_reply_mail_onclick()" title="전체회신">전체회신</li>
+                    <li class="on" onclick="transmission_mail_onclick()" title="전달">전달</li>
+                    <li class="on" onclick="all_transmission_mail_onclick()" title="전체전달">전체전달</li>
+
+
+                    <li onclick="deleteWork(false)" title="삭제"><span class="icon16 wastebasket"></span></li>
+                    <li onclick="_submenu_display(this)">
+                        <span class="icon16 option_horizontal"></span>
+                        <ul class="option_horizontal_list">
+                            <li id="btnExport" onclick="mail_export()">PC저장</li>
+                            <li id="btnReject" onclick="reject_onclick()" style="">수신거부</li>
+                            <li id="btnSpamReport" onclick="spamreport_onclick()" style="">스팸신고</li>
+                            <li id="ReadChange" onclick="Read_StatusChange('R')">읽은상태</li>
+                            <li id="UnreadChange" onclick="Read_StatusChange('U')">안읽은상태</li>
+                            <li id="MailFlag" onclick="toggle_flag()">책갈피</li>
+
+                            <li id="MailCopy" onclick="mail_movecopy('')">이동/복사</li>
+                            <li id="deleteall" style="display:none" onclick="delAllFile()">모두삭제</li>
+                            <li id="deleteone" onclick="deleteWork(true)">영구삭제</li>
+                            <li id="receivecheck" style="display:none" onclick="receiveCheck_onClick()">회수</li>
+                        </ul>
+                    </li>
+                    <li class="sel">
+                        <select name="select" id="select" onchange="on_changeView(this.value)">
+                            <option value="BASE" selected="">기본보기</option>
+                            <option value="UNREAD">읽지않은메일</option>
+                            <option value="READ">읽은메일</option>
+                            <option value="RECEIV">받는 사람</option>
+
+                            <option value="INMAIL">내부메일</option>
+                            <option value="OUTMAIL">외부메일</option>
+
+                        </select>
+                    </li>
+                    <li class="writebtn" onclick="new_mail_onclick()">메일쓰기</li>
+
+                    <li class="writebtn" style="margin-right: 5px;" onclick="new_mail_onclick2()">보안/대용량</li>
+                </ul>
+            </div>-->
+            <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; z-index: 5000; display: none;" id="mailPanel" onclick="ContextMenuHidden();" oncontextmenu="ContextMenuHidden(); return false;"></div>
+            <div style="z-index: 1000; top: 332.5px; left: 442.5px; display: none;" id="MailProgress"></div>
+            <!-- 하단추가된 검색영역이 contentlist 안에 들어가야할지 검토필요 -->
+            <!--<div class="contentlist_search">
+                <ul class="contentlayout">
+                    <li class="contentlayout_right" onclick="isSearchFilterON = !isSearchFilterON; searchFilter();"><a class="imgbtn_search01"><span class="icon16 filter"></span></a></li>
+                    <li class="contentlayout_right" onclick="start_search();"><a class="imgbtn_search"><span class="icon16 listsearch"></span></a></li>
+                    <li class="contentlayout_none">
+                        <input class="searchBox width100percent" type="text" id="keyword" name="keyword" style="ime-mode: active;" onkeypress="return quick_search(event);" onselectstart="event.cancelBubble=true;event.returnValue=true" onmousedown="keyword_Clear();">
+                    </li>
+                </ul>
+            </div>-->
+            <!-- //하단추가된 검색영역이 contentlist 안에 들어가야할지 검토필요 -->
+            <!-- 필터영역 --> <!-- 필터아이콘 클릭시 하단 필터 보였다/숨겼다 처리필요 -->
+            <!--<div class="contentlist_search_filter" style="display:none">
+                <ul class="contentlayout">
+                    <li class="contentlayout_none">
+                        <span class="spanText">
+                            <table class="content">
+                                <tbody>
+                                    <tr>
+                                        <th class="indispensable" rowspan="2">검색어</th>
+                                        <td>
+                                            <span class="spanText">
+                                                <input type="radio" name="searchType" id="searchTypeAND">&nbsp;<label for="searchTypeAND">AND</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="radio" name="searchType" id="searchTypeOR" checked="">&nbsp;<label for="searchTypeOR">OR</label>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span id="searchAdd">
+                                                <select name="category_select" class="text" id="category1" style="width:110px;">
+                                                    <option value="SUBJECT" selected="">제목</option>
+
+                                                    <option value="FROM">보낸 사람</option>
+
+                                                    <option value="RECEIVE">받는 사람, 참조</option>
+                                                    <option value="BODY">본문</option>
+                                                </select>
+                                                <input type="text" name="detail_keyword" id="keyword1" onkeypress="return search_keypress(event)" style="width:150px;">
+                                            </span>
+                                            &nbsp;
+
+                                            <span id="Span1">
+                                                <select name="category_select" class="text" id="category2" style="width:110px;">
+                                                    <option value="SUBJECT">제목</option>
+                                                    <option value="FROM" selected="">보낸 사람</option>
+                                                    <option value="RECEIVE">받는 사람, 참조</option>
+                                                    <option value="BODY">본문</option>
+                                                </select>
+                                                <input type="text" name="detail_keyword" id="keyword2" onkeypress="return search_keypress(event)" style="width:150px;">
+                                            </span>
+                                            &nbsp;
+
+                                            <span id="Span2">
+                                                <select name="category_select" class="text" id="category3" style="width:110px;">
+                                                    <option value="SUBJECT">제목</option>
+
+                                                    <option value="FROM">보낸 사람</option>
+
+                                                    <option value="RECEIVE" selected="">받는 사람, 참조</option>
+                                                    <option value="BODY">본문</option>
+                                                </select>
+                                                <input type="text" name="detail_keyword" id="keyword3" onkeypress="return search_keypress(event)" style="width:150px;">
+                                            </span>
+                                            &nbsp;
+                                            <span id="searchAdd4">
+                                                <select name="category_select" class="text" id="category4" style="width:110px;">
+                                                    <option value="SUBJECT" selected="">제목</option>
+
+                                                    <option value="FROM">보낸 사람</option>
+
+                                                    <option value="RECEIVE">받는 사람, 참조</option>
+                                                    <option value="BODY" selected="">본문</option>
+                                                </select>
+                                                <input type="text" name="detail_keyword" id="keyword4" onkeypress="return search_keypress(event)" style="width:150px;">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>첨부파일</th>
+                                        <td>
+                                            <span class="spanText">
+                                                <input type="radio" id="AttALL" name="attachCheck" value="ALL" checked="">
+                                                <label for="AttALL">모두</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="radio" id="AttEXIST" name="attachCheck" value="EXIST">
+                                                <label for="AttEXIST">포함</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="radio" id="AttNONE" name="attachCheck" value="NONE">
+                                                <label for="AttNONE">미포함</label>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>검색기간</th>
+                                        <td>
+                                            <input type="checkbox" value="1" id="usepostdate" style="display: none;">
+                                            <select id="dateSelect" onchange="DateSelect(this.value)">
+                                                <option value="ALL" selected="">ALL</option>
+                                                <option value="WEEK">1주일</option>
+                                                <option value="MONTH">1개월</option>
+                                                <option value="3MONTH">3개월</option>
+                                                <option value="MANUAL">직접입력</option>
+                                            </select>
+                                            <span class="spanText" id="picker" style="display:none;">
+                                                <input type="text" class="DatePicker_class hasDatepicker" id="Sdatepicker" name="DatePicker" style="width: 100px; text-align: center;" readonly="readonly" size="10" disabled=""><img class="ui-datepicker-trigger" src="/images/imgicon/calendar-month.gif" alt="" title="" style="opacity: 0.5; cursor: default;">
+                                                ~
+                                                <input type="text" class="DatePicker_class hasDatepicker" id="Edatepicker" name="DatePicker" style="width: 100px; text-align: center;" readonly="readonly" size="10" disabled=""><img class="ui-datepicker-trigger" src="/images/imgicon/calendar-month.gif" alt="" title="" style="opacity: 0.5; cursor: default;">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="btnposition">
+                                <ul class="btnpositionUL">
+                                    <li class="on"><a class="imgbtn"><span onclick="start_search()">검색</span></a></li>
+                                </ul>
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>-->
+            <!-- //필터영역 -->
+            <!--<div class="contentlist_layout">
+                <table id="MailHeader" class="mainlist"><tr><th style="width: 22px; text-overflow: inherit;"><input type="checkbox" id="HeaderAllCheckBox" style="margin: 0px; padding: 0px; width: 13px; height: 13px;"></th><th prop="http://schemas.microsoft.com/exchange/x-priority-long" orderoption="" style="width: 24px; text-align: center; cursor: pointer; text-overflow: clip;"><span class="icon16_listview view_importance"></span></th><th prop="http://schemas.microsoft.com/exchange/smallicon" class="shrink" orderoption="" style="width: 24px; text-align: center; cursor: pointer; text-overflow: clip; display: none;"><span class="icon16_listview icon_msg_unread"></span></th><th prop="http://schemas.microsoft.com/mapi/proptag/x10900003" class="shrink" orderoption="" style="width: 24px; text-align: center; cursor: pointer; text-overflow: clip; display: none;"><span class="icon16_listview icon_flag"></span></th><th prop="urn:schemas:httpmail:hasattachment" orderoption="" style="width: 24px; text-align: center; cursor: pointer; text-overflow: clip;"><span class="icon16_listview newAttach"></span></th><th prop="http://schemas.microsoft.com/mapi/sent_representing_name" orderoption="" style="width: 130px; text-align: left; cursor: pointer;">보낸 사람</th><th prop="http://schemas.microsoft.com/mapi/proptag/x0e1d001f" orderoption="" style="width: 100%; text-align: left; cursor: pointer;">제목</th><th prop="urn:schemas:httpmail:datereceived" class="shrink" orderoption="DESC" style="width: 110px; text-align: center; cursor: pointer; display: none;">받은 날짜<span class="icon16_listview view_sortdown" align="absmiddle"></span></th><th prop="http://schemas.microsoft.com/mapi/proptag/x0e080003" class="shrink" orderoption="" style="width: 53px; text-align: center; cursor: pointer; display: none;">크기</th></tr></table>
+                <div id="contentlist" name="contentlist" style="height: 371px;">
+                    <table class="mainlist" id="MailList" listpagecount="50" curpage="1" maxcount="259" maxpage="6" oncontextmenu="event_listContextMenu(event); return false;"><tr id="Maillist_0" title="낮" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLiAAA=" _subject="낮" _sender="김창영" read="0" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011191144" draggable="true" style="cursor: pointer; font-weight: bold; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview icon_lowimportance"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_unread"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">낮</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-19 11:44</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">12 KB</td></tr><tr id="Maillist_1" title="높" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLhAAA=" _subject="높" _sender="김창영" read="0" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011191144" draggable="true" style="cursor: pointer; font-weight: bold; color: red; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview icon_highimportance"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_unread"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; color: rgb(255, 0, 0); font-weight: bold;">높</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; color: rgb(255, 0, 0); font-weight: bold; display: none;">2020-11-19 11:44</td><td class="shrink" style="text-align: right; width: 53px; color: rgb(255, 0, 0); font-weight: bold; display: none;">12 KB</td></tr><tr id="Maillist_2" title="배달되지 않음: 테스트 메일" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLgAAA=" _subject="배달되지 않음: 테스트 메일" _sender="Microsoft Outlook" read="1" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011181536" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">배달되지 않음: 테스트 메일</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 15:36</td><td class="shrink" style="text-align: right; width: 53px; display: none;">22 KB</td></tr><tr id="Maillist_3" title="테스트 메일" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLfAAA=" _subject="테스트 메일" _sender="김창영" read="0" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181536" draggable="true" style="cursor: pointer; font-weight: bold; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_unread"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">테스트 메일</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-18 15:36</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">8 KB</td></tr><tr id="Maillist_4" title="배달 지연됨:RE: 일반 메일 저장 금지2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLeAAA=" _subject="배달 지연됨:RE: 일반 메일 저장 금지2" _sender="Microsoft Outlook" read="0" _contentclass="REPORT.IPM.Note.Delayed.DR" _isdraft="False" _receivedt="202011181447" draggable="true" style="cursor: pointer; font-weight: bold; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">배달 지연됨:RE: 일반 메일 저장 금지2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-18 14:47</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">88 KB</td></tr><tr id="Maillist_5" title="배달 지연됨:일반 메일 저장 금지2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLdAAA=" _subject="배달 지연됨:일반 메일 저장 금지2" _sender="Microsoft Outlook" read="0" _contentclass="REPORT.IPM.Note.Delayed.DR" _isdraft="False" _receivedt="202011181447" draggable="true" style="cursor: pointer; font-weight: bold; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">배달 지연됨:일반 메일 저장 금지2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-18 14:47</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">88 KB</td></tr><tr id="Maillist_6" title="0000" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLcAAA=" _subject="0000" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181442" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview newAttach"></span></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">0000</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 14:42</td><td class="shrink" style="text-align: right; width: 53px; display: none;">21 KB</td></tr><tr id="Maillist_7" title="123123" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLbAAA=" _subject="123123" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181432" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">123123</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 14:32</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_8" title="11" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLaAAA=" _subject="11" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181419" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">11</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 14:19</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_9" title="배달 지연됨:수신자 import 01" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLZAAA=" _subject="배달 지연됨:수신자 import 01" _sender="Microsoft Outlook" read="1" _contentclass="REPORT.IPM.Note.Delayed.DR" _isdraft="False" _receivedt="202011181416" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">배달 지연됨:수신자 import 01</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 14:16</td><td class="shrink" style="text-align: right; width: 53px; display: none;">86 KB</td></tr><tr id="Maillist_10" title="배달 지연됨:임시보관하기 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLYAAA=" _subject="배달 지연됨:임시보관하기 " _sender="Microsoft Outlook" read="0" _contentclass="REPORT.IPM.Note.Delayed.DR" _isdraft="False" _receivedt="202011181416" draggable="true" style="cursor: pointer; font-weight: bold; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">배달 지연됨:임시보관하기 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-18 14:16</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">85 KB</td></tr><tr id="Maillist_11" title="123" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLXAAA=" _subject="123" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181120" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">123</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 11:20</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_12" title="배달되지 않음: RE: 나의 팀으로 보냈을때 숨은참조느 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLWAAA=" _subject="배달되지 않음: RE: 나의 팀으로 보냈을때 숨은참조느 " _sender="Microsoft Outlook" read="1" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011181037" draggable="true" style="cursor: pointer; background-color: rgb(255, 255, 255);"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">배달되지 않음: RE: 나의 팀으로 보냈을때 숨은참조느 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:37</td><td class="shrink" style="text-align: right; width: 53px; display: none;">23 KB</td></tr><tr id="Maillist_13" title="배달되지 않음: 나의 팀으로 보냈을때 숨은참조느 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLVAAA=" _subject="배달되지 않음: 나의 팀으로 보냈을때 숨은참조느 " _sender="Microsoft Outlook" read="1" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011181037" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">배달되지 않음: 나의 팀으로 보냈을때 숨은참조느 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:37</td><td class="shrink" style="text-align: right; width: 53px; display: none;">23 KB</td></tr><tr id="Maillist_14" title="나의 팀으로 보냈을때 숨은참조느 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLUAAA=" _subject="나의 팀으로 보냈을때 숨은참조느 " _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011181037" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">나의 팀으로 보냈을때 숨은참조느 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:37</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_15" title="숨은메일 확인 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLTAAA=" _subject="숨은메일 확인 " _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181036" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">숨은메일 확인 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:36</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_16" title=" [문서보안해제]승인불필요 문서보안해제인 경우 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLSAAA=" _subject=" [문서보안해제]승인불필요 문서보안해제인 경우 " _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181029" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;"> [문서보안해제]승인불필요 문서보안해제인 경우 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:29</td><td class="shrink" style="text-align: right; width: 53px; display: none;">12 KB</td></tr><tr id="Maillist_17" title="RE: 일반 팝업해서 간편회신하기" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLRAAA=" _subject="RE: 일반 팝업해서 간편회신하기" _sender="김창영" read="0" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181028" draggable="true" style="cursor: pointer; font-weight: bold;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_unread"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">RE: 일반 팝업해서 간편회신하기</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-18 10:28</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">9 KB</td></tr><tr id="Maillist_18" title="일반 팝업해서 간편회신하기" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLQAAA=" _subject="일반 팝업해서 간편회신하기" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011181028" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview newAttach"></span></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">일반 팝업해서 간편회신하기</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:28</td><td class="shrink" style="text-align: right; width: 53px; display: none;">32 KB</td></tr><tr id="Maillist_19" title="RE: 금지된 메일 간편회신하기 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLPAAA=" _subject="RE: 금지된 메일 간편회신하기 " _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181027" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">RE: 금지된 메일 간편회신하기 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:27</td><td class="shrink" style="text-align: right; width: 53px; display: none;">10 KB</td></tr><tr id="Maillist_20" title="금지된 메일 간편회신하기 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLOAAA=" _subject="금지된 메일 간편회신하기 " _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011181027" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview newAttach"></span></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">금지된 메일 간편회신하기 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:27</td><td class="shrink" style="text-align: right; width: 53px; display: none;">25 KB</td></tr><tr id="Maillist_21" title="RE: 일반 메일 저장 금지2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLNAAA=" _subject="RE: 일반 메일 저장 금지2" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181025" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">RE: 일반 메일 저장 금지2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:25</td><td class="shrink" style="text-align: right; width: 53px; display: none;">52 KB</td></tr><tr id="Maillist_22" title="일반 메일 저장 금지2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLMAAA=" _subject="일반 메일 저장 금지2" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011181024" draggable="true" style="cursor: pointer; color: red;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview icon_highimportance"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview newAttach"></span></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; color: rgb(255, 0, 0);">일반 메일 저장 금지2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; color: rgb(255, 0, 0); display: none;">2020-11-18 10:24</td><td class="shrink" style="text-align: right; width: 53px; color: rgb(255, 0, 0); display: none;">187 KB</td></tr><tr id="Maillist_23" title="수신자 import 01" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLLAAA=" _subject="수신자 import 01" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011181003" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"><span class="icon16_listview newAttach"></span></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">수신자 import 01</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 10:03</td><td class="shrink" style="text-align: right; width: 53px; display: none;">199 KB</td></tr><tr id="Maillist_24" title="대용량 첨부 테스트 승인완료메일에서 확인 필요 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLKAAA=" _subject="대용량 첨부 테스트 승인완료메일에서 확인 필요 " _sender="박차웅" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011180937" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">박차웅</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">대용량 첨부 테스트 승인완료메일에서 확인 필요 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-18 09:37</td><td class="shrink" style="text-align: right; width: 53px; display: none;">18 KB</td></tr><tr id="Maillist_25" title="회신: 금지 대용량 - 발신자가 다시 보내봄" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLJAAA=" _subject="회신: 금지 대용량 - 발신자가 다시 보내봄" _sender="최재원" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011171555" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview icon_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">최재원</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">회신: 금지 대용량 - 발신자가 다시 보내봄</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 15:55</td><td class="shrink" style="text-align: right; width: 53px; display: none;">26 KB</td></tr><tr id="Maillist_26" title="금지 대용량 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLIAAA=" _subject="금지 대용량 " _sender="최재원" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011171539" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">최재원</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">금지 대용량 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 15:39</td><td class="shrink" style="text-align: right; width: 53px; display: none;">19 KB</td></tr><tr id="Maillist_27" title="회신: 다시 대용량 01 - 반려된거 다시 대용량 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLHAAA=" _subject="회신: 다시 대용량 01 - 반려된거 다시 대용량 " _sender="최재원" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011171516" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">최재원</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">회신: 다시 대용량 01 - 반려된거 다시 대용량 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 15:16</td><td class="shrink" style="text-align: right; width: 53px; display: none;">26 KB</td></tr><tr id="Maillist_28" title="대용량 테스트 중 01 " _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLGAAA=" _subject="대용량 테스트 중 01 " _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011171449" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">대용량 테스트 중 01 </td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 14:49</td><td class="shrink" style="text-align: right; width: 53px; display: none;">43 KB</td></tr><tr id="Maillist_29" title="123" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLFAAA=" _subject="123" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011171109" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">123</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 11:09</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_30" title="RE: 11111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLEAAA=" _subject="RE: 11111" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011171105" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">RE: 11111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 11:05</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_31" title="11111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLDAAA=" _subject="11111" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011171104" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">11111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-17 11:04</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_32" title="RE: 1111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLCAAA=" _subject="RE: 1111" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011161141" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">RE: 1111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-16 11:41</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_33" title="RE: 1111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvLBAAA=" _subject="RE: 1111" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011161141" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">RE: 1111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-16 11:41</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_34" title="엑박 테스트" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK+AAA=" _subject="엑박 테스트" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011161029" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">엑박 테스트</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-16 10:29</td><td class="shrink" style="text-align: right; width: 53px; display: none;">57 KB</td></tr><tr id="Maillist_35" title="엑박 테스트" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK9AAA=" _subject="엑박 테스트" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011161027" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">엑박 테스트</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-16 10:27</td><td class="shrink" style="text-align: right; width: 53px; display: none;">28 KB</td></tr><tr id="Maillist_36" title="배달되지 않음: 발송test" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK8AAA=" _subject="배달되지 않음: 발송test" _sender="Microsoft Outlook" read="0" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011151046" draggable="true" style="cursor: pointer; font-weight: bold;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">배달되지 않음: 발송test</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-15 10:46</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">39 KB</td></tr><tr id="Maillist_37" title="개발서버 테스트1" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK7AAA=" _subject="개발서버 테스트1" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011151009" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">개발서버 테스트1</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-15 10:09</td><td class="shrink" style="text-align: right; width: 53px; display: none;">9 KB</td></tr><tr id="Maillist_38" title="배달되지 않음: ㅇ11313113" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK6AAA=" _subject="배달되지 않음: ㅇ11313113" _sender="Microsoft Outlook" read="0" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011151004" draggable="true" style="cursor: pointer; font-weight: bold;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px; font-weight: bold;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; font-weight: bold;">배달되지 않음: ㅇ11313113</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; font-weight: bold; display: none;">2020-11-15 10:04</td><td class="shrink" style="text-align: right; width: 53px; font-weight: bold; display: none;">38 KB</td></tr><tr id="Maillist_39" title="gmt test" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK5AAA=" _subject="gmt test" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011141838" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">gmt test</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-14 18:38</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_40" title="전달: 2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK4AAA=" _subject="전달: 2" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011132014" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">전달: 2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 20:14</td><td class="shrink" style="text-align: right; width: 53px; display: none;">19 KB</td></tr><tr id="Maillist_41" title="ㅅㄷㄴㅅ" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK3AAA=" _subject="ㅅㄷㄴㅅ" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131750" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">ㅅㄷㄴㅅ</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 17:50</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_42" title="1111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK2AAA=" _subject="1111" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011131612" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">1111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 16:12</td><td class="shrink" style="text-align: right; width: 53px; display: none;">7 KB</td></tr><tr id="Maillist_43" title="11111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK1AAA=" _subject="11111" _sender="김창영" read="1" _contentclass="REPLY" _isdraft="False" _receivedt="202011131505" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read4"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">11111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 15:05</td><td class="shrink" style="text-align: right; width: 53px; display: none;">8 KB</td></tr><tr id="Maillist_44" title="owa" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvK0AAA=" _subject="owa" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131451" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">owa</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:51</td><td class="shrink" style="text-align: right; width: 53px; display: none;">6 KB</td></tr><tr id="Maillist_45" title="배달되지 않음: 3" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvKzAAA=" _subject="배달되지 않음: 3" _sender="Microsoft Outlook" read="1" _contentclass="REPORT.IPM.Note.NDR" _isdraft="False" _receivedt="202011131445" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_report_ndr"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">Microsoft Outlook</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">배달되지 않음: 3</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:45</td><td class="shrink" style="text-align: right; width: 53px; display: none;">21 KB</td></tr><tr id="Maillist_46" title="2" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvKyAAA=" _subject="2" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131445" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">2</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:45</td><td class="shrink" style="text-align: right; width: 53px; display: none;">7 KB</td></tr><tr id="Maillist_47" title="1" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvKxAAA=" _subject="1" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131444" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">1</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:44</td><td class="shrink" style="text-align: right; width: 53px; display: none;">7 KB</td></tr><tr id="Maillist_48" title="111" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvKwAAA=" _subject="111" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131439" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">111</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:39</td><td class="shrink" style="text-align: right; width: 53px; display: none;">7 KB</td></tr><tr id="Maillist_49" title="TEST 3" _href="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvKvAAA=" _subject="TEST 3" _sender="김창영" read="1" _contentclass="IPM.Note" _isdraft="False" _receivedt="202011131438" draggable="true" style="cursor: pointer;"><td style="width: 22px; cursor: default;"><input type="checkbox" style="margin: 0px; padding: 0px; width: 13px; height: 13px; cursor: pointer;"></td><td style="text-align: center; width: 24px; cursor: default;"></td><td class="shrink" style="text-align: center; width: 24px; cursor: default; display: none;"><span class="icon16_listview icon_msg_read"></span></td><td class="shrink" style="text-align: center; width: 24px; cursor: pointer; display: none;"><span class="icon16_listview view_flag"></span></td><td style="text-align: center; width: 24px; cursor: default;"></td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 130px;">김창영</td><td style="text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">TEST 3</td><td class="shrink" style="text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 110px; display: none;">2020-11-13 14:38</td><td class="shrink" style="text-align: right; width: 53px; display: none;">7 KB</td></tr></table>
+                </div>
+                <div id="tblPageRayer" class="pagenavi">
+                    <span class="btnimg" onclick="GoToPageNavi(6, 1,function MovePage(PageNum, TotalPage) {
+                          if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });"><span id="span_doubleArrow_left" class="icon16 pagenavi_aarow_left"></span>
+                    </span><span class="btnimg" onclick="BeforeBlock(6, 1, 10, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });"><span id="span_Arrow_left" class="icon16 pagenavi_arow_left"></span>
+                    </span><span class="on" onclick="GoToPageNavi(6, 1, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">1
+                    </span><span onclick="GoToPageNavi(6, 2, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">2
+                    </span><span onclick="GoToPageNavi(6, 3, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">3
+                    </span><span onclick="GoToPageNavi(6, 4, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">4
+                    </span><span onclick="GoToPageNavi(6, 5, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">5
+                    </span><span onclick="GoToPageNavi(6, 6, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });" style="margin-left: 1px; margin-right: 1px;">6
+                    </span><span class="btnimg" onclick="AfterBlock(6, 1, 10, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });"><span id="span_Arrow_right" class="icon16 pagenavi_arow_right_over"></span>
+                    </span><span class="btnimg" onclick="GoToPageNavi(6, 6, function MovePage(PageNum, TotalPage) {
+                                 if (parseInt(PageNum)>
+                        0 &amp;&amp; parseInt(PageNum) <= parseInt(TotalPage)) {
+                        CurPage = PageNum;
+                        goToPageByNum(PageNum);
+                        }
+                        });"><span id="span_doubleArrow_right" class="icon16 pagenavi_aarow_right_over"></span>
+                    </span>
+                </div>
+            </div>-->
+        </div>
+    </span>
+    <!-- //list -->
+    <!-- right -->
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+        <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+            <p class="hbar_dotted">
+                <img src="/images/prevview_hbar_dotted.gif">
+            </p>
+        </span>
+        <span id="PreContent_RayerH" style="overflow: auto; height: 100%;">
+            <span class="PreContent_RayerH_box">
+                <!-- 미리보기 영역 -->
+                <span class="previewmail_info" id="PreContent_RayerH_Info">
+
+
+
+                    <title>메일읽기 - ㅇㅇㅇ</title>
+
+
+
+
+                    <style>
+                        .contentlayout .drop_list li {
+                            float: left;
+                            line-height: 26px;
+                            margin-right: 5px;
+                            cursor: default;
+                        }
+
+                            .contentlayout .drop_list li:hover {
+                                color: #333333;
+                            }
+                    </style>
+
+
+                    <form name="_ctl0" method="post" action="./mail_read.aspx?URL=AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV%2fCFWeqeJQAAAAAAEMAAAIxaULPOSBRpV%2fCFWeqeJQAAQTIvMbAAA%3d&amp;PAGETYPE=LOAD&amp;_=1606459687152" id="_ctl0">
+                        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="0Ahz5AkdRg3L+GZMJGWdW/W95WkA89Umu6iWsKr3pRAcRMnC+vDj0DvY4aXbCYmeRXl8f5qt/+cODxd2vhJd04/1KzXDeGm51Jy/3fHE1cv8wY7u+MOmIPQnuG+FAW/wF6QSvtyeK5jV/eMxhaE54nU0i13TxvS0kibqjoTTZt83V9H1HCbqdeSB+0XVVcF3auZR1uQiM7IF/5yVenocTjrSkr+r0Ok8rBD2s8yZKhevrIo1R2WWhheG8YWsCmPyWVTxmfwVKoNZ/IrEq8HGLrmqcRSKPwf+RNfBM+y42P8JX+Im25fG4a/PLQ9wMeGRAeCgkCMMtbblGffrHCTJmuTS+y+Mieh4pVFHWD+0Zs2jGRrG3Rps6bX+Sw4SJCgI3rC5HJwY5C1SIcYSubL8k5F7d0bZrG023QMuEVFbbzzThnWKqNghS86LaM/MGgyOirVXBdgGohXroMYSLA3Jo/94iNcxFFfo9iZlOI0ANPz5YBtbzLSkfc6otDASEi7RecRpnkQ9Sn4+eCY9Kuwd0hcR/8k=">
+
+                        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="165C4F02">
+                        <div>
+                            <div class="mainmenu_btn">
+                                <ul class="mainmenu_btnUL">
+
+
+                                    <li class="on" title="회신" onclick="g_isDelDrafts=false; reply_onClick()">회신</li>
+                                    <li class="on" title="전체회신" onclick="g_isDelDrafts=false; allreply_onClick()">전체회신</li>
+
+                                    <li class="on" id="btnAllReply_DL" title="일반메일에서 대용량 전환시에는 수신자, 본문내용만 반영됩니다.
+파일첨부는 별도로 진행해 주세요." onclick="allreply_DL_onClick()">보안/대용량&nbsp;회신</li>
+
+                                    <li class="on" title="전달" onclick="g_isDelDrafts=false; pass_onClick()">전달</li>
+                                    <li class="on" title="전체전달" onclick="g_isDelDrafts=false; all_pass_onClick()">전체전달</li>
+
+                                    <li onclick="delete_mail()" title="삭제"><span class="icon16 wastebasket"></span></li>
+                                    <li onclick="btnPrint_onClick()" title="인쇄"><span class="icon16 printing"></span></li>
+
+                                    <li onclick="get_mail('prev')" title="이전"><span class="icon16 page_prev"></span></li>
+                                    <li onclick="get_mail('next')" title="다음"><span class="icon16 page_next"></span></li>
+
+                                    <li onclick="_submenu_display(this)">
+                                        <span class="icon16 option_horizontal"></span>
+                                        <ul class="option_horizontal_list">
+                                            <li id="btnBookmark" onclick="toggle_flag_read()">책갈피</li>
+                                            <li id="btnUnread" onclick="Read_StatusChange('U')">안읽은상태</li>
+                                            <li onclick="download_mail()" title="PC저장">PC저장</li>
+                                            <li id="MailCopy" onclick="read_movecopy_onClick('')">이동/복사</li>
+
+
+                                            <li onclick="view_original()"><span id="btnViewWeb">웹페이지로보기</span></li>
+
+
+                                        </ul>
+                                    </li>
+                                    <li class="rightbtn" onclick="PreView_Close();" id="embed_Close" style=""><span class="icon16 backhistory"></span></li>
+                                    <li class="rightbtn" onclick="g_isDelDrafts=false; MailReadOpen();" id="embed_Open" style=""><span class="icon16 new_window"></span></li>
+                                </ul>
+                            </div>
+                            <div class="contentinfo">
+                                <ul class="contentlayout">
+                                    <li class="contentlayout_left">
+                                        <p class="img_userphoto userimg">
+                                            <img src="/images/ImgIcon/img_noImg.png" alt="김창영" title="김창영">
+                                        </p>
+                                    </li>
+                                    <li class="contentlayout_none">
+                                        <ul class="contentinfo_list">
+                                            <li>
+                                                <ul class="contentlayout">
+                                                    <li class="contentlayout_none_y">
+                                                        <span id="LabelSubject">ㅇㅇㅇ</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul class="contentlayout">
+                                                    <li class="contentlayout_left">
+                                                        <span class="titleText">보낸 사람</span>
+                                                    </li>
+                                                    <li class="contentlayout_right_data">
+                                                        <span id="LabelReceiveDate">2020-11-26 18:21:59</span>
+                                                    </li>
+                                                    <li class="contentlayout_right_title">
+                                                        <span class="titleText" id="dateTh">받은 날짜</span>
+                                                    </li>
+                                                    <li class="contentlayout_none">
+                                                        <span class="linkText" onclick="show_senderprofile()">
+                                                            <span id="LabelFromName">김창영</span>
+                                                            <span id="LabelSenderInfo">&lt;DT027844@mobisdev.com&gt;</span>
+                                                        </span>
+                                                        <span class="readPop_icon" id="addAddr"><span class="icon16 address_plus" onclick="func_addaddr('N')" alt="명함추가" title="명함추가"></span></span>
+                                                        <span class="readPop_icon" id="userReject"><span class="icon16 mail_rejection" onclick="func_reject()" alt="수신거부" title="수신거부"></span></span>
+                                                        <span class="readPop_icon" id="spamReport"><span class="icon16 mail_spam" onclick="func_spamreport()" alt="스팸신고" title="스팸신고"></span></span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <ul class="contentlayout">
+                                                    <li class="contentlayout_left">
+                                                        <span class="titleText">받는 사람</span>
+                                                    </li>
+                                                    <li class="contentlayout_right_data">
+                                                        <span id="LabelImportant">보통</span>
+                                                    </li>
+                                                    <li class="contentlayout_right_title">
+                                                        <span class="titleText">중요도</span>
+                                                    </li>
+                                                    <li class="contentlayout_none">
+                                                        <span id="MsgToGot">
+                                                            <span id="LabelTo"><span style="cursor:pointer" class="linkText" title="김창영" onclick="show_personinfo(&quot;DT027844@mobisdev.com&quot;)">김창영</span></span>
+                                                            <span onclick="ShowHiddenTo(this);" class="icon16 collapse_down"></span>
+                                                            <!-- 클릭시 클래스 변경 collapse_down -->
+                                                        </span>
+                                                        <ul id="MsgToGotHidden" class="drop_list" style="display: none">
+                                                            <li><span style="cursor:pointer" class="linkText" title="김창영" onclick="show_personinfo(&quot;DT027844@mobisdev.com&quot;)">김창영;</span></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div style="background:#eaeaea; border-left:5px solid #a6a6a6; height:30px; line-height:30px; padding:0px 10px;">
+                                <span class="titleText" style="font-size:12px;">
+
+                                    보존정책 : 2021-01-25(월)에 만료됩니다.
+
+                                </span>
+                            </div>
+
+                            <!-- attachedfile 첨부파일 -->
+                            <div class="attachedfile" id="AttachList" style="display:none;">
+                                <ul class="contentlayout attachedfileTitle">
+                                    <li class="contentlayout_right"><a class="imgbtn"><span onclick="downloadAllAttach();">모두저장</span></a></li>
+                                    <li class="contentlayout_none">
+                                        <span class="linkText">
+                                            일반 첨부파일
+
+                                            <span onclick="ShowAttachedFile(this);" class="icon16 collapse_up"></span>
+                                            <!-- 클릭시 클래스 변경 collapse_up -->
+                                        </span>
+                                    </li>
+                                </ul>
+                                <ul id="AttachListDropList" class="contentlayout attachedfileList">
+                                    <li class="contentlayout_none">
+                                        <ul id="AttachListDropList_Sub" class="attachedfile_drop_list">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- //attachedfile 첨부파일 -->
+                            <!-- 본문내용 -->
+                            <div id="contenttable" style="overflow: auto; height: 276px;">
+                                <iframe id="message" name="message" frameborder="0" style="overflow: hidden; width: 985px; height: 8388px; min-height: 500px;"></iframe>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form name="form1" action="/myoffice/ezEmail/mail_readcontent.aspx" method="post" target="message">
+                        <input type="hidden" id="iptURL" name="iptURL" value="AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA=">
+                        <input type="hidden" id="iSecurity" name="iSecurity" value="">
+                        <input type="hidden" id="filename" name="filename" value="">
+                        <input type="hidden" id="regData" name="regData" value="">
+                    </form>
+
+                    <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1000; background: none rgba(0,0,0,0.7); display: none;" id="previewBg">&nbsp;</div>
+                    <span class="loading_layer" style="z-index: 6000; position: absolute; top: 50%; left: 50%; margin: -14px 0px 0px -119px; display: none;" id="loadingLayer">
+                        <span class="right">
+                            <img src="/images/loading/loading.gif" width="24" height="24">불러오는 중입니다
+                        </span>
+                    </span>
+
+                    <iframe name="AttachDownFrame" id="AttachDownFrame" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" style="display: none"></iframe>
+                    <iframe name="AttachDownFrame_hidden" id="AttachDownFrame_hidden" style="width: 1px; height: 1px; display: none;"></iframe>
+                    <iframe name="PrintFrame" id="PrintFrame" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" style="display: none"></iframe>
+
+                    <script type="text/javascript" src="/myoffice/common/XmlHttpRequest.js?ver=20201126181009021"></script>
+                    <script type="text/javascript" src="/myoffice/ezEmail/lang/ezEmail_ko.js?ver=20201126100627320"></script>
+                    <script type="text/javascript" src="/myoffice/ezEmail/js/reademail.js?ver=20201127133329774"></script>
+                    <script type="text/javascript" src="/JQuery/dateControls/jquery-1.9.1.js?ver=20180122114922000"></script>
+
+                    <script type="text/javascript">
+                        var mailview = {
+                            ContentClass: "",
+                            MessageID: "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA="
+                        };
+
+                        var g_url = "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA=";
+                        var g_paramURL = decodeURIComponent('AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV%2fCFWeqeJQAAAAAAEMAAAIxaULPOSBRpV%2fCFWeqeJQAAQTIvMbAAA%3d');
+                        var g_servername = "ngw.mobisdev.com";
+                        var g_userID = "DT027844";
+                        var g_deptID = "4KCT27";
+                        var g_companyID = "10110000";
+                        var g_loginID = "DT027844";
+                        var g_author = "";
+                        var g_exchNBName = "";
+                        var g_userName = "김창영";
+                        var g_fromEmail = "DT027844@mobisdev.com";
+                        var g_userLang = "1";
+                        var g_rejectWord = "";
+                        var g_date = "2020-11-26 오후 6:21:59";
+                        var g_notiSSO = "0";
+                        var searchPage = "0";
+                        var usedMoveDel = "0";
+                        var g_useremail = "DT027844@mobisdev.com";
+                        var sentItems = "False";
+                        var IsSecurityMail = "Normal";
+                        var ReadCountCheck = "Y";
+                        var IsAttach = "Y";
+                        var g_read_foldertype = "";
+                        var pContentClass = "";
+                        var pReceiveAddr = "";
+                        var pMailCountry = "";
+                        var g_ParentFolderID = "AQMkADNlZQBjMTcwZC00NzA4LTRlODctYWI3YS1mOTQ3YTcwMmMyYmQALgAAAwP1VlQXuF5HqEOoECg5UCYBAAjFpQs85IFGlX8IVZ6p4lAAAAIBDAAAAA==";
+                        var CopyMsg = "복사하였습니다.";
+                        var MoveMsg = "이동하였습니다.";
+                        var fullURL = "https://ngw.mobisdev.com/myoffice/ezEmail/mail_read.aspx?URL=AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV%2FCFWeqeJQAAAAAAEMAAAIxaULPOSBRpV%2FCFWeqeJQAAQTIvMbAAA%3D&PAGETYPE=LOAD&_=1606459687152";
+                        var _open = "";
+                        var attPreviewType = "NONE";
+                        var attZip = "TRUE";
+                        var quickReply = "";
+                        var g_isDelDrafts = true;
+                        var g_inetmsgid = "<5b1c88c308b44405ae3a0acedfac28cf@KGREWDEV03T.mobisdev.com>";
+                        // SERVERMAIL
+                        var g_uniqueID = "";
+                        var g_folderPath = "";
+                        var g_fileName = "";
+
+                        // js, css 파일 include중복 제거
+                        if (typeof jscssfile_removecheck == 'function') {
+                            jscssfile_removecheck();
+                        }
+
+                        var $ContentDiv = jQuery.noConflict();
+                        $ContentDiv(this).ready(function () {
+
+                            initPopUpSetting("메일읽기 - ㅇㅇㅇ");
+
+                            form1.iptURL.value = "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA=";
+                            form1.submit();
+
+                            try {
+                                if (ReadCountCheck == "N") {
+                                    refreshUnreadCount();
+                                }
+                            }
+                            catch (e) {
+                                if (ReadCountCheck == "N") {
+                                    try {
+                                        opener.refreshUnreadCount();
+                                    }
+                                    catch (e) { }
+                                }
+                            }
+
+                            if (sentItems.toUpperCase() == "TRUE") {
+                                setNodeText(document.getElementById("dateTh"), "보낸 날짜");
+
+                                document.getElementById("addAddr").style.display = "none";
+                                document.getElementById("userReject").style.display = "none";
+                                document.getElementById("spamReport").style.display = "none";
+                            }
+                            try {
+                                var pisAttach = "NO";
+                                if (pisAttach == "OK")
+                                    document.getElementById("AttachList").style.display = "";
+                                else
+                                    document.getElementById("AttachList").style.display = "none";
+                            } catch (e) { }
+
+                            // SERVERMAIL
+                            if (pContentClass == "SERVERMAIL") {
+                                document.getElementById("MailMove").style.display = "none";
+                                document.getElementById("btnBookmark").style.display = "none";
+                                document.getElementById("MailCopy").style.display = "none";
+                            }
+
+                            Page_OnUnload_Event = true;
+                            window_onresize();
+                        });
+
+                        $ContentDiv(this).resize(function () {
+                            window_onresize();
+                        });
+
+                        window.onresize = function () {
+                            window_onresize();
+                        }
+
+                        function MailSend_Show_Progress() {
+                            document.getElementById("previewBg").style.display = "";
+                            document.getElementById("loadingLayer").style.display = "";
+                        }
+
+                        function MailSend_Hidden_Progress() {
+                            document.getElementById("previewBg").style.display = "none";
+                            document.getElementById("loadingLayer").style.display = "none";
+                        }
+
+                        function btnPrint_onClick() {
+                            DivPopUpShow(750, 710, "/myoffice/ezEmail/mail_read_print.aspx?URL=" + encodeURIComponent(g_paramURL));
+                        }
+
+                        function window_onresize() {
+                            if (document.getElementById("contenttable") != null) {
+                                var CurrentHeight_Size = 0;
+                                try {
+                                    if (parent != null && parent.document.documentElement.clientHeight < document.documentElement.clientHeight) {
+                                        var IndexScreen_Height = 0;
+                                        if (parent.document.getElementById("top") != null)
+                                            IndexScreen_Height = parent.document.getElementById("top").clientHeight;
+
+                                        CurrentHeight_Size = parent.document.documentElement.clientHeight - IndexScreen_Height;
+                                    }
+                                    else {
+                                        CurrentHeight_Size = document.documentElement.clientHeight;
+                                    }
+                                }
+                                catch (e) {
+                                    CurrentHeight_Size = document.documentElement.clientHeight;
+                                }
+
+                                document.getElementById("contenttable").style.height = (CurrentHeight_Size - document.getElementById("contenttable").offsetTop) + "px";
+
+                                var ifr = document.getElementById("message");
+                                var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+                                ifr.style.height = ifrw.document.documentElement.scrollHeight + "px";
+
+                                //ifr.style.width = "100%";
+                                ifr.style.width = (ifrw.document.documentElement.scrollWidth) + "px";
+                            }
+                        }
+
+                        function HideMenu() {
+                            btnReply.style.display = "none";
+                            btnAllReply.style.display = "none";
+                            btnForward.style.display = "none";
+                            btnMove.style.display = "none";
+                            btnDelete.style.display = "none";
+                            btnEncode.style.display = "none";
+                            btnBoard.style.display = "none";
+                            btnBookmark.style.display = "none";
+                            btnViewWeb.style.display = "none";
+                            btn_KMS.style.display = "none";
+                            btnInsertAddr.style.display = "none";
+                        }
+                        function ToKMS() {
+                            var url = document.location.protocol + "//" + document.location.hostname + "/myoffice/ezKMS/kasset/KAssetConvert_Cross.aspx?Mode=new&Flag=email&url=" + encodeURIComponent(g_paramURL);
+                            var OpenWin = window.open(url, "KAssetConvert_Cross", GetOpenWindowfeature(800, 780));
+                            try { OpenWin.focus(); } catch (e) { }
+                        }
+                        function Window_Unload(toURL) {
+                            if (pContentClass == "SERVERMAIL") {
+                                if (g_isDelDrafts)
+                                    delDrafts(g_url);
+                            }
+
+                            if (typeof toURL != "undefined" && (toURL.toLowerCase().indexOf("mail_write.aspx") > -1 || toURL.toLowerCase().indexOf("mail_read.aspx") > -1))
+                                return;
+
+                            if (typeof g_refreshInterval != "undefined" && g_refreshInterval != null) {
+                                window.clearInterval(g_refreshInterval);
+                            }
+
+                            //if (searchPage == "1" && usedMoveDel == "1")
+                            //    opener.callback();
+                        }
+
+                        window.onbeforeunload = function () {
+                            if (GetPageType() == "POPUP") {
+                                Window_Unload();
+                            }
+                        }
+
+                        function delDrafts(url) {
+                            if (url == "") return;
+                            if (typeof navigator.sendBeacon == "function") {
+                                navigator.sendBeacon("/myoffice/ezEmail/remote/mail_del_drafts.aspx?itemid=" + encodeURIComponent(url));
+                            }
+                            else {
+                                var xmlhttp = createXMLHttpRequest();
+                                xmlhttp.open("GET", "/myoffice/ezEmail/remote/mail_del_drafts.aspx?itemid=" + encodeURIComponent(url), false);
+                                xmlhttp.send();
+                                xmlhttp = null;
+                            }
+                        }
+
+                        function SecurityFG() {
+                            var xmlDOM = createXmlDom();
+                            var xmlHTTP = createXMLHttpRequest();
+                            var objNode;
+                            createNodeInsert(xmlDOM, objNode, "DATA");
+                            createNodeAndInsertText(xmlDOM, objNode, "URL", "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA=");
+                            xmlHTTP.open("POST", "/myoffice/ezEmail/remote/GetSecurity.aspx", false);
+                            xmlHTTP.send(xmlDOM);
+                            IsSecurityMail = xmlHTTP.responseText;
+                        }
+                        function ShowHiddenTo(obj) {
+                            if (MsgToGotHidden.style.display == "none") {
+                                MsgToGotHidden.style.display = "";
+                                obj.setAttribute("class", "icon16 collapse_up"); //20200818 ahh
+                            }
+                            else {
+                                MsgToGotHidden.style.display = "none";
+                                obj.setAttribute("class", "icon16 collapse_down");
+                            }
+                            window_onresize();
+                        }
+                        function ShowHiddenCc(obj) {
+                            if (MsgCCGotHidden.style.display == "none") {
+                                MsgCCGotHidden.style.display = "";
+                                obj.setAttribute("class", "icon16 collapse_up"); //20200818 ahh
+                            }
+                            else {
+                                MsgCCGotHidden.style.display = "none";
+                                obj.setAttribute("class", "icon16 collapse_down");
+                            }
+                            window_onresize();
+                        }
+                        function ShowHiddenBCC(obj) {
+                            if (MsgBCCGotHidden.style.display == "none") {
+                                MsgBCCGotHidden.style.display = "";
+                                obj.setAttribute("class", "icon16 collapse_up"); //20200818 ahh
+                            }
+                            else {
+                                MsgBCCGotHidden.style.display = "none";
+                                obj.setAttribute("class", "icon16 collapse_down");
+                            }
+                            window_onresize();
+                        }
+                        function mtg_onClick(mtgid) {
+                            var requestType = "";
+                            switch (mtgid) {
+                                case "ACCEPT":
+                                    requestType = "수락";
+                                    break;
+                                case "DECLINE":
+                                    requestType = "거절";
+                                    break;
+                                case "TENT":
+                                    requestType = "미정";
+                                    break;
+                            }
+
+                            var g_saveHttp = createXMLHttpRequest();
+                            var xmlDoc = createXmlDom();
+                            var rootNode;
+                            createNodeInsert(xmlDoc, rootNode, "DATA");
+                            createNodeAndInsertText(xmlDoc, rootNode, "ITEMID", g_paramURL);
+                            createNodeAndInsertText(xmlDoc, rootNode, "REQUEST", mtgid);
+                            g_saveHttp.open("POST", "/myoffice/ezEmail/remote/mail_response_meeting.aspx", false);
+                            g_saveHttp.setRequestHeader("Content-Type", "text/xml");
+                            g_saveHttp.send(xmlDoc);
+                            if (g_saveHttp.status >= 200 && g_saveHttp.status < 300) {
+                                if (g_saveHttp.responseText == "OK") {
+                                    Alert_Message(requestType + strLang320, null, "");
+                                    try {
+                                        g_saveHttp = null;
+                                        MailListRefresh();
+                                        PreView_Close();
+                                    }
+                                    catch (e) { window.opener.MailListRefresh(); }
+                                }
+                                else
+                                    Alert_Message(strLang321, null, "");
+                            }
+                            else
+                                Alert_Message(strLang321, null, "");
+                            g_saveHttp = null;
+                        }
+
+                        var writeboardselect_modal_dialogArguments = new Array();
+                        function NewItem_onclick() {
+                            writeboardselect_modal_dialogArguments[1] = NewItem_onclick_Complete;
+                            DivPopUpShow(345, 750, "/myoffice/ezBoardSTD/WriteBoardSelect_Modal.aspx");
+                        }
+
+                        function NewItem_onclick_Complete(ret) {
+                            DivPopUpHidden();
+
+                            if (typeof (ret) != "undefined") {
+                                pBoardID = ret[0];
+
+                                if (pBoardID == "" || typeof (pBoardID) == "undefined") {
+                                    return;
+                                }
+
+                                var pheight = window.screen.availHeight;
+                                var pwidth = window.screen.availWidth;
+                                var pTop = (pheight - 720) / 2;
+                                var pLeft = (pwidth - 765) / 2;
+
+                                if (ret[2] == "2" || ret[2] == "3" || ret[2] == "4") {
+                                    Alert_Message(strLang337, null, "");
+                                }
+                                else {
+                                    GetOpenWindow("/myoffice/ezBoardSTD/NewBoardItem.aspx?BoardID=" + pBoardID + "&url=" + encodeURIComponent(g_paramURL), "NewBoardItem", 800, 900, "YES");
+                                }
+                            }
+                        }
+                        function downloadAllAttach_Proc() {
+                            try {
+                                if (attZip.toUpperCase() == "TRUE") {
+                                    var xmlHttp = createXMLHttpRequest();
+                                    var xmlDom = createXmlDom();
+                                    var objNode;
+                                    createNodeInsert(xmlDom, objNode, "DATA");
+                                    createNodeAndInsertText(xmlDom, objNode, "URL", g_paramURL);
+                                    xmlHttp.open("POST", "/myoffice/ezEmail/remote/mail_download_allAttach.aspx", false);
+                                    xmlHttp.send(xmlDom);
+
+                                    if (xmlHttp.status < 200 || xmlHttp.status > 300) {
+                                        Alert_Message(strLang357, null, "");
+                                    }
+                                    else {
+                                        var ret = xmlHttp.responseText;
+                                        if (ret == "ERROR")
+                                            Alert_Message(strLang321, null, "");
+                                        else
+                                            document.getElementById("AttachDownFrame_hidden").src = ret;
+                                    }
+                                }
+                                else {
+                                    if (GetAttribute(document.getElementsByName("MailAttachDownloadItems")[suffix], '_filehref') != null) {
+                                        var pAttUrl = GetAttribute(document.getElementsByName("MailAttachDownloadItems")[suffix], '_filehref');
+                                        var fullpath = document.location.protocol + "//" + document.location.hostname + pAttUrl;
+                                        AttachDownFrame.location.href = fullpath;
+                                    }
+                                }
+                            }
+                            catch (e) { Alert_Message(strLang357, null, ""); }
+
+                            if (attZip.toUpperCase() != "TRUE") {
+                                suffix++;
+                                downloadAllAttach();
+                            }
+                        }
+
+                        function displaytable() {
+                            if (message.document.body.innerHTML != "")
+                                document.getElementById("contenttable").innerHTML = message.document.body.innerHTML;
+                        }
+                        function DownloadAttach(DownloadUrl) {
+                            AttachDownFrame.location.href = DownloadUrl;
+                        }
+                        var suffix = 0;
+                        function downloadAllAttach() {
+                            if (attZip.toUpperCase() == "TRUE") {
+                                downloadAllAttach_Proc();
+                            }
+                            else {
+                                if (suffix < document.getElementsByName("MailAttachDownloadItems").length)
+                                    setTimeout(function () { downloadAllAttach_Proc() }, 1000);
+                                else {
+                                    suffix = 0;
+                                    return;
+                                }
+                            }
+                        }
+                        var delObj = "";
+                        function AttachFile_Delete(obj) {
+                            del0bj = obj;
+                            Confirm_Alert_Message("첨부파일을 삭제 하시겠습니까?", AttachFile_Delete_Confirm, "");
+                        }
+                        function AttachFile_Delete_Confirm(flag) {
+                            if (flag) {
+                                DivPopUpHidden();
+                                var count = 0;
+                                var param = new Array();
+                                var ArrayDel = new Array();
+
+                                var xml = "<FILE>";
+                                xml += "<ROW>";
+                                xml += "<NAME><![CDATA[" + GetAttribute(del0bj, "fileid") + "]]></NAME>";
+                                xml += "</ROW>";
+                                xml += "<ITEMID><![CDATA[" + g_paramURL + "]]></ITEMID></FILE>";
+
+                                var xmlHTTP = new XMLHttpRequest();
+                                xmlHTTP.open("POST", "/myoffice/ezEmail/remote/mail_del_interattach.aspx", false);
+                                xmlHTTP.send(xml);
+
+                                if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
+                                    var oRoot = loadXMLString(xmlHTTP.responseText).documentElement;
+                                    var ret = oRoot.childNodes[0].nodeValue;
+
+                                    if (ret != "FAIL") {
+                                        del0bj.parentNode.parentNode.parentNode.outerHTML = "";
+                                        if (document.getElementById("AttachListDropList_Sub").childNodes.length == 1) {
+                                            document.getElementById("AttachList").style.display = "none";
+                                        }
+                                    }
+                                    else {
+                                        Alert_Message(strLang183, null, "");
+                                    }
+                                }
+
+                                if (typeof MailListRefresh === "function") {
+                                    MailListRefresh();
+                                }
+                                else if (typeof parent.MailListRefresh === "function") {
+                                    parent.MailListRefresh();
+                                }
+                                else if (typeof opener.MailListRefresh === "function") {
+                                    opener.MailListRefresh();
+                                }
+                            }
+                            else {
+                                DivPopUpHidden();
+                            }
+                        }
+
+                        function AttachFile_Preview(obj) {
+                            MailSend_Show_Progress();
+
+                            if (attPreviewType == "EZREND" || attPreviewType == "SAT")
+                                AttachPreview_EZREND_SAT(obj);
+                            else if (attPreviewType == "SYNAP")
+                                AttachPreview_SYNAP(obj);
+                            else {
+                                Alert_Message(strLang321, null, "");
+                                MailSend_Hidden_Progress();
+                            }
+                        }
+
+                        function AttachPreview_EZREND_SAT(obj) {
+                            try {
+                                var previewURL = "/myoffice/ezEmail/AttViewer/Viewer.aspx?URL=" + "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV%2fCFWeqeJQAAAAAAEMAAAIxaULPOSBRpV%2fCFWeqeJQAAQTIvMbAAA%3d" + "&ATTID=" + GetAttribute(obj, "fileid");
+                                GetOpenWindow(previewURL, "AttachPreview" + new Date().toISOString(), 1024, 750, "YES");
+                            }
+                            catch (e) {
+                                console.log(e.toString());
+                            }
+                            MailSend_Hidden_Progress();
+                        }
+
+                        function AttachPreview_SYNAP(obj) {
+                            try {
+                                var xmlDom = createXmlDom();
+                                var xmlHTTP = createXMLHttpRequest();
+                                var objNode = "";
+                                createNodeInsert(xmlDom, objNode, "DATA");
+                                createNodeAndInsertText(xmlDom, objNode, "URL", g_paramURL);
+                                createNodeAndInsertText(xmlDom, objNode, "FILEID", GetAttribute(obj, "fileid"));
+
+                                xmlHTTP.open("POST", "/myoffice/ezEmail/remote/mail_attach_preview.aspx", false);
+                                xmlHTTP.send(xmlDom);
+
+                                if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
+                                    if (xmlHTTP.responseText == "ERROR") {
+                                        Alert_Message(strLang321, null, "");
+                                    }
+                                    else {
+                                        var ret = JSON.parse(xmlHTTP.responseText);
+                                        var previewURL = "http://gw.mobisdev.com:9090" + "/SynapDocViewServer/view/" + ret.key;
+                                        GetOpenWindow(previewURL, "AttachPreview" + new Date().toISOString(), 1024, 750, "YES");
+                                    }
+                                }
+                            }
+                            catch (e) {
+                                console.log(e.toString());
+                            }
+                            MailSend_Hidden_Progress();
+                        }
+
+                        function ShowAttachedFile(obj) {
+                            if (AttachListDropList.style.display == "none") {
+                                AttachListDropList.style.display = "";
+                                obj.setAttribute("class", "icon16 collapse_up"); //20200818 ahh
+                            }
+                            else {
+                                AttachListDropList.style.display = "none";
+                                obj.setAttribute("class", "icon16 collapse_down");
+                            }
+
+                            window_onresize();
+                        }
+                        function PreView_Close() {
+                            if (_open == "PORTLET" && GetPageType() == "LAYER") {
+                                try { parent.portlet_complete("MAIL"); return; }
+                                catch (e) { parent.DivPopUpHidden(); return; }
+                            }
+
+                            if (document.getElementById("PreContent_RayerH_Info") != null) {
+                                LoadUrlContent("/myoffice/ezEmail/blank.htm", "PreContent_RayerH_Info");
+                                PreviewRayerChange('OFF');
+                                ResponsiveLeftRightView();
+                                PreviewOnResize();
+                            }
+                            else if (window.parent != null && window.location !== window.parent.location) {
+                                // iframe에 표시했을 경우
+                                if (typeof parent.DivPopUpHidden === "function") {
+                                    parent.DivPopUpHidden();
+                                } else if (typeof opener.DivPopUpHidden === "function") {
+                                    opener.DivPopUpHidden();
+                                }
+                            }
+                            else {
+                                window.close();
+                            }
+
+                            try { contentList_Resize(); } catch (e) { }
+                        }
+
+                        var nowZoom = 100;
+                        var maxZoom = 200;
+                        var minZoom = 80;
+                        var MozNowZoom = 1;
+                        var MozMaxZoom = 2;
+                        var MozMinZoom = 0.8;
+                        function Bigger() {
+                            if (navigator.userAgent.indexOf('Firefox') != -1) {
+                                if (MozNowZoom < MozMaxZoom) {
+                                    MozNowZoom += 0.1;
+                                } else {
+                                    return;
+                                }
+                                document.getElementById("normalScreen").style.MozTransform = "scale(" + MozNowZoom + ")";
+                                document.getElementById("normalScreen").style.MozTransformOrigin = "0 0";
+                            }
+                            else {
+                                if (nowZoom < maxZoom) {
+                                    nowZoom += 10;
+                                } else {
+                                    return;
+                                }
+                                document.getElementById("normalScreen").style.zoom = nowZoom + "%";
+                            }
+                        }
+
+                        function Smaller() {
+                            if (navigator.userAgent.indexOf('Firefox') != -1) {
+                                if (MozNowZoom > MozMinZoom) {
+                                    MozNowZoom -= 0.1;
+                                } else {
+                                    return;
+                                }
+                                document.getElementById("normalScreen").style.MozTransform = "scale(" + MozNowZoom + ")";
+                                document.getElementById("normalScreen").style.MozTransformOrigin = "0 0";
+                            }
+                            else {
+                                if (nowZoom > minZoom) {
+                                    nowZoom -= 10;
+                                } else {
+                                    return;
+                                }
+                                document.getElementById("normalScreen").style.zoom = nowZoom + "%";
+                            }
+                        }
+
+                        // 메일 -> 협업 문서함 보관 연동
+                        var mail_Document_dialogArguments = new Array();
+                        function MailDocument() {
+                            mail_Document_dialogArguments[0] = "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA="; // iptURL
+                            mail_Document_dialogArguments[1] = document.location.protocol + "//" + document.location.hostname; // GroupwareUrl
+                            mail_Document_dialogArguments[2] = MailDocument_Complete; // ReturnFunction
+                            mail_Document_dialogArguments[3] = false // 바로가기 확인창 스킵 유무 true, false
+
+                            DivPopUpShow(500, 630, "/myoffice/ezWorkspace/Account/SSO?returnUrl=/myoffice/ezWorkspace/Documents/Main/FromEmail");
+                        }
+
+                        function MailDocument_Complete(pRetValue, pUrl) {
+                            DivPopUpHidden();
+                            if (pUrl == "" || pUrl == undefined) {
+                                Alert_Message(pRetValue, null, "");
+                            }
+                            else {
+                                MailDocument_OKCallback_Url = pUrl;
+                                Confirm_Alert_Message(pRetValue, MailDocument_OKCallback, "");
+                            }
+                        }
+
+                        var MailDocument_OKCallback_Url;
+                        var MailDocument_OKCallback = function (flag) {
+                            if (flag) {
+                                // 확인 버튼
+                                GoToApplicationUrl(MailDocument_OKCallback_Url, '', true);
+                                DivPopUpHidden();
+                                parent.DivPopUpHidden();
+
+                            }
+                            else {
+                                // 취소 버튼
+                                DivPopUpHidden();
+                                parent.DivPopUpHidden();
+                            }
+                        };
+                        function messageIframeOnload(widthContent, heightContent) {
+                            if (widthContent != "")
+                                document.getElementById("message").style.width = widthContent;
+                            if (heightContent != "")
+                                document.getElementById("message").style.height = heightContent;
+                        }
+                        function ApprovalRequest_onClick() {
+                            var g_saveHttp = createXMLHttpRequest();
+                            var xmlDoc = createXmlDom();
+                            var rootNode;
+                            createNodeInsert(xmlDoc, rootNode, "DATA");
+                            createNodeAndInsertText(xmlDoc, rootNode, "ITEMID", g_paramURL);
+                            createNodeAndInsertText(xmlDoc, rootNode, "REQUEST", "ACCEPT");
+                            createNodeAndInsertText(xmlDoc, rootNode, "REJECTBODY", "");
+                            g_saveHttp.open("POST", "/myoffice/ezEmail/remote/mail_response_approval.aspx", false);
+                            g_saveHttp.setRequestHeader("Content-Type", "text/xml");
+                            g_saveHttp.send(xmlDoc);
+                            if (g_saveHttp.status >= 200 && g_saveHttp.status < 300) {
+                                if (g_saveHttp.responseText == "OK") {
+                                    Alert_Message("승인 후 발송되었습니다.", ReadWindowClose, "");
+                                    try {
+                                        g_saveHttp = null;
+                                        MailListRefresh();
+                                        PreView_Close();
+                                    }
+                                    catch (e) { window.opener.MailListRefresh(); }
+                                }
+                                else
+                                    Alert_Message(strLang321, ReadWindowClose, "");
+                            }
+                            else
+                                Alert_Message(strLang321, ReadWindowClose, "");
+                            g_saveHttp = null;
+                        }
+                        var ApprovalRejectRequest_dialogArguments = new Array();
+                        function ApprovalRejectRequest_onClick() {
+                            var parameter = new Array();
+                            ApprovalRejectRequest_dialogArguments[0] = parameter;
+                            ApprovalRejectRequest_dialogArguments[1] = ApprovalRejectRequest_Complete;
+                            DivPopUpShow(500, 320, "/myoffice/ezEmail/htm/inputRejectDlg.aspx");
+                        }
+                        function ApprovalRejectRequest_Complete(retVal) {
+                            try {
+                                DivPopUpHidden();
+
+                                var xmlDoc = createXmlDom();
+                                var rootNode;
+                                createNodeInsert(xmlDoc, rootNode, "DATA");
+                                createNodeAndInsertText(xmlDoc, rootNode, "ITEMID", g_paramURL);
+                                createNodeAndInsertText(xmlDoc, rootNode, "REQUEST", "REJECT");
+                                createNodeAndInsertText(xmlDoc, rootNode, "REJECTBODY", retVal[0]);
+
+                                var xmlHTTP = createXMLHttpRequest();
+                                xmlHTTP.open("POST", "/myoffice/ezEmail/remote/mail_response_approval.aspx", false);
+                                xmlHTTP.setRequestHeader("Content-Type", "text/xml");
+                                xmlHTTP.send(xmlDoc);
+
+                                if (xmlHTTP.status >= 200 && xmlHTTP.status < 300) {
+                                    if (xmlHTTP.responseText == "OK") {
+                                        Alert_Message("삭제되었습니다", ReadWindowClose, "");
+                                        try {
+                                            xmlHTTP = null;
+                                            MailListRefresh();
+                                            PreView_Close();
+                                        }
+                                        catch (e) { window.opener.MailListRefresh(); }
+                                    }
+                                    else
+                                        Alert_Message(strLang321, ReadWindowClose, "");
+                                }
+                                else
+                                    Alert_Message(strLang321, ReadWindowClose, "");
+                                xmlHTTP = null;
+                            } catch (e) { }
+                        }
+
+                        function Read_StatusChange(pGubun) {
+                            var isRead;
+                            if (pGubun == "R")
+                                isRead = "FALSE";
+                            else
+                                isRead = "TRUE";
+                            var xmlpara = createXmlDom();
+                            var xmlHTTP = createXMLHttpRequest();
+                            var objNode;
+                            createNodeInsert(xmlpara, objNode, "DATA");
+                            createNodeAndInsertText(xmlpara, objNode, "ISREAD", isRead);
+                            createNodeAndInsertText(xmlpara, objNode, "MESSAGEID", "AAMkADNlZWMxNzBkLTQ3MDgtNGU4Ny1hYjdhLWY5NDdhNzAyYzJiZABGAAAAAAAD9VZUF7heR6hDqBAoOVAmBwAIxaULPOSBRpV/CFWeqeJQAAAAAAEMAAAIxaULPOSBRpV/CFWeqeJQAAQTIvMbAAA=");
+                            xmlHTTP.open("POST", "/myoffice/ezEmail/remote/Mail_SetReadChange.aspx", false);
+                            xmlHTTP.send(xmlpara);
+                            if (xmlHTTP.status == 200 || xmlHTTP.statusText == "OK") {
+                                if (xmlHTTP.responseText == "OK")
+                                    Alert_Message(strLang320, function () {
+                                        try { MailListRefresh(); }
+                                        catch (e) { window.opener.MailListRefresh(); }
+                                    }, "");
+                                else
+                                    Alert_Message(strLang321 + " (1)", null, "");
+                            }
+                            else {
+                                Alert_Message(strLang321 + " (2)", null, "");
+                            }
+                        }
+                            //# sourceURL=mail_read.aspx
+                    </script>
+
+
+                </span>
+                <iframe id="ifrmPreViewH" name="ifrmPreViewH" src="/myoffice/PreViewText.aspx" frameborder="0" style="display: none; width: 100%; height: 100%; border: 0px solid black; z-index: 0;"></iframe>
+            </span>
+        </span>
+    </span>
+    <!-- //right -->
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

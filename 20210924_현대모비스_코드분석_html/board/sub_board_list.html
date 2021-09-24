@@ -1,0 +1,714 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- lnb 메뉴 -->
+    <div class="lnb" style="left: 0px;">
+        <div id="left" class="leftbody" style="overflow: auto;">
+
+            <div class="left_board" title="게시판 ">게시판 <span class="icon_tree tree_leftconfig" onclick="board_config()" title="환경설정"></span></div>
+
+            <div id="dvNewItemWrite" class="btn_writeBox" onclick="NewItem_select_onclick()">
+                <p class="btn_write02">게시글 등록</p>
+            </div>
+
+
+            <div class="leftscroll" style="overflow: auto;">
+
+
+                <h2 class="on"><span onclick="fnSetLeftMenuFlag(); ShowMyBoardItem();"><span class="icon_tree tree_lnbArrowDown"></span><span class="h2_text">즐겨찾기</span></span></h2>
+                <ul id="TreeCtrl_MyBoardTree_ul" class="leftList">
+                    <div class="tree" style="height: 100%;" id="TreeCtrl_MyBoardTree">
+                        <div id="FromTreeView" nodeclick="TreeCtrl_onNodeClickNew" nodedblclick="" requestdata="TreeCtrl_onNodeExpandedNew">
+                            <div class="node_div" id="FromTreeView_0" nodename="ㄱㄱㄱ" nodelevel="0" endnode="false" value="ㄱㄱㄱ" style="" data1="{ed701cac-badc-2178-7fe9-c6ec3560dc26}" data2="ㄱㄱㄱ" data3="" data4="TREE" data5="
+    " expanded="FALSE" isleaf="FALSE" unitid="
+    " iscorevalueinfo="FALSE"><span id="imgNode_FromTreeView_0" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeExpandedNew, &quot;imgNode_FromTreeView_0&quot;);"></span><span id="subImgNode_FromTreeView_0" class="icon_tree tree_cate"></span><span id="spn_FromTreeView_0" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_0&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeExpandedNew, &quot;imgNode_FromTreeView_0&quot;); node_select(&quot;FromTreeView_0&quot;, &quot;&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeClickNew);">ㄱㄱㄱ</span><div id="FromTreeView_0_sub" style="display: none;"></div></div><div class="node_div" id="FromTreeView_1" nodename="분류테스트" nodelevel="0" endnode="true" value="분류테스트" style="" data1="{bd1ab984-beb9-8b40-c715-a989dea83d08}" data2="분류테스트" data3="" data4="TREE" data5="
+    " expanded="FALSE" isleaf="FALSE" unitid="
+    " iscorevalueinfo="FALSE"><span id="imgNode_FromTreeView_1" class="icon_tree tree_lnbArrowUp" onclick="treeicon_toggle(&quot;FromTreeView_1&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeExpandedNew, &quot;imgNode_FromTreeView_1&quot;);"></span><span id="subImgNode_FromTreeView_1" class="icon_tree tree_cate"></span><span id="spn_FromTreeView_1" class="node_normal" onclick="treeicon_toggle(&quot;FromTreeView_1&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeExpandedNew, &quot;imgNode_FromTreeView_1&quot;); node_select(&quot;FromTreeView_1&quot;, &quot;&quot;, &quot;FromTreeView&quot;, TreeCtrl_onNodeClickNew);">분류테스트</span><div id="FromTreeView_1_sub" style="display: none;"></div></div>
+                        </div>
+                    </div>
+                    <li onclick="ConfigMyBoard()"><span class="icon_tree tree_plag_config"></span><span class="li_text">즐겨찾기 관리</span></li>
+                    <li onclick="MyBoard()"><span class="icon_tree tree_mywrite"></span><span class="li_text">내가 작성한 게시</span></li>
+                    <li onclick="ReservationItem_onclick_left()"><span class="icon_tree tree_reservations"></span><span class="li_text">예약 보관함</span></li>
+                    <li onclick="TempBoard()"><span class="icon_tree tree_temp_storageBox"></span><span class="li_text">임시 보관함</span></li>
+                    <li onclick="ScrapBoard()"><span class="icon_tree tree_scrap"></span><span class="li_text">스크랩 게시물</span></li>
+                </ul>
+                <ul class="leftList">
+                    <li onclick="ConfigMyBoard()"><span class="icon_tree tree_dotlist"></span><span class="li_text">즐겨찾기 관리</span></li>
+                    <li onclick="MyBoard()"><span class="icon_tree tree_dotlist"></span><span class="li_text">내가 작성한 게시</span></li>
+                    <li onclick="ReservationItem_onclick_left()"><span class="icon_tree tree_dotlist"></span><span class="li_text">예약 보관함</span></li>
+                    <li onclick="TempBoard()"><span class="icon_tree tree_dotlist"></span><span class="li_text">임시 보관함</span></li>
+                    <li onclick="ScrapBoard()"><span class="icon_tree tree_dotlist"></span><span class="li_text">스크랩 게시물</span></li>
+                </ul>
+                <h2 style="display:none;"><span class="icon_tree tree_individual"></span><span class="icon_tree tree_arrow_up"></span><span class="h2_text">나의게시글 관리</span></h2>
+
+                <div id="TopBoardsList">
+                    <h2 id="{cb193759-1478-7f12-4ea7-ac2e74e002f1}_h2">
+                        <span id="{cb193759-1478-7f12-4ea7-ac2e74e002f1}" onclick="TopBoard_onclick(&quot;TreeCtrl0&quot;, &quot;{cb193759-1478-7f12-4ea7-ac2e74e002f1}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">회사게시판</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl0obj">
+
+                        </div>
+                    </ul><h2 id="{40cb4716-bbc3-94ee-36f9-667f0b7c5380}_h2">
+                        <span id="{40cb4716-bbc3-94ee-36f9-667f0b7c5380}" onclick="TopBoard_onclick(&quot;TreeCtrl1&quot;, &quot;{40cb4716-bbc3-94ee-36f9-667f0b7c5380}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">자유마당</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl1obj">
+
+                        </div>
+                    </ul><h2 id="{b513945b-4b16-6846-c88b-b4bd22d01599}_h2">
+                        <span id="{b513945b-4b16-6846-c88b-b4bd22d01599}" onclick="TopBoard_onclick(&quot;TreeCtrl2&quot;, &quot;{b513945b-4b16-6846-c88b-b4bd22d01599}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">Q&amp;A</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl2obj">
+
+                        </div>
+                    </ul><h2 id="{f8439e28-d34e-d182-bc48-bca089803007}_h2">
+                        <span id="{f8439e28-d34e-d182-bc48-bca089803007}" onclick="TopBoard_onclick(&quot;TreeCtrl3&quot;, &quot;{f8439e28-d34e-d182-bc48-bca089803007}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">AEO</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl3obj">
+
+                        </div>
+                    </ul><h2 id="{fc914f88-b95e-62f8-0dc6-a8a65d2ddb22}_h2">
+                        <span id="{fc914f88-b95e-62f8-0dc6-a8a65d2ddb22}" onclick="TopBoard_onclick(&quot;TreeCtrl4&quot;, &quot;{fc914f88-b95e-62f8-0dc6-a8a65d2ddb22}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">법무사이트</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl4obj">
+
+                        </div>
+                    </ul><h2 id="{f50dd2c4-ed77-ed61-33db-a48e136474ff}_h2">
+                        <span id="{f50dd2c4-ed77-ed61-33db-a48e136474ff}" onclick="TopBoard_onclick(&quot;TreeCtrl5&quot;, &quot;{f50dd2c4-ed77-ed61-33db-a48e136474ff}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">e매뉴얼</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl5obj">
+
+                        </div>
+                    </ul><h2 id="{d00151cc-417b-ac88-4564-ddadd04c4293}_h2">
+                        <span id="{d00151cc-417b-ac88-4564-ddadd04c4293}" onclick="TopBoard_onclick(&quot;TreeCtrl6&quot;, &quot;{d00151cc-417b-ac88-4564-ddadd04c4293}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">VANMOBIS</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl6obj">
+
+                        </div>
+                    </ul><h2 id="{41eb9ea0-1bec-0aee-8879-faf6f0cfb96a}_h2">
+                        <span id="{41eb9ea0-1bec-0aee-8879-faf6f0cfb96a}" onclick="TopBoard_onclick(&quot;TreeCtrl7&quot;, &quot;{41eb9ea0-1bec-0aee-8879-faf6f0cfb96a}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">테스트게시판</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl7obj">
+
+                        </div>
+                    </ul><h2 id="{67849008-d702-ceac-8a45-4e55cdc5df9c}_h2">
+                        <span id="{67849008-d702-ceac-8a45-4e55cdc5df9c}" onclick="TopBoard_onclick(&quot;TreeCtrl8&quot;, &quot;{67849008-d702-ceac-8a45-4e55cdc5df9c}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">Global Community</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl8obj">
+
+                        </div>
+                    </ul><h2 id="{a34d31f0-6845-7b09-7dce-f9c2c87c3782}_h2">
+                        <span id="{a34d31f0-6845-7b09-7dce-f9c2c87c3782}" onclick="TopBoard_onclick(&quot;TreeCtrl9&quot;, &quot;{a34d31f0-6845-7b09-7dce-f9c2c87c3782}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">BMA</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl9obj">
+
+                        </div>
+                    </ul><h2 id="{5b6177b3-e2f9-7d56-f877-58db46c0c52c}_h2">
+                        <span id="{5b6177b3-e2f9-7d56-f877-58db46c0c52c}" onclick="TopBoard_onclick(&quot;TreeCtrl10&quot;, &quot;{5b6177b3-e2f9-7d56-f877-58db46c0c52c}&quot;)"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">TEST</span></span>
+                    </h2><ul class="leftList">
+                        <div class="tree" name="BoardTree" id="TreeCtrl10obj">
+
+                        </div>
+                    </ul>
+                </div>
+
+
+                <h2><span onclick="Apprboard()"><span class="icon_tree tree_lnbArrowUp"></span><span class="h2_text">게시물 승인</span></span></h2>
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <!-- //lnb 메뉴 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>일반 게시판</p>
+            <div class="search_box">
+                <div class="input_wrap">
+                    <input type="text" class="lnactive" value="Search" /> <a href="#none" class="btn_search"></a>
+                </div>
+                <div class="icon_box">
+                    <a href="#none" class="icon searchmark"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 검색 설정 -->
+        <div class="lyp_search_wrap">
+            <dl>
+                <dt>검색어</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="and">
+                            <label for="and">AND</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="or">
+                            <label for="or">OR</label>
+                        </span>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">제목</a>
+                                <ul>
+                                    <li>내용</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">내용</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>보낸사람</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select-box type01 new_sel linebox">
+                                <a href="javascript:void(0)">보낸사람</a>
+                                <ul>
+                                    <li>제목</li>
+                                    <li>내용</li>
+                                    <li>수신,참조</li>
+                                    <li>첨부파일명</li>
+                                </ul>
+                            </div>
+                            <div class="input_wrap">
+                                <input type="text" class="big" value="2020.10.14" />
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+                <dt>첨부파일</dt>
+                <dd>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="all">
+                            <label for="all">모두</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="include">
+                            <label for="include">포함</label>
+                        </span>
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="noinclude">
+                            <label for="noinclude">미포함</label>
+                        </span>
+                    </div>
+                </dd>
+                <dt>검색기간</dt>
+                <dd>
+                    <div class="select-box type01 new_sel linebox">
+                        <a href="javascript:void(0)">직접입력</a>
+                        <ul>
+                            <li>1주일</li>
+                            <li>1개월</li>
+                            <li>3개월</li>
+                            <li>직접입력</li>
+                        </ul>
+                    </div>
+                    <div class="input_wrap block mt5">
+                        <input type="text" value="2020.10.14" /><span class="bar">-</span><input type="text" value="2020.10.20" />
+                    </div>
+                </dd>
+            </dl>
+            <ul class="btn_newtype">
+                <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+            </ul>
+        </div>
+        <!-- //검색 설정 -->
+
+        <div class="align_num type2">
+            <ul>
+                <li>
+                    <div class="input_wrap">
+                        <span class="listview-check checks">
+                            <input type="checkbox" id="checkbox">
+                            <label for="checkbox"></label>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">정렬</a>
+                        <ul>
+                            <li>기본 보기</li>
+                            <li>제목</li>
+                            <li>부서</li>
+                            <li>게시자</li>
+                            <li>게시일</li>
+                            <li>조회수</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none" class="valign">오름차순 <span></span></a></li>
+                <li>
+                    <div class="select-box type01 new_sel">
+                        <a href="#none">필터</a>
+                        <ul>
+                            <li>기본 보기</li>
+                            <li>미확인 게시글</li>
+                            <li>첨부파일</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="one"><a href="#none">삭제</a></li>
+                <li class="one"><a href="#none">즐겨찾기 추가</a></li>
+                <li class="pt3">
+                    <div class="etc_box">
+                        <a href="#none" class="tit"></a>
+                        <ul>
+                            <li><a href="#none">읽음표시</a></li>
+                            <li><a href="#none">이동</a></li>
+                            <li><a href="#none">복사</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="all_email">
+                <p>전체메일</p>
+                <p><span class="c_blue">15 </span>/<span> 1654</span></p>
+                <a href="#none" class="btn_reset"></a>
+                <ul class="mail_userinfoBtn">
+                    <li><span></span></li>
+                    <li class="on"><span></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+        <div class="com_list_wrap scrollbar-inner">
+            <!-- 일반 게시판(게시판)-->
+            <table class="com_list noline">
+                <colgroup>
+                    <col width="4%" />
+                    <col width="6%" />
+                    <col width="7%" />
+                    <col width="*" />
+                    <col width="14%" />
+                    <col width="6%" />
+                    <col width="6%" />
+                    <col width="10%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th colspan="3" class="td_c">No.</th>
+                        <th>제목</th>
+                        <th>게시자</th>
+                        <th>조회수</th>
+                        <th>좋아요</th>
+                        <th>게시일</th>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free01">
+                                    <label for="free01"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c"><span class="t_notice">공지</span></td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                                <li><span class="newSubicon newSubicon025"></span></li>
+                            </ul>
+                        </td>
+                        <td><strong><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></strong></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free02">
+                                    <label for="free02"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">001</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free03">
+                                    <label for="free03"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">002</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free04">
+                                    <label for="free04"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">003</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free05">
+                                    <label for="free05"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">004</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free06">
+                                    <label for="free06"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">005</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free07">
+                                    <label for="free07"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">006</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free08">
+                                    <label for="free08"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">007</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free09">
+                                    <label for="free09"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">008</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free10">
+                                    <label for="free10"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">009</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free11">
+                                    <label for="free11"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">010</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free12">
+                                    <label for="free12"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">011</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free13">
+                                    <label for="free13"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">012</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free14">
+                                    <label for="free14"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">013</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free15">
+                                    <label for="free15"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">014</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free16">
+                                    <label for="free16"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">015</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_c">
+                            <div class="input_wrap">
+                                <span class="listview-check checks">
+                                    <input type="checkbox" id="free17">
+                                    <label for="free17"></label>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="td_c">016</td>
+                        <td>
+                            <ul class="icon">
+                                <li><span class="newSubicon newSubicon014"></span></li>
+                            </ul>
+                        </td>
+                        <td><a href="#none">[HR지원팀] 모비스만의 재택근무 만들기 - 재택근무 제도화 안내</a></td>
+                        <td>장재민<span class="bar">|</span>사업기획지원팀</td>
+                        <td>3050</td>
+                        <td>453</td>
+                        <td>2020.10.15</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- //일반 게시판(게시판)-->
+        </div>
+        <div class="listview-nav">
+            <a href="#" class="prev blind">이전</a>
+            <span class="page-num"><em>1</em>/ 5</span>
+            <a href="#" class="next blind">다음</a>
+        </div>
+    </span>
+    <!-- sub copyright -->
+    <div class="PreViewFooter">
+
+    </div>
+    <!-- //sub copyright -->
+</body>
+</html>

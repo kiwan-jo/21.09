@@ -1,0 +1,767 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;"><!-- 임의로 style 적용 -->
+    <!-- list -->
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>통합검색</p>
+        </div>
+    </div>
+
+    <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: auto; height:  calc(100% - 94px);">
+        <!-- 통합검색 -->
+        <div class="integrate_search_wrap">
+            <div class="search_conts">
+                <!-- 연관 검색어 -->
+                <div class="relations_search">
+                    <div class="search_box">
+                        <div class="input_wrap">
+                            <input type="text" class="lnactive" value="Search"> <a href="#none" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                        </div>
+                        <div class="icon_box">
+                            <a href="#none" class="icon searchmark"></a>
+                        </div>
+                    </div>
+                    <div class="lyp_search_wrap">
+                        <dl>
+                            <dt>정렬</dt>
+                            <dd>
+                                <div class="input_wrap radios">
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="accuracy" name="search_align">
+                                        <label for="accuracy">정확도순</label>
+                                    </span>
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="latest" name="search_align">
+                                        <label for="latest">최신순</label>
+                                    </span>
+                                </div>
+                            </dd>
+                            <dt>검색범위</dt>
+                            <dd>
+                                <div class="input_wrap radios">
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="search_all" name="search_range">
+                                        <label for="search_all">전체</label>
+                                    </span>
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="search_tit" name="search_range">
+                                        <label for="search_tit">제목</label>
+                                    </span>
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="search_contns" name="search_range">
+                                        <label for="search_contns">내용</label>
+                                    </span>
+                                    <span class="listview-check radios ml0 ">
+                                        <input type="radio" id="search_tit_conts" name="search_range">
+                                        <label for="search_tit_conts" class="mt10">제목+내용</label>
+                                    </span>
+                                    <span class="listview-check radios">
+                                        <input type="radio" id="search_writer" name="search_range">
+                                        <label for="search_writer" class="mt10">작성자</label>
+                                    </span>
+                                </div>
+                            </dd>
+                            <dt>검색기간</dt>
+                            <dd>
+                                <div class="select-box type01 new_sel linebox">
+                                    <a href="javascript:void(0)">직접입력</a>
+                                    <ul>
+                                        <li>1주일</li>
+                                        <li>1개월</li>
+                                        <li>3개월</li>
+                                        <li>직접입력</li>
+                                    </ul>
+                                </div>
+                                <div class="input_wrap block mt5">
+                                    <input type="text" class="haif" value="2020.10.14"><span class="bar">-</span><input type="text" class="haif" value="2020.10.20">
+                                </div>
+                            </dd>
+                        </dl>
+                        <ul class="btn_newtype">
+                            <li id="Submit1" class="ok" onclick="return OK()">확인</li>
+                        </ul>
+                    </div>
+                    <dl>
+                        <dt>연관 검색어</dt>
+                        <dd>
+                            <a href="#none">휴가명령</a>
+                            <a href="#none">명령</a>
+                            <a href="#none">인사관리과</a>
+                            <a href="#none">주간업무보고</a>
+                            <a href="#none">주간업무</a>
+                            <a href="#none">금융사업팀</a>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- //연관 검색어 -->
+
+                <div class="count_num_wrap">
+                    <span>'휴가'</span> 검색 결과
+                    <span class="c_blue">55</span>건
+                </div>
+
+                <div class="search_menu_wrap">
+                    <ul class="tab_box">
+                        <li><a href="#search_content01">전체</a></li>
+                        <li><a href="#search_content02">임직원 정보</a></li>
+                        <li><a href="#search_content03" class="on">일정관리</a></li>
+                        <li><a href="#search_content04">자원관리</a></li>
+                        <li><a href="#search_content05">커뮤니티</a></li>
+                        <li><a href="#search_content06">결제</a></li>
+                    </ul>
+                    <div class="etc_box">
+                        <a href="#none" class="tit"><span class="newSubicon newSubicon080"></span></a>
+                        <ul>
+                            <li><a href="#none">그룹용어사전</a></li>
+                            <li><a href="#none">보고서/자료</a></li>
+                            <li><a href="#none">업무도우미</a></li>
+                            <li><a href="#none">법무시스템</a></li>
+                            <li><a href="#none">GCSC</a></li>
+                            <li><a href="#none">지식관리</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="search_content" id="search_content01">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>전체 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+
+                    <!-- 리스트 -->
+                    <div class="txt_list">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다. 
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다. 
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가? 
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //리스트 -->
+                </div>
+                <div class="search_content" id="search_content02">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>임직원 정보 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+                    <div class="executive_info">
+                        <ul>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <div class="img"></div>
+                                <dl>
+                                    <dt>정하윤 책임매니저 <span>모비스</span></dt>
+                                    <dd>ICT 기획팀</dd>
+                                    <dd>02-1234-5678</dd>
+                                    <dd>010-1234-5678</dd>
+                                    <dd>ytj@mobis.com</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- 페이징 -->
+                    <div class="new_listview">
+                        <div class="listview-nav">
+                            <a href="#" class="prev blind">이전</a>
+                            <span class="page-num"><em>1</em>/ 5</span>
+                            <a href="#" class="next blind">다음</a>
+                        </div>
+                    </div>
+                    <!-- //페이징 -->
+                </div>
+                <div class="search_content" id="search_content03" style="display:block;">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>일정관리 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+                    <!-- 리스트 -->
+                    <div class="txt_list">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //리스트 -->
+                    <!-- 페이징 -->
+                    <div class="new_listview">
+                        <div class="listview-nav">
+                            <a href="#" class="prev blind">이전</a>
+                            <span class="page-num"><em>1</em>/ 5</span>
+                            <a href="#" class="next blind">다음</a>
+                        </div>
+                    </div>
+                    <!-- //페이징 -->
+                </div>
+                <div class="search_content" id="search_content04">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>자원관리 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+                    <!-- 리스트 -->
+                    <div class="txt_list">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //리스트 -->
+                    <!-- 페이징 -->
+                    <div class="new_listview">
+                        <div class="listview-nav">
+                            <a href="#" class="prev blind">이전</a>
+                            <span class="page-num"><em>1</em>/ 5</span>
+                            <a href="#" class="next blind">다음</a>
+                        </div>
+                    </div>
+                    <!-- //페이징 -->
+                </div>
+                <div class="search_content" id="search_content05">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>커뮤니티 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+                    <!-- 리스트 -->
+                    <div class="txt_list">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //리스트 -->
+                    <!-- 페이징 -->
+                    <div class="new_listview">
+                        <div class="listview-nav">
+                            <a href="#" class="prev blind">이전</a>
+                            <span class="page-num"><em>1</em>/ 5</span>
+                            <a href="#" class="next blind">다음</a>
+                        </div>
+                    </div>
+                    <!-- //페이징 -->
+                </div>
+                <div class="search_content" id="search_content06">
+                    <!-- 타이틀 -->
+                    <div class="tit">
+                        <p>결재 <span>검색 결과<span class="c_blue">15</span>건</span></p>
+                        <a href="#none">더보기</a>
+                    </div>
+                    <!-- //타이틀 -->
+                    <!-- 리스트 -->
+                    <div class="txt_list">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <dl>
+                                        <dt>[완료함] [물품구매요청서] 2020년도 10월 사무용품 구매신청</dt>
+                                        <dd>
+                                            간에 새가 미인을 실현에 귀는 우리의 봄바람이다. 더운지라 아름답고 하였으며, 남는 말이다.
+                                            청춘의 생명을 과실이 원대하고, 곳이 힘차게 구하지 인간의 피다.
+                                            모래뿐일 없으면 우리 구할 속잎나고, 것이 그들은 긴지라 평화스러운 철환하였는가?
+                                            우는 풀이 청춘 간에 새가 미인을 실현에 귀는 우리의 봄바람이다.
+                                            원대하고, 곳이 힘차게 구하...
+                                        </dd>
+                                    </dl>
+                                    <p><span class="name">주시은</span><span class="department">ICT 선행기술팀</span><span class="day">2020.10.15</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //리스트 -->
+                    <!-- 페이징 -->
+                    <div class="new_listview">
+                        <div class="listview-nav">
+                            <a href="#" class="prev blind">이전</a>
+                            <span class="page-num"><em>1</em>/ 5</span>
+                            <a href="#" class="next blind">다음</a>
+                        </div>
+                    </div>
+                    <!-- //페이징 -->
+                </div>
+            </div>
+
+            <!-- 인기 검색어 -->
+            <div class="hot_search_wrap">
+                <p class="tit">인기 검색어</p>
+                <ul class="hot_tab_menu">
+                    <li><a href="#hot_tab1" class="on">일간</a></li>
+                    <li><a href="#hot_tab2">주간</a></li>
+                    <li><a href="#hot_tab3">월간</a></li>
+                </ul>
+
+                <div class="hot_tab_content" id="hot_tab1">
+                    <ol>
+                        <li><a href="#none">1. 570145 <span>-</span></a></li>
+                        <li><a href="#none">2. 서경천 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">3. 업무도우미 <span class="up">2</span></a></li>
+                        <li><a href="#none">4. 우리사주 <span class="down">4</span></a></li>
+                        <li><a href="#none">5. vpn <span>-</span></a></li>
+                        <li><a href="#none">6. 메신저 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">7. 법인카드 <span class="up">2</span></a></li>
+                        <li><a href="#none">8. 소현주 <span class="down">4</span></a></li>
+                        <li><a href="#none">9. 업무용 차량 <span>-</span></a></li>
+                        <li><a href="#none">10. 우수사원 <span class="new">NEW</span></a></li>
+                    </ol>
+                </div>
+                <div class="hot_tab_content" id="hot_tab2">
+                    <ol>
+                        <li><a href="#none">1. 메신저 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">2. 법인카드 <span class="up">2</span></a></li>
+                        <li><a href="#none">3. 소현주 <span class="down">4</span></a></li>
+                        <li><a href="#none">4. 업무용 차량 <span>-</span></a></li>
+                        <li><a href="#none">5. 우수사원 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">6. 570145 <span>-</span></a></li>
+                        <li><a href="#none">7. 서경천 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">8. 업무도우미 <span class="up">2</span></a></li>
+                        <li><a href="#none">9. 우리사주 <span class="down">4</span></a></li>
+                        <li><a href="#none">10. vpn <span>-</span></a></li>
+                    </ol>
+                </div>
+                <div class="hot_tab_content" id="hot_tab3">
+                    <ol>
+                        <li><a href="#none">1. 우리사주 <span class="down">4</span></a></li>
+                        <li><a href="#none">2. vpn <span>-</span></a></li>
+                        <li><a href="#none">3. 메신저 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">4. 570145 <span>-</span></a></li>
+                        <li><a href="#none">5. 서경천 <span class="new">NEW</span></a></li>
+                        <li><a href="#none">6. 업무도우미 <span class="up">2</span></a></li>
+                        <li><a href="#none">7. 법인카드 <span class="up">2</span></a></li>
+                        <li><a href="#none">8. 소현주 <span class="down">4</span></a></li>
+                        <li><a href="#none">9. 업무용 차량 <span>-</span></a></li>
+                        <li><a href="#none">10. 우수사원 <span class="new">NEW</span></a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- //인기 검색어 -->
+        </div>
+        <!-- //통합검색 -->
+    </span>
+</body>
+</html>

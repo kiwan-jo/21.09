@@ -1,0 +1,1072 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="css/default.css" type="text/css">
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/jquery.scrollbar.css" type="text/css">
+	<link rel="stylesheet" href="css/content.css" type="text/css">
+	<script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="JQuery/raphael-min.js"></script>
+	<script type="text/javascript" src="JQuery/jquery.scrollbar.min.js"></script>
+	<script type="text/javascript" src="JQuery/common.js"></script>
+
+</head>
+<style>
+	/* 가이드 */
+	.UI-Elements {width: 100%;padding:80px;}
+	.UI-Elements .UI-tit {min-width: 180px;font-size: 24px;font-weight: bold;letter-spacing: -1px;}
+	.UI-Elements .UI-tit:before { content: ''; display: block; border-top: 4px solid #000; width: 150px; padding-top: 14px; margin-top: 4px; }
+	.UI-Elements td { vertical-align: top }
+
+	/*최근알림 아이콘 wrap*/
+	.notification-icon-wrap.notification {display: inline-block;width: 654px;background:#fff !important;padding: 40px 0 30px 45px;margin-right: 13px;}
+	.notification-icon-wrap.notification .tit{font-weight: bold; font-size: 17px;}
+	.notification-icon-wrap.notification .list{display: flex; flex-wrap: wrap;}
+	.notification-icon-wrap.notification .list li{font-weight: bold; font-size: 16px; margin: 10px 32px 10px 0; min-width: 186px;}
+	.notification-icon-wrap.notification .list li span{display: inline-block;vertical-align: middle;margin-top: -34px;}
+
+	.cont-2x1 .slide-box { width: 780px !important }
+	/* 스크립트 수정전 임시 */
+</style>
+<script type="text/javascript">
+	//스크롤
+	jQuery(document).ready(function () {
+		jQuery('.scrollbar-outer').scrollbar();
+		jQuery('.scrollbar-inner').scrollbar();
+	});
+</script>
+<body>
+	
+	<table class="UI-Elements">
+		<tr>
+		
+			<td class="UI-tit">MY 모비스</td>
+			<td>
+				<!-- MY 모비스 -->
+				<div class="cont-box my-mobis cont-1x1">
+					<div class="header">
+						<a href="#" class="tit">My 모비스</a>
+						<div class="select-box type01">
+							<a href="javascript:void(0)">경영</a>
+							<ul>
+								<li>경영</li>
+								<li>경영</li>
+							</ul>
+						</div>
+					</div>
+					<div class="cont slide">
+						<div class="item">
+							<ul class="link-area slide-box">
+								<li><a href="#">계약관리</a></li>
+								<li><a href="#">글로벌법무시스템</a></li>
+								<li><a href="#">금리비딩관리</a></li>
+								<li><a href="#">기술자료요청</a></li>
+								<li><a href="#">모비스쿨</a></li>
+								<li><a href="#">수익개선전략회의</a></li>
+								<li><a href="#">안전환경</a></li>
+								<li><a href="#">자율준수</a></li>
+								<li><a href="#">전사과제관리</a></li>
+								<li><a href="#">정원관리</a></li>
+							</ul>
+						</div>
+						<ul class="pagenation">
+							<li class="on">슬라이드 버튼1번</li>
+							<li>슬라이드 버튼2번</li>
+							<li>슬라이드 버튼3번</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //MY 모비스 -->
+			</td>
+			<td class="UI-tit">주가</td>
+			<td>
+				<!-- 주가 -->
+				<div class="cont-box stock cont-1x1">
+					<div class="header">
+						<span class="tit">주가</span>
+						<div class="select-box type01">
+							<a href="javascript:void(0)">주가</a>
+							<ul>
+								<li>주가</li>
+								<li>환율</li>
+								<li>유가</li>
+							</ul>
+							<span class="refresh blind">새로고침</span>
+						</div>
+
+					</div>
+					<div class="cont slide">
+						<div class="item">
+							<div class="slide-box">
+								<table class="stock-tb">
+									<colgroup>
+										<col style="width:30%">
+										<col style="width:30%">
+										<col style="width:20%">
+										<col style="width:20%">
+
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>거래소</th>
+											<td>2,500.00 <span class="up blind">상승</span>	</td>
+											<td>10.50</td>
+											<td>100%</td>
+										</tr>
+										<tr>
+											<th>거래소</th>
+											<td>2,500.00 <span class="down blind">하락</span></td>
+											<td>10.50</td>
+											<td>100%</td>
+										</tr>
+										<tr>
+											<th>거래소</th>
+											<td>2,500.00 <span class="down blind">하락</span></td>
+											<td>10.50</td>
+											<td>100%</td>
+										</tr>
+										<tr>
+											<th>거래소</th>
+											<td>2,500.00 <span class="up blind">상승</span>	</td>
+											<td>10.50</td>
+											<td>100%</td>
+										</tr>
+										<tr>
+											<th>거래소</th>
+											<td>2,500.00 <span class="up blind">상승</span>	</td>
+											<td>10.50</td>
+											<td>100%</td>
+										</tr>
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+						<ul class="pagenation">
+							<li class="on">슬라이드 버튼1번</li>
+							<li>슬라이드 버튼2번</li>
+							<li>슬라이드 버튼3번</li>
+						</ul>
+					</div>
+				</div>
+				<!-- // 주가 -->
+			</td>
+		</tr>
+		<tr>
+			<td class="UI-tit">생일</td>
+			<td>
+				<!-- 생일 -->
+				<div class="cont-box birth cont-1x1">
+					<div class="header">
+						<span>생일</span>
+					</div>
+					<div class="cont slide">
+						<div class="item">
+							<ul class="slide-box birth-list">
+								<li>
+									<div class="img">
+    <img src="images/kr/main/profile.png" alt="프로필" >
+    <ul class="gnb_info">
+        <li class="info01 blind">정보</li>
+         <li class="info02 blind">문자</li>
+         <li class="info03 blind">메세지</li>
+         <li class="info04 blind">전화</li>
+         <li class="info05 blind">영상</li>
+         <li class="info06 blind">즐겨찾기</li>
+    </ul>
+</div>
+									<div class="info">
+										<p class="tit"><em>홍길동 매니저</em>(인사팀)</p>
+										<p class="date">10월 16일</p>
+									</div>
+									<span class="msg blind">메세지 보내기</span>
+								</li>
+								<li>
+									<div class="img">
+    <img src="images/kr/main/profile.png" alt="프로필" >
+    <ul class="gnb_info">
+        <li class="info01 blind">정보</li>
+         <li class="info02 blind">문자</li>
+         <li class="info03 blind">메세지</li>
+         <li class="info04 blind">전화</li>
+         <li class="info05 blind">영상</li>
+         <li class="info06 blind">즐겨찾기</li>
+    </ul>
+</div>
+									<div class="info">
+										<p class="tit"><em>홍길동 매니저</em>(인사팀)</p>
+										<p class="date">10월 16일</p>
+									</div>
+									<span class="msg blind">메세지 보내기</span>
+								</li>
+								<li>
+									<div class="img">
+    <img src="images/kr/main/profile.png" alt="프로필" >
+    <ul class="gnb_info">
+        <li class="info01 blind">정보</li>
+         <li class="info02 blind">문자</li>
+         <li class="info03 blind">메세지</li>
+         <li class="info04 blind">전화</li>
+         <li class="info05 blind">영상</li>
+         <li class="info06 blind">즐겨찾기</li>
+    </ul>
+</div>
+									<div class="info">
+										<p class="tit"><em>홍길동 매니저</em>(인사팀)</p>
+										<p class="date">10월 16일</p>
+									</div>
+									<span class="msg blind">메세지 보내기</span>
+								</li>
+							</ul>
+						</div>
+						<ul class="pagenation">
+							<li class="on">슬라이드 버튼1번</li>
+							<li>슬라이드 버튼2번</li>
+							<li>슬라이드 버튼3번</li>
+						</ul>
+					</div>
+				</div>
+				<!-- // 생일 -->
+			</td>
+			<td class="UI-tit">날씨</td>
+			<td>
+				<!-- 날씨 -->
+				<div class="cont-box weather cont-1x1">
+					<div class="header">
+						<span>날씨</span>
+						<div class="select-box type01">
+							<a href="javascript:void(0)">서울</a>
+							<ul>
+								<li>서울</li>
+								<li>경기</li>
+								<li>서울</li>
+								<li>경기</li>
+								<li>서울</li>
+								<li>경기</li>
+								<li>서울</li>
+							</ul>
+						</div>
+					</div>
+					<div class="cont weather-area">
+						<div class="today-wt">
+							<i class="ico big wt05"></i>
+							<div class="info">
+								<strong>비구름</strong>
+								<p>-1 / 15</p>
+							</div>
+							<ul class="sub-info">
+								<li>습도 <em>72%</em></li>
+								<li>구름 <em>90%</em></li>
+								<li>바람 <em>2.55m/s</em></li>
+							</ul>
+						</div>
+						<div class="week-wt">
+							<ul class="weather-icon-list small">
+								<li><span class="days">일</span><i class="ico small s-wt01"></i><span>15℃</span></li>
+								<li><span class="days">월</span><i class="ico small s-wt02"></i><span>15℃</span></li>
+								<li><span class="days">화</span><i class="ico small s-wt03"></i><span>15℃</span></li>
+								<li><span class="days">수</span><i class="ico small s-wt04"></i><span>15℃</span></li>
+								<li><span class="days">목</span><i class="ico small s-wt05"></i><span>15℃</span></li>
+								<li><span class="days">금</span><i class="ico small s-wt06"></i><span>15℃</span></li>
+								<li><span class="days">토</span><i class="ico small s-wt07"></i><span>15℃</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- // 날씨 -->
+			</td>
+		</tr>
+		<tr>
+			<td class="UI-tit">시간</td>
+			<td>
+				<!-- 시간 -->
+				<div class="cont-box clock cont-1x1">
+					<div class="header">
+						<span>시간</span>
+					</div>
+					<div class="cont clock-area">
+						<div class="ko">
+							<div class="select-box type02">
+								<a href="javascript:void(0)">korea / <br />Seoul</a>
+								<ul>
+									<li>korea / <br />Seoul</li>
+									<li>korea / <br />Seoul</li>
+									<li>korea / <br />Seoul</li>
+								</ul>
+							</div>
+							<div class="clock-shape">
+								<div id="clock_id" class="shape"></div>
+								<div id="timeinput" class="time"></div>
+								<p class="date">10월 21일 수요일</p>
+							</div>
+						</div>
+						<div class="eu">
+							<div class="select-box type02">
+								<a href="javascript:void(0)">korea / <br />Seoul</a>
+								<ul>
+									<li>korea / <br />Seoul</li>
+									<li>korea / <br />Seoul</li>
+									<li>korea / <br />Seoul</li>
+								</ul>
+							</div>
+							<div class="clock-shape">
+								<div id="clock_id" class="shape"></div>
+								<div id="timeinput" class="time"></div>
+								<p class="date">10월 21일 수요일</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- // 시간 -->
+			</td>
+			<td class="UI-tit">즐겨찾는메뉴</td>
+			<td>
+				<!-- 즐겨찾는메뉴 -->
+				<div class="favorites-menu">
+					<ul>
+						<li class="menu-mail"><span class="num">5</span> <span class="txt">메일</span></li>
+						<li class="menu-payment"><span class="num">5</span> <span class="txt">결재</span></li>
+						<li class="menu-reservation"><span class="num">5</span> <span class="txt">예약</span></li>
+						<li class="menu-cooperation"><span class="num">5</span> <span class="txt">협업</span></li>
+						<li class="menu-calendar"><span class="num">5</span> <span class="txt">일정</span></li>
+						<li class="menu-worklife"><span class="txt">워크앤라이프</span></li>
+					</ul>
+				</div>
+				<!-- // 즐겨찾는메뉴 -->
+			</td>
+		</tr>
+		<tr>
+			<td class="UI-tit">최근알림</td>
+			<td>
+				<!-- 알림 -->
+				<div class="cont-box notification cont-1x2">
+					<div class="header">
+						<div>알림</div>
+						<div class="icon-area">
+							<span class="write blind">글쓰기</span>
+							<span class="refresh blind">새로고침</span>
+						</div>
+					</div>
+					<div class="cont">
+						<div class="notification-search">
+							<p class="search-input">
+								<input type="text" placeholder="Search">
+								<span class="search-btn blind">검색</span>
+							</p>
+							<span id="notFillterPopBtn" class="fillter"></span>
+						</div>
+						<div class="notification-read">
+							<p class="view">
+								<span>전체 <em>85</em></span>
+								<span>읽지않음 <em>30</em></span>
+							</p>
+							<p class="btn">
+								<a href="#">모두읽음</a>
+								<a href="#">모두삭제</a>
+							</p>
+						</div>
+						<div class="outlook_tree_wrap">
+							<ul class="list type01 scrollbar-inner" >
+								<li>
+									<i class="ico noc-mail"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[메일]</em> RE: 선호도조사 안내 메일이 도착하였습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+									<span class="delete blind">삭제</span>
+								</li>
+								<li class="off">
+									<i class="ico noc-cooperation"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[협업]</em> 어플리캐이션 별 테스트 일정 수립 및 담당자 배정의 건에 태그
+											되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-calendar"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[일정]</em> 전사 실무교육 워크샵 일정에 추가되었습니다.
+	
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-performance"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[근무실적등록]</em> 미등록 실적이 00건 있습니다.
+	
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+					
+						<div class="notification-nav">
+							<a href="#" class="prev blind">이전</a>
+							<span class="page-num"><em>1</em>/ 5</span>
+							<a href="#" class="next blind">다음</a>
+						</div>
+						<!--필터 팝업
+						<div id="notFillterPop" class="fillter-pop">
+							<div class="inner">
+								<strong>읽음 여부</strong>	
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="read_chk01">
+											<label for="read_chk01" >읽지않음</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="read_chk02">
+											<label for="read_chk02" >읽지않음</label>
+										</div>
+									</li>
+								</ul>
+								<strong>중요도</strong>
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="important_chk01">
+											<label for="important_chk01" >중요</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="important_chk02">
+											<label for="important_chk02" >중요아님</label>
+										</div>
+									</li>
+								</ul>
+								<strong>알림 종류</strong>
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk01">
+											<label for="notice_chk01" >전체</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk02">
+											<label for="notice_chk02" >메일</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk03">
+											<label for="notice_chk03" >결재</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk04">
+											<label for="notice_chk04" >게시</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk05">
+											<label for="notice_chk05" >내부정보공유</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk06">
+											<label for="notice_chk06" >규정관리</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >결재</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >일정</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >자원</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >설문</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >소통</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >공지</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >기타</label>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="btn-group">
+								<p class="btn confirm">확인</p>
+								<p class="btn cancel">취소</p>
+								<p class="reset">설정초기화</p>
+							</div>
+
+						</div>
+					-->
+					</div>
+				</div>
+				<!-- //알림 -->
+			</td>
+			<td>
+				<!-- 알림 (필터팝업)-->
+				<div class="cont-box notification cont-1x2">
+					<div class="header">
+						<div>알림</div>
+						<div class="icon-area">
+							<span class="write blind">글쓰기</span>
+							<span class="refresh blind">새로고침</span>
+						</div>
+					</div>
+					<div class="cont">
+						<div class="notification-search">
+							<p class="search-input">
+								<input type="text" placeholder="Search">
+								<span class="search-btn blind">검색</span>
+							</p>
+							<span id="notFillterPopBtn" class="fillter"></span>
+						</div>
+						<div class="notification-read">
+							<p class="view">
+								<span>전체 <em>85</em></span>
+								<span>읽지않음 <em>30</em></span>
+							</p>
+							<p class="btn">
+								<a href="#">모두읽음</a>
+								<a href="#">모두삭제</a>
+							</p>
+						</div>
+						<div class="outlook_tree_wrap">
+							<ul class="list type01 scrollbar-inner" >
+								<li>
+									<i class="ico noc-mail"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[메일]</em> RE: 선호도조사 안내 메일이 도착하였습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+									<span class="delete blind">삭제</span>
+								</li>
+								<li class="off">
+									<i class="ico noc-cooperation"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[협업]</em> 어플리캐이션 별 테스트 일정 수립 및 담당자 배정의 건에 태그
+											되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-calendar"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[일정]</em> 전사 실무교육 워크샵 일정에 추가되었습니다.
+
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-performance"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[근무실적등록]</em> 미등록 실적이 00건 있습니다.
+
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="notification-nav">
+							<a href="#" class="prev blind">이전</a>
+							<span class="page-num"><em>1</em>/ 5</span>
+							<a href="#" class="next blind">다음</a>
+						</div>
+
+						<div id="notFillterPop" class="fillter-pop" style="display:block">
+							<div class="inner">
+								<strong>읽음 여부</strong>	
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="read_chk01">
+											<label for="read_chk01" >읽지않음</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="read_chk02">
+											<label for="read_chk02" >읽지않음</label>
+										</div>
+									</li>
+								</ul>
+								<strong>중요도</strong>
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="important_chk01">
+											<label for="important_chk01" >중요</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="important_chk02">
+											<label for="important_chk02" >중요아님</label>
+										</div>
+									</li>
+								</ul>
+								<strong>알림 종류</strong>
+								<ul class="check-list"> 
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk01">
+											<label for="notice_chk01" >전체</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk02">
+											<label for="notice_chk02" >메일</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk03">
+											<label for="notice_chk03" >결재</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk04">
+											<label for="notice_chk04" >게시</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk05">
+											<label for="notice_chk05" >내부정보공유</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk06">
+											<label for="notice_chk06" >규정관리</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >결재</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >일정</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >자원</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >설문</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >소통</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >공지</label>
+										</div>
+									</li>
+									<li>
+										<div class="checks">
+											<input type="checkbox" id="notice_chk07">
+											<label for="notice_chk07" >기타</label>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="btn-group">
+								<p class="btn confirm">확인</p>
+								<p class="btn cancel">취소</p>
+								<p class="reset">설정초기화</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- //알림 (필터팝업)-->
+			</td>
+			<td>
+				<!-- 알림 (쓰기팝업)-->
+				<div class="cont-box notification cont-1x2">
+					<div class="header">
+						<div>알림</div>
+						<div class="icon-area">
+							<span id="notWritePopBtn" class="write blind">글쓰기</span>
+							<span class="refresh blind">새로고침</span>
+						</div>
+					</div>
+					<div class="cont">
+						<div class="notification-search">
+							<p class="search-input">
+								<input type="text" placeholder="Search">
+								<span class="search-btn blind">검색</span>
+							</p>
+							<span id="notFillterPopBtn" class="fillter"></span>
+						</div>
+						<div class="notification-read">
+							<p class="view">
+								<span>전체 <em>85</em></span>
+								<span>읽지않음 <em>30</em></span>
+							</p>
+							<p class="btn">
+								<a href="#">모두읽음</a>
+								<a href="#">모두삭제</a>
+							</p>
+						</div>
+						<div class="outlook_tree_wrap">
+							<ul class="list type01 scrollbar-inner" >
+								<li>
+									<i class="ico noc-mail"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[메일]</em> RE: 선호도조사 안내 메일이 도착하였습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+									<span class="delete blind">삭제</span>
+								</li>
+								<li class="off">
+									<i class="ico noc-cooperation"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[협업]</em> 어플리캐이션 별 테스트 일정 수립 및 담당자 배정의 건에 태그
+											되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-calendar"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[일정]</em> 전사 실무교육 워크샵 일정에 추가되었습니다.
+
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li>
+									<i class="ico noc-performance"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[근무실적등록]</em> 미등록 실적이 00건 있습니다.
+
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+								<li class="off">
+									<i class="ico noc-notice"></i>
+									<div class="info">
+										<p class="tit ellipsis2"><em>[공지]</em> "[협조요청] IT 센터 신규..."
+											공지사항이 등록되었습니다.
+											
+											</p>
+										<p class="desc">
+											<span>현대모비스</span>
+											<span class="date">2020.10.08</span>
+										</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="notification-nav">
+							<a href="#" class="prev blind">이전</a>
+							<span class="page-num"><em>1</em>/ 5</span>
+							<a href="#" class="next blind">다음</a>
+						</div>
+
+						<div id="notWritePop" class="write-pop cont-box" style="display:block">
+							<div class="header">
+								<div>알림</div>
+								<div class="icon-area">
+									<span class="setting blind">셋팅</span>
+									<span id="notWritePopBtn" class="write blind">글쓰기</span>
+									<span class="refresh blind">새로고침</span>
+								</div>
+							</div>
+							<div class="write-area">
+								<p class="notice-txt">※ 그룹웨어 시스템 긴급 점검</p>
+								<p>
+									<strong>제목</strong>
+									<input type="text">
+								</p>
+								<p>
+									<strong>내용</strong>
+									<textarea></textarea>
+								</p>
+								<p>
+									<strong>수신자 <span class="add-recevie">수신자추가</span></strong>
+									<textarea></textarea>
+								</p>
+								<div class="checks">
+									<input type="checkbox" id="send_check">
+									<label for="send_check">접속자에게만 발송</label>
+								</div>
+							</div>
+							<div class="btn-group">
+								<p class="btn confirm">확인</p>
+								<p class="btn cancel">취소</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- //알림 (쓰기팝업)-->
+			</td>
+		</tr>
+		<tr style="height: 200px;">
+			<td class="UI-tit">텍스트배너</td>
+			<td colspan="3" >
+				<!-- 텍스트배너 -->
+				<div class="txt-banner-box">
+					<div class="list-wrap">
+						<ul class="list">
+							<li>
+								<em>[인재상/채용공지111]</em>
+								<p class="cont">현대모비스 채용 사이트 신규 오픈!</p>
+							</li>
+							<li>
+								<em>[인재상/채용공지222]</em>
+								<p class="cont">현대모비스 채용 사이트 신규 오픈!</p>
+							</li>
+							<li>
+								<em>[인재상/채용공지333]</em>
+								<p class="cont">현대모비스 채용 사이트 신규 오픈!</p>
+							</li>
+						</ul>
+					</div>
+					<div class="arrow_btn">
+						<span class="arrow prev blind">이전</span>
+						<span class="arrow next blind">다음</span>
+					</div>
+				</div>
+				<!-- //텍스트배너 -->
+			</td>
+		</tr>
+		<tr>
+			<td class="UI-tit">날씨 아이콘</td>
+			<td colspan="3">
+				<!-- 날씨 아이콘 -->
+				<div class="weather-icon-wrap">
+					<ul class="weather-icon-list big">
+						<li><i class="ico big wt01"></i><span>맑음</span></li>
+						<li><i class="ico big wt02"></i><span>조금흐림</span></li>
+						<li><i class="ico big wt03"></i><span>흐림</span></li>
+						<li><i class="ico big wt04"></i><span>매우흐림</span></li>
+						<li><i class="ico big wt05"></i><span>비</span></li>
+						<li><i class="ico big wt06"></i><span>비온후갬</span></li>
+						<li><i class="ico big wt07"></i><span>천둥번개</span></li>
+						<li><i class="ico big wt08"></i><span>눈</span></li>
+						<li><i class="ico big wt09"></i><span>안개</span></li>
+					</ul>
+					<div style="padding: 22px 42px">
+						<ul class="weather-icon-list small">
+							<li><span class="days">일</span><i class="ico small s-wt01"></i><span>15℃</span></li>
+							<li><span class="days">월</span><i class="ico small s-wt02"></i><span>15℃</span></li>
+							<li><span class="days">화</span><i class="ico small s-wt03"></i><span>15℃</span></li>
+							<li><span class="days">수</span><i class="ico small s-wt04"></i><span>15℃</span></li>
+							<li><span class="days">목</span><i class="ico small s-wt05"></i><span>15℃</span></li>
+							<li><span class="days">금</span><i class="ico small s-wt06"></i><span>15℃</span></li>
+							<li><span class="days">토</span><i class="ico small s-wt07"></i><span>15℃</span></li>
+							<li><span class="days">일</span><i class="ico small s-wt08"></i><span>15℃</span></li>
+							<li><span class="days">월</span><i class="ico small s-wt09"></i><span>15℃</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- //날씨 아이콘 -->
+			</td>
+		</tr>
+		<tr>
+			<td class="UI-tit">최근알림<br>아이콘</td>
+			<td colspan="3">
+				<!-- 최근알림 아이콘 -->
+				<div class="notification-icon-wrap notification " >
+					<p class="tit">On</p>
+					<ul class="list">
+						<li><i class="ico noc-corona"></i><span>코로나19 자가진단</span></li>
+						<li><i class="ico noc-payment"></i><span>결재</span></li>
+						<li><i class="ico noc-reservation"></i><span>예약</span></li>
+						<li><i class="ico noc-store-reservation"></i><span>식당예약</span></li>
+						<li><i class="ico noc-cooperation"></i><span>협업</span></li>
+						<li><i class="ico noc-calendar"></i><span>일정</span></li>
+						<li><i class="ico noc-performance"></i><span>근무실적등록</span></li>
+						<li><i class="ico noc-mail"></i><span>메일</span></li>
+						<li><i class="ico noc-notice"></i><span>공지</span></li>
+					</ul>
+				</div>
+				<!-- //최근알림 아이콘 -->
+
+				<!-- 최근알림 아이콘 -->
+				<div class="notification-icon-wrap notification">
+					<p class="tit">Off</p>
+					<ul class="list off">
+						<li><i class="ico noc-corona"></i><span>코로나19 자가진단</span></li>
+						<li><i class="ico noc-payment"></i><span>결재</span></li>
+						<li><i class="ico noc-reservation"></i><span>예약</span></li>
+						<li><i class="ico noc-store-reservation"></i><span>식당예약</span></li>
+						<li><i class="ico noc-cooperation"></i><span>협업</span></li>
+						<li><i class="ico noc-calendar"></i><span>일정</span></li>
+						<li><i class="ico noc-performance"></i><span>근무실적등록</span></li>
+						<li><i class="ico noc-mail"></i><span>메일</span></li>
+						<li><i class="ico noc-notice"></i><span>공지</span></li>
+					</ul>
+				</div>
+				<!-- //최근알림 아이콘 -->
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- 임의로 style 적용 -->
+    <header>
+        <!-- 임의 영역 -->
+
+    </header>
+    <main style="height:calc(100% - 60px);">
+        <!-- 대메뉴 -->
+        <div class="sideMenu">
+            <nav>
+
+            </nav>
+        </div>
+        <!-- //대메뉴 -->
+        <!-- lnb 메뉴 -->
+        <div class="lnb" style="left: 0px;">
+            <div id="left" class="leftbody">
+                
+            </div>
+            <p class="leftBtn"></p>
+        </div>
+        <!-- //lnb 메뉴 -->
+        
+        <!-- list -->
+        <!-- new sub title -->
+        <div class="PreViewTitle">
+
+
+
+
+        </div>
+        <!-- //new sub title -->
+        
+        <!-- new mail list -->
+        <span id="PreViewRayer" class="mainbody" style="min-width: 330px; width: 20%; height: calc(100% - 128px); display: block;">
+
+        </span>
+        <!-- //new mail list -->
+        <!-- //list -->
+        <!-- right -->
+        <span id="PreviewRayerH" style="min-width: 660px; display: block; float: none; overflow: hidden; height:  calc(100% - 128px);">
+            <span class="previewmail_bar_h" style="cursor: e-resize; display: block; height: 100%;" onmousedown="PreviewH_onMouserDown(event);" name="PreviewBar_H" id="PreviewBar_H">
+                <p class="hbar_dotted">
+                    <img src="/images/prevview_hbar_dotted.gif">
+                </p>
+            </span>
+            <span id="PreContent_RayerH" style="overflow: auto; height: 100%;">
+
+            </span>
+        </span>
+        <!-- //right -->
+        <!-- sub copyright -->
+        <div class="PreViewFooter">
+
+        </div>
+        <!-- //sub copyright -->
+    </main>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"><div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div></div>
+
+<script>
+/* lnb */
+$(document).ready(function () {
+    $(".leftBtn").click(function () {
+        $(".leftbody").stop().animate({ width: 'toggle' }, 500);
+    });
+});
+
+//custom selectbox
+$(document).ready(function () {
+    $(".select-box > a").click(function () {
+        $(this).next('ul').toggle();
+        $(this).toggleClass("on");
+        console.log(this)
+    });
+
+    $(".select-box ul li").click(function () {
+        $(this).parent().hide().parent(".select-box").children("a").text($(this).text());
+        $(this).parent().siblings('a').removeClass("on");
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content='text/html; charset=UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' href='css/prac_common.css' type='text/css'>
+        <link rel='stylesheet' href='css/prac_content.css' type='text/css'>
+        <link rel='stylesheet' href='css/prac_default.css' type='text/css'>
+        <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="JQuery/raphael-min.js"></script>
+        <script type="text/javascript" src="JQuery/common.js"></script>
+
+        <style>
+            /* 임의로 넣음. 차후 css 스타일로 제어 예정 20201210 */
+            html, body {
+                height: 100%;
+            }
+    
+            * {
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: sans-serif;
+            }
+    
+            /* ---- grid ---- */
+            .grid {
+                /*background: #e6e7e8;*/
+                max-width: 1920px;
+                min-height: 1000px;
+            }
+    
+                /* clear fix */
+                .grid:after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
+    
+            /* ---- .grid-item ---- */
+            .grid-sizer,
+            .grid-item {
+                width: 400px;
+            }
+    
+            .grid-item {
+                height: 430px; /* hack for proportional sizing */
+                float: left;
+                /*background: #C09;
+                border: 1px solid hsla(0, 0%, 0%, 0.5);*/
+                background-position: center center;
+                background-size: cover;
+                padding:10px;
+                box-sizing:border-box;
+            }
+    
+            .grid-item--width2 {
+                width: 800px;
+            }
+    
+            .grid-item--width3 {
+                width: 300px;
+            }
+    
+            .grid-item--width4 {
+                width: 400px;
+            }
+    
+            .grid-item--height2 {
+                height: 860px;
+            }
+    
+            .grid-item--height3 {
+                padding-bottom: 200px;
+            }
+    
+            .grid-item--height4 {
+                padding-bottom: 200px;
+            }
+    
+            .grid-item:hover {
+                border-color: hsla(0, 0%, 100%, 0.5);
+                cursor: move;
+            }
+    
+            .grid-item.is-dragging,
+            .grid-item.is-positioning-post-drag {
+                background: #C90;
+                z-index: 2;
+            }
+    
+            .packery-drop-placeholder {
+                border: 3px dotted #333;
+                background: hsla(0, 0%, 0%, 0.3);
+            }
+    
+            .grid-item.is-dragging,
+            .grid-item.is-positioning-post-drag {
+                z-index: 2;
+            }
+    
+            .admin_layout_lh {
+                border: 0px none !important;
+            }
+    
+            .grid_layout {
+                position: relative;
+                width: 1600px;
+                margin: 0px auto;
+            }
+    
+            .grid_noti {
+                padding: 10px;
+                width: 1600px;
+                margin: 0px auto;
+                height: 150px;
+                padding: 10px 10px;
+                box-sizing: border-box;
+            }
+    
+            @media only screen and (max-width : 1329px) {
+                .grid_layout {
+                    position: relative;
+                    width: 800px;
+                    margin: 0px auto;
+                }
+    
+                .grid_noti {
+                    padding: 10px;
+                    width: 800px;
+                    margin: 0px auto;
+                    height: 150px;
+                    padding: 10px 10px;
+                    box-sizing: border-box;
+                }
+            }
+    
+            @media only screen and (min-width : 1330px) and (max-width : 1720px) {
+                .grid_layout {
+                    position: relative;
+                    width: 1200px;
+                    margin: 0px auto;
+                }
+    
+                .grid_noti {
+                    padding: 10px;
+                    width: 1200px;
+                    margin: 0px auto;
+                    height: 150px;
+                    padding: 10px 10px;
+                    box-sizing: border-box;
+                }
+            }
+        </style>
+    </head>
+
+    <body style='background-color:#e6e7e8;'>
+        <div class='wrap'>
+            <!-- header -->
+            <div class='header'>
+                <h1><img src='images/kr/main/logo.png' alt='현대모비스 로고'></h1>
+                <div class='util'>
+                    <ul>
+                        <li class='search'>
+                            <input type='text' placeholder='검색어를 입력해주세요' onfocus='this.placeholder=""' onblur='this.placeholder="검색어를 입력해주세요"'><span class='search-btn blind'>검색</span>
+                        </li>
+                        <li class='employee-search blind'>직원검색</li>
+                        <li class='notice blind'>알림</li>
+                        <li class='myinfo'>
+                            <img src='images/kr/main/profile.png' alt='프로필'>
+                            <p><em>홍길동</em> (자재관리팀 이사)</p>
+                            <ul class='sub-menu'>
+                                <li>관리자 설정</li>
+                                <li>환경설정</li>
+                                <li>로그아웃</li>
+                            </ul>
+                        </li>
+                        <li class='view-menu blind'>
+                            메뉴보기
+                            <ul class='sub=menu'>
+                                <li>워크앤라이프지원</li>
+                                <li>FLOW</li>
+                                <li>M.FIELDs</li>
+                                <li>Chatebot</li>
+                                <li>IT Service</li>
+                                <li>백과사전</li>
+                                <li>용어사전</li>
+                                <li>인증센터</li>
+                                <li>원격지원</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //header -->
+
+            <!-- container -->
+            <div class='container'>
+
+                <!-- left-gnb -->
+                <div class='left-gnb'>
+                    <ul>
+                        <li class='gnb menu01'>
+                            <span>메일</span>
+                            <div class='sub-menu'>
+                                <div class='header'>
+                                    <h4>메일</h4>
+                                    <a href='#'>메일쓰기</a>
+                                    <a href='#'>내게쓰기</a>
+                                </div>
+                                <div class='cont'>
+                                    <div class='gnb-depth'>
+                                        <ul class='depth1'>
+                                            <li class='on'>
+                                                <a href='#'>메일</a>
+                                                <ul class='depth2'>
+                                                    <li>
+                                                        <a href='#'>받은 메일함 <span class='num'>13</span></a>
+                                                        <ul class='depth3'>
+                                                            <li>
+                                                                <a href='#'>개인 설정 메일함</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>개인 설정 메일함</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href='#'>보낸 메일함</a>
+                                                        <ul class='depth3'>
+                                                            <li>
+                                                                <a href='#'>보낸 메일함</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href='#'>임시보관함 <span class='num'>3</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href='#'>지운 메일함</a>
+                                                    </li>
+                                                    <li >
+                                                        <a href='#'>스팸 메일함</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href='#'>부가 기능</a>
+                                                        <ul class='depth3'>
+                                                            <li>
+                                                                <a href='#'>편지함 관리</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>예약발솽 관리</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>메일 검색</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>영구삭제 메일 복원</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>메일 가져오기</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>메일 백업</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a href='#'>주소록</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class='gnb menu02'>
+                            <span>결재</span>
+                        </li>
+                        <li class='gnb menu03'>
+                            <span>일정관리</span>
+                        </li>
+                        <li class='gnb menu04'>
+                            <span>예약관리</span>
+                        </li>
+                        <li class='gnb menu05'>
+                            <span>OneDrive</span>
+                        </li>
+                        <li class='gnb menu06'>
+                            <span>HR지원</span>
+                        </li>
+                        <li class='gnb menu07'>
+                            <span>커뮤니티</span>
+                        </li>
+                        <li class='gnb menu08'>
+                            <span>협업</span>
+                        </li>
+                        <li class='gnb menu09'>
+                            <span class='blind'>문의사항</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //left-gnb -->
+
+                <!-- content-wrap -->
+                <div class='content-wrap'>
+                    <div id="Center" style='background:transparent;'>
+                        <div id='PortletDragArea' class='admin_layout_lh' style='max-width:1920px;'>
+                            
+                            <!-- grid_noti -->
+                            <div class='grid_noti'>
+                                <div class='txt-banner-box' style='width:100%;'>
+                                    <div class='list-wrap'>
+                                        <ul class='list'>
+                                            <li>
+                                                <em>[인재상/채용공지111]</em>
+                                                <p class='cont'>현대모비스 채용 사이트 신규 오픈!</p>
+                                            </li>
+                                            <li>
+                                                <em>[인재상/채용공지222]</em>
+                                                <p class='cont'>현대모비스 채용 사이트 신규 오픈!</p>
+                                            </li>
+                                            <li>
+                                                <em>[인재상/채용공지333]</em>
+                                                <p class='cont'>현대모비스 채용 사이트 신규 오픈!</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class='arrow_btn'>
+                                        <span class='arrow prev blind'>이전</span>
+                                        <span class='arrow next blind'>다음</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //grid_noti -->
+
+                            <!-- grid -->
+                            <div class='grid' ondrop="PORTAL_LAYOUT_DROP(event)" ondragover="PORTAL_LAYOUT_ALLOWDROP(event)" style=" position: relative; height: 645px;">
+                                <div class='grid_layout'>
+                                    <div class='grid-sizer'></div>
+                                    <!-- 이미지배너 2x1 -->
+                                    <div class='grid-item grid-item--width2' data-item-id="1" p_width="2" p_height="1" style="position: absolute; left: 0px; top: 0px; touch-action: none;">
+                                        <div class='cont-box img-banner cont-2x1'>
+                                            <div class='cont slide'>
+                                                <div class='item'>
+                                                    <ul class='slide-box'>
+                                                        <li><img src='images/kr/main/img_banner_2x1.png' alt=''></li>
+                                                        <li><img src='images/kr/main/img_banner_2x1.png' alt=''></li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //이미지배너 2x1 -->
+
+                                    <!-- 근태현황 1x1 -->
+                                    <div class='grid-item' data-item-id="2" p_width="1" p_height="1" style="position: absolute; left: 800px; top: 0px; touch-action: none;">
+                                        <div class='cont-box working-attitude cont-1x1'>
+                                            <div class='header'>
+                                                <span class='tit'>근태현황</span>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void()'>근무현황</a>
+                                                    <ul>
+                                                        <li>근무현황</li>
+                                                        <li>휴가현황</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont holiday'>
+                                                <div class='inner'>
+                                                    <ul class='holiday-data'>
+                                                        <li>발생건수 <em>27일</em></li>
+                                                        <li>사용일수 <em>7일</em></li>
+                                                        <li>잔여일수 <em>20일</em></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //근태현황 1x1 -->
+
+                                    <!-- 결재 1x1 -->
+                                    <div class='grid-item' data-item-id="3" p_width="1" p_height="1" style="position: absolute; left: 1200px; top: 0px; touch-action: none;">
+                                        <div class='cont-box payment cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>결재</a>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void(0)'>진행함</a>
+                                                    <ul>
+                                                        <li>진행함</li>
+                                                        <li>미결함</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='period'>
+                                                    <dl>
+                                                        <dt>하루</dt>
+                                                        <dd>0</dd>
+                                                        <dt>일주일</dt>
+                                                        <dd>5</dd>
+                                                        <dt>한달</dt>
+                                                        <dd>5</dd>
+                                                        <dt>이후</dt>
+                                                        <dd class='after'>100</dd>
+                                                    </dl>
+                                                </div>
+                                                <div class='item'>
+                                                    <ul class='list type02 slide-box'>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'><em>[물푸구매요청서</em> 2020년도 1월 사무용품 구매요청</p>
+                                                                <p class='desc'>
+                                                                    <span class='process on'>박문성</span>
+                                                                    <span class='process'>윤태진</span>
+                                                                    <span>윤태진</span>
+                                                                    <span>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'><em>[물품구매요청서</em> 2020년도 1월 사무용품 구매요청</p>
+                                                                <p class='desc'>
+                                                                    <span class='process on'>박문성</span>
+                                                                    <span class='process'>윤태진</span>
+                                                                    <span>윤태진</span>
+                                                                    <span>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //결재 1x1 -->
+
+                                    <!-- 메일 2x1 -->
+                                    <div class='grid-item grid-item--width2' data-item-id="4" p_width="2" p_height="1" style="position: absolute; left: 0px; top: 0px; touch-action: none;">
+                                        <div class='cont-box mail cont-2x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>메일</a>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void(0)'>받은 메일함</a>
+                                                    <ul>
+                                                        <li>받은 메일함</li>
+                                                        <li>보낸 메일함</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item'>
+                                                    <ul class='list type01 slide-box'>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class='list type01 slide-box'>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차새대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.0i</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <img src='images/kr/main/profile.png' alt='' class='img'>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'>현대모비스 차새대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.0i</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //메일 2x1 -->
+
+                                    <!-- 공지사항 1x1 -->
+                                    <div class='grid-item' data-item-id="5" p_width="1" p_height="1" style="position: absolute; left: 1200px; top: 0px; touch-action: none;">
+                                        <div class='cont-box notice cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>공지사항</a>
+                                                <div class='select-box type01'>
+                                                    <a href='javescript:void(0)'>진행함</a>
+                                                    <ul>
+                                                        <li>진행함</li>
+                                                        <li>미결함</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont'>
+                                                <ul class='list type02'>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[물품구매요청서]</em> 2020년도 1월 사무용품 구매요청</p>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span class='date'>2020.10.08</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[물품구매요청서]</em> 2020년도 1월 사무용품 구매요청</p>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span class='date'>2020.10.08</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[물품구매요청서]</em> 2020년도 1월 사무용품 구매요청</p>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span class='date'>2020.10.08</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //공지사항 1x1 -->
+
+                                    <!-- 즐겨찾는메뉴 -->
+                                    <div class='grid-item' data-item-id="6" p_width="1" p_height="1" style="position: absolute; left: 1200px; top: 0px; touch-action: none;">
+                                        <div class='favorites-menu'>
+                                            <ul>
+                                                <li class='menu-mail'><span class='num'>5</span><span class='txt'>메일</span></li>
+                                                <li class='menu-payment'><span class='num'>5</span><span class='txt'>결재</span></li>
+                                                <li class='menu-reservation'><span class='num'>5</span><span class='txt'>예약</span></li>
+                                                <li class='menu-mcooperation'><span class='num'>5</span><span class='txt'>협업</span></li>
+                                                <li class='menu-calendar'><span class='num'>5</span><span class='txt'>일정</span></li>
+                                                <li class='menu-worklife'><span class='txt'>워크앤라이프</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- //즐겨찾는메뉴 -->
+
+                                    <!-- 생일 1x1 -->
+                                    <div class='grid-item' data-item-id='7' p_width='1' p_height='1' style='position:absolute; left: 1200px; top:0px; touch-action:none'>
+                                        <div class='cont-box birth cont-1x1'>
+                                            <div class='header'>
+                                                <span>생일</span>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item' style='margin-left:0px'>
+                                                    <ul class='slide-box birth-list'>
+                                                        <li>
+                                                            <div class='img'>
+                                                                <img src='images/kr/main/profile.png' alt=''>
+                                                                <ul class='gnb_info'>
+                                                                    <li class='info01 blind'>정보</li>
+                                                                    <li class='info02 blind'>문자</li>
+                                                                    <li class='info03 blind'>메세지</li>
+                                                                    <li class='info04 blind'>전화</li>
+                                                                    <li class='info05 blind'>영상</li>
+                                                                    <li class='info06 blind'>즐겨찾기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class='info'>
+                                                                <p class='tit'><em>홍길동 매니저</em>(인사팀)</p>
+                                                                <p class='date'>10월 16일</p>
+                                                            </div>
+                                                            <span class='msg blind'>메세지 보내기</span>
+                                                        </li>
+                                                        <li>
+                                                            <div class='img'>
+                                                                <img src='images/kr/main/profile.png' alt=''>
+                                                                <ul class='gnb_info'>
+                                                                    <li class='info01 blind'>정보</li>
+                                                                    <li class='info02 blind'>문자</li>
+                                                                    <li class='info03 blind'>메세지</li>
+                                                                    <li class='info04 blind'>전화</li>
+                                                                    <li class='info05 blind'>영상</li>
+                                                                    <li class='info06 blind'>즐겨찾기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class='info'>
+                                                                <p class='tit'><em>홍길동 매니저</em>(인사팀)</p>
+                                                                <p class='date'>10월 16일</p>
+                                                            </div>
+                                                            <span class='msg blind'>메세지 보내기</span>
+                                                        </li>
+                                                        <li>
+                                                            <div class='img'>
+                                                                <img src='images/kr/main/profile.png' alt=''>
+                                                                <ul class='gnb_info'>
+                                                                    <li class='info01 blind'>정보</li>
+                                                                    <li class='info02 blind'>문자</li>
+                                                                    <li class='info03 blind'>메세지</li>
+                                                                    <li class='info04 blind'>전화</li>
+                                                                    <li class='info05 blind'>영상</li>
+                                                                    <li class='info06 blind'>즐겨찾기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class='info'>
+                                                                <p class='tit'><em>홍길동 매니저</em>(인사팀)</p>
+                                                                <p class='date'>10월 16일</p>
+                                                            </div>
+                                                            <span class='msg blind'>메세지 보내기</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //생일 1x1 -->
+
+                                    <!-- 예약 1x1 -->
+                                    <div class='grid-item' data-item-id='8' p_width='1' p_height='1' style='position:absolute; left:1200px; top:0px; touch-action:none;'>
+                                        <div class='cont-box reservation cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>예약관리</a>
+                                            </div>
+                                            <div class='cont'>
+                                                <ul class='list type02'>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[1702호 회의실]</em> R&D 현안보고전장시험동</p>
+                                                            <span class='label'>허가</span>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span>2020.10.08 6:30~2020.11.19 07:00</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[1702호 회의실]</em> R&D 현안보고전장시험동</p>
+                                                            <span class='label non'>비허가</span>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span>2020.10.08 06:30~2020.11.19 07:00</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class='info'>
+                                                            <p class='tit ellipsis'><em>[1702호 회의실]</em> R&D 현안보고전장시험동</p>
+                                                            <span class='label non'>비허가</span>
+                                                            <p class='desc'>
+                                                                <span>현대모비스</span>
+                                                                <span>2020.10.08 06:30~2020.11.19 07:00</span>
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //예약 1x1 -->
+
+                                    <!-- My모비스 1x1 -->
+                                    <div class='grid-item' data-item-id='9' p_width='1' p_height='1' style='position:absolute; left:1200px; top:0px; touch-action:none;'>
+                                        <div class='cont-box my-mobis cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>My 모비스</a>
+                                                <div class='select-box type01'>
+                                                    <a href="javascript:void(0)">경영</a>
+                                                    <ul>
+                                                        <li>경영</li>
+                                                        <li>경영</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item' style='margin-left:0px'>
+                                                    <ul class='link-area slide-box'>
+                                                        <li><a href='#'>계약관리</a></li>
+                                                        <li><a href='#'>글로벌법무시스템</a></li>
+                                                        <li><a href='#'>금리비딩관리</a></li>
+                                                        <li><a href='#'>기술자료요청</a></li>
+                                                        <li><a href='#'>모비스쿨</a></li>
+                                                        <li><a href='#'>수익개선전략회의</a></li>
+                                                        <li><a href='#'>안전환경</a></li>
+                                                        <li><a href='#'>자율준수</a></li>
+                                                        <li><a href='#'>전사과제관리</a></li>
+                                                        <li><a href='#'>정원관리</a></li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- //My모비스 1x1 -->
+
+                                    <!-- 협업 1x1 -->
+                                    <div class='grid-item' data-item-id='10' p_width='1' p_height='1' style='position:absolute; left:1200px; top:0px; touch-action:none'>
+                                        <div class='cont-box cooperation cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>협업</a>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void(0)'>Me</a>
+                                                    <ul>
+                                                        <li>Me</li>
+                                                        <li>Team</li>
+                                                        <li>Group</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item'>
+                                                    <ul class='list type01 slide-box'>
+                                                        <li>
+                                                            <div class='img'>
+                                                                <img src='images/kr/main/profile.png' alt=''>
+                                                                <ul class='gnb_info'>
+                                                                    <li class='info01 blind'>정보</li>
+                                                                    <li class='info01 blind'>문자</li>
+                                                                    <li class='info01 blind'>메세지</li>
+                                                                    <li class='info01 blind'>전화</li>
+                                                                    <li class='info01 blind'>영상</li>
+                                                                    <li class='info01 blind'>즐겨찾기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class='info'>
+                                                                <p class='label'>#ICT 기획 프로젝트</p>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class='img'>
+                                                                <img src='images/kr/main/profile.png' alt=''>
+                                                                <ul class='gnb_info'>
+                                                                    <li class='info01 blind'>정보</li>
+                                                                    <li class='info02 blind'>문자</li>
+                                                                    <li class='info03 blind'>메세지</li>
+                                                                    <li class='info04 blind'>전화</li>
+                                                                    <li class='info05 blind'>영상</li>
+                                                                    <li class='info06 blind'>즐겨찾기</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class='info'>
+                                                                <p class='label'>#ICT 기획 프로젝트</p>
+                                                                <p class='tit ellipsis'>현대모비스 차세대 그룹웨어 개편 현대모비스 차세대 그룹웨어 개편</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //협업 1x1 -->
+
+                                    <!-- 일정 1x1 -->
+                                    <div class='grid-item grid-item--height2' data-item-id="11" p_width='1' p_height='2' style='position:absolute; left:0px; top:0px; touch-action:none;'>
+                                        <div class='cont-box calendar cont-1x2'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>일정</a>
+                                            </div>
+                                            <div class='cont'>
+                                                <div class='inner-wrap'>
+                                                    <p class='calendar-month'><span class='prev blind'>이전달</span><em>2020년 10월</em><span class='next blind'>다음달</span></p>
+                                                    <table class='calendar-tb'>
+                                                        <thead>
+                                                            <tr>
+                                                                <th class='sun'>일</th>
+                                                                <th>월</th>
+                                                                <th>화</th>
+                                                                <th>수</th>
+                                                                <th>목</th>
+                                                                <th>금</th>
+                                                                <th class='sat'>토</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class='sun disable'><span>27</span></td>
+                                                                <td class='disable'><span>28</span></td>
+                                                                <td class='disable'><span>29</span></td>
+                                                                <td class='disable'><span>30</span></td>
+                                                                <td><span>1</span></td>
+                                                                <td><span>2</span></td>
+                                                                <td class='sat'><span>3</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class='sun'><span>4</span></td>
+                                                                <td><span>5</span></td>
+                                                                <td><span>6</span></td>
+                                                                <td><span>7</span></td>
+                                                                <td><span>8</span></td>
+                                                                <td><span>9</span></td>
+                                                                <td class='sat'><span>10</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class='sun'><span>11</span></td>
+                                                                <td><span>12</span></td>
+                                                                <td><span>13</span></td>
+                                                                <td><span>14</span></td>
+                                                                <td><span>15</span></td>
+                                                                <td class='day-info'><span>16</span></td>
+                                                                <td class='sat'><span>17</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class='sun'><span>18</span></td>
+                                                                <td><span>19</span></td>
+                                                                <td><span>20</span></td>
+                                                                <td><span>21</span></td>
+                                                                <td><span>22</span></td>
+                                                                <td><span>23</span></td>
+                                                                <td class='sat'><span>24</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class='sun'><span>25</span></td>
+                                                                <td><span>26</span></td>
+                                                                <td><span>27</span></td>
+                                                                <td><span>28</span></td>
+                                                                <td><span>29</span></td>
+                                                                <td><span>30</span></td>
+                                                                <td class='sat'><span>31</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class='date-info-wrap slide'>
+                                                    <div class='item'>
+                                                        <ul class='slide-box'>
+                                                            <li>
+                                                                <p class='main-date'><em>16일</em>(금요일)</p>
+                                                                <ul class='date-box'>
+                                                                    <li class='company'>
+                                                                        <p class='info'><em class='label'>[회사[</em>코로나 예방 사내 방역</p>
+                                                                        <span class='time'>09:30~10:40</span>
+                                                                    </li>
+                                                                    <li class='individual'>
+                                                                        <p class='info'><em class='label'>[개인]</em>코로나 예방 사내 방역</p>
+                                                                        <span class='time'>09:30~10:40</span>
+                                                                    </li>
+                                                                    <li class='team'>
+                                                                        <p class='info'><em class='label'>[팀]</em>코로나 예방 사내 방역</p>
+                                                                        <span class='time'>09:30~10:40</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <ul class='pagenation'>
+                                                        <li class='on'>슬라이드 버튼1번</li>
+                                                        <li>슬라이드 버튼2번</li>
+                                                        <li>슬라이드 버튼3번</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- //일정 1x1 -->
+
+                                    <!-- 시간 1x1 -->
+                                    <div class='grid-item' data-item-id='12' p_width='1' p_height='1' style='position:absolutel; left:1200px; top:0px; touch-action:none;'>
+                                        <div class='cont-box clock cont-1x1'>
+                                            <div class='header'>
+                                                <span>시간</span>
+                                            </div>
+                                            <div class='cont clock-area'>
+                                                <div class='ko'>
+                                                    <div class='select-box type02'>
+                                                        <a href='javascript:void(0)'>korea / <br>Seoul</a>
+                                                        <ul>
+                                                            <li>korea / <br>Seoul</li>
+                                                            <li>korea / <br>Seoul</li>
+                                                            <li>korea / <br>Seoul</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class='clock-shape'>
+                                                        <div id="clock_id" class="shape"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="140" height="140" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><path fill="none" stroke="#000000" d="M70,70L70,30" stroke-width="2.5" transform="rotate(426 70 70)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 2.5;"></path><path fill="none" stroke="#000000" d="M70,70L70,23" stroke-width="2.5" transform="rotate(90 70 70)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 2.5;"></path><circle cx="70.5" cy="70.5" r="3" fill="#484647" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg></div>
+                                                        <div id="timeinput" class="time"> 14:15</div>
+                                                        <p class='date'>10월 21일 수요일</p>
+                                                    </div>
+                                                </div>
+                                                <div class='eu'>
+                                                    <div class='select-box type02'>
+                                                        <a href='javascript:void(0)'>korea / <br>Seoul</a>
+                                                        <ul>
+                                                            <li>korea / <br>Seoul</li>
+                                                            <li>korea / <br>Seoul</li>
+                                                            <li>korea / <br>Seoul</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class='clock-shape'>
+                                                        <div id="clock_id" class="shape"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="140" height="140" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><path fill="none" stroke="#000000" d="M70,70L70,30" stroke-width="2.5" transform="rotate(426 70 70)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 2.5;"></path><path fill="none" stroke="#000000" d="M70,70L70,23" stroke-width="2.5" transform="rotate(90 70 70)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 2.5;"></path><circle cx="70.5" cy="70.5" r="3" fill="#484647" stroke="#000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg></div>
+                                                        <div id="timeinput" class="time"> 14:15</div>
+                                                        <p class='date'>10월 21일 수요일</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //시간 1x1 -->
+
+                                    <!-- 포토게시판 2x1 -->
+                                    <div class='grid-item grid-item--width2' data-item-id='13' p_width='1' p_height='1' style='position:absolute; left:0px; top:0px; touch-action:none;'>
+                                        <div class='cont-box photo-board cont-2x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>포토게시판</a>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item'>
+                                                    <ul class='list type03 slide-box'>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis2'>
+                                                                    <em>
+                                                                        현대모비스, 고품격 KRELL 사운드, 獨 레드닷 디자인상 수상! 현대모비스, 고품격
+                                                                        KRELL 사운드
+                                                                    </em>
+                                                                </p>
+                                                                <p class='sub-desc ellipsis2'>
+                                                                    현대오토에버는 AI·빅데이터·클라우드·IoT를 비롯한 핵심 선행기술과 연계하여 고객의 가치혁신에 중점을 둔 IT 융합서비스를 제공합니다.
+                                                                </p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                            <img src='images/kr/main/sample.png' alt='' class='img'>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <!-- //포토게시판 2x1 -->
+
+                                    <!-- 근태확인 1x1 -->
+                                        <div class='grid-item' data-item-id='14' p_width='1' p_height='1' style='position:absolute; left:0px; top:0px; touch-action:none;'>
+                                            <div class='cont-box working-attitude-confirm cont-1x1'>
+                                                <div class='header'>
+                                                    <span class='tit'>근태확인</span>
+                                                    <div class='select-box type01'>
+                                                        <a href='javascript:void(0)'>팀원근무현황</a>
+                                                        <ul>
+                                                            <li>팀원근무현황</li>
+                                                            <li>팀원휴가현황</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class='cont slide'>
+                                                    <div class='item'>
+                                                        <!-- 팀원근무현황 -->
+                                                        <ul class="list type01 slide-box">
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성 <span>평일:<em class="weekday">92h</em>/ 휴일:<em class="holiday">4h</em> / <span class="good">양호</span></span></p>
+                                                                    <p class="bar">
+                                                                        <span class="range weekday"></span>
+                                                                        <span class="range holiday"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성 <span>평일:<em class="weekday">92h</em>/ 휴일:<em class="disable">4h</em> / <span class="excess">초과</span></span></p>
+                                                                    <p class="bar">
+                                                                        <span class="range weekday"></span>
+                                                                        <span class="range holiday"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성 <span>평일:<em class="weekday">92h</em>/ 휴일:<em class="holiday">4h</em> / <span class="good">양호</span></span></p>
+                                                                    <p class="bar">
+                                                                        <span class="range weekday"></span>
+                                                                        <span class="range holiday"></span>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- 팀원근무현황 -->
+                                                        <!-- 팀원휴가현황 -->
+                                                        <ul class="list type01 slide-box">
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성</p>
+                                                                    <p class="data">
+                                                                        잔여:<em>13일</em>/ 인접한휴가:<em>10월27일</em>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성</p>
+                                                                    <p class="data">
+                                                                        잔여:<em>13일</em>/ 인접한휴가:<em>10월27일</em>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="img">
+                                                                    <img src="images/kr/main/profile.png" alt="프로필">
+                                                                    <ul class="gnb_info">
+                                                                        <li class="info01 blind">정보</li>
+                                                                        <li class="info02 blind">문자</li>
+                                                                        <li class="info03 blind">메세지</li>
+                                                                        <li class="info04 blind">전화</li>
+                                                                        <li class="info05 blind">영상</li>
+                                                                        <li class="info06 blind">즐겨찾기</li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="info graph-bar">
+                                                                    <p class="tit">박문성</p>
+                                                                    <p class="data">
+                                                                        잔여:<em>13일</em>/ 인접한휴가:<em>10월27일</em>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- 팀원휴가현황 -->
+                                                    </div>
+                                                    <ul class="pagenation">
+                                                        <li class="on">슬라이드 버튼1번</li>
+                                                        <li>슬라이드 버튼2번</li>
+                                                        <li>슬라이드 버튼3번</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!-- //근태확인 1x1 -->
+
+                                    <!-- 커뮤니티 1x1 -->
+                                    <div class='grid-item' data-item-id='15' p_width='1' p_height='1' style='position:absolute; left:0px; top:0px; touch-action:none;'>
+                                        <div class='cont-box community cont-1x1'>
+                                            <div class='header'>
+                                                <a href='#' class='tit'>커뮤니티</a>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void()'>경조사</a>
+                                                    <ul>
+                                                        <li>경조사</li>
+                                                        <li>경조사</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item'>
+                                                    <ul class='list type02 slide-box'>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'><em>[축돌]</em> 몽룡과장 돌잔치 안내</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'><em>[축돌]</em> 몽룡과장 돌잔치 안내</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class='info'>
+                                                                <p class='tit ellipsis'><em>[축돌]</em> 몽룡과장 돌잔치 안내</p>
+                                                                <p class='desc'>
+                                                                    <span>현대모비스</span>
+                                                                    <span class='date'>2020.10.08</span>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul class="pagenation">
+                                                    <li class="on">슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //커뮤니티 1x1 -->
+
+                                    <!-- 주가 1x1 -->
+                                    <div class='grid-item' data-item-id='16' p_width='1' p_height='1' style='position:absolute; left:0px; top:0px; touch-action:none;'>
+                                        <div class='cont-box stock cont-1x1'>
+                                            <div class='header'>
+                                                <span class='tit'>주가</span>
+                                                <div class='select-box type01'>
+                                                    <a href='javascript:void(0)'>주가</a>
+                                                    <ul>
+                                                        <li>주가</li>
+                                                        <li>환율</li>
+                                                        <li>유가</li>
+                                                    </ul>
+                                                    <span class='refresh blind'>새로고침</span>
+                                                </div>
+                                            </div>
+                                            <div class='cont slide'>
+                                                <div class='item' style='margin-left:0px'>
+                                                    <div class='slide-box'>
+                                                        <table class='stock-tb'>
+                                                            <colgroup>
+                                                                <col width='30%'>
+                                                                <col width='30%'>
+                                                                <col width='20%'>
+                                                                <col width='20%'>
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>거래소</th>
+                                                                    <td>2,500.00 <span class='up blind'>상승</span></td>
+                                                                    <td>10.50</td>
+                                                                    <td>100%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>거래소</th>
+                                                                    <td>2,500.00 <span class='down blind'>상승</span></td>
+                                                                    <td>10.50</td>
+                                                                    <td>100%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>거래소</th>
+                                                                    <td>2,500.00 <span class='down blind'>상승</span></td>
+                                                                    <td>10.50</td>
+                                                                    <td>100%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>거래소</th>
+                                                                    <td>2,500.00 <span class='up blind'>상승</span></td>
+                                                                    <td>10.50</td>
+                                                                    <td>100%</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>거래소</th>
+                                                                    <td>2,500.00 <span class='up blind'>상승</span></td>
+                                                                    <td>10.50</td>
+                                                                    <td>100%</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <ul class='pagenation'>
+                                                    <li class='on'>슬라이드 버튼1번</li>
+                                                    <li>슬라이드 버튼2번</li>
+                                                    <li>슬라이드 버튼3번</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //주가 1x1 -->
+                                </div>
+                            </div>
+                            <!-- //grid -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //container -->
+        </div>
+
+        <script type="text/javascript" src="JQuery/jquery-1.9.1.min.js"></script>    
+        <script type="text/javascript" src="js/packery.pkgd.js"></script>
+        <script type="text/javascript" src="js/draggabilly.pkgd.js"></script>    
+    
+        <script type="text/javascript">
+            var Type = "ADMIN";
+            var SubType = "EVERYONE";
+            var MainAreaPosition = "";        
+            var ThemaID = "6dbf525f-75fe-47a3-91b0-0135046ba09c";
+            var P_width = "";
+            var P_ID = "";
+
+            var initPositions = [];
+            window.onload = function () {
+                //Get_PortalLayout();
+
+                initPositions.push(JSON.parse("{\"attr\":\"1\",\"x\":0,\"y\":0}"));
+                initPositions.push(JSON.parse("{\"attr\":\"2\",\"x\":800,\"y\":0}"));
+                initPositions.push(JSON.parse("{\"attr\":\"3\",\"x\":1200,\"y\":0}"));
+                initPositions.push(JSON.parse("{\"attr\":\"4\",\"x\":0,\"y\":430}"));
+                initPositions.push(JSON.parse("{\"attr\":\"5\",\"x\":800,\"y\":430}"));
+                initPositions.push(JSON.parse("{\"attr\":\"6\",\"x\":1200,\"y\":430}"));
+                initPositions.push(JSON.parse("{\"attr\":\"7\",\"x\":0,\"y\":860}"));
+                initPositions.push(JSON.parse("{\"attr\":\"8\",\"x\":400,\"y\":860}"));
+                initPositions.push(JSON.parse("{\"attr\":\"9\",\"x\":800,\"y\":860}"));
+                initPositions.push(JSON.parse("{\"attr\":\"10\",\"x\":1200,\"y\":860}"));
+                initPositions.push(JSON.parse("{\"attr\":\"11\",\"x\":0,\"y\":1290}"));
+                initPositions.push(JSON.parse("{\"attr\":\"12\",\"x\":400,\"y\":1290}"));
+                initPositions.push(JSON.parse("{\"attr\":\"13\",\"x\":800,\"y\":1290}"));
+                initPositions.push(JSON.parse("{\"attr\":\"14\",\"x\":400,\"y\":1720}"));
+                initPositions.push(JSON.parse("{\"attr\":\"15\",\"x\":800,\"y\":1720}"));
+                initPositions.push(JSON.parse("{\"attr\":\"16\",\"x\":1200,\"y\":1720}"));
+                
+
+
+                pckry.initShiftLayout(initPositions, 'data-item-id');  
+            }
+            //$ContentDiv(this).ready(function () {
+            //    Get_PortalLayout();
+            //});
+
+            // get JSON-friendly data for items positions
+            Packery.prototype.getShiftPositions = function (attrName) {
+                attrName = attrName || 'id';
+                var _this = this;
+                return this.items.map(function (item) {
+                    return {
+                        attr: item.element.getAttribute(attrName),
+                        //x: item.rect.x / _this.packer.width
+                        x: item.element.offsetLeft,
+                        y: item.element.offsetTop
+                    }
+                });
+            };
+
+            Packery.prototype.initShiftLayout = function (positions, attr) {
+                if (!positions) {
+                    // if no initial positions, run packery layout
+                    this.layout();
+                    return;
+                }
+                // parse string to JSON
+                if (typeof positions == 'string') {
+                    try {
+                        positions = JSON.parse(positions);
+                    } catch (error) {
+                        console.error('JSON parse error: ' + error);
+                        this.layout();
+                        return;
+                    }
+                }
+
+                attr = attr || 'id'; // default to id attribute
+                this._resetLayout();
+                // set item order and horizontal position from saved positions
+                this.items = positions.map(function (itemPosition) {
+                    var selector = '[' + attr + '="' + itemPosition.attr + '"]'
+                    var itemElem = this.element.querySelector(selector);
+                    var item = this.getItem(itemElem);
+                    //item.rect.x = itemPosition.x * this.packer.width;
+                    //return item;
+                    if (item) {
+                        item.rect.x = itemPosition.x;
+                        item.rect.y = itemPosition.y;
+                        return item;
+                    }
+                }, this);
+
+                // filter out any items that no longer exist
+                this.items = this.items.filter(function (item) {
+                    return item !== undefined;
+                });
+                // add new items
+                var newitems = [];
+                var p = this;
+                $(this.$element[0]).find(this.options.itemSelector).each(function (i, e) {
+                    if (!p.getItem(e)) {
+                        newitems.push(e);
+                    }
+                });
+                this.addItems(newitems);
+                this.shiftLayout();
+            };
+
+            var grid = document.querySelector('.grid');
+            var items = grid.querySelectorAll('.grid-item');
+            var pckry = new Packery('.grid', {
+
+                //horizontal: true,
+                columnWidth: '.grid-sizer',
+                itemSelector: '.grid-item',
+                //stamp: ".stamp",
+                gutter: 0,
+                percentPosition: false,
+                initLayout: false
+            });        
+                        
+            pckry.getItemElements().forEach(function (itemElem) {
+                var draggie = new Draggabilly(itemElem);
+                pckry.bindDraggabillyEvents(draggie);
+            });
+
+            // get saved dragged positions
+            //initPositions = localStorage.getItem('dragPositions');
+            // init layout with saved positions
+        
+            // save drag positions on event
+            pckry.on('dragItemPositioned', function () {
+                //Order_PortalPage();
+                //var positions = pckry.getShiftPositions('data-item-id');
+                // save drag positions
+                //localStorage.setItem('dragPositions', JSON.stringify(positions));
+            });        
+
+        // pckry.on('layoutComplete', Order_PortalPage);
+            //pckry.on('dragItemPositioned', Order_PortalPage);
+
+            //grid.addEventListener('click', function (event) {
+            //    // filter grid-item clicks
+            //    if (!event.target.classList.contains('grid-item')) {
+            //        return;
+            //    }
+            //    // remove clicked element
+            //    pckry.remove(event.target);
+            //    // shiftLayout remaining item elements
+            //    pckry.shiftLayout();
+            //});
+
+
+            // 포틀릿 Drag&Drop 시 포탈화면 Element 생성 시작
+            function Portlet_Drag(Portlet_EL) {
+                var Dragitems = [
+                    getItemElement(Portlet_EL, "DRAG")
+                ];
+                // append elements to container
+                var fragment = document.createDocumentFragment();
+                fragment.appendChild(Dragitems[0]);
+                grid.appendChild(fragment);
+                // add and lay out newly appended elements
+                pckry.appended(Dragitems);
+                //pckry.shiftLayout();
+                Order_PortalPage();
+                Dragitems.forEach(makeItemDraggable);
+                //pckry.layout();
+            }
+
+            // 드래그 한 포틀릿 Element 생성
+            function getItemElement(Portlet_EL, Type) {
+                var item = document.createElement('div');          
+                var widthClass = "";
+                var heightClass = "";
+                if (Type == "DRAG") {
+                    widthClass = Portlet_EL.getAttribute("portletWidth");
+                    heightClass = Portlet_EL.getAttribute("portletHeight");
+                }
+                else {
+                    widthClass = getNodeText(GetElementsByTagName(Portlet_EL, "WIDTH")[0]);
+                    heightClass = getNodeText(GetElementsByTagName(Portlet_EL, "HEIGHT")[0]);
+                }
+                
+                switch (widthClass) {
+                    case "2":
+                        widthClass = "grid-item--width2";
+                        break;
+                    case "3":
+                        widthClass = "grid-item--width3";
+                        break;
+                    case "4":
+                        widthClass = "grid-item--width4";
+                        break;
+                    default:
+                        widthClass = "";
+                        break;
+                }     
+
+                switch (heightClass) {
+                    case "2":
+                        heightClass = "grid-item--height2";
+                        break;
+                    case "3":
+                        heightClass = "grid-item--height3";
+                        break;
+                    case "4":
+                        heightClass = "grid-item--height4";
+                        break;
+                    default:
+                        heightClass = "";
+                        break;
+                }   
+
+                // <div class="grid-item" uid="8527a24e-f2f8-424c-8058-d92330b042c1" p_width="1" p_height="1" order="1" style="position: absolute; left: 0%; top: 0px; touch-action: none;"></div>
+                item.className = 'grid-item ' + widthClass + ' ' + heightClass;
+                item.setAttribute("uid", (Type === 'DRAG') ? Portlet_EL.getAttribute("uid") : getNodeText(GetElementsByTagName(Portlet_EL, "UID")[0]));
+                item.setAttribute("data-item-id", (Type === 'DRAG') ? Portlet_EL.getAttribute("order") : getNodeText(GetElementsByTagName(Portlet_EL, "ORDER")[0]));
+                item.setAttribute("p_width", (Type === 'DRAG') ? Portlet_EL.getAttribute("portletWidth") : getNodeText(GetElementsByTagName(Portlet_EL, "WIDTH")[0]));
+                item.setAttribute("p_height", (Type === 'DRAG') ? Portlet_EL.getAttribute("portletHeight") : getNodeText(GetElementsByTagName(Portlet_EL, "HEIGHT")[0]));
+                //item.addEventListener("dblclick", item_dbClick);
+
+                item.addEventListener('dblclick', function (event) {
+                    // filter grid-item clicks
+                    if (!event.target.classList.contains('grid-item')) {
+                        return;
+                    }
+                    // remove clicked element
+                    pckry.remove(event.target);
+                    // shiftLayout remaining item elements
+                    pckry.shiftLayout();
+                });
+
+
+                if (Type == "XML") {
+                    initPositions.push(JSON.parse(getNodeText(GetElementsByTagName(Portlet_EL, "POSITION")[0])));
+                }
+                return item;
+            }
+
+            // 드래그 한 Element에 Drag Event 적용
+            function makeItemDraggable(itemElem) {
+                // make element draggable with Draggabilly
+                var draggie = new Draggabilly(itemElem);
+                // bind Draggabilly events to Packery
+                pckry.bindDraggabillyEvents(draggie);
+            }        
+
+            // Drag&Drop Event 처리 후 Element 순서 적용
+            function Order_PortalPage() {
+                pckry.getItemElements().forEach(function (itemElem, i) {
+                    itemElem.setAttribute("data-item-id", i + 1);
+                    //itemElem.textContent = i + 1 + " :: " + GetAttribute(itemElem, "uid");
+                });
+            }
+
+            function PORTAL_LAYOUT_ALLOWDROP(ev) {
+                if (ev.preventDefault) {
+                    ev.preventDefault();
+                } else {
+                    ev.returnValue = false;
+                }
+            }
+
+            function PORTAL_LAYOUT_DROP(ev) {
+                if (ev.preventDefault) {
+                    ev.preventDefault();
+                } else {
+                    ev.returnValue = false;
+                }
+
+                var data = ev.dataTransfer.getData("text");
+                var PortletElement = document.getElementById(data);
+                var PortletLiElement = PortletElement.parentElement;
+                var TargetElement = ev.target;
+                var TargetTagID = TargetElement.id;
+
+                Portlet_Drag(PortletElement);
+
+                //pckry.on('layoutComplete', onLayout);
+                //pckry.getItemElements().forEach(function (itemElem) {
+                //    var draggie = new Draggabilly(itemElem);
+                //    pckry.bindDraggabillyEvents(draggie);
+                //});
+
+                //pckry.layout();
+
+                //pckry.on('layoutComplete', onLayout);
+                //pckry.on('dragItemPositioned', onLayout);
+            
+                ev.stopPropagation();
+
+            }
+
+            function Save_PortalPage() {
+                var strXML = "<DATA>";
+                strXML += "<BASIC>" + MainAreaPosition + "</BASIC>";
+                strXML += "<TYPE>ADMIN</TYPE>";
+                strXML += "<SUBTYPE>EVERYONE</SUBTYPE>";
+                strXML += "<COMPANYID>S907000</COMPANYID>";
+                strXML += "<THEMAID>" + ThemaID + "</THEMAID>";
+                strXML += "<PORTLETS>";
+
+                if (pckry.getItemElements().length == 0) {
+                    Alert_Message("설정된 레이아웃이 없습니다.", null, "");
+                    return;
+                }
+                
+                var portlet_userid = "";
+                pckry.getItemElements().forEach(function (itemElem, i) {
+                    strXML += "<PORTLET>";
+                    strXML += "<USERID>" + portlet_userid + "</USERID>";
+                    strXML += "<UID>" + GetAttribute(itemElem, "uid") + "</UID>";                
+                    strXML += "<PORTLET_ORDER>" + GetAttribute(itemElem, "data-item-id") + "</PORTLET_ORDER>";
+                    strXML += "<PORTLET_WIDTH>" + GetAttribute(itemElem, "p_width")  + "</PORTLET_WIDTH>";
+                    strXML += "<PORTLET_HEIGHT>" + GetAttribute(itemElem, "p_height") + "</PORTLET_HEIGHT>";
+                    strXML += "<PORTLET_POSITION>" + JSON.stringify(pckry.getShiftPositions('data-item-id')[i]) + "</PORTLET_POSITION>";
+
+                    var Portal_Position = pckry.getShiftPositions('data-item-id')[i];
+                    Portal_Position.x = Portal_Position.x * 2;
+                    Portal_Position.y = Portal_Position.y * 2;
+
+                    strXML += "<PORTAL_POSITION>" + JSON.stringify(Portal_Position) + "</PORTAL_POSITION>";
+                    strXML += "</PORTLET>";
+                });
+
+                strXML += "</PORTLETS>";
+                strXML += "</DATA>";
+
+                var xmlhttp = createXMLHttpRequest();
+                xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Save_PortletLayout.aspx", false);
+                xmlhttp.send(strXML);
+                if (xmlhttp.responseText != "OK") {
+                    Alert_Message("저장하는 도중 오류가 발생하였습니다. - STEP1", null, "");
+                    return;
+                }
+                else {
+                    Alert_Message("저장했습니다.", Save_PortalPage_Complete, "");
+                }
+            }
+
+            function Save_PortalPage_Complete() {
+                DivPopUpHidden();
+            }
+
+            document.onselectstart = function () {
+                if (event.srcElement.tagName != "INPUT" && event.srcElement.tagName != "TEXTAREA")
+                    return false;
+                else
+                    return true;
+            };
+
+            window.onresize = function () {
+                PageReSize();
+            }
+
+            function configBtn_setting() {
+                for (var i = 0; i < document.querySelectorAll('[class="div1"]').length; i++) {
+                    var temp_showpersonal = GetAttribute(document.querySelectorAll('[class="div1"]')[i], 'showpersonal');
+                    var displayconfig = GetAttribute(document.querySelectorAll('[class="div1"]')[i], 'displayconfig');
+                    if (displayconfig == "true" || temp_showpersonal == "0") {
+                        for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="portlet_setting_button"]').length; j++) {
+                            document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="portlet_setting_button"]')[j].style.display = "";
+                            document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="portlet_setting_button"]')[j].style.zIndex = 1100;
+                        }
+                        if (Type == "ADMIN") {
+                            for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="NoticeBoard_Portlet_config"]').length; j++) {
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="NoticeBoard_Portlet_config"]')[j].style.display = "";
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="NoticeBoard_Portlet_config"]')[j].style.zIndex = 1100;
+                            }
+                            for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Familyevents_Portlet_config"]').length; j++) {
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Familyevents_Portlet_config"]')[j].style.display = "";
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Familyevents_Portlet_config"]')[j].style.zIndex = 1100;
+                            }
+                            for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="GroupBoard_Portlet_config"]').length; j++) {
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="GroupBoard_Portlet_config"]')[j].style.display = "";
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="GroupBoard_Portlet_config"]')[j].style.zIndex = 1100;
+                            }
+                            for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="PhotoPortlet_config"]').length; j++) {
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="PhotoPortlet_config"]')[j].style.display = "";
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="PhotoPortlet_config"]')[j].style.zIndex = 1100;
+                            }
+                            //차트
+                            for (var j = 0; j < document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Chart_Portlet_config"]').length; j++) {
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Chart_Portlet_config"]')[j].style.display = "";
+                                document.querySelectorAll('[class="div1"]')[i].querySelectorAll('[name="Chart_Portlet_config"]')[j].style.zIndex = 1100;
+                            }
+                        }
+                    }
+                }
+            }
+
+            function PageReSize() {
+
+                var minusHeight = 20;
+                if (Type == "ADMIN")
+                    minusHeight = 40;
+
+                if (document.getElementById("Tab_Portlet") != null) {
+                    document.getElementById("Tab_Portlet").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - minusHeight) + "px";
+                }
+
+                if (document.getElementById("Tab_Portlet") != null && document.getElementById("PortletDragArea") != null) {
+                    document.getElementById("PortletDragArea").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - minusHeight) + "px";
+                }
+
+                if (document.getElementById("Tab_Portlet") != null && document.getElementById("sectionPosition") != null) {
+                    document.getElementById("sectionPosition").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - minusHeight) + "px";
+                }
+
+                if (MainAreaPosition != "CENTER" && document.getElementById("Tab_Portlet") != null &&  document.getElementById("PortletDragSection") != null) {
+                    document.getElementById("PortletDragSection").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - minusHeight) + "px";
+                }
+            }
+
+            function Main_Area(obj) {
+                for (var i = 0; i < GetElementsByTagName(document.getElementById("MainArea_UL"), "li").length; i++) {
+                    GetElementsByTagName(document.getElementById("MainArea_UL"), "li")[i].className = "";
+                }
+
+                if (typeof (obj) == "string")
+                    obj = document.getElementById(obj);
+                else
+                    MainAreaPosition = obj.id;
+
+                obj.parentElement.className = "on";
+
+                switch (obj.id) {
+                    case "CENTER":
+                        document.getElementById("PortletDragArea").className = "admin_layout_w";
+                        document.getElementById("PortletDragSection").className = "section_w";
+                        document.getElementById("PortletDragSection").style.height = "";
+                        break;
+                    case "LEFT":
+                        document.getElementById("PortletDragArea").className = "admin_layout_lh";
+                        document.getElementById("PortletDragSection").className = "section_lh";
+                        document.getElementById("PortletDragArea").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 22) + "px";
+                        document.getElementById("sectionPosition").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 20) + "px";
+                        document.getElementById("PortletDragSection").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 34) + "px";
+                        break;
+                    case "RIGHT":
+                        document.getElementById("PortletDragArea").className = "admin_layout_rh";
+                        document.getElementById("PortletDragSection").className = "section_rh";
+                        document.getElementById("PortletDragArea").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 22) + "px";
+                        document.getElementById("sectionPosition").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 20) + "px";
+                        document.getElementById("PortletDragSection").style.height = (document.documentElement.clientHeight - document.getElementById("Tab_Portlet").offsetTop - 34) + "px";
+                        break;
+                }
+            }
+
+            var ShowPersonalFlag = false;
+            function Get_PortalLayout() {
+                var Get_PortalLayout_type = (SubType == "EVERYONE") ? SubType : ((Type == "ADMIN") ? Type : "USER");
+
+                var xmldom = createXmlDom();
+                var xmlhttp = createXMLHttpRequest();
+
+                // Admin
+                xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Get_PortalLayout.aspx?type=" + Get_PortalLayout_type + "&companyid=" + Get_PortalLayout_companyid+"&ThemaID="+ThemaID, false);
+                xmlhttp.send();
+                if (xmlhttp.statusText == "OK" || xmlhttp.status == 200) {
+                    xmldom = loadXMLString(xmlhttp.responseText);
+                    for (var i = 0; i < xmldom.getElementsByTagName("UID").length; i++) {
+                        var PORTLET_DIV = getItemElement(GetElementsByTagName(xmldom, "ROW").item(i), "XML");
+
+                        var Makeitems = [
+                            PORTLET_DIV
+                        ];
+                        var fragment = document.createDocumentFragment();
+                        fragment.appendChild(Makeitems[0]);
+
+                        grid.appendChild(fragment);
+
+                        pckry.appended(Makeitems);                    
+                        Makeitems.forEach(makeItemDraggable);
+                    }
+                    pckry.initShiftLayout(initPositions, 'data-item-id');  
+                }
+                xmldom = null;
+                xmlhttp = null;
+            }
+
+            function PORTLET_DIV_REMOVE(obj) {
+                if (obj.parentElement.parentElement.getElementsByClassName("div1").length == 1)
+                    document.getElementById("Portal_UL").removeChild(obj.parentElement.parentElement);
+                else
+                    obj.parentElement.parentElement.removeChild(obj.parentElement);
+                
+                UseCheckPortlet();
+            }
+
+            function PORTLET_LAYOUT_REMOVE(obj) {
+                obj.parentElement.parentElement.removeChild(obj.parentElement);
+
+                UseCheckPortlet();
+            }       
+
+            function PORTLET_ALLOWDROP(ev) {
+                if (ev.preventDefault) {
+                    ev.preventDefault();
+                } else {
+                    ev.returnValue = false;
+                }
+            }
+
+            function PORTLET_LIST_DRAG(ev) {
+                if (ev.currentTarget) {
+                    ev.dataTransfer.setData("text", ev.target.id);
+                } else {
+                    ev.dataTransfer.setData("text", ev.srcElement.id);
+                }
+            }
+
+            //var Portlet_Move_Flag = false;
+            //function PORTLET_DRAG(ev) {            
+            //    var ElementID = "";
+            //    Portlet_Move_Flag = true;
+            //    if (ev.currentTarget) {
+            //        ElementID = ev.target.id;
+            //        ev.dataTransfer.setData("text", ElementID);
+            //    } else {
+            //        ElementID = ev.srcElement.id;
+            //        ev.dataTransfer.setData("text", ElementID);
+            //    }
+            //}
+
+            function PORTLET_DROP(ev) {
+                if (ev.preventDefault) {
+                    ev.preventDefault();
+                } else {
+                    ev.returnValue = false;
+                }
+
+                var data = ev.dataTransfer.getData("text");
+                var Drag_PortletElement = document.getElementById(data);
+                var Target_PortletElement;
+
+                if (ev.currentTarget) {
+                    Target_PortletElement = ev.currentTarget;
+                } else {
+                    Target_PortletElement = ev.srcElement.parentElement;
+                }
+
+                if ((SubType == "EVERYONE" && GetAttribute(Target_PortletElement, "userid") == "ADMIN")) {
+                    Alert_Message("고정영역", null, "");
+                    return;
+                }
+
+                var Drag_LiElement = Drag_PortletElement.parentElement;
+                var Drag_NextElement = Drag_PortletElement.nextElementSibling;
+                var Drag_PreElement = Drag_PortletElement.previousElementSibling;
+                var Target_LiElement = Target_PortletElement.parentElement;
+                var Target_NextElement = Target_PortletElement.nextElementSibling;
+                var Target_PreElement = Target_PortletElement.previousElementSibling;            
+
+                if (Portlet_Move_Flag) {
+                    
+                    var DragWidth = Drag_PortletElement.style.width;
+                    var TargetWidth = Target_PortletElement.style.width;
+                    Drag_PortletElement.style.width = TargetWidth;
+                    Target_PortletElement.style.width = DragWidth;
+
+                    if (GetAttribute(Drag_PortletElement.parentElement, "id") == GetAttribute(Target_LiElement, "id")) {
+                        if (Target_NextElement != null) {
+                            if (GetAttribute(Drag_PortletElement, "id") == GetAttribute(Target_PreElement, "id")) {
+                                $ContentDiv("#" + GetAttribute(Target_PortletElement, "id")).after(Drag_PortletElement);
+                            }
+                            else {
+                                $ContentDiv("#" + GetAttribute(Target_PortletElement, "id")).before(Drag_PortletElement);
+                            }
+                        }
+                        else if (Target_PreElement != null) {
+                            if (GetAttribute(Drag_PortletElement, "id") == GetAttribute(Target_PreElement, "id")) {
+                                $ContentDiv("#" + GetAttribute(Target_PortletElement, "id")).after(Drag_PortletElement);
+                            }
+                            else {
+                                $ContentDiv("#" + GetAttribute(Target_PortletElement, "id")).before(Drag_PortletElement);
+                            }
+                        }
+                    }
+                    else {
+                        if (Target_NextElement != null)
+                            $ContentDiv("#" + GetAttribute(Target_NextElement, "id")).before(Drag_PortletElement);
+                        else if (Target_PreElement != null)
+                            $ContentDiv("#" + GetAttribute(Target_PreElement, "id")).after(Drag_PortletElement);
+                        else
+                            Target_LiElement.insertBefore(Drag_PortletElement, Target_PortletElement);
+
+                        if (Drag_NextElement != null)
+                            $ContentDiv("#" + GetAttribute(Drag_NextElement, "id")).before(Target_PortletElement);
+                        else if (Drag_PreElement != null)
+                            $ContentDiv("#" + GetAttribute(Drag_PreElement, "id")).after(Target_PortletElement);
+                        else
+                            Drag_LiElement.appendChild(Target_PortletElement);
+                    }
+                    document.getElementById("SELECT_" + GetAttribute(Target_PortletElement, "uid")).value = DragWidth;
+                    document.getElementById("SELECT_" + GetAttribute(Drag_PortletElement, "uid")).value = TargetWidth;
+                    Portlet_Move_Flag = false;
+                }
+                else {
+                    if (document.getElementById(GetAttribute(Drag_PortletElement, "uid")) != null) {
+                        Alert_Message("이미 추가된 포틀릿입니다.", null, "");
+                        return;
+                    }
+                    var PORTLET_DIV = Make_PortletLayer(Drag_PortletElement);
+                    var TargetWidth = Target_PortletElement.style.width;
+                    PORTLET_DIV.style.width = TargetWidth;
+
+                    if (Target_NextElement != null)
+                        $ContentDiv("#" + GetAttribute(Target_NextElement, "id")).before(PORTLET_DIV);
+                    else if (Target_PreElement != null)
+                        $ContentDiv("#" + GetAttribute(Target_PreElement, "id")).after(PORTLET_DIV);
+
+                    document.getElementById("SELECT_" + GetAttribute(PORTLET_DIV, "uid")).value = TargetWidth;
+
+                    Target_LiElement.removeChild(Target_PortletElement);
+                }            
+                ev.stopPropagation();
+                UseCheckPortlet();
+            }
+
+            function Make_PortletLayer(PortletElement) {
+                var UID, DISPLAYNAME, ORDER, WIDTH, FIXEDWIDTH, HEIGHT, USERID;
+
+                //if (GetAttribute(PortletElement, "uid") != null) {
+                //    UID = GetAttribute(PortletElement, "uid");
+                //    DISPLAYNAME = GetAttribute(PortletElement, "displayname");
+                //    WIDTH = GetAttribute(PortletElement, "portletWidth") + "%";
+                //    FIXEDWIDTH = GetAttribute(PortletElement, "fixedwidth");
+                //    HEIGHT = GetAttribute(PortletElement, "portletHeight") + "px";
+                //    PERMISSION = "TRUE";
+                //    SHOWPERSONAL = parseInt(GetAttribute(PortletElement, "showpersonal"));
+                //}
+                //else {
+
+                UID = getNodeText(GetElementsByTagName(PortletElement, "UID")[0]);
+                DISPLAYNAME = getNodeText(GetElementsByTagName(PortletElement, "DISPLAYNAME")[0]);
+                ORDER = getNodeText(GetElementsByTagName(PortletElement, "ORDER")[0]);
+                WIDTH = getNodeText(GetElementsByTagName(PortletElement, "WIDTH")[0]);
+                //FIXEDWIDTH = getNodeText(GetElementsByTagName(PortletElement, "FIXEDWIDTH")[0]);
+                HEIGHT = getNodeText(GetElementsByTagName(PortletElement, "HEIGHT")[0]);
+                //PERMISSION = getNodeText(GetElementsByTagName(PortletElement, "PERMISSION")[0]);
+                //SHOWPERSONAL = getNodeText(GetElementsByTagName(PortletElement, "SHOWPERSONAL")[0]);
+                USERID = getNodeText(GetElementsByTagName(PortletElement, "USERID")[0]).toUpperCase();
+                //}
+                // <div class="grid-item" uid="8527a24e-f2f8-424c-8058-d92330b042c1" p_width="1" p_height="1" order="1" style="position: absolute; left: 0%; top: 0px; touch-action: none;"></div>
+                var PORTLET_DIV = document.createElement("div");
+                PORTLET_DIV.className = "div1";
+                PORTLET_DIV.id = UID;
+                PORTLET_DIV.style.width = WIDTH;
+                PORTLET_DIV.style.height = HEIGHT;
+
+                if ((Type == "ADMIN" && SubType != "EVERYONE") || (SubType == "EVERYONE" && USERID != "ADMIN") || (Type != "ADMIN" && USERID != "ADMIN"))
+                    SetAttribute(PORTLET_DIV, "displayconfig", "true");
+                SetAttribute(PORTLET_DIV, "userid", USERID);
+                SetAttribute(PORTLET_DIV, "uid", UID);
+
+                if (Type == "ADMIN" && SubType != "EVERYONE") {
+                    ShowPersonalFlag = true;
+                    PORTLET_DIV.draggable = true;
+                    PORTLET_DIV.ondragstart = function () { PORTLET_DRAG(event) };
+                    PORTLET_DIV.ondrop = function () { PORTLET_DROP(event) };
+                    PORTLET_DIV.ondragover = function () { PORTLET_ALLOWDROP(event) };
+                }
+                else {
+                    if (USERID != "ADMIN") {
+                        ShowPersonalFlag = true;
+                        PORTLET_DIV.draggable = true;
+                        PORTLET_DIV.ondragstart = function () { PORTLET_DRAG(event) };
+                        PORTLET_DIV.ondrop = function () { PORTLET_DROP(event) };
+                        PORTLET_DIV.ondragover = function () { PORTLET_ALLOWDROP(event) };
+                    }
+                }
+
+                var xmldom = createXmlDom();
+                var xmlhttp = createXMLHttpRequest();
+                xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Get_PortletContent.aspx?uid=" + UID, false);
+                xmlhttp.send();
+                if (xmlhttp.statusText == "OK" || xmlhttp.status == 200) {
+                    PORTLET_DIV.innerHTML = xmlhttp.responseText;
+                }
+
+
+
+                var PORTLET_DIV_T = document.createElement("span");
+                PORTLET_DIV_T.innerText = DISPLAYNAME;
+                PORTLET_DIV_T.className = "adminP_title";
+                PORTLET_DIV.appendChild(PORTLET_DIV_T); 
+
+                if (Type == "ADMIN") {
+                    if ((SubType != "EVERYONE") || (SubType == "EVERYONE" && USERID != "ADMIN" && (SHOWPERSONAL == 0 || SHOWPERSONAL == undefined))) {
+                        var PORTLET_DIV_V = Make_SpanSize(UID, WIDTH, FIXEDWIDTH);
+                        PORTLET_DIV.appendChild(PORTLET_DIV_V);
+                        var PORTLET_DIV_X = Make_SpanClose("DIV");
+                        PORTLET_DIV.appendChild(PORTLET_DIV_X);
+                    }
+                }
+                else {
+                    if (USERID != "ADMIN") {
+                        var PORTLET_DIV_V = Make_SpanSize(UID, WIDTH, FIXEDWIDTH);
+                        PORTLET_DIV.appendChild(PORTLET_DIV_V);                
+                        var PORTLET_DIV_X = Make_SpanClose("DIV");
+                        PORTLET_DIV.appendChild(PORTLET_DIV_X);
+                    }                
+                }
+
+                var PORTLET_DIV_PANEL = document.createElement("div");
+                if (Type == "ADMIN") {
+                    PORTLET_DIV_PANEL.className = "defaultPermission";
+                    if (SubType == "EVERYONE" && typeof (USERID) != "undefined" && USERID == "ADMIN")
+                        PORTLET_DIV_PANEL.className = "fixedPermission";
+                }
+                else {
+                    if (PERMISSION == "FALSE") {
+                        PORTLET_DIV_PANEL.className = "noPermission";
+                        PORTLET_DIV_PANEL.innerText = "포틀릿 접근 권한이 없습니다.";
+                    }
+                    else {
+                        if (USERID != "ADMIN")
+                            PORTLET_DIV_PANEL.className = "defaultPermission";
+                        else
+                            if (Type != "ADMIN")
+                                PORTLET_DIV_PANEL.className = "fixedPermission";
+                    }
+                }
+
+                PORTLET_DIV.appendChild(PORTLET_DIV_PANEL);
+                return PORTLET_DIV;
+            }
+
+            function Make_SpanSize(UID, WIDTH, FIXEDWIDTH) {
+
+                var SIZE_UL_ID = "SELECT_" + UID;
+                var SELECT_SIZE = document.createElement("select");
+                SELECT_SIZE.id = SIZE_UL_ID;
+                SELECT_SIZE.className = "adminP_v_select";
+                SELECT_SIZE.onchange = function () { PORTLET_RESIZE(UID) };
+
+                var Option_25 = document.createElement("option");
+                Option_25.value = "25%";
+                Option_25.innerText = "25%";
+                var Option_50 = document.createElement("option");
+                Option_50.value = "50%";
+                Option_50.innerText = "50%";
+                var Option_75 = document.createElement("option");
+                Option_75.value = "75%";
+                Option_75.innerText = "75%";
+                var Option_100 = document.createElement("option");
+                Option_100.value = "100%";
+                Option_100.innerText = "100%";
+
+                SELECT_SIZE.appendChild(Option_25);
+                SELECT_SIZE.appendChild(Option_50);
+                SELECT_SIZE.appendChild(Option_75);
+                SELECT_SIZE.appendChild(Option_100);
+                SELECT_SIZE.value = WIDTH;
+                if (FIXEDWIDTH == 'Y') {
+                    SELECT_SIZE.disabled = true;
+                }
+                return SELECT_SIZE;
+            }
+
+            function PORTLET_RESIZE(UID) {
+                var PortletElement = document.getElementById(UID).parentElement.getElementsByClassName("div1");    
+                var TotalSize = 0;
+                for (var i = 0; i < PortletElement.length; i++) {
+                    TotalSize = TotalSize + parseInt(PortletElement[i].style.width.replace('%', ''));
+                }
+
+                var SelectPortletSize = parseInt(document.getElementById(UID).style.width.replace('%', ''));
+                var SelectSize = parseInt(document.getElementById("SELECT_" + UID).value.replace('%', ''));
+                if ((TotalSize - SelectPortletSize) + SelectSize > 100) {
+                    Alert_Message(strLang13, null, "");
+                    document.getElementById("SELECT_" + UID).value = document.getElementById(UID).style.width;
+                    return;
+                }
+                document.getElementById(UID).style.width = document.getElementById("SELECT_" + UID).value;        
+            }
+
+            function Make_SpanClose(TYPE) {
+                var SPAN_CLOSE = document.createElement("span");
+                SPAN_CLOSE.id = "SPAN_" + GetGUID().substr(0, 4);
+                SPAN_CLOSE.className = "adminP_x";
+                if (TYPE == "DIV")
+                    SPAN_CLOSE.onclick = function () { PORTLET_DIV_REMOVE(this) };
+                else
+                    SPAN_CLOSE.onclick = function () { PORTLET_LAYOUT_REMOVE(this) };
+                return SPAN_CLOSE;
+            }
+
+
+            function Save_PortalPage_Complete() {
+                DivPopUpHidden();
+            }
+
+            function Use_PortalPage() {
+                Confirm_Alert_Message("테마로 사용하시겠습니까?", Use_PortalPage_Complete, "");
+            }
+
+            function Use_PortalPage_Complete(flag) {
+                DivPopUpHidden();
+                
+                if (flag) {
+                    var strXML = "<DATA>";
+                    strXML += "<USE_THEMAID>" +ThemaID + "</USE_THEMAID>";
+                    strXML += "</DATA>";
+                    var xmlhttp = createXMLHttpRequest();
+                    xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Save_Use_PortletLayout.aspx", false);
+                    xmlhttp.send(strXML);
+                    if (xmlhttp.responseText != "OK") {
+                        Alert_Message("저장시 오류가 발생하였습니다. - " + xmlhttp.responseText, null, "");
+                        return;
+                    }
+                    else {
+                        Alert_Message("적용되었습니다.", Reset_PortalPage_Complete_Step2(), "");
+                    }
+                    xmlhttp = null;
+                }
+            }
+
+            function Reset_PortalPage() {
+                Confirm_Alert_Message("초기화 하시겠습니까?", Reset_PortalPage_Complete_Step1, "");
+            }
+
+            function Reset_PortalPage_Complete_Step1(flag) {
+                DivPopUpHidden();
+                if (flag) {
+                    var xmlhttp = createXMLHttpRequest();
+                    //xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Reset_PortletLayout.aspx", false);
+                    xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Reset_PortletLayout.aspx?ThemaID="+ ThemaID, false);
+                    xmlhttp.send();
+                    if (xmlhttp.responseText != "OK") {
+                        Alert_Message("초기화 하는 중에 오류 발생:" + xmlhttp.responseText, null, "");
+                        return;
+                    }
+                    else {
+                        Alert_Message("초기화 되었습니다.", Reset_PortalPage_Complete_Step2(), "");
+                    }
+                    xmlhttp = null;
+                }
+            }
+
+            function Reset_PortalPage_Complete_Step2() {
+                DivPopUpHidden();
+                Get_PortalLayout();
+                configBtn_setting();
+                PageReSize();
+            }
+
+            // Home_myoffice_SubModule\ezPortal\Layout\PortalLayout_Basic.aspx
+            function Board_Portlet_Configuration(pBoardType, pBoardTabID, pPortletType) {
+                var companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                
+                DivPopUpShow(700, 670, "/myoffice/ezPortal/Portlet/configuration/Board_Portlet_Config.aspx?BoardID=&ParentBoardID=top"
+                    + "&BoardType=" + pBoardType + "&BoardTabID=" + pBoardTabID + "&PortletType=" + pPortletType + "&type=" + Type + "&companyid=" + companyid);
+            }
+
+            function NoticeBoard_Portlet_Configuration() {
+                if (Type != "ADMIN") {
+                    Alert_Message("관리자 권한이 없습니다.", null, "");
+                    return;
+                }
+                var companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                DivPopUpShow(700, 750, "/myoffice/ezPortal/admin/edit/NoticeBoard_Portlet_Config.aspx?BoardID=&ParentBoardID=top" + "&type=" + Type + "&companyid=" + companyid);
+            }
+
+            function Familyevents_Portlet_Configuration() {
+                if (Type != "ADMIN") {
+                    Alert_Message("관리자 권한이 없습니다.", null, "");
+                    return;
+                }
+                var companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                DivPopUpShow(700, 750, "/myoffice/ezPortal/Portlet/configuration/Board_Portlet_Config.aspx?BoardID=&ParentBoardID=top" + "&type=" + Type + "&companyid=" + companyid + "&PortletType=Familyevents_Portlet");
+            }
+
+            //자원예약 포틀릿
+            var schedule_add_select_dialogArguments = new Array();
+            function Resource_Config_OnClick()
+            {
+                schedule_add_select_dialogArguments[1] = Resource_Config_OnClick_Complete;
+                DivPopUpShow(880, 510, "/myoffice/ezResource/ResSch/Resource_Portlet_Config.aspx");
+            }
+            function Resource_Config_OnClick_Complete(retVal) {
+                DivPopUpHidden();
+            }
+            //자원예약 포틀릿
+
+            function GroupBoard_Portlet_Configuration(pPortletUID) {
+                if (typeof (pPortletUID) == "undefined")
+                    pPortletUID = "";
+
+                if (Type != "ADMIN") {
+                    Alert_Message("관리자 권한이 없습니다.", null, "");
+                    return;
+                }
+                var companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                DivPopUpShow(750, 800, "/myoffice/ezPortal/admin/edit/GroupBoard_Portlet_Config.aspx?type=" + Type + "&companyid=" + companyid + "&PortletType=" + pPortletUID);
+            }
+
+            function Image_Portlet_Configuration(pPortletUID) {
+                if (typeof (pPortletUID) == "undefined")
+                    pPortletUID = "";
+
+                if (Type != "ADMIN") {
+                    Alert_Message("관리자 권한이 없습니다.", null, "");
+                    return;
+                }
+                var companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                DivPopUpShow(750, 400, "/myoffice/ezPortal/admin/edit/Image_Portlet_List.aspx?type=" + Type + "&portletuid=" + pPortletUID + "&companyid=" + companyid);
+            }
+
+            //차트
+            function Chart_Portlet_Configuration(portletuid) {
+                if (Type != "ADMIN") {
+                    Alert_Message("관리자 권한이 없습니다.", null, "");
+                    return;
+                }
+                DivPopUpShow(750, 500, "/myoffice/ezPortal/portlet/configuration/Chart_Portlet_Config.aspx?portletuid=" + portletuid);
+            }
+
+            function Image_Portlet_Update(portletUID, pImageUrl) {
+                DivPopUpHidden();
+                document.getElementById(portletUID).getElementsByClassName("defaultPermission")[0].style = "height: 190px; background: url('" + pImageUrl + "') #17131e no-repeat center top";
+            }
+
+            function UseCheckPortlet() {
+                var Tab_PortletElement = document.getElementById("Tab_Portlet");
+                if (Tab_PortletElement != null) {
+                    // 전체 포틀릿 목록 초기화 
+                    var AllPortletElements = Tab_PortletElement.querySelectorAll("[uid]");
+                    for (var i = 0; i < AllPortletElements.length; i++) {
+                        AllPortletElements[i].style.backgroundColor = "";
+                    }
+
+                    // 사용중인 포틀릿을 포틀릿 목록에 표시
+                    var UseCheckPortletElement = document.getElementById("sectionPosition");
+                    if (UseCheckPortletElement != null) {
+                        // 포탈화면 영역 구성 확인.
+                        var div1Element = UseCheckPortletElement.getElementsByClassName("div1");
+                        if (div1Element.length > 0) {
+                            // 포틀릿 목록 확인.
+                            for (var i = 0; i < div1Element.length; i++) {
+                                var PortletElements = Tab_PortletElement.querySelectorAll("[uid='" + div1Element[i].getAttribute("uid") + "']");
+                                for (var j = 0; j < PortletElements.length; j++) {
+                                    PortletElements[j].style.backgroundColor = "#FFCC66";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            function Reset_PersonalPortalPage() {
+                Confirm_Alert_Message("강제적용하시겠습니까?", Reset_PersonalPortalPage_Complete, "");
+            }
+
+            function Reset_PersonalPortalPage_Complete(flag) {
+                DivPopUpHidden();
+                if (flag) {
+                    var Get_PortalLayout_companyid = (Type == "ADMIN") ? document.all("ListCompany").options[document.all("ListCompany").options.selectedIndex].value : "S907000";
+                    var xmlhttp = createXMLHttpRequest();
+                    var xmlpara = createXmlDom();
+
+                    var objNode;
+                    createNodeInsert(xmlpara, objNode, "DATA");
+                    createNodeAndInsertText(xmlpara, objNode, "COMPANYID", Get_PortalLayout_companyid);
+                    createNodeAndInsertText(xmlpara, objNode, "THEMAID",ThemaID);               
+
+                    xmlhttp.open("POST", "/myoffice/ezPortal/admin/remote/Init_PortletLayout.aspx", true);
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp == null || xmlhttp.readyState != 4) return;
+                        if (xmlhttp.status == 200 && xmlhttp.responseText == "OK") {
+                            Alert_Message("적용되었습니다.", DivPopUpHidden, "");
+                            xmlhttp = null;
+                        }
+                        else {
+                            Alert_Message("저장시 오류가 발생하였습니다. - ", DivPopUpHidden, "");
+                        }
+                    };
+                    xmlhttp.send(xmlpara);
+                }
+            }
+            function Thema_change(obj) {    
+                var id = obj.options[obj.selectedIndex].id;
+                Thema_ID = id;
+                LoadUrlContent("/myoffice/ezPortal/admin/edit/PortalPage_Config.aspx?ThemaID="+Thema_ID+"&type="+Type + "&SubType="+SubType, "RIGHTDIV");
+            }        
+
+            function Portlet_PreView(obj,id, width) {
+                P_width = width;
+                P_ID = obj.id;
+                var objNode;        
+                g_xmlHTTP = createXMLHttpRequest();
+                g_xmlHTTP.open("POST", "/myoffice/ezPortal/admin/remote/Get_PortletContent.aspx?uid=" + id, false);
+                //g_xmlHTTP.onreadystatechange = event_Portlet_PreView;
+                g_xmlHTTP.send();    
+                if (g_xmlHTTP.statusText == "OK" || g_xmlHTTP.status == 200) {
+                    document.getElementById("Portlet_PreView").style.width = P_width;
+                    if(SubType=="")
+                        document.getElementById("Portlet_PreView").style.top = "200px";
+                        //document.getElementById("Portlet_PreView").style.top = document.getElementById(P_ID).offsetTop+"px";
+                    if (Type == "")
+                        document.getElementById("Portlet_PreView").style.left = "580px";
+                    document.getElementById("Portlet_PreView").innerHTML = g_xmlHTTP.responseText;
+                    document.getElementById("Portlet_PreView").className = "portlet_previewBox";
+                }   
+            }
+            function Portlet_PreView_out() {
+                document.getElementById("Portlet_PreView").innerHTML = "";  
+                document.getElementById("Portlet_PreView").className = "";
+            }
+            
+            if (typeof jscssfile_removecheck == "function") {
+                jscssfile_removecheck();
+            }
+            
+        </script>
+    </body>
+</html>

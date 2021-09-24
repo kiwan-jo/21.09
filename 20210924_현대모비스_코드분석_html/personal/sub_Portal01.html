@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="../jQuery/common.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body style="height:100%; background:#fff;">
+    <!-- new sub title -->
+    <div class="PreViewTitle">
+        <div class="tit_search">
+            <p>포탈 화면 <span>로그인 후 초기화면으로 표시하고 싶은 항목을 선택할 수 있습니다.</span></p>
+            <div class="change_box">
+                <ul>
+                    <li class="on"><p>기본</p></li>
+                    <li><p>관리자용</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="portlet_layoutSetting">
+        <div class="portlet_layoutSetting_left">
+            <div class="scrollbar-inner">
+                <div class="left_portlet_wrap">
+                    <div class="portlet_input">
+                        <div class="input_wrap block">
+                            <input type="text" value="포틀릿을 검색해 주세요."> <a href="#none" class="btn_search"><span class="newSubicon newSubicon002"></span></a>
+                        </div>
+                    </div>
+
+                    <!-- 포탈 리스트 -->
+                    <div class="portlet_menu">
+                        <ul class="portlet_in">
+                            <li class="on">
+                                <p class="tit">업무지원</p>
+                                <!-- 서브메뉴 -->
+                                <ul class="subinfo">
+                                    <li>
+                                        <div class="img active"><span class="icon_portlet_img01"></span></div><!-- 선택되었을때 active 들어감 -->
+                                        <div class="info">
+                                            <p>결재 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet1-1" name="portlet_radio1">
+                                                    <label for="portlet1-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet1-2" name="portlet_radio1">
+                                                    <label for="portlet1-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet1-3" name="portlet_radio1">
+                                                    <label for="portlet1-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img02"></span></div>
+                                        <div class="info">
+                                            <p>공지사항 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet2-1" name="portlet_radio2">
+                                                    <label for="portlet2-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet2-2" name="portlet_radio2">
+                                                    <label for="portlet2-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet2-3" name="portlet_radio2">
+                                                    <label for="portlet2-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img03"></span></div>
+                                        <div class="info">
+                                            <p>근태현황 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet3-1" name="portlet_radio3">
+                                                    <label for="portlet3-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img04"></span></div>
+                                        <div class="info">
+                                            <p>근태확인 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet4-1" name="portlet_radio4">
+                                                    <label for="portlet4-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet4-2" name="portlet_radio4">
+                                                    <label for="portlet4-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet4-3" name="portlet_radio4">
+                                                    <label for="portlet4-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img05"></span></div>
+                                        <div class="info">
+                                            <p>My모비스 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet5-1" name="portlet_radio5">
+                                                    <label for="portlet5-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img06"></span></div>
+                                        <div class="info">
+                                            <p>메일 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet6-1" name="portlet_radio6">
+                                                    <label for="portlet6-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet6-2" name="portlet_radio6">
+                                                    <label for="portlet6-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet6-3" name="portlet_radio6">
+                                                    <label for="portlet6-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img07"></span></div>
+                                        <div class="info">
+                                            <p>예약관리 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet7-1" name="portlet_radio7">
+                                                    <label for="portlet7-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet7-2" name="portlet_radio7">
+                                                    <label for="portlet7-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet7-3" name="portlet_radio7">
+                                                    <label for="portlet7-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img08"></span></div>
+                                        <div class="info">
+                                            <p>일정 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet8-1" name="portlet_radio8">
+                                                    <label for="portlet8-1">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet8-2" name="portlet_radio8">
+                                                    <label for="portlet8-2">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img09"></span></div>
+                                        <div class="info">
+                                            <p>커뮤니티 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet9-1" name="portlet_radio9">
+                                                    <label for="portlet9-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet9-2" name="portlet_radio9">
+                                                    <label for="portlet9-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet9-3" name="portlet_radio9">
+                                                    <label for="portlet9-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img10"></span></div>
+                                        <div class="info">
+                                            <p>협업 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet10-1" name="portlet_radio10">
+                                                    <label for="portlet10-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet10-2" name="portlet_radio10">
+                                                    <label for="portlet10-2">1:2</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet10-3" name="portlet_radio10">
+                                                    <label for="portlet10-3">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <!-- //서브메뉴 -->
+                                </ul>
+                            </li>
+                            <li>
+                                <p class="tit">기타</p>
+                                <!-- 서브메뉴 -->
+                                <ul class="subinfo">
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img11"></span></div>
+                                        <div class="info">
+                                            <p>날씨 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet11-1" name="portlet_radio11">
+                                                    <label for="portlet11-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img12"></span></div>
+                                        <div class="info">
+                                            <p>즐겨찾기메뉴 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet12-1" name="portlet_radio12">
+                                                    <label for="portlet12-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img13"></span></div>
+                                        <div class="info">
+                                            <p>이미지배너 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet13-1" name="portlet_radio13">
+                                                    <label for="portlet13-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet13-2" name="portlet_radio13">
+                                                    <label for="portlet13-2">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img14"></span></div>
+                                        <div class="info">
+                                            <p>생일 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet14-1" name="portlet_radio14">
+                                                    <label for="portlet14-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img15"></span></div>
+                                        <div class="info">
+                                            <p>시간 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet15-1" name="portlet_radio15">
+                                                    <label for="portlet15-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img16"></span></div>
+                                        <div class="info">
+                                            <p>주가 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet16-1" name="portlet_radio16">
+                                                    <label for="portlet16-1">1:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img"><span class="icon_portlet_img17"></span></div>
+                                        <div class="info">
+                                            <p>포토게시판 <span class="icon_tree"></span></p>
+                                            <div class="input_wrap">
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet17-1" name="portlet_radio17">
+                                                    <label for="portlet17-1">1:1</label>
+                                                </span>
+                                                <span class="listview-check radios">
+                                                    <input type="radio" id="portlet17-2" name="portlet_radio17">
+                                                    <label for="portlet17-2">2:1</label>
+                                                </span>
+                                            </div>
+                                            <a href="#none">추가</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- //서브메뉴 -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //포탈 리스트 -->
+                </div>
+            </div>
+        </div>
+        <div class="portlet_layoutSetting_none">
+            <div class="portal_scroll scrollbar-inner">
+                <!-- 포탈 그리드 들어가는 영역 -->
+                <div class="right_portal_wrap">
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img01_s"></span></div>
+                        <p class="txt">결재</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img02_s"></span></div>
+                        <p class="txt">공지사항</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img03_s"></span></div>
+                        <p class="txt">근태현황</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img04_s"></span></div>
+                        <p class="txt">근태확인</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img05_s"></span></div>
+                        <p class="txt">my모비스</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img06_s"></span></div>
+                        <p class="txt">메일</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img07_s"></span></div>
+                        <p class="txt">예약관리</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img08_s"></span></div>
+                        <p class="txt">일정관리</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img09_s"></span></div>
+                        <p class="txt">커뮤니티</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img10_s"></span></div>
+                        <p class="txt">협업</p>
+
+                        <div class="etc">
+                            <span>업무지원</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img11_s"></span></div>
+                        <p class="txt">날씨</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img12_s"></span></div>
+                        <p class="txt">즐겨찾기메뉴</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img13_s"></span></div>
+                        <p class="txt">이미지배너</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img14_s"></span></div>
+                        <p class="txt">생일</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img15_s"></span></div>
+                        <p class="txt">시간</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img16_s"></span></div>
+                        <p class="txt">경제동향</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                    <div class="img_banner_box">
+                        <div class="img"><span class="icon_portlet_img17_s"></span></div>
+                        <p class="txt">포토게시판</p>
+
+                        <div class="etc">
+                            <span>기타</span><span>1:1</span>
+                        </div>
+                        <a href="#none" class="i_close"></a>
+                    </div>
+                </div>
+                <!-- //포탈 그리드 들어가는 영역 -->
+            </div>
+        </div>
+    </div>
+    <div class="bottom_btn">
+        <ul class="btn_newtype">
+            <li class="ok">저장</li>
+            <li class="no">취소</li>
+            <li class="no">초기화</li>
+        </ul>
+    </div>
+</body>
+</html>

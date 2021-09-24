@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;"><!-- 임의로 style 적용 -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/default.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/content.css" type="text/css">
+    <script type="text/javascript" src="../JQuery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../jQuery/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript">
+        //스크롤
+        jQuery(document).ready(function () {
+            jQuery('.scrollbar-outer').scrollbar();
+            jQuery('.scrollbar-inner').scrollbar();
+        });
+    </script>
+</head>
+
+<body>
+<!-- 상세 설정 -->
+<div class="notification newType">
+    <dl class="notificationDL">
+        <dt class="tit_notification">상세 설정</dt>
+        <dd class="text_notification">
+            <div class="pop_print_info mb15">
+                <p>포틀릿 강조 설정</p>
+                <ul>
+                    <li>
+                        <div class="input_wrap">
+                            <span class="listview-check checks">
+                                <input type="checkbox" id="Portlet_bold">
+                                <label for="Portlet_bold">테투리 강조</label>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pop_print_info">
+                <p>포틀릿 타이틀 배경 색상 설정</p>
+                <ul>
+                    <li>
+                        <div class="input_wrap">
+                            <span class="listview-check radios">
+                                <input type="radio" id="Portlet_color1" name="Portlet_color">
+                                <label for="Portlet_color1">무채색</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input_wrap">
+                            <span class="listview-check radios">
+                                <input type="radio" id="Portlet_color2" name="Portlet_color">
+                                <label for="Portlet_color2">옅은 파랑</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="input_wrap">
+                            <span class="listview-check radios">
+                                <input type="radio" id="Portlet_color3" name="Portlet_color">
+                                <label for="Portlet_color3">에메랄드</label>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </dd>
+        <dd class="close_notification"><a href="#none" class="pop_close"></a></dd>
+    </dl>
+        
+    <ul class="btn_newtype">
+        <li id="Submit1" class="ok">저장</li>
+        <li id="Submit2" class="no">초기화</li>
+    </ul>
+</div>
+<!-- //상세 설정 -->
+</body>
+</html>
